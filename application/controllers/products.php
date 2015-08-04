@@ -20,7 +20,7 @@ class Products extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('header');
-		$this->load->view('Products');
+		$this->load->view('products');
 		$this->load->view('footer');
 	}
 }
