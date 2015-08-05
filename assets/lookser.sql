@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2015 at 12:37 PM
+-- Generation Time: Aug 05, 2015 at 01:08 PM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.6
 
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`brand_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`brand_id`, `brand_name`, `brand_desc`, `brand_image`, `brand_status`, `createdOn`, `updatedOn`) VALUES
+(1, 'Suspense', '', '', '1', '2015-08-05 08:32:40', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -108,7 +115,15 @@ CREATE TABLE IF NOT EXISTS `products` (
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`p_id`, `p_storeId`, `p_name`, `p_dessc`, `p_image`, `p_mrp`, `p_price`, `p_category`, `p_brand`, `p_details`, `p_provider`, `p_status`, `createdOn`, `updatedOn`) VALUES
+(1, 'SHTDYPAYAHVQ3YZW', 'Suspense Men''s Solid Casual Shirt', 'Suspense Men''s Solid Casual Shirt', 'http://img5a.flixcart.com/image/shirt/a/r/x/rcsh-nb-suspense-l-400x400-imadyqfzyr6zdbgh.jpeg', '1099', '499', 1, 1, '', 1, '1', '2015-08-05 08:33:23', '0000-00-00 00:00:00'),
+(2, 'SHODZT5UFWAZ6ZCM', 'Allen Cooper Zipper Combat Boot', '', 'http://img5a.flixcart.com/image/shoe/3/m/z/black-85023-allen-cooper-10-400x400-imaey2vywescbjk8.jpeg', '2450', '2320', 1, 1, '', 1, '1', '2015-08-05 09:09:28', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -125,7 +140,14 @@ CREATE TABLE IF NOT EXISTS `providers` (
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`provider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `providers`
+--
+
+INSERT INTO `providers` (`provider_id`, `provider_name`, `provider_desc`, `provider_image`, `provider_status`, `createdOn`, `updatedOn`) VALUES
+(1, 'Flipkart', '', '', '1', '2015-08-05 08:33:18', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -141,7 +163,14 @@ CREATE TABLE IF NOT EXISTS `p_categories` (
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `pc_desc` text NOT NULL,
   PRIMARY KEY (`pc_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `p_categories`
+--
+
+INSERT INTO `p_categories` (`pc_id`, `pc_name`, `pc_status`, `createdOn`, `updatedOn`, `pc_desc`) VALUES
+(1, 'Shirt', '1', '2015-08-05 08:32:10', '0000-00-00 00:00:00', 'Casual');
 
 -- --------------------------------------------------------
 
