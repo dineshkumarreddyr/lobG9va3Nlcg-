@@ -15,4 +15,11 @@ class Productsmodel extends CI_Model {
         $data = $query->result();
         return $data;
     }
+
+    function get_trending_products()
+    {
+        $query = $this->db->query("SELECT * FROM products LIMIT 0,8");        
+        $data = $query->result();
+        return $data;
+    }
 }

@@ -5,6 +5,10 @@ class Login extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
+        $uid = $this->session->userdata('uid');
+        if(isset($uid) && !empty($uid)) {
+            redirect("admin/home");
+        }
         $this->load->helper('form');
         $this->load->model('admin/loginmodel', 'login_model');
     }

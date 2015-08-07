@@ -17,10 +17,21 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('productsmodel', 'products_model');
+        $this->load->model('admin/providermodel', 'provider_model');
+    }
+
 	public function index()
 	{
+		$data['providers'] = $this->provider_model->get_providers();
+		$data['tproducts'] = $this->products_model->get_trending_products();
+
 		$this->load->view('header');
-		$this->load->view('home');
+		$this->load->view('home', $data);
 		$this->load->view('footer');
 	}
 }

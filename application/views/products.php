@@ -32,9 +32,13 @@
 			  <div class="dropdown dropdown-dark">
 				<select name="category" class="dropdown-select">
 				  <option value="">Category</option>
-				  <option value="Marriage">Marriage</option>
-				  <option value="Party Wear">Party Wear</option>
-				  <option value="Casual Wear">Casual Wear</option>
+					<?php
+			   	foreach ($pcategories as $key => $pcategory) {
+			   	?>
+				  <option value="<?php echo $pcategory->pc_id; ?>"><?php echo $pcategory->pc_name; ?></option>
+			   	<?php
+			   	}
+			   	?>
 				</select>
 				</div>
 			  </div>
@@ -50,41 +54,31 @@
 	 <div class="col-md-3 filters-left"> 
 	   <h4>by Categories</h4>
 	   <ul>
+	   	<?php
+	   	foreach ($pcategories as $key => $pcategory) {
+	   	?>
 		 <li><input id='one' type='checkbox' />
-			<label for='one'><span></span>Shirts
-			<ins><i>Shirts</i></ins></label></li>
-        <li><input id='two' type='checkbox' />
-			<label for='two'><span></span>T-Shirts
-			<ins><i>T-Shirts</i></ins></label></li>
-        <li><input id='three' type='checkbox' />
-			<label for='three'><span></span>Sports Wear
-			<ins><i>Sports Wear</i></ins></label></li>
-		<li><input id='four' type='checkbox' />
-			<label for='four'><span></span>Foot Wear
-			<ins><i>Foot Wear</i></ins></label></li>
-		<li><input id='five' type='checkbox' />
-			<label for='five'><span></span>Watches
-			<ins><i>Watches</i></ins></label></li>
+			<label for='one'><span></span><?php echo $pcategory->pc_name; ?>
+			</label>
+		</li>
+	   	<?php
+	   	}
+	   	?>
 		</ul>
 		
 	   <div class="clearfix">&nbsp;</div>
 	   <h4>By Provider</h4>
 	   <ul>
-		 <li><input id='six' type='checkbox' />
-			<label for='six'><span></span>Myntra
-			<ins><i>Myntra</i></ins></label></li>
-        <li><input id='seven' type='checkbox' />
-			<label for='seven'><span></span>Flipkart
-			<ins><i>Flipkart</i></ins></label></li>
-        <li><input id='eight' type='checkbox' />
-			<label for='eight'><span></span>Jabong
-			<ins><i>Jabong</i></ins></label></li>
+	   	<?php
+	   	foreach ($providers as $key => $provider) {
+	   	?>
 		<li><input id='eight' type='checkbox' />
-			<label for='eight'><span></span>Yepme
-			<ins><i>Yepme</i></ins></label></li>
-		<li><input id='eight' type='checkbox' />
-			<label for='eight'><span></span>Fashionara
-			<ins><i>Fashionara</i></ins></label></li>
+			<label for='eight'><span></span><?php echo $provider->provider_name; ?>
+			</label>
+		</li>
+	   	<?php
+	   	}
+	   	?>
 		</ul>
 		
 	 <div id="budget-wrapper">

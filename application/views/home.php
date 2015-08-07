@@ -54,77 +54,20 @@
 	<!-- trending products -->
 	<h2>trending Products</h2>
 	<div class="container trending-wrap">
+		<?php
+		foreach ($tproducts as $key => $tproduct) {
+		?>
 	  <div class="col-md-3 trend-each">
         <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t3.jpg" class="img-responsive">
+		  <img src="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive">
 		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
+		<h4><?php echo $tproduct->p_name; ?></h4>
+		<div class="col-md-12 text-center"><span class="mrp"><?php echo $tproduct->p_mrp; ?></span>
+		<span class="aftrdsnt"><?php echo $tproduct->p_price; ?></span></div>
 	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t1.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	 <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	<div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-    <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t8.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>	  
+		<?php
+		}
+		?>
    </div>
 	<!-- trending products -->
 	
@@ -544,21 +487,11 @@
                 <div class="carousel-inner">     
                 <div class="item active">
                 	<div class="row">
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/flipkart.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/myntra.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/yepme.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/fashinara.png" alt="Image" style="max-width:100%;"></a></div>
+                	  <?php foreach ($providers as $key => $provider): ?>
+                		<div class="col-md-3"><a href="#"><img src="<?php echo $provider->provider_image; ?>" alt="<?php echo $provider->provider_name; ?>" title="<?php echo $provider->provider_name; ?>" style="max-width:100%;"></a></div>
+                	  <?php endforeach; ?>
                 	</div><!--.row-->
                 </div><!--.item-->
-                 
-                <div class="item">
-                	<div class="row">
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/snapdeal.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/paytm.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/jabong.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/shopclues.png" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->		 
 			</div>  
 		</div>
 	</div>

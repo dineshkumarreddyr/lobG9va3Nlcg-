@@ -17,6 +17,12 @@
     <!-- MetisMenu CSS -->
     <link href="<?php echo base_url("assets/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css"); ?>" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="<?php echo base_url("assets/startbootstrap-sb-admin-2-1.0.7/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"); ?>" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="<?php echo base_url("assets/startbootstrap-sb-admin-2-1.0.7/bower_components/datatables-responsive/css/dataTables.responsive.css"); ?>" rel="stylesheet">
+
     <!-- Timeline CSS -->
     <link href="<?php echo base_url("assets/startbootstrap-sb-admin-2-1.0.7/dist/css/timeline.css"); ?>" rel="stylesheet">
 
@@ -290,6 +296,54 @@
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url("admin/user/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Products Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/product"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/product/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Products Categories<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/pcategory"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/pcategory/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Providers Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/provider"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/provider/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Brands Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/brand"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/brand/add"); ?>">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

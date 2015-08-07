@@ -6,7 +6,7 @@ class User extends MX_Controller {
     {
         parent::__construct();
         $this->load->helper('form');
-        // $this->load->model('admin/homemodel', 'home_model');
+        $this->load->model('admin/usermodel', 'user_model');
         $this->login_check();
     }
 
@@ -19,8 +19,9 @@ class User extends MX_Controller {
  
     public function index()
     {
+        $data['users'] = $this->user_model->get_users();
         $this->load->view('admin/header');
-        $this->load->view('admin/home');
+        $this->load->view('admin/user/list', $data);
         $this->load->view('admin/footer');
     }
 
