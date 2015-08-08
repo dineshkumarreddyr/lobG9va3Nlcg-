@@ -98,6 +98,14 @@ class Product extends MX_Controller {
         $this->load->view('admin/footer');
     }
 
+    public function remove($product_id)
+    {
+        if($product_id) {
+            $this->product_model->remove($product_id);
+            redirect(base_url('admin/product'), 'refresh');
+        }
+    }
+
 }
  
 /* End of file login.php */

@@ -39,7 +39,7 @@
                                             <td class="center">
                                                 <a href="" class="fa fa-eye"></a>
                                                 <a href="" class="fa fa-edit"></a>
-                                                <a href="" class="glyphicon glyphicon-remove"></a>
+                                                <a href="<?php echo base_url('admin/product/remove/'.$product->p_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
                                             </td>
                                         </tr>
                                             <?php

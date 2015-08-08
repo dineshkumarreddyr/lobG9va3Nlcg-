@@ -35,4 +35,9 @@ class Productmodel extends CI_Model {
         $product_id = $this->db->insert_id();
         return $product_id;
     }
+
+    function remove($product_id)
+    {
+        $this->db->delete('products', array('p_id' => $product_id)); 
+    }
 }
