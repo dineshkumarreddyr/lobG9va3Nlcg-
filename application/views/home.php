@@ -57,6 +57,7 @@
 		<?php
 		foreach ($tproducts as $key => $tproduct) {
 		?>
+		<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
 	  <div class="col-md-3 trend-each">
         <div class="listimg">
 		  <img src="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive">
@@ -65,6 +66,7 @@
 		<div class="col-md-12 text-center"><span class="mrp"><?php echo $tproduct->p_mrp; ?></span>
 		<span class="aftrdsnt"><?php echo $tproduct->p_price; ?></span></div>
 	  </div>
+		</a>
 		<?php
 		}
 		?>

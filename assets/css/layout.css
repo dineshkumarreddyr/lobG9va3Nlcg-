@@ -6,6 +6,7 @@ a:hover{text-decoration:none}
 .no-pad{padding:0}
 .no-marg{margin:0}
 .white{color:#fff;}
+.webrupee{font-family: 'webrupeebook';margin-right: 5px;}
 h2{text-transform:uppercase;font-weight:bold;font-size:20px;color:#000;
 margin-bottom:30px;font-family: 'futura_md_btbold';text-align:center;}
 
@@ -164,6 +165,8 @@ border-right:5px solid #ff7ca3;border-bottom:5px solid transparent;border-left:5
 text-overflow: ellipsis;white-space: nowrap;overflow: hidden;margin-bottom: 5px;}
 .mrp{color:#ff7878;font-size:15px;font-weight:600;padding-right:10px;text-decoration:line-through}
 .aftrdsnt{color:#68baff;font-size:15px;font-weight:600;}
+.discount{color:#6fba54;display: inline-block;margin: 0 0 0 5px;border: 1px solid #c9c9c9;
+text-align: center;padding: 8px;font-size: 12px;line-height: 12px;}
 
 .creators-wrap{padding-bottom:30px}
 .created-each{margin-bottom:25px;}
@@ -580,7 +583,45 @@ border:1px solid #ebebeb;color:#fff;padding:10px 20px;text-align: center;}
 
 .designerpro-right{}
 
+/************ DESCRIPTION PAGE ************/
 
+.prod-desp-main{margin-top:60px;border-top:1px solid #ddd;padding-top:10px;
+padding-bottom: 10px;}
+.wrap{margin-bottom: 15px;}
+.prod-desp-left{height:400px;background: #f5f5f5;}
+.prod-desp-right h3{color:#000;font-weight:300;margin-top: 0;}
+.mrpBig{color:#ff7878;font-size:20px;font-weight:600;padding-right:10px;
+  line-height:30px;text-decoration:line-through}
+.aftrdsntBig{color:#68baff;font-size:20px;font-weight:600;line-height: 30px;}
+.viewer { height: 500px; width: 500px; }
+.btn-wrap{margin-top:20px;}
+.favbtn{border:2px solid #dc0484;width:100%;color:#dc0484;background: none;
+text-transform: uppercase;height:40px;}
+.favbtn:hover{color:#fff;background: #dc0484;-webkit-transition: all .5s;
+-moz-transition: all .5s;-ms-transition: all .5s;-o-transition: all .5s;transition: all .5s;}
+.buybtn{border:2px solid #1e81aa;width: 100%;color:#1e81aa;background: none;
+text-transform: uppercase;height:40px;}
+.buybtn:hover{color:#fff;background:#1e81aa;-webkit-transition: all .5s;
+-moz-transition: all .5s;-ms-transition: all .5s;-o-transition: all .5s;transition: all .5s; }
+.desp-content{margin-bottom:8px;}
+.desp-content strong{margin-right: 10px;}
+ul.sizes{margin:0;padding:0;}
+ul.sizes li{padding:5px 10px;list-style-type: none;color:#1e81aa;text-transform: uppercase;
+background: #ebebeb;float: left;margin-right:8px;display: inline-block;border:1px solid #ebebeb;}
+.nosize{color:#ccc !important; }
+
+
+/* Breadcrumbs
+================================================== */
+.breadcrumbs {color: #000; overflow: hidden;margin-bottom: 10px;}
+.breadcrumbs a {color: #000; padding: 0 5px;font-size:14px;}
+.breadcrumbs ul {margin: 0; padding: 0;}
+.breadcrumbs li:first-child a {padding-left: 0;}
+.breadcrumbs li {margin-bottom: 9px; display: inline;}
+.breadcrumbs li:after {content: "/";}
+.breadcrumbs li:last-child a{color:#dc0484;font-weight:600;}
+.breadcrumbs li:last-child:after {content: "";}
+.breadcrumbs span {padding: 0 5px;}
 
 /********** PLACEHOLDER **********/
 
@@ -602,6 +643,16 @@ and (max-device-width : 767px) {
 /****************
 FONTS
 ******************/
+@font-face {
+    font-family: 'webrupeebook';
+    src: url('../fonts/webrupee.v2.0-webfont.eot');
+    src: url('../fonts/webrupee.v2.0-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/webrupee.v2.0-webfont.woff2') format('woff2'),
+         url('../fonts/webrupee.v2.0-webfont.woff') format('woff'),
+         url('../fonts/webrupee.v2.0-webfont.ttf') format('truetype'),
+         url('../fonts/webrupee.v2.0-webfont.svg#webrupeebook') format('svg');
+    font-weight: normal;font-style: normal;}
+
 
 @font-face {
     font-family: 'source_sans_proregular';

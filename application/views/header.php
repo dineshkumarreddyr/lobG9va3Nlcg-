@@ -6,9 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fashionoo :: Listing</title>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/css/layout.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/zoomer.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

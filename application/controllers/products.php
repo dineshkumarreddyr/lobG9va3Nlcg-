@@ -24,6 +24,7 @@ class Products extends CI_Controller {
         $this->load->model('productsmodel', 'products_model');
         $this->load->model('admin/pcategorymodel', 'pcategory_model');
         $this->load->model('admin/providermodel', 'provider_model');
+        $this->load->model('trackingmodel', 'tracking_model');
     }
 
 	public function index()
@@ -34,6 +35,19 @@ class Products extends CI_Controller {
 
 		$this->load->view('header');
 		$this->load->view('products', $data);
+		$this->load->view('footer');
+	}
+
+	public function view($product_id = 0)
+	{
+		$data['pcategories'] = $this->pcategory_model->get_pcategories();
+		$data['providers'] = $this->provider_model->get_providers();
+		$data['product'] = $this->products_model->get_product($product_id);
+		$this->tracking_model->track_product($product_id);
+
+
+		$this->load->view('header');
+		$this->load->view('product_view', $data);
 		$this->load->view('footer');
 	}
 }
