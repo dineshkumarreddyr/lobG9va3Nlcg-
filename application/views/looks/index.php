@@ -32,9 +32,13 @@
 			  <div class="dropdown dropdown-dark">
 				<select name="category" class="dropdown-select">
 				  <option value="">Category</option>
-				  <option value="Marriage">Marriage</option>
-				  <option value="Party Wear">Party Wear</option>
-				  <option value="Casual Wear">Casual Wear</option>
+				  <?php
+					foreach ($lcategories as $key => $lcategory) {
+						?>
+						<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
+						<?php
+					}
+					?>
 				</select>
 				</div>
 			  </div>
@@ -44,178 +48,31 @@
 	</div>
 	
 	<!-- filtered products -->
-	<h2>Products</h2>
+	<h2>Looks</h2>
 	<div class="container products-wrap">
 	 <div class="row">
 	 <div class="col-md-2 filters-left"> 
-	 	<?php echo $this->load->view('looks/filter'); ?>
+	 	<?php echo $this->load->view('looks/filter', $lcategories); ?>
 	   
 	 </div>
 	 <!--filters left end-->
 	 
 	 <div class="col-md-10 looks-list-wrap">
+
+    <?php foreach ($looks as $key => $look): ?>
 	  <div class="col-md-3 trend-each">
-        <div class="pattern3">
+    <div class="pattern<?php echo count($look['l_products']); ?>">
 		  <ul>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></li>
+		  <?php foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
+			<?php endforeach; ?>
 		  </ul>
 		</div>
-		<h4>classic chick look</h4>
+		<h4><?php echo $look['l_title']; ?></h4>
 		<div class="col-md-12 text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
 	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="pattern2">
-		  <ul>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-		  </ul>
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="pattern4">
-		  <ul>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t3.jpg" class="img-responsive"></li>
-		  </ul>
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="pattern3">
-		  <ul>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t3.jpg" class="img-responsive"></li>
-		  </ul>
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="pattern2">
-		  <ul>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-			<li><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-		  </ul>
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	 <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	<div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-    <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t8.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	<div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t1.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t7.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t3.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-      <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t5.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	 <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-	<div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>
-
-    <div class="col-md-3 trend-each">
-        <div class="listimg">
-		  <img src="<?php echo base_url();?>assets/images/trending/t8.jpg" class="img-responsive">
-		</div>
-		<h4>classic chick look</h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
-	  </div>	  
+		<?php endforeach; ?>  
    </div>	  
    </div>
    </div>

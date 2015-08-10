@@ -1,13 +1,4 @@
 
-		<div class="slideshow">
-		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
-		<div class="carousel-inner">
-		<div class="item active">
-		<img class="img-responsive" src="<?php echo base_url(); ?>assets/images/look.jpg" alt="First Slide">
-		</div><!-- /. Item Active -->
-		</div><!-- /. Carousel-Inner -->
-		</div><!-- /# Slideshow .Carousel -->
-		</div>
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -66,27 +57,34 @@
 		
 	   <div class="row">
 	     <div class="col-md-7 createlook-left"> 
-           <p><strong>8</strong> Products added to the look</p>
+	     	<div id="lc_create" class="hide">
+	     		<select class="minimal" id="l_cat" name="l_cat">
+	     			<option value="">--Look Category--</option>
+	     			<?php
+						foreach ($lcategories as $key => $lcategory) {
+							?>
+							<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
+							<?php
+						}
+						?>
+	     		</select>
+	     		<input type="text" class="form-control" placeholder="Look name" value="" id="l_name" name="l_name">
+	     		<input type="button" class="form-control" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
+	     	</div>
+           <p><strong id="lp_count">0</strong> Products added to the look</p>
 		   <div class="prodsadded">
-		     <ul>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t1.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t2.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t3.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t5.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t6.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t5.jpg" class="img-responsive"></a></li>
-			  <li><a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/trending/t1.jpg" class="img-responsive"></a></li>
-			 </ul>
+		     <ul id="ld">
+		     </ul>
 		   </div>
 		   
 		   <div class="clearfix"></div>
-		   <div class="clearfix selectedprod-wrap" id="lp">
-		     
-			 <div class="totaladded">
+		   <div class="clearfix selectedprod-wrap">
+		     <div id="lp">
+		     </div>
+			 <div class="totaladded hide" id="lp_total_div" >
 			  <div class="row">
 			    <div class="col-md-8 text-right"><strong>Total</strong></div>
-			    <div class="col-md-4 no-pad">Rs.12345</div>
+			    <div class="col-md-4 no-pad" id="lp_total">Rs. 0</div>
 			  </div>
 			 </div>
 		   </div>
@@ -116,8 +114,8 @@
 				   <div class="col-md-7 prodpick-right">
 				     <div class="mrp"><span>MRP: Rs</span> <?php echo $product->p_mrp; ?></div>
 					 <div class="cost" id="p_price_<?php echo $product->p_id; ?>">Rs. <?php echo $product->p_price; ?></div>
-				     <div class="addtolook">
-					   <a href="javascript:void(0);" onclick="add_to_look(<?php echo $product->p_id; ?>);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>
+				     <div class="addtolook" onclick="add_to_look(<?php echo $product->p_id; ?>);">
+					   <a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>
 					 </div>
 					 <div class="fav">
 					   <a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/fav.png"></a>
@@ -140,22 +138,28 @@
 <script type="text/javascript">
 
 <!-- Add to look -->
+localStorage.p_ids = [];
+localStorage.lp_total = 0;
 function add_to_look(p_id) {
 	var count = n_count = 0;
 	if (localStorage.p_ids) {
 	    var p_ids = JSON.parse(localStorage.p_ids);
 	    count = p_ids.length;
-	    p_ids[p_id] =p_id;
+	    if($.inArray(p_id, p_ids) == -1) {
+	    	p_ids.push(p_id);
+	    }
 	    n_count = p_ids.length;
 	} else {
 	    var p_ids = [];
 	    count = p_ids.length;
-	    p_ids[p_id] = p_id;
+	    p_ids.push(p_id);
 	    n_count = p_ids.length;
 	}
 	if(count == n_count) {
-		alert(1);
+		alert('Already added');
+		return false;
 	}
+	$('#lp_count').text(n_count);
 
 	localStorage.p_ids = JSON.stringify(p_ids);
 
@@ -186,12 +190,88 @@ function add_to_look(p_id) {
 			   '</div>' +
 		     '</div>';
 	$('#lp').append(lp);
+
+	<!-- look products total calculating -->
+	p_price = p_price.split('s. ');
+	if (localStorage.lp_total) {
+		localStorage.lp_total = parseInt(localStorage.lp_total) + parseInt(p_price[1]);
+	}
+	else {
+		localStorage.lp_total = parseInt(p_price[1]);	
+	}
+	$('#lp_total_div').removeClass('hide');
+	$('#lc_create').removeClass('hide');
+	$('#lp_total').text('Rs. ' + localStorage.lp_total);
+	<!-- look products total calculating -->
+
+	var ld = '<li id="ld_'+p_id+'">'+
+						'<a href="javascript:void(0);" target="_blank">'+
+							'<img src="'+p_image+'" class="img-responsive">'+
+						'</a>'+
+					'</li>';
+	$('#ld').append(ld);
 }
 <!-- Add to look -->
 
 <!-- Remove product from look -->
 function remove_lp(p_id) {
+
+	<!-- look products total calculating -->
+	lp_price = $('#lp_price_'+p_id).text().split('s. ');
+	if (localStorage.lp_total) {
+		localStorage.lp_total = parseInt(localStorage.lp_total) - parseInt(lp_price[1]);
+	}
+	$('#lp_total').text('Rs. '+localStorage.lp_total);
+	if(localStorage.lp_total == 0) {
+		$('#lp_total_div').addClass('hide');
+		$('#lc_create').addClass('hide');
+	}
+	<!-- look products total calculating -->
+
 	$('#lp_'+p_id).remove();
+	$('#ld_'+p_id).remove();
+	if (localStorage.p_ids) {
+	    var p_ids = JSON.parse(localStorage.p_ids);
+	    p_ids = jQuery.grep(p_ids, function(value) {
+		  return value != p_id;
+		});
+	}
+	localStorage.p_ids = JSON.stringify(p_ids);
 }
 <!-- Remove product from look -->
+
+<!-- Create look -->
+function create_look() {
+	var l_cat = $('#l_cat').val();
+	var l_name = $('#l_name').val();
+	if(l_cat == '') {
+		alert('Please select look category');
+		return false;
+	}
+	if(l_name == '') {
+		alert('Please enter look name');
+		return false;
+	}
+
+	$.ajax({
+		type:"POST",
+		url:'<?php echo base_url("looks/create_ajax");?>',
+		data:{'l_cat':l_cat,'l_name':l_name,'l_pids':localStorage.p_ids},
+		dataType:"json",
+		success: function(data){
+			if(data.status == 'success') {
+				alert("Look created successfully");
+				window.location.href = '<?php echo base_url("looks"); ?>';
+			}
+			else if(data.status == 'error') {
+				alert(data.message);
+			}
+		},
+	  error: function(e) {
+		//called when there is an error
+		console.log(e.message);
+	  }
+	});
+}
+<!-- Create look -->
 </script>

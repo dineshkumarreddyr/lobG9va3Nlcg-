@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2015 at 08:49 PM
+-- Generation Time: Aug 10, 2015 at 08:37 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -50,6 +50,36 @@ INSERT INTO `brands` (`brand_id`, `brand_name`, `brand_desc`, `brand_image`, `br
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `looks`
+--
+
+CREATE TABLE IF NOT EXISTS `looks` (
+`l_id` int(11) NOT NULL,
+  `l_name` varchar(60) NOT NULL,
+  `l_desc` text NOT NULL,
+  `l_image` text NOT NULL,
+  `l_mrp` varchar(10) NOT NULL,
+  `l_price` varchar(10) NOT NULL,
+  `l_category` int(11) NOT NULL,
+  `l_grid` int(11) NOT NULL,
+  `l_details` text NOT NULL,
+  `l_uid` int(11) NOT NULL,
+  `l_status` enum('0','1') NOT NULL,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `looks`
+--
+
+INSERT INTO `looks` (`l_id`, `l_name`, `l_desc`, `l_image`, `l_mrp`, `l_price`, `l_category`, `l_grid`, `l_details`, `l_uid`, `l_status`, `createdOn`, `updatedOn`) VALUES
+(12, 'First look', '', '', '', '', 1, 2, '', 0, '1', '2015-08-10 17:56:35', '0000-00-00 00:00:00'),
+(13, 'Second look', '', '', '', '', 1, 2, '', 2, '1', '2015-08-10 18:36:12', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `l_categories`
 --
 
@@ -61,7 +91,40 @@ CREATE TABLE IF NOT EXISTS `l_categories` (
   `lc_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `l_categories`
+--
+
+INSERT INTO `l_categories` (`lc_id`, `lc_name`, `lc_desc`, `lc_image`, `lc_status`, `createdOn`, `updatedOn`) VALUES
+(1, 'Wedding', '', '', '1', '2015-08-10 16:15:03', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `l_products`
+--
+
+CREATE TABLE IF NOT EXISTS `l_products` (
+`lp_id` int(11) NOT NULL,
+  `lp_lid` int(11) NOT NULL,
+  `lp_pid` int(11) NOT NULL,
+  `lp_priority` int(11) NOT NULL,
+  `lp_status` enum('0','1') NOT NULL,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `l_products`
+--
+
+INSERT INTO `l_products` (`lp_id`, `lp_lid`, `lp_pid`, `lp_priority`, `lp_status`, `createdOn`, `updatedOn`) VALUES
+(18, 12, 1, 0, '1', '2015-08-10 17:56:35', '0000-00-00 00:00:00'),
+(19, 12, 2, 0, '1', '2015-08-10 17:56:35', '0000-00-00 00:00:00'),
+(20, 13, 1, 0, '1', '2015-08-10 18:36:12', '0000-00-00 00:00:00'),
+(21, 13, 4, 0, '1', '2015-08-10 18:36:12', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -125,7 +188,6 @@ CREATE TABLE IF NOT EXISTS `products` (
 INSERT INTO `products` (`p_id`, `p_storeId`, `p_name`, `p_desc`, `p_image`, `p_url`, `p_mrp`, `p_price`, `p_category`, `p_brand`, `p_details`, `p_provider`, `p_status`, `createdOn`, `updatedOn`) VALUES
 (1, 'SHTDYPAYAHVQ3YZW', 'Suspense Men''s Solid Casual Shirt', 'Suspense Men''s Solid Casual Shirt', 'http://img5a.flixcart.com/image/shirt/a/r/x/rcsh-nb-suspense-l-400x400-imadyqfzyr6zdbgh.jpeg', '', '1099', '499', 1, 1, '', 1, '1', '2015-08-05 08:33:23', '0000-00-00 00:00:00'),
 (2, 'SHODZT5UFWAZ6ZCM', 'Allen Cooper Zipper Combat Boot', '', 'http://img5a.flixcart.com/image/shoe/3/m/z/black-85023-allen-cooper-10-400x400-imaey2vywescbjk8.jpeg', '', '2450', '2320', 1, 1, '', 1, '1', '2015-08-05 09:09:28', '0000-00-00 00:00:00'),
-(3, 'SHTE88BAFTACFGTB', 'Blackberrys Men''s Self Design Formal Shirt', '', '', '', '2595', '2595', 1, 1, '', 1, '1', '2015-08-07 15:58:10', '0000-00-00 00:00:00'),
 (4, 'SHTE88BAWCHHBFBE', 'Blackberrys Men''s Self Design Casual Shirt', '', 'http://img5a.flixcart.com/image/shirt/z/v/w/msmap00eben16spqestate-blue-blackberrys-39-400x400-imae9rwh6rwuzm7z.jpeg', '', '2000', '1995', 1, 1, '', 1, '1', '2015-08-07 16:18:33', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -190,7 +252,18 @@ CREATE TABLE IF NOT EXISTS `p_views` (
   `pv_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `p_views`
+--
+
+INSERT INTO `p_views` (`pv_id`, `pv_productId`, `pv_ip`, `pv_source`, `pv_status`, `createdOn`, `updatedOn`) VALUES
+(1, 1, '::1', '', '0', '2015-08-09 09:57:59', '0000-00-00 00:00:00'),
+(2, 1, '::1', '', '0', '2015-08-09 09:58:18', '0000-00-00 00:00:00'),
+(3, 1, '::1', '', '0', '2015-08-09 09:59:17', '0000-00-00 00:00:00'),
+(4, 1, '::1', '', '0', '2015-08-09 09:59:48', '0000-00-00 00:00:00'),
+(5, 1, '::1', '', '0', '2015-08-09 10:09:52', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -275,10 +348,22 @@ ALTER TABLE `brands`
  ADD PRIMARY KEY (`brand_id`);
 
 --
+-- Indexes for table `looks`
+--
+ALTER TABLE `looks`
+ ADD PRIMARY KEY (`l_id`);
+
+--
 -- Indexes for table `l_categories`
 --
 ALTER TABLE `l_categories`
  ADD PRIMARY KEY (`lc_id`);
+
+--
+-- Indexes for table `l_products`
+--
+ALTER TABLE `l_products`
+ ADD PRIMARY KEY (`lp_id`);
 
 --
 -- Indexes for table `l_views`
@@ -338,10 +423,20 @@ ALTER TABLE `users`
 ALTER TABLE `brands`
 MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `looks`
+--
+ALTER TABLE `looks`
+MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
 -- AUTO_INCREMENT for table `l_categories`
 --
 ALTER TABLE `l_categories`
-MODIFY `lc_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `lc_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `l_products`
+--
+ALTER TABLE `l_products`
+MODIFY `lp_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `l_views`
 --
@@ -366,7 +461,7 @@ MODIFY `pc_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `p_views`
 --
 ALTER TABLE `p_views`
-MODIFY `pv_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `pv_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
