@@ -50,6 +50,19 @@ class Products extends CI_Controller {
 		$this->load->view('product_view', $data);
 		$this->load->view('footer');
 	}
+
+	/*
+	Products Ajax search
+	*/
+	public function s_ajax()
+	{
+		$s_pdt = $this->input->post('s_pdt');
+		$s_gen = $this->input->post('s_gen');
+		$s_cat = $this->input->post('s_cat');
+
+		$data = $this->products_model->s_products($s_pdt, $s_gen, $s_cat);
+		echo json_encode($data);
+	}
 }
 
 /* End of file welcome.php */

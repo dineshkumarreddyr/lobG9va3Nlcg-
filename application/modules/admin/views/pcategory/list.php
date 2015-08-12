@@ -21,6 +21,7 @@
                                             <th>S.No</th>
                                             <th>Name</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +32,11 @@
                                             <td><?php echo $pcategory->pc_id; ?></td>
                                             <td><?php echo $pcategory->pc_name; ?></td>
                                             <td class="center"><?php echo ($pcategory->pc_status) ? 'Active' : 'InActive'; ?></td>
+                                            <td class="center">
+                                                <a href="" class="fa fa-eye"></a>
+                                                <a href="<?php echo base_url('admin/pcategory/edit/'.$pcategory->pc_id); ?>" class="fa fa-edit"></a>
+                                                <a href="<?php echo base_url('admin/pcategory/remove/'.$pcategory->pc_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
+                                            </td>
                                         </tr>
                                             <?php
                                         }

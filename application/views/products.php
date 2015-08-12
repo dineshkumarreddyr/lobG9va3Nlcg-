@@ -16,11 +16,11 @@
 <div class="filters-top-wrap">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5"><input type="text" name="search" id="search" tabindex="1"
+			<div class="col-md-5"><input type="text" name="s_pdt" id="s_pdt" tabindex="1"
 				class="form-control" placeholder="Search by Product, Look and Designer" value=""></div>
 				<div class="col-md-2">
 					<div class="dropdown dropdown-dark">
-						<select name="gender" class="dropdown-select">
+						<select name="S_gen" id="s_gen" class="dropdown-select">
 							<option value="">Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
@@ -30,7 +30,7 @@
 				
 				<div class="col-md-3">
 					<div class="dropdown dropdown-dark">
-						<select name="category" class="dropdown-select">
+						<select name="s_cat" id="s_cat" class="dropdown-select">
 							<option value="">Category</option>
 							<?php
 							foreach ($pcategories as $key => $pcategory) {
@@ -42,7 +42,7 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-md-2"><button>Search</button></div>
+				<div class="col-md-2"><button id="s_srh" name="s_srh" onclick="ps_search()">Search</button></div>
 			</div>
 		</div> 
 	</div>
@@ -132,7 +132,7 @@
 			</div>
 			<!--filters left end-->
 			
-			<div class="col-md-9">
+			<div class="col-md-9" id="pdts_wrapper">
 				<?php
 				foreach ($products as $key => $product) {
 					?>
@@ -294,3 +294,55 @@
 </div>
 <!--ecom-->
 
+<script type="text/javascript">
+	function ps_search () {
+		var s_pdt = $('#s_pdt').val();
+		var s_gen = $('#s_gen').val();
+		var s_cat = $('#s_cat').val();
+		
+		var s_input = {};
+		s_input['s_pdt'] = s_pdt;
+		s_input['s_gen'] = s_gen;
+		s_input['s_cat'] = s_cat;
+
+		// console.log(JSON.stringify(s_input));
+
+		$.ajax({
+			type:"POST",
+			url:'<?php echo base_url("products/s_ajax");?>',
+			data:s_input,
+			dataType:"json",
+			success: function(data){
+				generate_products(data);
+			},
+		  error: function(e) {
+			//called when there is an error
+			console.log(e.message);
+		  }
+		});
+	}
+
+	function generate_products (products) {
+		var content = '';
+		if(products.length == 0) {
+			content = 'No Products found...';
+		}
+		$.each(products, function(index, product){
+			var base_url = '<?php echo base_url("product/");?>';
+			content += '<a href="'+ base_url + '/' + product.p_id + '">'+
+						'<div class="col-md-3 trend-each">'+
+							'<div class="listimg">'+
+								'<img src="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="img-responsive">'+
+							'</div>'+
+							'<h4>'+product.p_name+'</h4>'+
+							'<div class="col-md-12 text-center">'+
+								'<span class="mrp">'+product.p_mrp+'</span>'+
+								'<span class="aftrdsnt">'+product.p_price+'</span>'+
+							'</div>'+
+						'</div>'+
+					'</a>';
+		});
+
+		$('#pdts_wrapper').html(content);
+	}
+</script>

@@ -21,6 +21,7 @@
                                             <th>S.No</th>
                                             <th>Name</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +32,11 @@
                                             <td><?php echo $provider->provider_id; ?></td>
                                             <td><?php echo $provider->provider_name; ?></td>
                                             <td class="center"><?php echo ($provider->provider_status) ? 'Active' : 'InActive'; ?></td>
+                                            <td class="center">
+                                                <a href="" class="fa fa-eye"></a>
+                                                <a href="<?php echo base_url('admin/provider/edit/'.$provider->provider_id); ?>" class="fa fa-edit"></a>
+                                                <a href="<?php echo base_url('admin/provider/remove/'.$provider->provider_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
+                                            </td>
                                         </tr>
                                             <?php
                                         }

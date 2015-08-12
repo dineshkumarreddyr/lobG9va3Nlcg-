@@ -60,6 +60,49 @@ class Pcategory extends MX_Controller {
         $this->load->view('admin/footer');
     }
 
+    public function edit($pc_id = 0)
+    {
+        $errr_msg = '';
+        $msg = '';
+
+        if($this->input->post('submit')) {
+            $name = $this->input->post('name');
+            $desc = $this->input->post('desc');
+            $status = $this->input->post('status');
+            if(empty($name)) {
+                $this->errr_msg = '';
+            }
+            elseif (empty($desc)) {
+                $errr_msg = '';
+            }
+            elseif (empty($status)) {
+                $errr_msg = '';
+            }
+
+            if(empty($errr_msg)) {
+                if($this->pcategory_model->update_pcategory($pc_id, $name, $desc, $status)) {
+                    $msg = 'Successfully Updated';
+                }
+            }
+        }
+
+        $data['pcategory'] = $this->pcategory_model->get_pcategory($pc_id)[0];
+
+        $data['errr_msg'] = $errr_msg;
+        $data['msg'] = $msg;
+        $this->load->view('admin/header');
+        $this->load->view('admin/pcategory/edit', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function remove($pc_id)
+    {
+        if($pc_id) {
+            $this->pcategory_model->remove($pc_id);
+            redirect(base_url('admin/pcategory'), 'refresh');
+        }
+    }
+
 }
  
 /* End of file login.php */

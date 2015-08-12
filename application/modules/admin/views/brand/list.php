@@ -21,6 +21,7 @@
                                             <th>S.No</th>
                                             <th>Name</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +32,11 @@
                                             <td><?php echo $brand->brand_id; ?></td>
                                             <td><?php echo $brand->brand_name; ?></td>
                                             <td class="center"><?php echo ($brand->brand_status) ? 'Active' : 'InActive'; ?></td>
+                                            <td class="center">
+                                                <a href="" class="fa fa-eye"></a>
+                                                <a href="<?php echo base_url('admin/brand/edit/'.$brand->brand_id); ?>" class="fa fa-edit"></a>
+                                                <a href="<?php echo base_url('admin/brand/remove/'.$brand->brand_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
+                                            </td>
                                         </tr>
                                             <?php
                                         }
