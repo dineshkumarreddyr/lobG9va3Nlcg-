@@ -10,14 +10,14 @@
 		  <div class="filter-bar">
 				<div class="row">
 					<div class="col-md-2">
-						<select class="minimal">
+						<select class="minimal" name="f_gen" id="f_gen">
 							<option value="">By Gender</option>
 							<option value="">Male</option>
 							<option value="">Female</option>
 						</select>
 					</div>
 					<div class="col-md-2">
-						<select class="minimal">
+						<select class="minimal" name="f_cat" id="f_cat">
 							<option value="">By Category</option>
 							<?php
 							foreach ($pcategories as $key => $pcategory) {
@@ -29,7 +29,7 @@
 						</select>
 					</div>
 					<div class="col-md-2">
-						<select class="minimal">
+						<select class="minimal" name="f_prov" id="f_prov">
 							<option value="">By Provider</option>
 							<?php
 							foreach ($providers as $key => $provider) {
@@ -41,7 +41,7 @@
 						</select>
 					</div>
 					<div class="col-md-2">
-						<select class="minimal">
+						<select class="minimal" name="f_brd" id="f_brd">
 							<option value="">By Brand</option>
 							<?php
 							foreach ($brands as $key => $brand) {
@@ -92,7 +92,7 @@
 		 
 		 <div class="col-md-5"> 
 	       <p>Showing <strong><?php echo count($products); ?></strong> Results </p>
-		   <div class="createlook-right">
+		   <div class="createlook-right" id="f_products_wrapper">
 		     <!--list one-->
 		     <?php
 		     foreach ($products as $key => $product) {
@@ -274,4 +274,79 @@ function create_look() {
 	});
 }
 <!-- Create look -->
+</script>
+
+<script type="text/javascript">
+	$('#f_gen, #f_cat').change(function(){
+		ps_filter();
+	});
+	function ps_filter () {
+		// var s_pdt = $('#s_pdt').val();
+		var f_gen = $('#f_gen').val();	// get gender value
+		var f_cat = $('#f_cat').val(); // get category value
+		var f_prov = $('#f_prov').val(); // get provider value
+		var f_brd = $('#f_brd').val(); // get brand value
+		
+		var f_input = {};
+		f_input['f_gen'] = f_gen;
+		f_input['f_cat'] = f_cat;
+		f_input['f_prov'] = f_prov;
+		f_input['f_brd'] = f_brd;
+
+		// console.log(JSON.stringify(f_input));
+
+		$.ajax({
+			type:"POST",
+			url:'<?php echo base_url("looks/f_ajax");?>',
+			data:f_input,
+			dataType:"json",
+			success: function(data){
+				// console.log(data);
+				generate_products(data);
+			},
+		  error: function(e) {
+			//called when there is an error
+			console.log(e.message);
+		  }
+		});
+	}
+
+	function generate_products (products) {
+		var content = '';
+		if(products.length == 0) {
+			content = 'No Products found...';
+		}
+		$.each(products, function(index, product){
+			var base_url = '<?php echo base_url("product/");?>';
+			content += '<div class="clearfix createlook-list">'+
+						   '<div class="col-md-3">'+
+						   '<div class="looklist-image">'+
+						     '<img src="'+product.p_image+'" id="p_image_'+product.p_id+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="img-responsive">'+
+						   '</div>'+
+						   '</div>'+
+						   '<div class="col-md-9 prodpick-details">'+
+						     '<div class="row">'+
+							   '<h3 id="p_name_'+product.p_id+'">'+product.p_name+'</h3>'+
+							   '<div class="col-md-5 prodpick-left">'+
+							    '<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>'+
+								'<div class="provider"><img src="<?php echo base_url();?>assets/images/jabong.png"></div>'+
+								'<div class="brand"><span>Brand</span><br>Jabong</div>'+
+							   '</div>'+
+							   '<div class="col-md-7 prodpick-right">'+
+							     '<div class="mrp"><span>MRP: Rs</span> '+product.p_mrp+'</div>'+
+								 '<div class="cost" id="p_price_'+product.p_id+'">Rs. '+product.p_price+'</div>'+
+							     '<div class="addtolook" onclick="add_to_look('+product.p_id+');">'+
+								   '<a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>'+
+								 '</div>'+
+								 '<div class="fav">'+
+								   '<a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/fav.png"></a>'+
+								 '</div>'+
+							   '</div>'+				   
+							 '</div>'+
+						   '</div>'+
+						 '</div>';
+		});
+
+		$('#f_products_wrapper').html(content);
+	}
 </script>

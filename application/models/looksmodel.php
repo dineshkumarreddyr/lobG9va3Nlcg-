@@ -60,6 +60,30 @@ class Looksmodel extends CI_Model {
         $this->db->insert_batch('l_products', $data);
     }
 
+    function f_products($gen = '', $cat = 0, $prov = 0, $brd = 0)
+    {
+        $condition = array();
+        $condition[] = " p.p_name != ''";
+        if($gen != '') {
+            // $condition[] = " p.p_name LIKE '%".$pdt."%' "; 
+        }
+        if($cat != '') {
+            $condition[] = " p.p_category = ".$cat." "; 
+        }
+        if($prov != '') {
+            $condition .= " AND p.p_provider = ".$prov." "; 
+        }
+        if($brd != '') {
+            $condition .= " AND p.p_brand = ".$brd." "; 
+        }
+        $condition = implode(' AND ', $condition);
+
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition;
+        $query = $this->db->query($query);
+        $data = $query->result();
+        return $data;
+    }
+
     /*function get_trending_products()
     {
         $query = $this->db->query("SELECT * FROM products LIMIT 0,8");        

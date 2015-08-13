@@ -91,6 +91,20 @@ class Looks extends CI_Controller {
 		}
 		echo json_encode($response);
 	}
+
+	/*
+	create Products Ajax filter
+	*/
+	public function f_ajax()
+	{
+		$f_gen = $this->input->post('f_gen');
+		$f_cat = $this->input->post('f_cat');
+		$f_prov = $this->input->post('f_prov');
+		$f_brd = $this->input->post('f_brd');
+
+		$data = $this->looks_model->f_products($f_gen, $f_cat, $f_prov, $f_brd);
+		echo json_encode($data);
+	}
 }
 
 /* End of file welcome.php */
