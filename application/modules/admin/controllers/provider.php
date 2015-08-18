@@ -12,7 +12,8 @@ class Provider extends MX_Controller {
 
     public function login_check() {
         $uid = $this->session->userdata('uid');
-        if(!isset($uid) || empty($uid)) {
+        $role = $this->session->userdata('role');
+        if(!isset($uid) || empty($uid) || $role != 1) {
             redirect("admin/login");
         }
     }

@@ -6,7 +6,8 @@ class Login extends MX_Controller {
     {
         parent::__construct();
         $uid = $this->session->userdata('uid');
-        if(isset($uid) && !empty($uid)) {
+        $role = $this->session->userdata('role');
+        if(isset($uid) && !empty($uid) && $role == 1) {
             redirect("admin/home");
         }
         $this->load->helper('form');

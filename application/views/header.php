@@ -160,9 +160,9 @@
   								<li><a href="#">top offers</a></li>
   								<li><a href="#">how it works</a></li>
   								<li><a href="#">blog</a></li>
-  								<form class="navbar-form navbar-left" role="search" action="looks">
+  								<form class="navbar-form navbar-left" role="search" action="">
   									<div class="form-group">
-  										<input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search">
+  										<input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
   									</div>
   								</form>
   							</ul>

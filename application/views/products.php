@@ -16,33 +16,41 @@
 <div class="filters-top-wrap">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5"><input type="text" name="s_pdt" id="s_pdt" tabindex="1"
-				class="form-control" placeholder="Search by Product, Look and Designer" value=""></div>
+		<form action="" method="get">
+			<div class="col-md-5"><input type="text" name="s" id="s_pdt" tabindex="1"
+				class="form-control" placeholder="Search by Product, Look and Designer" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>"></div>
 				<div class="col-md-2">
 					<div class="dropdown dropdown-dark">
-						<select name="S_gen" id="s_gen" class="dropdown-select">
+						<select name="gender" id="s_gen" class="dropdown-select">
 							<option value="">Gender</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-						</select>
-					</div>
-				</div>
-				
-				<div class="col-md-3">
-					<div class="dropdown dropdown-dark">
-						<select name="s_cat" id="s_cat" class="dropdown-select">
-							<option value="">Category</option>
 							<?php
-							foreach ($pcategories as $key => $pcategory) {
+							$genders = array("male" => "Male", "female" => "Female");
+							foreach ($genders as $key => $gender) {
 								?>
-								<option value="<?php echo $pcategory->pc_id; ?>"><?php echo $pcategory->pc_name; ?></option>
+							<option value="<?php echo $key; ?>" <?php echo ($_GET['gender'] == $key) ? 'selected="selected"' : '';  ?> ><?php echo $gender; ?></option>
 								<?php
 							}
 							?>
 						</select>
 					</div>
 				</div>
-				<div class="col-md-2"><button id="s_srh" name="s_srh" onclick="ps_search()">Search</button></div>
+				
+				<div class="col-md-3">
+					<div class="dropdown dropdown-dark">
+						<select name="category" id="s_cat" class="dropdown-select">
+							<option value="">Category</option>
+							<?php
+							foreach ($pcategories as $key => $pcategory) {
+								?>
+								<option value="<?php echo $pcategory->pc_id; ?>" <?php echo ($_GET['category'] == $pcategory->pc_id) ? 'selected="selected"' : '';  ?>><?php echo $pcategory->pc_name; ?></option>
+								<?php
+							}
+							?>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-2"><button type="submit" id="s_srh" name="search">Search</button></div>
+				</form>
 			</div>
 		</div> 
 	</div>

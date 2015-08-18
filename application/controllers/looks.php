@@ -34,8 +34,14 @@ class Looks extends CI_Controller {
 	{
 		$data['lcategories'] = $this->lcategory_model->get_lcategories();
 
+		$s = $this->input->get('s');
+		$gender = $this->input->get('gender');
+		$category = $this->input->get('category');
+
+		$ls = $this->looks_model->s_looks($s, $gender, $category);
+		
 		$looks = array();
-		$ls = $this->looks_model->get_looks();
+		// $ls = $this->looks_model->get_looks();
 		foreach ($ls as $key => $look) {
 			$lps = $this->looks_model->get_look_products($look->l_id);
 			
@@ -54,6 +60,13 @@ class Looks extends CI_Controller {
 
 	public function create()
 	{
+		$uid = $this->session->unset_userdata('uid');
+        
+        $this->session->unset_userdata('name');
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role');
+
+
 		$data['pcategories'] = $this->pcategory_model->get_pcategories();
 		$data['lcategories'] = $this->lcategory_model->get_lcategories();
 		$data['providers'] = $this->provider_model->get_providers();

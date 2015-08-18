@@ -31,7 +31,14 @@ class Products extends CI_Controller {
 	{
 		$data['pcategories'] = $this->pcategory_model->get_pcategories();
 		$data['providers'] = $this->provider_model->get_providers();
-		$data['products'] = $this->products_model->get_products();
+		// $data['products'] = $this->products_model->get_products();
+
+		$s = $this->input->get('s');
+		$gender = $this->input->get('gender');
+		$category = $this->input->get('category');
+
+		$data['products'] = $this->products_model->s_products($s, $gender, $category);
+		// print_r($data['products']);exit;
 
 		$this->load->view('header');
 		$this->load->view('products', $data);

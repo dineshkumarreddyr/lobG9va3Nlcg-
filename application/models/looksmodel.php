@@ -60,6 +60,26 @@ class Looksmodel extends CI_Model {
         $this->db->insert_batch('l_products', $data);
     }
 
+    function s_looks($look = '', $gender = 0, $category = 0)
+    {
+        $condition = array();
+        if($look != '') {
+            $condition[] = " l.l_name LIKE '%".$look."%' "; 
+        }
+        else {
+            $condition[] = " l.l_name != ''";
+        }
+        if($category != '') {
+            $condition[] = " l.l_category = ".$category." "; 
+        }
+        $condition = implode(' AND ', $condition);
+
+        $query = "SELECT l.* FROM looks l WHERE " .$condition;
+        $query = $this->db->query($query);
+        $data = $query->result();
+        return $data;
+    }
+
     function f_products($gen = '', $cat = 0, $prov = 0, $brd = 0)
     {
         $condition = array();

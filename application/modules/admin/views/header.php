@@ -295,6 +295,9 @@
                                     <a href="<?php echo base_url("admin/user"); ?>">List</a>
                                 </li>
                                 <li>
+                                    <a href="<?php echo base_url("admin/user/designers"); ?>">Designers</a>
+                                </li>
+                                <li>
                                     <a href="<?php echo base_url("admin/user/add"); ?>">Add</a>
                                 </li>
                             </ul>

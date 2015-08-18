@@ -16,14 +16,21 @@
 	<div class="filters-top-wrap">
 	  <div class="container">
 	      <div class="row">
-		    <div class="col-md-5"><input type="text" name="search" id="search" tabindex="1"
-			class="form-control" placeholder="Search by Product, Look and Designer" value=""></div>
+	      <form method="get" action="">
+		    <div class="col-md-5"><input type="text" name="s" id="search" tabindex="1"
+			class="form-control" placeholder="Search by Product, Look and Designer" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>"></div>
 			<div class="col-md-2">
              <div class="dropdown dropdown-dark">
-				<select name="gender" class="dropdown-select">
-				  <option value="">Gender</option>
-				  <option value="male">Male</option>
-				  <option value="female">Female</option>
+				<select name="gender" id="s_gen" class="dropdown-select">
+					<option value="">Gender</option>
+					<?php
+					$genders = array("male" => "Male", "female" => "Female");
+					foreach ($genders as $key => $gender) {
+						?>
+					<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) { echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> ><?php echo $gender; ?></option>
+						<?php
+					}
+					?>
 				</select>
 			   </div>
 			 </div>
@@ -35,14 +42,15 @@
 				  <?php
 					foreach ($lcategories as $key => $lcategory) {
 						?>
-						<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
+						<option value="<?php echo $lcategory->lc_id; ?>" <?php if(isset($_GET['category'])) { echo ($_GET['category'] == $lcategory->lc_id) ? 'selected="selected"' : ''; } ?>><?php echo $lcategory->lc_name; ?></option>
 						<?php
 					}
 					?>
 				</select>
 				</div>
 			  </div>
-			<div class="col-md-2"><button>Search</button></div>
+			<div class="col-md-2"><button type="submit" name="search" id="search">Search</button></div>
+			</form>
 		  </div>
 		 </div> 
 	</div>

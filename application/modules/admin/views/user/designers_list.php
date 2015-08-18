@@ -1,7 +1,7 @@
 <div id="page-wrapper" style="min-height: 291px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Product Categories</h1>
+                    <h1 class="page-header">Users</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -19,26 +19,22 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Parent</th>
-                                            <th>Name</th>
+                                            <th>First name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
                                             <th>Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($pcategories as $key => $pcategory) {
+                                        foreach ($designers as $key => $user) {
                                             ?>
                                         <tr class="gradeX">
-                                            <td><?php echo $pcategory->pc_id; ?></td>
-                                            <td><?php echo $pcategory->pc_pid; ?></td>
-                                            <td><?php echo $pcategory->pc_name; ?></td>
-                                            <td class="center"><?php echo ($pcategory->pc_status) ? 'Active' : 'InActive'; ?></td>
-                                            <td class="center">
-                                                <a href="" class="fa fa-eye"></a>
-                                                <a href="<?php echo base_url('admin/pcategory/edit/'.$pcategory->pc_id); ?>" class="fa fa-edit"></a>
-                                                <a href="<?php echo base_url('admin/pcategory/remove/'.$pcategory->pc_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
-                                            </td>
+                                            <td><?php echo $user->user_id; ?></td>
+                                            <td><?php echo $user->user_fname; ?></td>
+                                            <td><?php echo $user->user_email; ?></td>
+                                            <td class="center"><?php echo $user->role_name; ?></td>
+                                            <td class="center"><?php echo ($user->user_status) ? 'Active' : 'InActive'; ?></td>
                                         </tr>
                                             <?php
                                         }

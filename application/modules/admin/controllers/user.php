@@ -12,7 +12,8 @@ class User extends MX_Controller {
 
     public function login_check() {
         $uid = $this->session->userdata('uid');
-        if(!isset($uid) || empty($uid)) {
+        $role = $this->session->userdata('role');
+        if(!isset($uid) || empty($uid) || $role != 1) {
             redirect("admin/login");
         }
     }
@@ -22,6 +23,17 @@ class User extends MX_Controller {
         $data['users'] = $this->user_model->get_users();
         $this->load->view('admin/header');
         $this->load->view('admin/user/list', $data);
+        $this->load->view('admin/footer');
+    }
+
+    /*
+    * designers list
+    */
+    public function designers()
+    {
+        $data['designers'] = $this->user_model->get_designers();
+        $this->load->view('admin/header');
+        $this->load->view('admin/user/designers_list', $data);
         $this->load->view('admin/footer');
     }
 

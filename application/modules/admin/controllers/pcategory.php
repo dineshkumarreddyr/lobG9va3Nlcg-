@@ -12,7 +12,8 @@ class Pcategory extends MX_Controller {
 
     public function login_check() {
         $uid = $this->session->userdata('uid');
-        if(!isset($uid) || empty($uid)) {
+        $role = $this->session->userdata('role');
+        if(!isset($uid) || empty($uid) || $role != 1) {
             redirect("admin/login");
         }
     }
@@ -32,6 +33,7 @@ class Pcategory extends MX_Controller {
         $msg = '';
 
         if($this->input->post('submit')) {
+            $parent = $this->input->post('parent');
             $name = $this->input->post('name');
             $desc = $this->input->post('desc');
             $status = $this->input->post('status');
@@ -46,7 +48,7 @@ class Pcategory extends MX_Controller {
             }
 
             if(empty($errr_msg)) {
-                $brand_id = $this->pcategory_model->add_pcategory($name, $desc, $status);
+                $brand_id = $this->pcategory_model->add_pcategory($parent, $name, $desc, $status);
                 if($brand_id) {
                     $msg = 'Successfully Added';
                 }
@@ -55,6 +57,7 @@ class Pcategory extends MX_Controller {
 
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
+        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
         $this->load->view('admin/header');
         $this->load->view('admin/pcategory/add', $data);
         $this->load->view('admin/footer');
@@ -87,7 +90,8 @@ class Pcategory extends MX_Controller {
         }
 
         $data['pcategory'] = $this->pcategory_model->get_pcategory($pc_id)[0];
-
+        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
         $this->load->view('admin/header');

@@ -30,6 +30,19 @@
                   ?>
                     <form role="form" action="" method="POST">
                         <div class="form-group">
+                            <label>Parent Category</label>
+                            <select class="form-control" name="parent" id="parent">
+                              <option value="0">--Parent--</option>
+                              <?php
+                              foreach ($pcategories as $key => $pcategory) {
+                              ?>
+                                <option value="<?php echo $pcategory->pc_id; ?>"><?php echo $pcategory->pc_name; ?></option>
+                              <?php
+                              }
+                              ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
                             <input class="form-control" placeholder="Name" name="name" id="name">
                         </div>

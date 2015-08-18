@@ -16,6 +16,13 @@ class Pcategorymodel extends CI_Model {
         return $data;
     }
 
+    function parent_pcategories()
+    {
+        $query = $this->db->query("SELECT * FROM p_categories WHERE pc_pid = 0");
+        $data = $query->result();
+        return $data;
+    }
+
     function get_pcategory($pc_id = 0)
     {
         $query = $this->db->query("SELECT * FROM p_categories WHERE pc_id = ".intval($pc_id));
@@ -30,9 +37,10 @@ class Pcategorymodel extends CI_Model {
         return $data;
     }
 
-    function add_pcategory($name = '', $desc = '', $status = '0')
+    function add_pcategory($parent = 0, $name = '', $desc = '', $status = '0')
     {
         $data = array(
+           'pc_pid' => $parent ,
            'pc_name' => $name ,
            'pc_desc' => $desc,
            'pc_status' => $status
