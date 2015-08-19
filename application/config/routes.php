@@ -47,6 +47,7 @@ $route['designers'] = "user/get_designers";
 $route['designer/(:num)'] = "user/index/$1";
 
 $route['login'] = "user/login";
+$route['logout'] = "user/logout";
 $route['register'] = "user/register";
 
 

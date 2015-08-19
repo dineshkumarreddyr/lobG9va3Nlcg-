@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2015 at 08:37 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Aug 19, 2015 at 07:30 PM
+-- Server version: 5.5.39
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `brand_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `brands`
@@ -46,6 +46,28 @@ INSERT INTO `brands` (`brand_id`, `brand_name`, `brand_desc`, `brand_image`, `br
 (3, 'Reebok', '', '', '1', '2015-08-05 19:00:32', '0000-00-00 00:00:00'),
 (4, 'Raybon', '', '', '1', '2015-08-05 19:00:43', '0000-00-00 00:00:00'),
 (5, 'Puma', '', '', '0', '2015-08-05 19:01:27', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `followers`
+--
+
+CREATE TABLE IF NOT EXISTS `followers` (
+`f_id` int(11) NOT NULL,
+  `f_did` int(11) NOT NULL,
+  `f_uid` int(11) NOT NULL,
+  `f_status` enum('1','0') NOT NULL,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `followers`
+--
+
+INSERT INTO `followers` (`f_id`, `f_did`, `f_uid`, `f_status`, `createdOn`, `updatedOn`) VALUES
+(2, 2, 1, '', '2015-08-19 17:19:09', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -67,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `looks` (
   `l_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `looks`
@@ -91,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `l_categories` (
   `lc_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `l_categories`
@@ -114,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `l_products` (
   `lp_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `l_products`
@@ -140,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `l_views` (
   `lv_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -179,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `p_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `products`
@@ -204,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `providers` (
   `provider_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `providers`
@@ -223,20 +245,22 @@ INSERT INTO `providers` (`provider_id`, `provider_name`, `provider_desc`, `provi
 
 CREATE TABLE IF NOT EXISTS `p_categories` (
 `pc_id` int(11) NOT NULL,
+  `pc_pid` int(11) NOT NULL,
   `pc_name` varchar(60) NOT NULL,
   `pc_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `pc_desc` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `p_categories`
 --
 
-INSERT INTO `p_categories` (`pc_id`, `pc_name`, `pc_status`, `createdOn`, `updatedOn`, `pc_desc`) VALUES
-(1, 'Shirt', '1', '2015-08-05 08:32:10', '0000-00-00 00:00:00', 'Casual'),
-(2, 'Jeans', '0', '2015-08-07 15:36:04', '0000-00-00 00:00:00', 'Cotton Jeans');
+INSERT INTO `p_categories` (`pc_id`, `pc_pid`, `pc_name`, `pc_status`, `createdOn`, `updatedOn`, `pc_desc`) VALUES
+(1, 0, 'Shirt', '1', '2015-08-05 08:32:10', '0000-00-00 00:00:00', 'Casual'),
+(2, 0, 'Jeans', '0', '2015-08-07 15:36:04', '0000-00-00 00:00:00', 'Cotton Jeans'),
+(3, 1, 'formal', '1', '2015-08-13 17:20:22', '0000-00-00 00:00:00', 'asdf');
 
 -- --------------------------------------------------------
 
@@ -252,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `p_views` (
   `pv_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `p_views`
@@ -263,7 +287,15 @@ INSERT INTO `p_views` (`pv_id`, `pv_productId`, `pv_ip`, `pv_source`, `pv_status
 (2, 1, '::1', '', '0', '2015-08-09 09:58:18', '0000-00-00 00:00:00'),
 (3, 1, '::1', '', '0', '2015-08-09 09:59:17', '0000-00-00 00:00:00'),
 (4, 1, '::1', '', '0', '2015-08-09 09:59:48', '0000-00-00 00:00:00'),
-(5, 1, '::1', '', '0', '2015-08-09 10:09:52', '0000-00-00 00:00:00');
+(5, 1, '::1', '', '0', '2015-08-09 10:09:52', '0000-00-00 00:00:00'),
+(6, 4, '::1', '', '0', '2015-08-12 18:56:54', '0000-00-00 00:00:00'),
+(7, 4, '::1', '', '0', '2015-08-12 18:57:01', '0000-00-00 00:00:00'),
+(8, 4, '::1', '', '0', '2015-08-12 18:57:09', '0000-00-00 00:00:00'),
+(9, 4, '::1', '', '0', '2015-08-12 18:57:25', '0000-00-00 00:00:00'),
+(10, 2, '::1', '', '0', '2015-08-12 19:00:24', '0000-00-00 00:00:00'),
+(11, 2, '::1', '', '0', '2015-08-13 15:05:00', '0000-00-00 00:00:00'),
+(12, 2, '::1', '', '0', '2015-08-13 15:09:50', '0000-00-00 00:00:00'),
+(13, 2, '::1', '', '0', '2015-08-13 15:09:58', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -283,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `review_ip` varchar(20) NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -298,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `role_status` enum('0','1') NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UpdatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `roles`
@@ -326,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_hash` varchar(60) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
@@ -346,6 +378,12 @@ INSERT INTO `users` (`user_id`, `user_fname`, `user_lname`, `user_email`, `user_
 --
 ALTER TABLE `brands`
  ADD PRIMARY KEY (`brand_id`);
+
+--
+-- Indexes for table `followers`
+--
+ALTER TABLE `followers`
+ ADD PRIMARY KEY (`f_id`);
 
 --
 -- Indexes for table `looks`
@@ -423,6 +461,11 @@ ALTER TABLE `users`
 ALTER TABLE `brands`
 MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `followers`
+--
+ALTER TABLE `followers`
+MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `looks`
 --
 ALTER TABLE `looks`
@@ -456,12 +499,12 @@ MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `p_categories`
 --
 ALTER TABLE `p_categories`
-MODIFY `pc_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `pc_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `p_views`
 --
 ALTER TABLE `p_views`
-MODIFY `pv_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `pv_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `reviews`
 --

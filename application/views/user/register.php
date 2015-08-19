@@ -17,7 +17,7 @@
                 <input type="password" name="pass" placeholder="Password">
                 <input type="password" name="pass" placeholder="Retype Password">
                 <button type="button">Signup</button>
-                <p>Already a Member? <a href="#">Signin Now</a></p>
+                <p>Already a Member? <a href="<?php echo base_url('login'); ?>">Signin Now</a></p>
               </form>
               <div class="or-box">
                     <span class="formor">OR</span>

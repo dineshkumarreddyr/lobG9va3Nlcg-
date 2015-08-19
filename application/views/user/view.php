@@ -12,7 +12,6 @@
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
 		
-	
 	<!--designer top-->    
     <div class="container designertop-main">
       <div class="row">
@@ -23,15 +22,15 @@
            </div> 
         </div>
         <div class="col-md-7">
-          <h2>Aneel Kaushik</h2>
+          <h2><?php echo $designer_details->user_fname; ?></h2>
           <h3><i class="flaticon-placeholder9"></i> Hyderabad, Telangana.</h3>
         </div>
         <div class="col-md-4 designerpro-top-right">
           <ul>
             <li class="col-md-4"><span><a href="#"><i class="glyphicon glyphicon-heart"></i>
             </span><br> Follow</a></li>
-            <li class="col-md-4"><span>150</span><br> Looks</li>
-            <li class="col-md-4"><span>120</span><br> Followers</li>
+            <li class="col-md-4"><span><?php echo count($d_looks); ?></span><br> Looks</li>
+            <li class="col-md-4"><span><?php echo $d_followers; ?></span><br> Followers</li>
           </ul>
         </div>
       </div>     
@@ -50,170 +49,31 @@
 		    <div id="myTabContent" class="tab-content">
 		      <div class="tab-pane active in" id="looks">
 		      <div class="row">
+		      <?php
+		      foreach ($d_looks as $key => $look) {
+		      ?>
 				  <div class="col-md-4 created-each">
 				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
 				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
 				    </div>
-				    <div class="pattern6">
+				    <div class="pattern<?php echo count($look['l_products']); ?>">
 					  <ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t8.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t3.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t4.jpg" class="img-responsive"></li>
+					    <?php foreach ($look['l_products'] as $key => $lp): ?>
+						<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
+						<?php endforeach; ?>
 					  </ul>
 					</div>
 					<div class="created-by">
-					<h3>the girl next door</h3>
+					<h3><?php echo $look['l_title']; ?></h3>
 					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
 					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
 				  </div>
 				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
 				</div>
-				
-				 <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern3">
-					  <ul>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				 <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern5">
-					    <div class="pattern5-left">
-						<ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-						</ul>
-						</div>
-						<div class="pattern5-right">
-						<ul>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t8.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t7.jpg" class="img-responsive"></li>
-					    </ul>	
-						</div>
-					  
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				 <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern4">
-					  <ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t8.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				 <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern3">
-					  <ul>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t8.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				<div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern2">
-					  <ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				  <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern3">
-					  <ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
-				
-				 <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
-				    </div>
-				    <div class="pattern4">
-					  <ul>
-					    <li><img src="<?php echo base_url(); ?>assets/images/trending/t1.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t4.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t2.jpg" class="img-responsive"></li>
-						<li><img src="<?php echo base_url(); ?>assets/images/trending/t6.jpg" class="img-responsive"></li>
-					  </ul>
-					</div>
-					<div class="created-by">
-					<h3>the girl next door</h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
-				  </div>
-				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
-				</div>
+				<?php
+			}
+				?>
+			
 				</div>
 				<ul class="pagination pull-right">
 	              <li class="disabled"><a href="#">«</a></li>
@@ -342,14 +202,14 @@
 			</div>
 			<div class="profile-right-each">
               <ul class="procounts">
-      	        <li><i class="flaticon-profile29"></i><br><span>112</span></li>
-      	        <li><i class="flaticon-eye106"></i><br><span>80</span></li>
+      	        <li><i class="flaticon-profile29"></i><br><span><?php echo count($d_looks); ?></span></li>
+      	        <li><i class="flaticon-eye106"></i><br><span><?php echo $d_views; ?></span></li>
       	      </ul>
             </div>
 
            <div class="profile-right-each">
              <h3>link to your Profile</h3>
-      	     <input type="text" class="form-control" value="http://www.lookser.com/look123">
+      	     <input type="text" class="form-control" value="<?php echo base_url('designer/'.$did); ?>">
            </div>
            
          </div>

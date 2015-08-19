@@ -13,11 +13,12 @@
         <div class="col-md-5 login-card">
               <h1>Log-in</h1>
               <form method="post" action="">
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <button type="button">Login</button>
+              <div><?php if(isset($errr_msg) && !empty($errr_msg)) { echo $errr_msg; }?></div>
+                <input type="text" name="email" id="email" placeholder="Username">
+                <input type="password" name="pass" id="pass" placeholder="Password">
+                <input type="submit" name="login" id="login" value="Login">
                 <p><a href="#">Forgot Password?</a></p>
-                <p>Not a Member? <a href="#">Register Now</a></p>
+                <p>Not a Member? <a href="<?php echo base_url('register'); ?>">Register Now</a></p>
               </form>
               <div class="or-box">
                     <span class="formor">OR</span>

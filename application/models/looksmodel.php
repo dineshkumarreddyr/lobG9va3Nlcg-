@@ -17,6 +17,14 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
+    // get all looks by designer
+    function get_designer_looks($did = 0)
+    {
+        $query = $this->db->query("SELECT * FROM looks WHERE l_status = '1' AND l_uid = ". intval($did));
+        $data = $query->result();
+        return $data;
+    }
+
     // get look products by look id
     function get_look_products($l_id = 0)
     {
