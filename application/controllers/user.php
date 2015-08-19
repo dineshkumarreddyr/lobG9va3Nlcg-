@@ -24,6 +24,36 @@ class User extends CI_Controller {
 		$this->load->model('usermodel', 'user_model');
 	}
 
+	public function index($did = 0)
+	{
+		$data['designer_details'] = $this->user_model->get_designer($did);
+		print_r($data);
+		$this->load->view('header');
+		$this->load->view('user/view');
+		$this->load->view('footer');
+	}
+
+	public function get_designers()
+	{
+		$this->load->view('header');
+		$this->load->view('user/designers');
+		$this->load->view('footer');
+	}
+
+	public function login()
+	{
+		$this->load->view('header');
+		$this->load->view('user/login');
+		$this->load->view('footer');
+	}
+
+	public function register()
+	{
+		$this->load->view('header');
+		$this->load->view('user/register');
+		$this->load->view('footer');
+	}
+
 	public function ajax_login()
 	{
 		$response = array();

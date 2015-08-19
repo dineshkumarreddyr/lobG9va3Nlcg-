@@ -43,6 +43,12 @@ $route['404_override'] = '';
 
 $route['product/(:num)'] = "products/view/$1";
 
+$route['designers'] = "user/get_designers";
+$route['designer/(:num)'] = "user/index/$1";
+
+$route['login'] = "user/login";
+$route['register'] = "user/register";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

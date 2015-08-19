@@ -18,4 +18,9 @@ class Usermodel extends CI_Model {
         }
         return $data;
     }
+
+    public function get_designer($did = 0)
+    {
+        echo "string";
+    }
 }
