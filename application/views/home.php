@@ -32,22 +32,28 @@
 	
 	<!--categories-->
 	<div class="container categories-main">
-      <div class="col-md-6">
+      <div class="col-md-4 caterogy-each">
 	    <img src="<?php echo base_url();?>assets/images/men.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>men</h3>
 		<div class="bluebtn"><a href="#">shop now</a></div>
 		</div>
 	  </div>
-	  <div class="clearfix visible-xs">&nbsp;</div>
-	  <div class="col-md-6">
+	  <div class="col-md-4 caterogy-each">
+	    <img src="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive">
+		<div class="category-text">
+		<h3>Our Looks</h3>
+		<div class="pinkbtn"><a href="#">Checkout</a></div>
+		</div>
+	  </div>
+	  <div class="col-md-4 caterogy-each">
 	    <img src="<?php echo base_url();?>assets/images/women.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>women</h3>
-		<div class="pinkbtn"><a href="#">shop now</a></div>
+		<div class="bluebtn"><a href="#">shop now</a></div>
 		</div>
 	  </div>	  
-    </div>	
+    </div>
 	<!--categories-->
 	
 	
@@ -78,7 +84,7 @@
 	<div class="container creators-wrap">
 	  <div class="col-md-12" id="created-categ">
 		  <ul>
-			<li><a href="#page1">by popular designers</a></li>
+			<li class="active"><a href="#page1">by popular designers</a></li>
 			<li><a href="#page2">by popular users</a></li>		
 		  </ul>
 		</div>
@@ -97,7 +103,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -115,7 +121,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -139,10 +145,10 @@
 			<li><img src="<?php echo base_url();?>assets/images/trending/t7.jpg" class="img-responsive"></li>
 		    </ul>	
 			</div>
-		  </ul>
+		  
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -161,7 +167,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -179,7 +185,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -196,7 +202,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -214,7 +220,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d2.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -233,7 +239,7 @@
 		  </ul>
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -245,13 +251,13 @@
 	<!-- by designers-->
 	
 	 <!--by users-->
-	  <div  id="page2" class="content">
+	  <div id="page2" class="content" style="display: none;">
 	  <div class="col-md-3 created-each">
 	    <div class="listimg">
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the boy next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -265,7 +271,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -279,7 +285,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -293,7 +299,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -307,7 +313,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -321,7 +327,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -335,7 +341,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -349,7 +355,7 @@
 		  <img src="<?php echo base_url();?>assets/images/trending/t4.jpg" class="img-responsive">
 		</div>
 		<div class="created-by">
-		<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3>the girl next door</h3>
 		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
 		<span class="aftrdsnt">2000</span></div>
@@ -371,12 +377,14 @@
 			<div class="row">
 				<div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
-						<div class="item active">
+						<div class="item next left">
 						  <ul>
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count girl">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Rishab Gupta</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+23</strong> Looks Created</h4>
@@ -385,7 +393,9 @@
 							 <li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Ashitha Rao</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>
@@ -394,7 +404,9 @@
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>James Duke</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>
@@ -403,7 +415,9 @@
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count girl">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Rajesh Varma</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>
@@ -412,12 +426,14 @@
 							</ul>
 						</div>
 						
-						<div class="item">
-											  <ul>
+						<div class="item active left">
+						  <ul>
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count girl">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Rishab Gupta</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+23</strong> Looks Created</h4>
@@ -426,7 +442,9 @@
 							 <li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Ashitha Rao</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>
@@ -435,7 +453,9 @@
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>James Duke</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>
@@ -444,7 +464,9 @@
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count girl">02</div>
-								<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
+								<div class="designer-image">
+								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								</div>
 								<h3>Rajesh Varma</h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+50</strong> Looks Created</h4>

@@ -169,89 +169,105 @@
 <!--top designers carousel-->
 <div class="carousel-designers">
 	<div class="container text-center">
-		<div class="carousel-head"><a href="#">top designers</a></div>
+	<div class="carousel-head"><a href="#">top designers</a></div>
 		<div class="row">
 			<div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
-					<div class="item active">
-						<ul>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count girl">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Rishab Gupta</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+23</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Ashitha Rao</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>James Duke</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count girl">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Rajesh Varma</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
+					<div class="item active left">
+					  <ul>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count girl">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Rishab Gupta</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+23</strong> Looks Created</h4>
+						  </div>
+						</li>
+						 <li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Ashitha Rao</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>James Duke</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count girl">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Rajesh Varma</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
 						</ul>
 					</div>
 					
-					<div class="item">
-						<ul>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count girl">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Rishab Gupta</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+23</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Ashitha Rao</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>James Duke</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-								<div class="designer">
-									<div class="count girl">02</div>
-									<img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-circle">
-									<h3>Rajesh Varma</h3>
-									<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-									<h4><strong>+50</strong> Looks Created</h4>
-								</div>
-							</li>
+					<div class="item next left">
+					  <ul>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count girl">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Rishab Gupta</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+23</strong> Looks Created</h4>
+						  </div>
+						</li>
+						 <li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Ashitha Rao</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>James Duke</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
+						<li class="col-md-3 col-sm-6">
+						   <div class="designer">
+							<div class="count girl">02</div>
+							<div class="designer-image">
+							   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+							</div>
+							<h3>Rajesh Varma</h3>
+							<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
+							<h4><strong>+50</strong> Looks Created</h4>
+						  </div>
+						</li>
 						</ul>
 					</div>                   
 				</div>
