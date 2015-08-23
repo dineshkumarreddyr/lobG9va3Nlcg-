@@ -17,4 +17,14 @@ class Trackingmodel extends CI_Model {
         );
         $this->db->insert('p_views', $data);
     }
+
+    function track_look($lid = 0)
+    {
+        $data = array(
+            'lv_lookId' => $lid,
+            'lv_ip' => $this->input->ip_address()
+        );
+        $this->db->insert('l_views', $data);
+    }
+    
 }

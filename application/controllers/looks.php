@@ -49,7 +49,10 @@ class Looks extends CI_Controller {
 			
 			$looks[] = array(
 				'l_title' => $look->l_name,
-				'l_products' => $lps
+				'l_products' => $lps,
+				'l_id' => $look->l_id,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price
 			);
 		}
 		$data['looks'] = $looks;
@@ -63,6 +66,48 @@ class Looks extends CI_Controller {
 
 		$this->load->view('header', $data);
 		$this->load->view('looks/index', $data);
+		$this->load->view('footer');
+	}
+
+	public function view($lid = 0)
+	{
+		if($lid == 0) {
+			show_404();
+		}
+
+		$this->tracking_model->track_look($lid);
+
+		$ls = $this->looks_model->look_details($lid);
+		if(count($ls) == 0) {
+			show_404();
+		}
+		
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$looks[] = array(
+				'l_category' => $look->l_category,
+				'lc_name' => $look->lc_name,
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_user' => $look->user_fname,
+				'l_uid' => $look->user_id,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price
+			);
+		}
+		$data['look'] = $looks[0];
+		
+		$seo = array(
+			'title' => $look->l_name,
+			'description' => $look->l_name,
+			'keywords' => $look->l_name
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('looks/view', $data);
 		$this->load->view('footer');
 	}
 
@@ -98,13 +143,14 @@ class Looks extends CI_Controller {
 		$l_category = $this->input->post('l_cat');
 		$l_name = $this->input->post('l_name');
 		$l_pids = $this->input->post('l_pids');
+		$l_price = $this->input->post('l_price');
 		$lp_count = count(json_decode($l_pids));
 		$l_uid = $this->session->userdata('uid');
 
 		// Check look name already exists or not.
 		$l_name_check = $this->looks_model->check_look_name($l_category, $l_name);
 		if($l_name_check == 0) {
-			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid);
+			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid, $l_price);
 			if($l_id) {
 				$this->looks_model->insert_lproducts($l_id, $l_pids);
 

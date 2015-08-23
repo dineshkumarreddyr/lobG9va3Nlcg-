@@ -68,8 +68,9 @@
 	 <div class="col-md-10 looks-list-wrap">
 
     <?php foreach ($looks as $key => $look): ?>
+	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 	  <div class="col-md-3 trend-each">
-    <div class="pattern<?php echo count($look['l_products']); ?>">
+    	<div class="pattern<?php echo count($look['l_products']); ?>">
 		  <ul>
 		  <?php foreach ($look['l_products'] as $key => $lp): ?>
 			<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
@@ -77,9 +78,10 @@
 		  </ul>
 		</div>
 		<h4><?php echo $look['l_title']; ?></h4>
-		<div class="col-md-12 text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
+		<div class="col-md-12 text-center"><span class="mrp"><?php echo $look['l_mrp']; ?></span>
+		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span></div>
 	  </div>
+	  </a>
 		<?php endforeach; ?>  
    </div>	  
    </div>

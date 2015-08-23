@@ -178,7 +178,7 @@
 	   <h1>get the look</h1>
 	   <h3>Browse through a collection of stylish outfits for different occasions,<br>
 	   carefully hand picked by our expert stylists.</h3>
-	   <button>shop now</button>
+	   <a href="<?php echo base_url('looks'); ?>">shop now</a>
 	 </div>
 	</div>
 	<!--get look-->		

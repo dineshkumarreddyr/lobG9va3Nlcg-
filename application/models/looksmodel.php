@@ -25,6 +25,14 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
+    // get look details by look id
+    function look_details($lid = 0)
+    {
+        $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id ,u.user_fname FROM looks l, l_categories lc, users u WHERE u.user_id = l.l_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid));
+        $data = $query->result();
+        return $data;
+    }
+
     // get looks by popular designer
     function by_popular_designers()
     {
@@ -36,7 +44,7 @@ class Looksmodel extends CI_Model {
     // get look products by look id
     function get_look_products($l_id = 0)
     {
-        $query = $this->db->query("SELECT p.p_image FROM l_products lp, products p WHERE lp.lp_pid = p.p_id AND lp_lid = ".intval($l_id));
+        $query = $this->db->query("SELECT p.p_id, p.p_image, p.p_name, p.p_mrp, p.p_price, p.p_url FROM l_products lp, products p WHERE lp.lp_pid = p.p_id AND lp_lid = ".intval($l_id));
         $data = $query->result();
         return $data;
     }
@@ -50,13 +58,14 @@ class Looksmodel extends CI_Model {
     }
     
     // create look with basic details look name, category, grid based on products
-    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0)
+    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_price = 0)
     {
         $data = array(
            'l_name' => $l_name ,
            'l_category' => $l_category,
            'l_grid' => $l_grid,
-           'l_uid' => $l_uid
+           'l_uid' => $l_uid,
+           'l_price' => $l_price
         );
         $this->db->insert('looks', $data);
         $insert_id = $this->db->insert_id();

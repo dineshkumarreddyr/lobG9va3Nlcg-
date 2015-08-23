@@ -262,11 +262,12 @@ function create_look() {
 		alert('Please enter look name');
 		return false;
 	}
+	var l_price = $('#lp_total').text().split('s. ')[1];
 
 	$.ajax({
 		type:"POST",
 		url:'<?php echo base_url("looks/create_ajax");?>',
-		data:{'l_cat':l_cat,'l_name':l_name,'l_pids':localStorage.p_ids},
+		data:{'l_cat':l_cat,'l_name':l_name,'l_price':l_price,'l_pids':localStorage.p_ids},
 		dataType:"json",
 		success: function(data){
 			if(data.status == 'success') {
