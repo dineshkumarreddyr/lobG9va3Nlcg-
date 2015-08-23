@@ -149,7 +149,9 @@
   								<span class="icon-bar"></span>
   								<span class="icon-bar"></span>
   							</button>
-  							<a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url();?>assets/images/logo.png" alt="logo"></a>
+                <a class="navbar-brand logo" href="<?php echo base_url(); ?>">
+                  <img src="<?php echo base_url();?>assets/images/logo.png" alt="Lookser" title="Looser">
+                </a>
   						</div>
 
   						<!-- Collect the nav links, forms, and other content for toggling -->

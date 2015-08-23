@@ -57,21 +57,7 @@
 		
 	   <div class="row">
 	     <div class="col-md-7 createlook-left"> 
-	     	<div id="lc_create" class="hide">
-	     		<select class="minimal" id="l_cat" name="l_cat">
-	     			<option value="">--Look Category--</option>
-	     			<?php
-						foreach ($lcategories as $key => $lcategory) {
-							?>
-							<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
-							<?php
-						}
-						?>
-	     		</select>
-	     		<input type="text" class="form-control" placeholder="Look name" value="" id="l_name" name="l_name">
-	     		<input type="button" class="form-control" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
-	     	</div>
-           <p><strong id="lp_count">0</strong> Products added to the look</p>
+	     	<p><strong id="lp_count">0</strong> Products added to the look</p>
 		   <div class="prodsadded">
 		     <ul id="ld">
 		     </ul>
@@ -87,6 +73,30 @@
 			    <div class="col-md-4 no-pad" id="lp_total">Rs. 0</div>
 			  </div>
 			 </div>
+			 <!-- -->
+			 <div class="lookname-wrap hide" id="lc_create">
+			 	<div class="row">
+                  <div class="col-md-6">
+                  	<input placeholder="Look name" value="" id="l_name" name="l_name" class="form-control" type="text">
+                  </div>
+                  <div class="col-md-3">
+	                  <select class="minimal" id="l_cat" name="l_cat">
+		     			<option value="">--Look Category--</option>
+		     			<?php
+							foreach ($lcategories as $key => $lcategory) {
+								?>
+								<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
+								<?php
+							}
+							?>
+		     		</select>
+                  </div>
+                  <div class="col-md-3">
+                  	<input type="button" class="form-control" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
+                  </div>
+			 	</div>
+			 </div>
+			 <!-- -->
 		   </div>
 	     </div>
 		 

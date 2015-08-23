@@ -25,6 +25,14 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
+    // get looks by popular designer
+    function by_popular_designers()
+    {
+        $query = $this->db->query("SELECT l.*, u.user_fname FROM looks l, users u WHERE u.user_id = l.l_uid AND l.l_status = '1' LIMIT 8");
+        $data = $query->result();
+        return $data;
+    }
+
     // get look products by look id
     function get_look_products($l_id = 0)
     {
@@ -111,6 +119,7 @@ class Looksmodel extends CI_Model {
         $data = $query->result();
         return $data;
     }
+
 
     /*function get_trending_products()
     {

@@ -5,17 +5,17 @@ class Login extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
-        $uid = $this->session->userdata('uid');
-        $role = $this->session->userdata('role');
-        if(isset($uid) && !empty($uid) && $role == 1) {
-            redirect("admin/home");
-        }
         $this->load->helper('form');
         $this->load->model('admin/loginmodel', 'login_model');
     }
  
     public function index()
     {
+        $uid = $this->session->userdata('uid');
+        $role = $this->session->userdata('role');
+        if(isset($uid) && !empty($uid) && $role == 1) {
+            redirect("admin/home");
+        }
         if($this->input->post('submit')) {
             $email = $this->input->post('email');
             $password = $this->input->post('password');

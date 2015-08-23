@@ -22,13 +22,30 @@ class Home extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('productsmodel', 'products_model');
+        $this->load->model('looksmodel', 'looks_model');
+        $this->load->model('usermodel', 'user_model');
         $this->load->model('admin/providermodel', 'provider_model');
     }
 
 	public function index()
 	{
-		$data['providers'] = $this->provider_model->get_providers();
+		// $data['providers'] = $this->provider_model->get_providers();
 		$data['tproducts'] = $this->products_model->get_trending_products();
+		$ls = $this->looks_model->by_popular_designers();
+		
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$looks[] = array(
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_user' => $look->user_fname
+			);
+		}
+		$data['pbd_looks'] = $looks;
+
+		$data['tdesigners'] = $this->user_model->get_top_designers();
 
 		$this->load->view('header');
 		$this->load->view('home', $data);
