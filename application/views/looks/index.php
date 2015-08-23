@@ -95,103 +95,37 @@
 			<div class="row">
 				<div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
-						<div class="item active left">
+					<?php
+					for ($i=0, $j=0; $i < count($tdesigners); $i++) { 
+						?>
+						<div class="item active">
 						  <ul>
+						  <?php
+						  foreach ($tdesigners as $key => $tdesigner) {
+						  	?>
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<div class="count girl">02</div>
 								<div class="designer-image">
 								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
 								</div>
-								<h3>Rishab Gupta</h3>
+								<h3><?php echo $tdesigner->user_fname; ?></h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+23</strong> Looks Created</h4>
 							  </div>
-							</li>
-							 <li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>Ashitha Rao</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>James Duke</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count girl">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>Rajesh Varma</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							</ul>
-						</div>
-						
-						<div class="item next left">
-						  <ul>
-							<li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count girl">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>Rishab Gupta</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+23</strong> Looks Created</h4>
-							  </div>
-							</li>
-							 <li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>Ashitha Rao</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>James Duke</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							<li class="col-md-3 col-sm-6">
-							   <div class="designer">
-								<div class="count girl">02</div>
-								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
-								</div>
-								<h3>Rajesh Varma</h3>
-								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+50</strong> Looks Created</h4>
-							  </div>
-							</li>
-							</ul>
-						</div>                   
+							</li>						  	
+						  	<?php
+						  	$j++;
+						  	if($j%4 == 0) {
+						  		break;
+						  	}
+						  }
+						  ?>
+						  </ul>
+						</div>   
+					<?php
+					}
+					?>                
 					</div>
 					<a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
 						<img src="<?php echo base_url();?>assets/images/left.png" width="20">
@@ -205,39 +139,3 @@
 	</div>
 	<!--top designers carousel-->
 
-	<!--ecom-->
-	<div class="container-fluid">
-	  <div class="container ecom-main">
-		<div class="col-md-12">
-                <div id="Carousel" class="carousel slide">              
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                </ol>              
-                <!-- Carousel items -->
-                <div class="carousel-inner">     
-                <div class="item active">
-                	<div class="row">
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/flipkart.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/myntra.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/yepme.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/fashinara.png" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                	<div class="row">
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/snapdeal.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/paytm.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/jabong.png" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#"><img src="<?php echo base_url();?>assets/images/shopclues.png" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->		 
-			</div>  
-		</div>
-	</div>
-	</div>
-	</div>
-	<!--ecom-->
-	
-	

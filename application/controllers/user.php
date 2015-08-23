@@ -53,14 +53,28 @@ class User extends CI_Controller {
 		$data['did'] = $did;
 		// print_r($looks);
 		
-		$this->load->view('header');
+		$seo = array(
+			'title' => $data['designer_details']->user_fname,
+			'description' => $data['designer_details']->user_fname,
+			'keywords' => $data['designer_details']->user_fname
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
 		$this->load->view('user/view', $data);
 		$this->load->view('footer');
 	}
 
 	public function get_designers()
 	{
-		$this->load->view('header');
+		$seo = array(
+			'title' => 'Designers',
+			'description' => 'Designers',
+			'keywords' => 'Designers'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
 		$this->load->view('user/designers');
 		$this->load->view('footer');
 	}
@@ -69,13 +83,13 @@ class User extends CI_Controller {
 	{
 		$this->login_check();
 		$errr_msg = '';
-    $msg = '';
+		$msg = '';
 
 		if($this->input->post('login')) {
 			$email = $this->input->post('email');
-      $pass = $this->input->post('pass');
+			$pass = $this->input->post('pass');
 
-      if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$errr_msg = 'Invalid Email-Id';
 			}
 			elseif ($pass == '') {
@@ -88,9 +102,9 @@ class User extends CI_Controller {
 				if(count($data) && $data->user_status == 1) {
 
 					$this->session->set_userdata('uid', $data->user_id);
-          $this->session->set_userdata('name', $data->user_fname);
-          $this->session->set_userdata('email', $data->user_email);
-          $this->session->set_userdata('role', $data->user_role);
+					$this->session->set_userdata('name', $data->user_fname);
+          			$this->session->set_userdata('email', $data->user_email);
+          			$this->session->set_userdata('role', $data->user_role);
 
 					redirect($this->uri->uri_string());
 				}
@@ -101,9 +115,16 @@ class User extends CI_Controller {
 		}
 
 		$data['errr_msg'] = $errr_msg;
-    $data['msg'] = $msg;
+    	$data['msg'] = $msg;
 
-		$this->load->view('header');
+    	$seo = array(
+			'title' => 'Login',
+			'description' => 'Login',
+			'keywords' => 'Login'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
 		$this->load->view('user/login', $data);
 		$this->load->view('footer');
 	}
@@ -111,8 +132,15 @@ class User extends CI_Controller {
 	public function register()
 	{
 		$this->login_check();
+
+		$seo = array(
+			'title' => 'Register',
+			'description' => 'Register',
+			'keywords' => 'Register'
+		);
+		$data['seo'] = $seo;
 		
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		$this->load->view('user/register');
 		$this->load->view('footer');
 	}
@@ -161,10 +189,10 @@ class User extends CI_Controller {
 	}
 
 	public function login_check() {
-    $uid = $this->session->userdata('uid');
-    if(isset($uid) && !empty($uid)) {
-        redirect(base_url());
-    }
+	    $uid = $this->session->userdata('uid');
+	    if(isset($uid) && !empty($uid)) {
+	        redirect(base_url());
+	    }
 	}
 }
 

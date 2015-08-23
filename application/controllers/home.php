@@ -47,7 +47,14 @@ class Home extends CI_Controller {
 
 		$data['tdesigners'] = $this->user_model->get_top_designers();
 
-		$this->load->view('header');
+		$seo = array(
+			'title' => 'Home page',
+			'description' => 'Home page',
+			'keywords' => 'Home page'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
 		$this->load->view('home', $data);
 		$this->load->view('footer');
 	}

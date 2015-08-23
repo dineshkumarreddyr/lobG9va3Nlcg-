@@ -88,6 +88,7 @@ class Looksmodel extends CI_Model {
         if($category != '') {
             $condition[] = " l.l_category = ".$category." "; 
         }
+        $condition[] = " l.l_status = '1' ";
         $condition = implode(' AND ', $condition);
 
         $query = "SELECT l.* FROM looks l WHERE " .$condition;

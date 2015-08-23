@@ -27,12 +27,14 @@ class Looks extends CI_Controller {
         $this->load->model('lcategorymodel', 'lcategory_model');
         $this->load->model('providermodel', 'provider_model');
         $this->load->model('brandmodel', 'brand_model');
+        $this->load->model('usermodel', 'user_model');
         $this->load->model('trackingmodel', 'tracking_model');
     }
     
 	public function index()
 	{
 		$data['lcategories'] = $this->lcategory_model->get_lcategories();
+		$data['tdesigners'] = $this->user_model->get_top_designers();
 
 		$s = $this->input->get('s');
 		$gender = $this->input->get('gender');
@@ -51,29 +53,41 @@ class Looks extends CI_Controller {
 			);
 		}
 		$data['looks'] = $looks;
-		// print_r($looks);exit;
+		
+		$seo = array(
+			'title' => 'Looks',
+			'description' => 'Looks',
+			'keywords' => 'Looks'
+		);
+		$data['seo'] = $seo;
 
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		$this->load->view('looks/index', $data);
 		$this->load->view('footer');
 	}
 
 	public function create()
 	{
-		$uid = $this->session->unset_userdata('uid');
-        
-        $this->session->unset_userdata('name');
-        $this->session->unset_userdata('email');
-        $this->session->unset_userdata('role');
-
-
+		$uid = $this->session->userdata('uid');
+		$role = $this->session->userdata('role');
+		if($role != 2) {
+			show_404(); // Redundant, I know, just added for this example
+		}
+		
 		$data['pcategories'] = $this->pcategory_model->get_pcategories();
 		$data['lcategories'] = $this->lcategory_model->get_lcategories();
 		$data['providers'] = $this->provider_model->get_providers();
 		$data['brands'] = $this->brand_model->get_brands();
 		$data['products'] = $this->products_model->get_products();
 
-		$this->load->view('header');
+		$seo = array(
+			'title' => 'Create look',
+			'description' => 'Create look',
+			'keywords' => 'Create look'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
 		$this->load->view('looks/create', $data);
 		$this->load->view('footer');
 	}

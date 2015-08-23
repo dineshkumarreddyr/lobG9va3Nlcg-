@@ -51,28 +51,3 @@
 		</div>
 	</div>
 	
-
-	<!--ecom-->
-	<div class="container-fluid">
-	  <div class="container ecom-main">
-		<div class="col-md-12">
-                <div id="Carousel" class="carousel slide">              
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                </ol>              
-                <!-- Carousel items -->
-                <div class="carousel-inner">     
-                <div class="item active">
-                	<div class="row">
-                	  <?php foreach ($providers as $key => $provider): ?>
-                		<div class="col-md-3"><a href="#"><img src="<?php echo $provider->provider_image; ?>" alt="<?php echo $provider->provider_name; ?>" title="<?php echo $provider->provider_name; ?>" style="max-width:100%;"></a></div>
-                	  <?php endforeach; ?>
-                	</div><!--.row-->
-                </div><!--.item-->
-			</div>  
-		</div>
-	</div>
-	</div>
-	</div>
-	<!--ecom-->	
