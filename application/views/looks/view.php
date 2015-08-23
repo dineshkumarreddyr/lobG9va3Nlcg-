@@ -60,7 +60,7 @@
 	           <div class="row">
 	           <h3><a href="<?php echo base_url('product/'.$lp->p_id); ?>" target="_blank"><?php echo $lp->p_name;?></a></h3>
 	           <div class="col-md-6 col-xs-3 prodpick-left">
-	           <div class="provider"><img src="<?php echo base_url();?>assets/images/jabong.png"></div>
+	           <div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>
 	           </div>
 	           <div class="col-md-2 col-xs-4 prodpick-right">
 	           <div class="mrp"><span class="webrupee">Rs.</span> <?php echo $lp->p_mrp;?></div>
@@ -83,9 +83,37 @@
 	      </div>
 	    </div>
 	  </div>
-
+</div>
 
 	<!--look description ends-->
+
+<!--share pop-->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+   aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="clearfix modal-content">
+      <div class="clearfix modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1">Share Your Look</h4>
+      </div>
+      <div class="col-md-10 col-md-offset-1 sharemodal-wrap">
+        <p>Share the link to your look</p>
+        <input type="text" class="form-control" value="<?php echo base_url(uri_string()); ?>" name="share_url" id="share_url">
+        <ul>
+          <p>Or share it on</p>
+          <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--share pop-->
+
+
 <script type="text/javascript">
 $('#goto_providers').click(function(){
 	var url = $(this).val().split(',');

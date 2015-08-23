@@ -161,10 +161,13 @@
   							<ul class="nav navbar-nav navbar-right">
   								<li class="active"><a href="<?php echo base_url(); ?>looks">get the look <span class="sr-only">(current)</span></a></li>
   								<li><a href="<?php echo base_url(); ?>products">shop</a></li>
-  								<li><a href="#">top offers</a></li>
-  								<li><a href="#">how it works</a></li>
-  								<li><a href="#">blog</a></li>
-  								<form class="navbar-form navbar-left" role="search" action="">
+                  <?php if($this->session->userdata('role') == 2): ?>
+                  <li><a href="<?php echo base_url('looks/create'); ?>">Create look</a></li>
+                  <?php endif; ?>
+  								<!-- <li><a href="#">top offers</a></li> -->
+  								<!-- <li><a href="#">how it works</a></li> -->
+  								<!-- <li><a href="#">blog</a></li> -->
+  								<form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
   									<div class="form-group">
   										<input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
   									</div>

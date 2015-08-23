@@ -130,6 +130,23 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
+    function lf_looks($l_cat = array())
+    {
+        $condition = array();
+        $condition[] = " l.l_name != ''";
+        if(count($l_cat) && is_array($l_cat)) {
+            $condition[] = " l.l_category in (".implode(',', $l_cat).") "; 
+        }
+        $condition[] = " l.l_status = '1' ";
+        $condition = implode(' AND ', $condition);
+
+        $query = "SELECT l.* FROM looks l WHERE " .$condition;
+        $query = $this->db->query($query);
+        $data = $query->result();
+        return $data;
+    }
+
+
 
     /*function get_trending_products()
     {

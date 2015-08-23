@@ -179,6 +179,32 @@ class Looks extends CI_Controller {
 		$data = $this->looks_model->f_products($f_gen, $f_cat, $f_prov, $f_brd);
 		echo json_encode($data);
 	}
+
+	/*
+	 * Looks Ajax filter
+	 */
+	public function lf_ajax()
+	{
+		$f_cat = $this->input->post('f_cat');
+
+		$ls = $this->looks_model->lf_looks($f_cat);
+
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$looks[] = array(
+				'l_id' => $look->l_id,
+				'l_category' => $look->l_category,
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price,
+			);
+		}
+
+		echo json_encode($looks);
+	}
 }
 
 /* End of file welcome.php */

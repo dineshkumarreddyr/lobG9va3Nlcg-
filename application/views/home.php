@@ -43,7 +43,7 @@
 	    <img src="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>Our Looks</h3>
-		<div class="pinkbtn"><a href="<?php echo base_url('looks'); ?>">Checkout</a></div>
+		<div class="pinkbtn"><a href="<?php echo base_url('looks'); ?>">Explore</a></div>
 		</div>
 	  </div>
 	  <div class="col-md-4 caterogy-each">
@@ -69,8 +69,8 @@
 		  <img src="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive">
 		</div>
 		<h4><?php echo $tproduct->p_name; ?></h4>
-		<div class="col-md-12 text-center"><span class="mrp"><?php echo $tproduct->p_mrp; ?></span>
-		<span class="aftrdsnt"><?php echo $tproduct->p_price; ?></span></div>
+		<div class="col-md-12 text-center"><span class="mrp"><span class="webrupee">Rs.</span><?php echo $tproduct->p_mrp; ?></span>
+		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $tproduct->p_price; ?></span></div>
 	  </div>
 		</a>
 		<?php
@@ -94,6 +94,7 @@
       foreach ($pbd_looks as $key => $pbd_look) {
       ?>
 	  <div class="col-md-3 created-each">
+      <a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
 	    <div class="pattern<?php echo count($pbd_look['l_products']); ?>">
 		  <ul>
 		    <?php foreach ($pbd_look['l_products'] as $key => $lp): ?>
@@ -101,12 +102,19 @@
 			<?php endforeach; ?>
 		  </ul>
 		</div>
+	  </a>
 		<div class="created-by">
+      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
 		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
+      	</a>
+      	<a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
 		<h3><?php echo $pbd_look['l_title']; ?></h3>
-		<div class="col-md-12 clearfix text-center"><span class="mrp"><?php echo $pbd_look['l_mrp']; ?></span>
-		<span class="aftrdsnt"><?php echo $pbd_look['l_price']; ?></span></div>
+		</a>
+		<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span><?php echo $pbd_look['l_mrp']; ?></span>
+		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $pbd_look['l_price']; ?></span></div>
+      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
 		<h4>By <?php echo $pbd_look['l_user']; ?></h4>
+		</a>
 	  </div>
 	  <div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 	</div>
@@ -136,9 +144,10 @@
 						  <?php
 						  foreach ($tdesigners as $key => $tdesigner) {
 						  	?>
+						  	<a href="<?php echo base_url('designer/'.$tdesigner->user_id); ?>">
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
-								<div class="count girl">02</div>
+								<!-- <div class="count girl">02</div> -->
 								<div class="designer-image">
 								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
 								</div>
@@ -146,7 +155,8 @@
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+<?php echo $tdesigner->l_count; ?></strong> Looks Created</h4>
 							  </div>
-							</li>						  	
+							</li>		
+							</a>				  	
 						  	<?php
 						  	$j++;
 						  	if($j%4 == 0) {

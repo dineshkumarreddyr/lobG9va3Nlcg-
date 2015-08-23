@@ -60,12 +60,93 @@
 	<div class="container products-wrap">
 	 <div class="row">
 	 <div class="col-md-2 filters-left"> 
-	 	<?php echo $this->load->view('looks/filter', $lcategories); ?>
-	   
+	 	<?php // echo $this->load->view('looks/filter', $lcategories); ?>
+	   <h4>by Categories</h4>
+	   <ul class="f_cat">
+		 <?php
+		foreach ($lcategories as $key => $lcategory) {
+			?>
+			<li><input id='f_cat<?php echo $lcategory->lc_id; ?>' name="f_cat" value="<?php echo $lcategory->lc_id; ?>" type='checkbox' onclick="lf_search();" />
+				<label for='f_cat<?php echo $lcategory->lc_id; ?>'><span></span><?php echo $lcategory->lc_name; ?>
+				</label>
+			</li>
+			<?php
+		}
+		?>
+		</ul>
+		
+	   <div class="clearfix">&nbsp;</div>
+	   <h4>By Provider</h4>
+	   <ul>
+		 <li><input id='six' type='checkbox' />
+			<label for='six'><span></span>Myntra
+			<ins><i>Myntra</i></ins></label></li>
+        <li><input id='seven' type='checkbox' />
+			<label for='seven'><span></span>Flipkart
+			<ins><i>Flipkart</i></ins></label></li>
+        <li><input id='eight' type='checkbox' />
+			<label for='eight'><span></span>Jabong
+			<ins><i>Jabong</i></ins></label></li>
+		<li><input id='eight' type='checkbox' />
+			<label for='eight'><span></span>Yepme
+			<ins><i>Yepme</i></ins></label></li>
+		<li><input id='eight' type='checkbox' />
+			<label for='eight'><span></span>Fashionara
+			<ins><i>Fashionara</i></ins></label></li>
+		</ul>
+		
+	 <div id="budget-wrapper">
+	   <h4>Budget <input type="text" id="slider-display" name="slider-display" value="0" /></h4>
+	   <div id="slider"></div>
+	 </div>
+	 
+	 <div class="clearfix">&nbsp;</div>
+	 <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
+	  <option value="#ac725e">#ac725e</option>
+	  <option value="#d06b64">#d06b64</option>
+	  <option value="#f83a22">#f83a22</option>
+	  <option value="#fa573c">#fa573c</option>
+	  <option value="#ff7537">#ff7537</option>
+	  <option value="#ffad46">#ffad46</option>
+	  <option value="#42d692">#42d692</option>
+	  <option value="#16a765">#16a765</option>
+	  <option value="#7bd148">#7bd148</option>
+	  <option value="#b3dc6c">#b3dc6c</option>
+	  <option value="#fbe983">#fbe983</option>
+	  <option value="#fad165">#fad165</option>
+	  <option value="#92e1c0">#92e1c0</option>
+	  <option value="#9fe1e7">#9fe1e7</option>
+	  <option value="#9fc6e7">#9fc6e7</option>
+	  <option value="#4986e7">#4986e7</option>
+	  <option value="#9a9cff">#9a9cff</option>
+	  <option value="#b99aff">#b99aff</option>
+	  <option value="#c2c2c2">#c2c2c2</option>
+	  <option value="#cabdbf">#cabdbf</option>
+	  <option value="#cca6ac">#cca6ac</option>
+	  <option value="#f691b2">#f691b2</option>
+	  <option value="#cd74e6">#cd74e6</option>
+	  <option value="#a47ae2">#a47ae2</option>
+	</select></h4>
+	 
+	 
+	  <div class="clearfix">&nbsp;</div>
+	  <h4>Size</h4>
+	  <div class="sizes clearfix">
+	  <input type="radio" name="size" id="small" value="small" checked="checked" /> 
+      <label for="small">S</label>
+      <input type="radio" name="size" id="medium" value="medium" />     
+      <label for="medium">M</label>
+      <input type="radio" name="size" id="large" value="large" />     
+      <label for="large">L</label>
+      <input type="radio" name="size" id="xlarge" value="xlarge" />     
+      <label for="xlarge">XL</label>
+	  <input type="radio" name="size" id="xxlarge" value="xxlarge" />     
+      <label for="xlarge">XXL</label>
+	  </div>
 	 </div>
 	 <!--filters left end-->
 	 
-	 <div class="col-md-10 looks-list-wrap">
+	 <div class="col-md-10 looks-list-wrap" id="looks_wrapper">
 
     <?php foreach ($looks as $key => $look): ?>
 	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
@@ -105,9 +186,10 @@
 						  <?php
 						  foreach ($tdesigners as $key => $tdesigner) {
 						  	?>
+							<a href="<?php echo base_url('designer/'.$tdesigner->user_id); ?>">
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
-								<div class="count girl">02</div>
+								<!-- <div class="count girl">02</div> -->
 								<div class="designer-image">
 								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
 								</div>
@@ -115,7 +197,8 @@
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
 								<h4><strong>+<?php echo $tdesigner->l_count; ?></strong> Looks Created</h4>
 							  </div>
-							</li>						  	
+							</li>		
+							</a>						  	
 						  	<?php
 						  	$j++;
 						  	if($j%4 == 0) {
@@ -141,3 +224,63 @@
 	</div>
 	<!--top designers carousel-->
 
+<script type="text/javascript">
+	function lf_search() {
+		var f_cat = [];
+		$('.f_cat input:checked').each(function() {
+		    f_cat.push($(this).val());
+		});
+
+		// var f_prov = [];
+		// $('.f_prov input:checked').each(function() {
+		//     f_prov.push($(this).val());
+		// });
+
+		var s_input = {};
+		s_input['f_cat'] = f_cat;
+		// s_input['f_prov'] = f_prov;
+
+		$.ajax({
+			type:"POST",
+			url:'<?php echo base_url("looks/lf_ajax");?>',
+			data:s_input,
+			dataType:"json",
+			success: function(data){
+				// console.log(data);
+				generate_looks(data);
+			},
+		  error: function(e) {
+			//called when there is an error
+			console.log(e.message);
+		  }
+		});
+	}
+
+	function generate_looks (looks) {
+		var content = '';
+		if(looks.length == 0) {
+			content = 'No Products found...';
+		}
+		$.each(looks, function(index, look){
+			var base_url = '<?php echo base_url("looks/view");?>';
+			content += '<a href="'+ base_url +'/'+ look.l_id+'">'+
+					  '<div class="col-md-3 trend-each">'+
+				    	'<div class="pattern'+look.l_products.length+'">'+
+						  '<ul>';
+		  	$.each(look.l_products, function(index, lp){
+				content += '<li><img src="'+lp.p_image+'" class="img-responsive"></li>';
+			});
+
+
+			content +=	  '</ul>'+
+						'</div>'+
+						'<h4>'+look.l_title+'</h4>'+
+						'<div class="col-md-12 text-center"><span class="mrp">'+look.l_mrp+'</span>'+
+						'<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+look.l_price+'</span></div>'+
+					  '</div>'+
+					  '</a>';
+		});
+
+		$('#looks_wrapper').html(content);
+	}
+</script>

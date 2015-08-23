@@ -45,7 +45,7 @@ class Usermodel extends CI_Model {
     function get_top_designers()
     {
         $data = array();
-        $query = $this->db->query("SELECT u.user_fname, u.user_lname, count(l.l_id) as l_count FROM users u, looks l WHERE u.user_id = l.l_uid AND l.l_status = '1' AND u.user_status = '1' AND u.user_role = 2");
+        $query = $this->db->query("SELECT u.user_id, u.user_fname, u.user_lname, count(l.l_id) as l_count FROM users u, looks l WHERE u.user_id = l.l_uid AND l.l_status = '1' AND u.user_status = '1' AND u.user_role = 2");
         $data = $query->result();
         return $data;        
     }
