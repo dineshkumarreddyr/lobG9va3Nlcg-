@@ -46,7 +46,8 @@ class User extends CI_Controller {
 			
 			$looks[] = array(
 				'l_title' => $look->l_name,
-				'l_products' => $lps
+				'l_products' => $lps,
+				'l_id' => $look->l_id
 			);
 		}
 		$data['d_looks'] = $looks;
@@ -67,6 +68,7 @@ class User extends CI_Controller {
 
 	public function get_designers()
 	{
+		$data['designers'] = $this->user_model->get_designers();
 		$seo = array(
 			'title' => 'Designers',
 			'description' => 'Designers',
@@ -75,7 +77,7 @@ class User extends CI_Controller {
 		$data['seo'] = $seo;
 
 		$this->load->view('header', $data);
-		$this->load->view('user/designers');
+		$this->load->view('user/designers', $data);
 		$this->load->view('footer');
 	}
 

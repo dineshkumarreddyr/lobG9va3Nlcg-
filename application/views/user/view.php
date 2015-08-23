@@ -53,7 +53,7 @@
 		      foreach ($d_looks as $key => $look) {
 		      ?>
 				  <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
+				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal" data-value="<?php echo $look['l_id']; ?>">
 				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
 				    </div>
 				    <div class="pattern<?php echo count($look['l_products']); ?>">
@@ -63,11 +63,13 @@
 						<?php endforeach; ?>
 					  </ul>
 					</div>
+          <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 					<div class="created-by">
 					<h3><?php echo $look['l_title']; ?></h3>
 					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
 					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
 				  </div>
+          </a>
 				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
 				</div>
 				<?php
@@ -219,7 +221,32 @@
     </div>
 	<!--designer main-->  
 	
-	 
+<!--share pop-->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+   aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="clearfix modal-content">
+      <div class="clearfix modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1">Share Your Look</h4>
+      </div>
+      <div class="col-md-10 col-md-offset-1 sharemodal-wrap">
+        <p>Share the link to your look</p>
+        <input type="text" class="form-control" value="http://www.lookser.com/look123" name="share_url" id="share_url">
+        <ul>
+          <p>Or share it on</p>
+          <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--share pop-->
+  	 
 	 	  
    </div>
    </div>
@@ -240,4 +267,15 @@
 	    }
 	  });
 	});
+
+   $('.share a').click(function(){
+    var url = '<?php echo base_url("look/"); ?>'+$(this).attr('data-value');
+    $('#share_url').val(url);
+
+   });
+   $('#share_fb').click(function(){
+    var url = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURI('https://www.facebook.com/sharer/sharer.php?u='+$('#share_url').val());
+    window.open(url, '_blank');
+   });
+
     </script>

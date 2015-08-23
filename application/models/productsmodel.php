@@ -53,4 +53,23 @@ class Productsmodel extends CI_Model {
         $data = $query->result();
         return $data;
     }
+
+    function pf_products($f_cat = array(), $f_prov = array())
+    {
+        $condition = array();
+        $condition[] = " p.p_name != '' "; 
+
+        if(count($f_cat) && is_array($f_cat)) {
+            $condition[] = " p.p_category in (".implode(',', $f_cat).") "; 
+        }
+        if(count($f_prov) && is_array($f_prov)) {
+            $condition[] = " p.p_provider in (".implode(',', $f_prov).") "; 
+        }
+        $condition = implode(' AND ', $condition);
+
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition;
+        $query = $this->db->query($query);
+        $data = $query->result();
+        return $data;
+    }
 }

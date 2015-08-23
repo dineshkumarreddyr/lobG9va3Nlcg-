@@ -61,12 +61,12 @@
 		<div class="row">
 			<div class="col-md-3 filters-left"> 
 				<h4>by Categories</h4>
-				<ul>
+				<ul class="f_cat">
 					<?php
 					foreach ($pcategories as $key => $pcategory) {
 						?>
-						<li><input id='one' type='checkbox' />
-							<label for='one'><span></span><?php echo $pcategory->pc_name; ?>
+						<li><input id='f_cat<?php echo $pcategory->pc_id; ?>' type='checkbox' name="f_cat" value="<?php echo $pcategory->pc_id; ?>" onclick="pf_search();" />
+							<label for='f_cat<?php echo $pcategory->pc_id; ?>'><span></span><?php echo $pcategory->pc_name; ?>
 							</label>
 						</li>
 						<?php
@@ -76,12 +76,12 @@
 				
 				<div class="clearfix">&nbsp;</div>
 				<h4>By Provider</h4>
-				<ul>
+				<ul class="f_prov">
 					<?php
 					foreach ($providers as $key => $provider) {
 						?>
-						<li><input id='eight' type='checkbox' />
-							<label for='eight'><span></span><?php echo $provider->provider_name; ?>
+						<li><input id='f_prov<?php echo $provider->provider_id; ?>' type='checkbox' name="f_prov" value="<?php echo $provider->provider_id; ?>" onclick="pf_search();" />
+							<label for='f_prov<?php echo $provider->provider_id; ?>'><span></span><?php echo $provider->provider_name; ?>
 							</label>
 						</li>
 						<?php
@@ -220,6 +220,37 @@
 	<!--top designers carousel-->
 
 <script type="text/javascript">
+	function pf_search() {
+		var f_cat = [];
+		$('.f_cat input:checked').each(function() {
+		    f_cat.push($(this).val());
+		});
+
+		var f_prov = [];
+		$('.f_prov input:checked').each(function() {
+		    f_prov.push($(this).val());
+		});
+
+		var s_input = {};
+		s_input['f_cat'] = f_cat;
+		s_input['f_prov'] = f_prov;
+
+		$.ajax({
+			type:"POST",
+			url:'<?php echo base_url("products/pf_ajax");?>',
+			data:s_input,
+			dataType:"json",
+			success: function(data){
+				// console.log(data);
+				generate_products(data);
+			},
+		  error: function(e) {
+			//called when there is an error
+			console.log(e.message);
+		  }
+		});
+	}
+
 	function ps_search () {
 		var s_pdt = $('#s_pdt').val();
 		var s_gen = $('#s_gen').val();
@@ -230,7 +261,7 @@
 		s_input['s_gen'] = s_gen;
 		s_input['s_cat'] = s_cat;
 
-		// console.log(JSON.stringify(s_input));
+		console.log(JSON.stringify(s_input));
 
 		$.ajax({
 			type:"POST",

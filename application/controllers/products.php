@@ -85,6 +85,18 @@ class Products extends CI_Controller {
 		$data = $this->products_model->s_products($s_pdt, $s_gen, $s_cat);
 		echo json_encode($data);
 	}
+
+	/*
+	Products filter Ajax search
+	*/
+	public function pf_ajax()
+	{
+		$f_cat = $this->input->post('f_cat');
+		$f_prov = $this->input->post('f_prov');
+	
+		$data = $this->products_model->pf_products($f_cat, $f_prov);
+		echo json_encode($data);
+	}
 }
 
 /* End of file welcome.php */
