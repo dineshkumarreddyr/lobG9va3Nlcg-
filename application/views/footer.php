@@ -64,8 +64,11 @@
         <h3>JOIN OUR MAILING LIST TO RECIEVE UPDATES</h3>
         <form action="#">
     <div class="input-group ">
-       <input class="btn btn-lg" name="email" id="email" type="email" placeholder="" required="">
-       <button class="btn btn-info btn-lg" type="submit">Submit</button>
+      <form>
+      <div id="s_msg"></div>
+       <input class="btn btn-lg" name="s_email" id="s_email" type="email" placeholder="Please enter your Email-ID" required="">
+       <button class="btn btn-info btn-lg" type="submit" name="s_submit" id="s_submit">Submit</button>
+      </form>
     </div>
    </form>
      </div>
@@ -188,6 +191,40 @@ $(function(){
       }
     }
   });*/
+
+// mail subscritption
+
+$(function(){
+  $('#s_submit').click(function(){
+    var s_email = $('#s_email').val();
+    if(s_email == '') {
+      alert('Invalid Email');
+      return false;
+    }
+    else {
+      $.ajax({
+        type:"POST",
+        url:'<?php echo base_url();?>user/subscription',
+        data:{'email':s_email},
+        dataType:"json",
+        success: function(data) {
+          console.log(data);
+          if(data.status == 'error') {
+            $('#s_msg').html('Sorry, Your email already subscribed.');
+          }
+          else if(data.status == 'success') {
+            $('#s_msg').html('Thanks, Your email successfully subscribed.');
+          }
+        }
+      });
+    }
+    return false;
+  });
+
+});
+
+// mail subscritption
+
 </script>
 
 

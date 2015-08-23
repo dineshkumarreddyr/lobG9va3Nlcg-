@@ -28,7 +28,7 @@ class Looksmodel extends CI_Model {
     // get look details by look id
     function look_details($lid = 0)
     {
-        $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id ,u.user_fname FROM looks l, l_categories lc, users u WHERE u.user_id = l.l_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid));
+        $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id ,u.user_fname, count(DISTINCT(lv.lv_ip)) as lv_count FROM looks l, l_categories lc, users u, l_views lv WHERE lv.lv_lookId = l.l_id AND u.user_id = l.l_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid) ." ");
         $data = $query->result();
         return $data;
     }

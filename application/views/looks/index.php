@@ -113,7 +113,7 @@
 								</div>
 								<h3><?php echo $tdesigner->user_fname; ?></h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+23</strong> Looks Created</h4>
+								<h4><strong>+<?php echo $tdesigner->l_count; ?></strong> Looks Created</h4>
 							  </div>
 							</li>						  	
 						  	<?php

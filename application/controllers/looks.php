@@ -94,7 +94,8 @@ class Looks extends CI_Controller {
 				'l_user' => $look->user_fname,
 				'l_uid' => $look->user_id,
 				'l_mrp' => $look->l_mrp,
-				'l_price' => $look->l_price
+				'l_price' => $look->l_price,
+				'l_views' => $look->lv_count
 			);
 		}
 		$data['look'] = $looks[0];

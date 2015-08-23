@@ -27,7 +27,7 @@
 							$genders = array("male" => "Male", "female" => "Female");
 							foreach ($genders as $key => $gender) {
 								?>
-							<option value="<?php echo $key; ?>" <?php echo ($_GET['gender'] == $key) ? 'selected="selected"' : '';  ?> ><?php echo $gender; ?></option>
+							<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) {echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> ><?php echo $gender; ?></option>
 								<?php
 							}
 							?>
@@ -42,7 +42,7 @@
 							<?php
 							foreach ($pcategories as $key => $pcategory) {
 								?>
-								<option value="<?php echo $pcategory->pc_id; ?>" <?php echo ($_GET['category'] == $pcategory->pc_id) ? 'selected="selected"' : '';  ?>><?php echo $pcategory->pc_name; ?></option>
+								<option value="<?php echo $pcategory->pc_id; ?>" <?php if(isset($_GET['category'])) { echo ($_GET['category'] == $pcategory->pc_id) ? 'selected="selected"' : ''; } ?>><?php echo $pcategory->pc_name; ?></option>
 								<?php
 							}
 							?>
@@ -151,8 +151,10 @@
 							</div>
 							<h4><?php echo $product->p_name; ?></h4>
 							<div class="col-md-12 text-center">
-								<span class="mrp"><?php echo $product->p_mrp; ?></span>
-								<span class="aftrdsnt"><?php echo $product->p_price; ?></span>
+								<?php if($product->p_mrp > $product->p_price):  ?>
+								<span class="mrp"><span class="webrupee">Rs.</span><?php echo $product->p_mrp; ?></span>
+								<?php endif; ?>
+								<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $product->p_price; ?></span>
 							</div>
 						</div>
 					</a>
@@ -189,7 +191,7 @@
 								</div>
 								<h3><?php echo $tdesigner->user_fname; ?></h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+23</strong> Looks Created</h4>
+								<h4><strong>+<?php echo $tdesigner->l_count; ?></strong> Looks Created</h4>
 							  </div>
 							</li>						  	
 						  	<?php

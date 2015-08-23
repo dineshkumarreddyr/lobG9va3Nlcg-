@@ -18,9 +18,13 @@
 		<div class="col-md-6 prod-desp-right">
 			<h3><?php echo $product['p_name']; ?></h3>	
 			<div class="wrap row">
+				<?php if($product['p_mrp'] > $product['p_price']):  ?>
 				<div class="col-md-2 mrpBig"><span class="webrupee">Rs.</span><?php echo $product['p_mrp']; ?></div>
+				<?php endif; ?>
 				<div class="col-md-2 aftrdsntBig"><span class="webrupee">Rs.</span><?php echo $product['p_price']; ?></div>
+				<?php if($product['p_mrp'] > $product['p_price']):  ?>
 				<span class="discount"><?php if($product['p_mrp'] > $product['p_price']) { echo ceil(100 -($product['p_price']/$product['p_mrp']) * 100); } ?>% OFF</span>
+				<?php endif; ?>
 			</div>
 			<p><?php echo $product['p_desc']; ?></p>
 				<div class="row">

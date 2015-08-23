@@ -9,7 +9,7 @@
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
 		<h3>Find Designers and Consultants</h3>
-		<button class="btn explore-btn">Shop Now</button>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Shop Now</a>
 		</div>
 		</div>
 		</div><!-- /. Item Active -->
@@ -19,7 +19,7 @@
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
 		<h3>Find Designers and Consultants</h3>
-		<button class="btn explore-btn">shop Now</button>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Shop Now</a>
 		</div>
 		</div>
 		</div><!-- /. Item -->
@@ -104,8 +104,8 @@
 		<div class="created-by">
 		<div class="created-image"><img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive"></div>
 		<h3><?php echo $pbd_look['l_title']; ?></h3>
-		<div class="col-md-12 clearfix text-center"><span class="mrp">2300</span>
-		<span class="aftrdsnt">2000</span></div>
+		<div class="col-md-12 clearfix text-center"><span class="mrp"><?php echo $pbd_look['l_mrp']; ?></span>
+		<span class="aftrdsnt"><?php echo $pbd_look['l_price']; ?></span></div>
 		<h4>By <?php echo $pbd_look['l_user']; ?></h4>
 	  </div>
 	  <div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
@@ -144,7 +144,7 @@
 								</div>
 								<h3><?php echo $tdesigner->user_fname; ?></h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-								<h4><strong>+23</strong> Looks Created</h4>
+								<h4><strong>+<?php echo $tdesigner->l_count; ?></strong> Looks Created</h4>
 							  </div>
 							</li>						  	
 						  	<?php

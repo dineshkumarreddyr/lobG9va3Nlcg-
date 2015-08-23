@@ -37,8 +37,25 @@ class Usermodel extends CI_Model {
     function get_top_designers()
     {
         $data = array();
-        $query = $this->db->query("SELECT user_fname, user_lname FROM users WHERE user_status = '1' AND user_role = 2");
+        $query = $this->db->query("SELECT u.user_fname, u.user_lname, count(l.l_id) as l_count FROM users u, looks l WHERE u.user_id = l.l_uid AND l.l_status = '1' AND u.user_status = '1' AND u.user_role = 2");
         $data = $query->result();
         return $data;        
+    }
+
+    function subscription($email) {
+        $data = array(
+           's_email' => $email,
+           's_ip' => $this->input->ip_address()
+        );
+
+        $this->db->insert('subscriptions', $data);            
+    }
+
+    function check_subscription($email) {
+        $data = array(
+           's_email' => $email
+        );
+        $query = $this->db->get_where('subscriptions', array('s_email' => $email));
+        return $query->num_rows();  
     }
 }

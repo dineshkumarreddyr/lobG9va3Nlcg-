@@ -180,6 +180,28 @@ class User extends CI_Controller {
 		echo json_encode($response);
 	}
 
+	public function subscription()
+	{
+		$response = array();
+		$email = $this->input->post('email');
+
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Email-Id';
+		}
+		else {
+			$count = $this->user_model->check_subscription($email);
+			if(!$count) {
+				$data = $this->user_model->subscription($email);
+				$response['status'] = 'success';
+			}
+			else {
+				$response['status'] = 'error';
+			}
+		}
+		echo json_encode($response);
+	}
+
 	public function logout() {
 		$this->session->unset_userdata('uid');
         $this->session->unset_userdata('name');

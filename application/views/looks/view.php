@@ -31,7 +31,7 @@
 	            </div>
 	            <div class="col-md-8 col-xs-8 lookdetail-designer">
 	              <div class="clearfix"><a href="<?php echo base_url('designer/'.$look['l_uid']); ?>">by <?php echo $look['l_user']; ?></a></div>
-	              <div class="detail-each pull-left"><i class="flaticon-eye106"></i> 120</div>
+	              <div class="detail-each pull-left"><i class="flaticon-eye106"></i> <?php echo $look['l_views']; ?></div>
 	              <div class="detail-each pull-left"><i class="flaticon-like78"></i> 21</div>
 	            </div>
 	            <div class="col-md-2 col-xs-2 sharelook"><a href="#" data-toggle="modal" data-target="#shareModal"><i class="flaticon-social24"></i></a>

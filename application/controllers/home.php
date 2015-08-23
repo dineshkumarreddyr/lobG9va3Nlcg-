@@ -40,7 +40,9 @@ class Home extends CI_Controller {
 			$looks[] = array(
 				'l_title' => $look->l_name,
 				'l_products' => $lps,
-				'l_user' => $look->user_fname
+				'l_user' => $look->user_fname,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price
 			);
 		}
 		$data['pbd_looks'] = $looks;
