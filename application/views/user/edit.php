@@ -24,15 +24,6 @@
         <div class="col-md-7">
           <h2><?php echo $designer_details->user_fname; ?></h2>
           <h3><i class="flaticon-placeholder9"></i> <?php echo $designer_details->user_location . ', ' . $designer_details->user_state ?>.</h3>
-          <?php
-          $uid = $this->session->userdata('uid');
-          $role = $this->session->userdata('role');
-          if(isset($uid) && !empty($uid) && $role == 2) {
-          ?>
-          <h3><i class="flaticon-pen29"></i><a href="<?php echo base_url('designer/edit/'.$designer_details->user_id); ?>"> Edit Profile</a></h3>
-          <?php
-          }
-          ?>
         </div>
         <div class="col-md-4 designerpro-top-right">
           <ul>
@@ -62,8 +53,8 @@
 		      foreach ($d_looks as $key => $look) {
 		      ?>
 				  <div class="col-md-4 created-each">
-				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal" data-value="<?php echo $look['l_id']; ?>">
-				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
+				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal">
+              <img src="<?php echo base_url();?>assets/images/deletelook.png" alt="share icon" class="img-circle"></a>
 				    </div>
 				    <div class="pattern<?php echo count($look['l_products']); ?>">
 					  <ul>
@@ -99,66 +90,71 @@
 
 		      <!--profile starts-->
 		      <div class="tab-pane fade" id="profile">
-		    <form class="form-horizontal" action="" method="post">
+		    <form class="form-horizontal" action="" method="post" name="edit_profile" id="edit_profile">
               <fieldset>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Name</label>
+              <label class="col-md-3 control-label" for="name">Name</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="form-control" disabled="disabled" value="<?php echo $designer_details->user_fname; ?>">
+                <input id="name" name="name" type="text" placeholder="Your Name" class="form-control" value="<?php echo $designer_details->user_fname; ?>">
               </div>
             </div>
     
              <!-- about me -->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="about">About Me</label>
+              <label class="col-md-3 control-label" for="about">About Me</label>
               <div class="col-md-9">
-                <textarea class="form-control" id="about" name="about" rows="5" placeholder="" disabled="disabled"><?php echo $designer_details->user_about; ?></textarea>
+                <textarea class="form-control" id="about" name="about" rows="5" placeholder=""><?php echo $designer_details->user_about; ?></textarea>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="email">Email Address</label>
+              <label class="col-md-3 control-label" for="email">Email Address</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control"
-                value="<?php echo $designer_details->user_email; ?>" disabled="disabled">
+                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" value="<?php echo $designer_details->user_email; ?>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="location">Location</label>
+              <label class="col-md-3 control-label" for="location">Location</label>
               <div class="col-md-9">
-                <input id="location" name="location" type="text" placeholder="Your Location" class="form-control"
-                value="<?php echo $designer_details->user_location; ?>" disabled="disabled">
+                <input id="location" name="location" type="text" placeholder="Your Location" class="form-control" value="<?php echo $designer_details->user_location; ?>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="mobile">Mobile</label>
+              <label class="col-md-3 control-label" for="location">State</label>
               <div class="col-md-9">
-                <input id="mobile" name="mobile" type="text" placeholder="Mobile Number" class="form-control"
-                value="<?php echo $designer_details->user_mobile; ?>" disabled="disabled">
+                <input id="state" name="state" type="text" placeholder="Your State" class="form-control" value="<?php echo $designer_details->user_state; ?>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Institution">Institution</label>
+              <label class="col-md-3 control-label" for="mobile">Mobile</label>
               <div class="col-md-9">
-                <input id="institution" name="Institution" type="text" placeholder="Institution" class="form-control"
-                 value="<?php echo $designer_details->user_institution; ?>" disabled="disabled">
+                <input id="mobile" name="mobile" type="text" placeholder="Mobile Number" class="form-control" value="<?php echo $designer_details->user_mobile; ?>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Experience</label>
+              <label class="col-md-3 control-label" for="Institution">Institution</label>
               <div class="col-md-9">
-                <input id="experience" name="experience" type="text" placeholder="Experience" class="form-control"
-                 value="<?php echo $designer_details->user_experience; ?>" disabled="disabled">
+                <input id="institution" name="Institution" type="text" placeholder="Institution" class="form-control" value="<?php echo $designer_details->user_institution; ?>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Website</label>
+              <label class="col-md-3 control-label" for="Website">Experience</label>
               <div class="col-md-9">
-                <input id="website" name="Website" type="text" placeholder="Website" class="form-control"
-                 value="<?php echo $designer_details->user_website; ?>" disabled="disabled">
+                <input id="experience" name="experience" type="text" placeholder="Experience" class="form-control" value="<?php echo $designer_details->user_experience; ?>">
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="Website">Website</label>
+              <div class="col-md-9">
+                <input id="website" name="Website" type="text" placeholder="Website" class="form-control" value="<?php echo $designer_details->user_website; ?>">
+              </div>
+            </div>
+            <div class="form-group">
+             <div class="col-md-12 text-right">
+                <input type="submit" class="save" name="save" id="save" value="Save Changes">
+             </div>
+             </div>
           </fieldset>
-          </form>         
+          </form>
 		  </div>
 
 		  <!--wallet starts-->
@@ -227,33 +223,7 @@
     </div>
 	<!--designer main-->  
 	
-<!--share pop-->
-  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-   aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="clearfix modal-content">
-      <div class="clearfix modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel1">Share Your Look</h4>
-      </div>
-      <div class="col-md-10 col-md-offset-1 sharemodal-wrap">
-        <p>Share the link to your look</p>
-        <input type="text" class="form-control" value="http://www.lookser.com/look123" name="share_url" id="share_url">
-        <ul>
-          <p>Or share it on</p>
-          <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  </div>
-  <!--share pop-->
-  	 
-	 	  
+ 	  
    </div>
    </div>
    </div>
@@ -285,3 +255,61 @@
    });
 
     </script>
+
+<script type="text/javascript">
+$(function(){
+  $('#edit_profile').submit(function(){
+    var name = $('#name').val();
+    var about = $('#about').val();
+    var email = $('#email').val();
+    var location = $('#location').val();
+    var state = $('#state').val();
+    var mobile = $('#mobile').val();
+    var institution = $('#institution').val();
+    var experience = $('#experience').val();
+    var website = $('#website').val();
+    if(name == '') {
+      alert('Please enter name');
+      return false;
+    }
+    else if(about == '') {
+      alert('Please enter about');
+      return false;
+    }
+    else if(email == '') {
+      alert('Please enter email');
+      return false;
+    }
+    else if(location == '') {
+      alert('Please enter location');
+      return false;
+    }
+    else if(state == '') {
+      alert('Please enter state');
+      return false;
+    }
+    else if(mobile == '') {
+      alert('Please enter mobile');
+      return false;
+    }
+    else {
+      $.ajax({
+        type:"POST",
+        url:'<?php echo base_url();?>user/ajax_update_profile',
+        data:{'name':name,'about':about,'email':email,'location':location,'state':state,'mobile':mobile,'institution':institution,'experience':experience,'website':website},
+        dataType:"json",
+        success: function(data) {
+          console.log(data);
+          if(data.status == 'error') {
+            alert(data.message);
+          }
+          else if(data.status == 'success') {
+            alert(data.message);
+          }
+        }
+      });
+    }
+    return false;
+  });
+});
+</script>

@@ -22,7 +22,7 @@ class Usermodel extends CI_Model {
     function get_designer($did = 0)
     {
         $data = array();
-        $query = $this->db->query("SELECT * FROM users WHERE user_id = '".$did."' LIMIT 10");
+        $query = $this->db->query("SELECT u.*, ud.* FROM users u, user_details ud WHERE u.user_id = ud.ud_uid AND u.user_id = '".$did."' LIMIT 10");
         if ($query->num_rows() > 0) {
             $data = $query->first_row();
         }
@@ -65,5 +65,30 @@ class Usermodel extends CI_Model {
         );
         $query = $this->db->get_where('subscriptions', array('s_email' => $email));
         return $query->num_rows();  
+    }
+
+    function profile_update($uid, $name, $about, $location, $state, $mobile, $institution, $experience, $website) {
+        
+        $data = array(
+           'user_fname' => $name
+        );
+
+        $this->db->where('user_id', $uid);
+        $this->db->update('users', $data);
+
+        $data = array(
+           'user_about' => $about,
+           'user_location' => $location,
+           'user_state' => $state,
+           'user_mobile' => $mobile,
+           'user_institution' => $institution,
+           'user_experience' => $experience,
+           'user_website' => $website
+        );
+
+        $this->db->where('ud_uid', $uid);
+        $this->db->update('user_details', $data);
+
+        return TRUE; 
     }
 }

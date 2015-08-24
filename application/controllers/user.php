@@ -66,6 +66,56 @@ class User extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	/*
+	 * Edit designer profile
+	 */
+	public function edit($did = 0)
+	{
+		$uid = $this->session->userdata('uid');
+	    $role = $this->session->userdata('role');
+	    if(!isset($uid) || empty($uid) || $role != 2) {
+	        // redirect(base_url());
+        	show_404(); // This seems to display within the template when what I want is for it to redirect
+	    }
+		
+		if($did == 0) {
+        show_404(); // This seems to display within the template when what I want is for it to redirect
+		}
+		$data['designer_details'] = $this->user_model->get_designer($did);
+		if(count($data['designer_details']) == 0 || $data['designer_details']->user_role != 2) {
+        	show_404(); // If designer not there return 404 page
+		}
+		$data['d_followers'] = $this->followers_model->get_followers_count($did);
+		$data['d_views'] = $this->user_model->get_designer_views($did);
+
+		$ls = $this->looks_model->get_designer_looks(intval($did));
+		
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$looks[] = array(
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_id' => $look->l_id
+			);
+		}
+		$data['d_looks'] = $looks;
+		$data['did'] = $did;
+		// print_r($looks);
+		
+		$seo = array(
+			'title' => $data['designer_details']->user_fname,
+			'description' => $data['designer_details']->user_fname,
+			'keywords' => $data['designer_details']->user_fname
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('user/edit', $data);
+		$this->load->view('footer');
+	}
+
 	public function get_designers()
 	{
 		$data['designers'] = $this->user_model->get_designers();
@@ -217,6 +267,60 @@ class User extends CI_Controller {
 	    if(isset($uid) && !empty($uid)) {
 	        redirect(base_url());
 	    }
+	}
+
+	/*
+	 * update designer profile details ajax_update_profile
+	 */
+
+	public function ajax_update_profile()
+	{
+		$uid = $this->session->userdata('uid');
+		$response = array();
+		$name = $this->input->post('name');
+		$about = $this->input->post('about');
+		$email = $this->input->post('email');
+		$location = $this->input->post('location');
+		$state = $this->input->post('state');
+		$mobile = $this->input->post('mobile');
+		$institution = $this->input->post('institution');
+		$experience = $this->input->post('experience');
+		$website = $this->input->post('website');
+		
+		if(empty($name)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Name should not empty';
+		}
+		elseif(empty($about)) {
+			$response['status'] = 'error';
+			$response['message'] = 'About should not empty';
+		}
+		elseif(empty($location)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Location should not empty';
+		}
+		elseif(empty($state)) {
+			$response['status'] = 'error';
+			$response['message'] = 'State should not empty';
+		}
+		elseif(empty($mobile)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Mobile should not empty';
+		}
+		else {
+
+			$data = $this->user_model->profile_update($uid, $name, $about, $location, $state, $mobile, $institution, $experience, $website);
+
+			if($data) {
+				$response['status'] = 'success';
+				$response['message'] = 'Successfully Updated.';
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'Unablel to update please try again later.';
+			}
+		}
+		echo json_encode($response);
 	}
 }
 
