@@ -1,4 +1,3 @@
-
 		<div class="slideshow">
 		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
 		data-interval="3000">
@@ -56,10 +55,10 @@
 	</div>
 	
 	<!-- filtered products -->
-	<h2>Looks</h2>
+	<h2>Explore our looks</h2>
 	<div class="container products-wrap">
 	 <div class="row">
-	 <div class="col-md-2 filters-left"> 
+	 <div class="col-md-3 filters-left"> 
 	 	<?php // echo $this->load->view('looks/filter', $lcategories); ?>
 	   <h4>by Categories</h4>
 	   <ul class="f_cat">
@@ -146,7 +145,7 @@
 	 </div>
 	 <!--filters left end-->
 	 
-	 <div class="col-md-10 looks-list-wrap" id="looks_wrapper">
+	 <div class="col-md-9 looks-list-wrap" id="looks_wrapper">
 
     <?php foreach ($looks as $key => $look): ?>
 	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">

@@ -1,4 +1,3 @@
-
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -122,8 +121,8 @@
 					<div class="brand"><span>Brand</span><br>Jabong</div>					
 				   </div>
 				   <div class="col-md-7 prodpick-right">
-				     <div class="mrp"><span>MRP: Rs</span> <?php echo $product->p_mrp; ?></div>
-					 <div class="cost" id="p_price_<?php echo $product->p_id; ?>">Rs. <?php echo $product->p_price; ?></div>
+				     <div class="mrp"><span class="webrupee"> Rs.</span>  <?php echo $product->p_mrp; ?></div>
+					 <div class="cost" id="p_price_<?php echo $product->p_id; ?>"><span class="webrupee"> Rs.</span> <?php echo $product->p_price; ?></div>
 				     <div class="addtolook" onclick="add_to_look(<?php echo $product->p_id; ?>);">
 					   <a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>
 					 </div>
