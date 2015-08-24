@@ -351,6 +351,30 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Looks Categories<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/lcategory"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/lcategory/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Looks Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/look"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/look/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

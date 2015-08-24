@@ -1,7 +1,7 @@
 <div id="page-wrapper" style="min-height: 291px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Products</h1>
+                    <h1 class="page-header">Look Categories</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -19,27 +19,25 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Store ID</th>
+                                            <th>Parent</th>
                                             <th>Name</th>
-                                            <th>Category</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($products as $key => $product) {
+                                        foreach ($lcategories as $key => $lcategory) {
                                             ?>
                                         <tr class="gradeX">
-                                            <td><?php echo $product->p_id; ?></td>
-                                            <td><?php echo $product->p_storeId; ?></td>
-                                            <td><?php echo $product->p_name; ?></td>
-                                            <td><?php echo $product->pc_name; ?></td>
-                                            <td class="center"><?php echo ($product->p_status) ? 'Active' : 'InActive'; ?></td>
+                                            <td><?php echo $lcategory->lc_id; ?></td>
+                                            <td><?php echo $lcategory->lc_pid; ?></td>
+                                            <td><?php echo $lcategory->lc_name; ?></td>
+                                            <td class="center"><?php echo ($lcategory->lc_status) ? 'Active' : 'InActive'; ?></td>
                                             <td class="center">
                                                 <a href="" class="fa fa-eye"></a>
-                                                <a href="<?php echo base_url('admin/product/edit/'.$product->p_id); ?>" class="fa fa-edit"></a>
-                                                <a href="<?php echo base_url('admin/product/remove/'.$product->p_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
+                                                <a href="<?php echo base_url('admin/lcategory/edit/'.$lcategory->lc_id); ?>" class="fa fa-edit"></a>
+                                                <a href="<?php echo base_url('admin/lcategory/remove/'.$lcategory->lc_id); ?>"  onclick="return confirm('Are you sure want to delete?')" class="glyphicon glyphicon-remove"></a>
                                             </td>
                                         </tr>
                                             <?php

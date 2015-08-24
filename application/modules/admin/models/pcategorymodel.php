@@ -50,9 +50,10 @@ class Pcategorymodel extends CI_Model {
         return $insert_id;
     }
 
-    function update_pcategory($pc_id = 0, $name = '', $desc = '', $status = '0')
+    function update_pcategory($pc_id = 0, $parent = 0, $name = '', $desc = '', $status = '0')
     {
         $data = array(
+           'pc_pid' => $parent,
            'pc_name' => $name ,
            'pc_desc' => $desc,
            'pc_status' => $status

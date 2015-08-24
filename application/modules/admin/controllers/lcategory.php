@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-class Pcategory extends MX_Controller {
+class Lcategory extends MX_Controller {
     
     public function __construct()
     {
         parent::__construct();
         $this->load->helper('form');
-        $this->load->model('admin/pcategorymodel', 'pcategory_model');
+        $this->load->model('admin/lcategorymodel', 'lcategory_model');
         $this->login_check();
     }
 
@@ -20,10 +20,10 @@ class Pcategory extends MX_Controller {
  
     public function index()
     {
-        $data['pcategories'] = $this->pcategory_model->get_pcategories();
+        $data['lcategories'] = $this->lcategory_model->get_lcategories();
         
         $this->load->view('admin/header');
-        $this->load->view('admin/pcategory/list', $data);
+        $this->load->view('admin/lcategory/list', $data);
         $this->load->view('admin/footer');
     }
 
@@ -48,8 +48,8 @@ class Pcategory extends MX_Controller {
             }
 
             if(empty($errr_msg)) {
-                $brand_id = $this->pcategory_model->add_pcategory($parent, $name, $desc, $status);
-                if($brand_id) {
+                $lcategory_id = $this->lcategory_model->add_lcategory($parent, $name, $desc, $status);
+                if($lcategory_id) {
                     $msg = 'Successfully Added';
                 }
             }
@@ -57,13 +57,13 @@ class Pcategory extends MX_Controller {
 
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
-        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        $data['lcategories'] = $this->lcategory_model->parent_lcategories();
         $this->load->view('admin/header');
-        $this->load->view('admin/pcategory/add', $data);
+        $this->load->view('admin/lcategory/add', $data);
         $this->load->view('admin/footer');
     }
 
-    public function edit($pc_id = 0)
+    public function edit($lc_id = 0)
     {
         $errr_msg = '';
         $msg = '';
@@ -84,27 +84,27 @@ class Pcategory extends MX_Controller {
             }
 
             if(empty($errr_msg)) {
-                if($this->pcategory_model->update_pcategory($pc_id, $parent, $name, $desc, $status)) {
+                if($this->lcategory_model->update_lcategory($lc_id, $parent, $name, $desc, $status)) {
                     $msg = 'Successfully Updated';
                 }
             }
         }
 
-        $data['pcategory'] = $this->pcategory_model->get_pcategory($pc_id)[0];
-        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        $data['lcategory'] = $this->lcategory_model->get_lcategory($lc_id)[0];
+        $data['lcategories'] = $this->lcategory_model->parent_lcategories();
         
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
         $this->load->view('admin/header');
-        $this->load->view('admin/pcategory/edit', $data);
+        $this->load->view('admin/lcategory/edit', $data);
         $this->load->view('admin/footer');
     }
 
-    public function remove($pc_id)
+    public function remove($lc_id)
     {
-        if($pc_id) {
-            $this->pcategory_model->remove($pc_id);
-            redirect(base_url('admin/pcategory'), 'refresh');
+        if($lc_id) {
+            $this->lcategory_model->remove($lc_id);
+            redirect(base_url('admin/lcategory'), 'refresh');
         }
     }
 
