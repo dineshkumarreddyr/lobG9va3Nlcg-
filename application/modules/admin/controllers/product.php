@@ -180,6 +180,99 @@ class Product extends MX_Controller {
         }
     }
 
+    public function import() {
+        $errr_msg = '';
+        $msg = '';
+
+        $brands = $this->brand_model->get_active_brands();
+        $pcategories = $this->pcategory_model->get_active_pcategories();
+
+        $f_brands = array();
+        foreach ($brands as $key => $brand) {
+            $f_brands[$brand->brand_name] = $brand->brand_id;
+        }
+        // print_r($f_brands);
+
+        $f_cat = array();
+        foreach ($pcategories as $key => $pcategory) {
+            $f_cat[$pcategory->pc_name] = $pcategory->pc_id;
+        }
+        // print_r($f_cat);
+
+
+        //Upload File
+        if (isset($_POST['submit'])) {
+            if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
+                // echo "<h1>" . "File ". $_FILES['filename']['name'] ." uploaded successfully." . "</h1>";
+                // echo "<h2>Displaying contents:</h2>";
+                // // readfile($_FILES['filename']['tmp_name']);
+            }
+
+            //Import uploaded file to Database
+            $handle = fopen($_FILES['filename']['tmp_name'], "r");
+
+            while (($data = fgetcsv($handle, 10000, ",")) !== FALSE) {
+                $storeId = $data[0];
+                $name = addslashes($data[1]);
+                $desc = addslashes($data[2]);
+                $imgs = explode(';', $data[3]);
+                $image = '';
+                foreach ($imgs as $key => $img) {
+                    if(stripos($img, 'original')) {
+                        $image = $img;
+                        break;
+                    }
+                }
+                $mrp = $data[4];
+                $price = $data[5];
+                $url = $data[6];
+                
+                $cats = explode('>', $data[7]);
+                $cat = $cats[0];
+                if(array_key_exists($cat, $f_cat)) {
+                    $category = $f_cat[$cat];
+                }
+                else {
+                    $cat_id = $this->pcategory_model->add_pcategory('0', $cat, '', '1');
+                    $f_cat[$cat] = $cat_id;
+                    $category = $cat_id;
+                }
+
+                $brand = $data[8];
+                if(array_key_exists($brand, $f_brands)) {
+                    $brand = $f_brands[$brand];
+                }
+                else {
+                    $brand_id = $this->brand_model->add_brand($brand, '', '1');
+                    $f_brands[$brand] = $brand_id;
+                    $brand = $brand_id;
+                }
+
+                $provider = $_POST['provider'];
+                $gender = $_POST['gender'];
+
+
+                $import="INSERT into products(p_storeId, p_name, p_desc, p_image, p_url, p_mrp, p_price, p_category, p_brand, p_provider, p_gender, p_status) values('$storeId', '$name', '$desc', '$image', '$url', '$mrp', '$price', '$category', '$brand', '$provider', '$gender', '1')";
+
+                mysql_query($import) or die(mysql_error());
+            }
+
+            fclose($handle);
+
+            $msg = "Import done";
+
+            //view upload form
+        }
+        $data['providers'] = $this->provider_model->get_active_providers();
+        $data['errr_msg'] = $errr_msg;
+        $data['msg'] = $msg;
+
+
+        $this->load->view('admin/header');
+        $this->load->view('admin/product/import', $data);
+        $this->load->view('admin/footer');
+    }
+
 }
  
 /* End of file login.php */

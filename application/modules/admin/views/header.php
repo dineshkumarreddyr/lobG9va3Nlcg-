@@ -312,6 +312,9 @@
                                 <li>
                                     <a href="<?php echo base_url("admin/product/add"); ?>">Add</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/product/impot"); ?>">Import</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
