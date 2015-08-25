@@ -7,132 +7,137 @@
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://lookser.com/</loc>
+  <loc>http://www.lookser.com/</loc>
   <changefreq>always</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://lookser.com/looks</loc>
+  <loc>http://www.lookser.com/looks</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/products</loc>
+  <loc>http://www.lookser.com/products</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/looks?gender=male</loc>
+  <loc>http://www.lookser.com/looks?gender=male</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/looks?gender=female</loc>
+  <loc>http://www.lookser.com/looks?gender=female</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/1</loc>
+  <loc>http://www.lookser.com/product/1</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/4</loc>
+  <loc>http://www.lookser.com/product/4</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/5</loc>
+  <loc>http://www.lookser.com/product/5</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/6</loc>
+  <loc>http://www.lookser.com/product/6</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/7</loc>
+  <loc>http://www.lookser.com/product/7</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/9</loc>
+  <loc>http://www.lookser.com/product/9</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/10</loc>
+  <loc>http://www.lookser.com/product/10</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/11</loc>
+  <loc>http://www.lookser.com/product/11</loc>
   <changefreq>always</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://lookser.com/looks/view/13</loc>
+  <loc>http://www.lookser.com/looks/view/14</loc>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.lookser.com/designer/2</loc>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.lookser.com/looks/view/15</loc>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.lookser.com/designers</loc>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.lookser.com/product/12</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/looks/view/14</loc>
+  <loc>http://www.lookser.com/product/13</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/12</loc>
+  <loc>http://www.lookser.com/product/14</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/13</loc>
+  <loc>http://www.lookser.com/product/15</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/14</loc>
+  <loc>http://www.lookser.com/products?category=1</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/product/15</loc>
+  <loc>http://www.lookser.com/products?category=4</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/products?category=1</loc>
+  <loc>http://www.lookser.com/products?category=5</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/products?category=4</loc>
+  <loc>http://www.lookser.com/looks?category=1</loc>
   <changefreq>always</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://lookser.com/products?category=5</loc>
-  <changefreq>always</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://lookser.com/looks?category=1</loc>
+  <loc>http://www.lookser.com/products?category=6</loc>
   <changefreq>always</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://lookser.com/designer/2</loc>
-  <changefreq>always</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://lookser.com/products?category=6</loc>
-  <changefreq>always</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://lookser.com/products?category=7</loc>
+  <loc>http://www.lookser.com/products?category=7</loc>
   <changefreq>always</changefreq>
   <priority>0.51</priority>
 </url>
