@@ -1,4 +1,3 @@
-
 		<div class="designerslide">
 		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
 		  <div class="carousel-inner">
@@ -51,8 +50,8 @@
      <div class="row">
      <div class="col-md-9 designerpro-left">
 		 <ul class="nav nav-tabs">
-		   <li class="active"><a href="#looks" data-toggle="tab"><i class="flaticon-user7"></i>Lookser profile</a></li>
-		   <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Personal Profile</a></li>
+		   <li class="active"><a href="#looks" data-toggle="tab"><i class="flaticon-user7"></i>Looks Created</a></li>
+		   <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Profile</a></li>
 		   <li><a href="#wallet" data-toggle="tab"><i class="flaticon-money407"></i> Wallet</a></li>
 		 </ul>
 		    <div id="myTabContent" class="tab-content">
@@ -87,14 +86,14 @@
 			
 				</div>
 				<ul class="pagination pull-right">
-	              <li class="disabled"><a href="#">«</a></li>
-	              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-	              <li><a href="#">2</a></li>
-	              <li><a href="#">3</a></li>
-	              <li><a href="#">4</a></li>
-	              <li><a href="#">5</a></li>
-	              <li><a href="#">»</a></li>
-                </ul>
+			              <li class="disabled"><a href="#">«</a></li>
+			              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			              <li><a href="#">2</a></li>
+			              <li><a href="#">3</a></li>
+			              <li><a href="#">4</a></li>
+			              <li><a href="#">5</a></li>
+			              <li><a href="#">»</a></li>
+		                </ul>
 		      </div>
 
 		      <!--profile starts-->
@@ -102,97 +101,134 @@
 		    <form class="form-horizontal" action="" method="post">
               <fieldset>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Name</label>
-              <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="form-control" disabled="disabled" value="<?php echo $designer_details->user_fname; ?>">
-              </div>
+              <label class="col-md-3 control-label" for="name">Name</label>
+              <div class="col-md-9 prolheight"><?php echo $designer_details->user_fname; ?></div>
             </div>
     
              <!-- about me -->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="about">About Me</label>
-              <div class="col-md-9">
-                <textarea class="form-control" id="about" name="about" rows="5" placeholder="" disabled="disabled"><?php echo $designer_details->user_about; ?></textarea>
-              </div>
+              <label class="col-md-3 control-label" for="about">About Me</label>
+              <div class="col-md-9 abtme"> <?php echo $designer_details->user_about; ?> </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="email">Email Address</label>
-              <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control"
-                value="<?php echo $designer_details->user_email; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="email">Email Address</label>
+              <div class="col-md-9 prolheight"><?php echo $designer_details->user_email; ?> </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="location">Location</label>
-              <div class="col-md-9">
-                <input id="location" name="location" type="text" placeholder="Your Location" class="form-control"
-                value="<?php echo $designer_details->user_location; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="location">Location</label>
+              <div class="col-md-9 prolheight"><?php echo $designer_details->user_location; ?></div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="mobile">Mobile</label>
-              <div class="col-md-9">
-                <input id="mobile" name="mobile" type="text" placeholder="Mobile Number" class="form-control"
-                value="<?php echo $designer_details->user_mobile; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="mobile">Mobile</label>
+              <div class="col-md-9"><?php echo $designer_details->user_mobile; ?> </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Institution">Institution</label>
-              <div class="col-md-9">
-                <input id="institution" name="Institution" type="text" placeholder="Institution" class="form-control"
-                 value="<?php echo $designer_details->user_institution; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="Institution">Institution</label>
+              <div class="col-md-9"><?php echo $designer_details->user_institution; ?> </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Experience</label>
-              <div class="col-md-9">
-                <input id="experience" name="experience" type="text" placeholder="Experience" class="form-control"
-                 value="<?php echo $designer_details->user_experience; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="Website">Experience</label>
+              <div class="col-md-9"><?php echo $designer_details->user_experience; ?></div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Website</label>
-              <div class="col-md-9">
-                <input id="website" name="Website" type="text" placeholder="Website" class="form-control"
-                 value="<?php echo $designer_details->user_website; ?>" disabled="disabled">
-              </div>
+              <label class="col-md-3 control-label" for="Website">Website</label>
+              <div class="col-md-9"><?php echo $designer_details->user_website; ?></div>
             </div>
           </fieldset>
           </form>         
-		  </div>
+	</div>
 
-		  <!--wallet starts-->
+			  <!--wallet starts-->
 		   <div class="tab-pane fade" id="wallet">
-		    <div class="row wallet-top">
-              <div class="col-md-4">Current Balance <strong><span class="webrupee">Rs.</span>2348</strong></div>
-              <div class="col-md-4">Owe Balance <strong><span class="webrupee">Rs.</span>348</strong></div>
-              <div class="col-md-4">Payment Date <strong> 21 Aug 2015</strong></div>
+		   	<div class="row earnings">
+		      <h3>Your Earnings</h3>
+              <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>2348</strong></div>
+              <div class="col-md-4 earn-each">Jabong <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Snapdeal <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Total Earnings <strong><span class="webrupee">Rs.</span>2348</strong>
+              </div>
+              <div class="col-md-4 earn-each">Owe Earnings <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Last Payed on <strong> 21 Aug 2015</strong></div>
+              <div class="col-md-12"><p>Note: The Payment will be processed to the bank account linked, once you reach a minimun amount of Rs 1,000 (One Thousand)</p></div>
 		    </div>
-		    <form class="form-horizontal" action="" method="post">
-            <fieldset>
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Name</label>
-              <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="form-control" disabled="disabled" value="Aneel Kaushik">
+            
+            <div class="row profile-sales">
+              <div class="col-md-12 sales-each">
+                <div class="row sales-head">
+                <div class="col-md-1 sale-img">
+                   <img src="images/trending/t1.jpg" alt="sale" class="img-responsive">
+                </div>
+                <div class="col-md-11">
+                  <div class="row">
+                  <div class="col-md-12"><h3>Lee Cooper T-shirt <span>Successful</span></h3></div>
+                  <div class="col-md-2">Look ID <strong>012</strong></div>
+                  <div class="col-md-3">Sale Date <strong>12 Aug 2015</strong></div>
+                  <div class="col-md-2">Time <strong>12:52 PM</strong></div>
+                  <div class="col-md-2">Cost <strong><span class="webrupee">Rs.</span>449</strong></div>
+                  <div class="col-md-3">Your Amount <strong><span class="webrupee">Rs.</span>49</strong></div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 sales-each">
+                <div class="row sales-head">
+                <div class="col-md-1 sale-img">
+                   <img src="images/trending/t1.jpg" alt="sale" class="img-responsive">
+                </div>
+                <div class="col-md-11">
+                  <div class="row">
+                  <div class="col-md-12"><h3>Lee Cooper T-shirt <span>Successful</span></h3></div>
+                  <div class="col-md-2">Look ID <strong>012</strong></div>
+                  <div class="col-md-3">Sale Date <strong>12 Aug 2015</strong></div>
+                  <div class="col-md-2">Time <strong>12:52 PM</strong></div>
+                  <div class="col-md-2">Cost <strong><span class="webrupee">Rs.</span>449</strong></div>
+                  <div class="col-md-3">Your Amount <strong><span class="webrupee">Rs.</span>49</strong></div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 sales-each">
+                <div class="row sales-head">
+                <div class="col-md-1 sale-img">
+                   <img src="images/trending/t1.jpg" alt="sale" class="img-responsive">
+                </div>
+                <div class="col-md-11">
+                  <div class="row">
+                  <div class="col-md-12"><h3>Lee Cooper T-shirt <span>Successful</span></h3></div>
+                  <div class="col-md-2">Look ID <strong>012</strong></div>
+                  <div class="col-md-3">Sale Date <strong>12 Aug 2015</strong></div>
+                  <div class="col-md-2">Time <strong>12:52 PM</strong></div>
+                  <div class="col-md-2">Cost <strong><span class="webrupee">Rs.</span>449</strong></div>
+                  <div class="col-md-3">Your Amount <strong><span class="webrupee">Rs.</span>49</strong></div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 sales-each">
+                <div class="row sales-head">
+                <div class="col-md-1 sale-img">
+                   <img src="images/trending/t1.jpg" alt="sale" class="img-responsive">
+                </div>
+                <div class="col-md-11">
+                  <div class="row">
+                  <div class="col-md-12"><h3>Lee Cooper T-shirt <span>Successful</span></h3></div>
+                  <div class="col-md-2">Look ID <strong>012</strong></div>
+                  <div class="col-md-3">Sale Date <strong>12 Aug 2015</strong></div>
+                  <div class="col-md-2">Time <strong>12:52 PM</strong></div>
+                  <div class="col-md-2">Cost <strong><span class="webrupee">Rs.</span>449</strong></div>
+                  <div class="col-md-3">Your Amount <strong><span class="webrupee">Rs.</span>49</strong></div>
+                  </div>
+                </div>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Experience</label>
-              <div class="col-md-9">
-                <input id="experience" name="experience" type="text" placeholder="Experience" class="form-control"
-                 value="2 years" disabled="disabled">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-              </div>
-            </div>
-          </fieldset>
-          </form>
-		  </div>
-		  </div>
-		  </div>
+	  </div>
+	  </div>
+	  </div>
+		  
 
        <div class="col-md-3 designerpro-right">    
          <h3>Profile Statistics</h3>

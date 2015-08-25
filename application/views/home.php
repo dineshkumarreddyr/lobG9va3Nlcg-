@@ -1,4 +1,3 @@
-
 		<div class="slideshow">
 		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
 		data-interval="3000">
@@ -9,7 +8,7 @@
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
 		<h3>Find Designers and Consultants</h3>
-		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Shop Now</a>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
 		</div><!-- /. Item Active -->
@@ -19,7 +18,7 @@
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
 		<h3>Find Designers and Consultants</h3>
-		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Shop Now</a>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
 		</div><!-- /. Item -->

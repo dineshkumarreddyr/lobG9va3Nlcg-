@@ -1,4 +1,3 @@
-
 		<div class="designerslide">
 		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
 		  <div class="carousel-inner">
@@ -156,39 +155,64 @@
           </fieldset>
           </form>
 		  </div>
-
-		  <!--wallet starts-->
+<!--wallet starts-->
 		   <div class="tab-pane fade" id="wallet">
-		    <div class="row wallet-top">
-              <div class="col-md-4">Current Balance <strong><span class="webrupee">Rs.</span>2348</strong></div>
-              <div class="col-md-4">Owe Balance <strong><span class="webrupee">Rs.</span>348</strong></div>
-              <div class="col-md-4">Payment Date <strong> 21 Aug 2015</strong></div>
+		    <div class="row earnings">
+		      <h3>Your Earnings</h3>
+              <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>2348</strong></div>
+              <div class="col-md-4 earn-each">Jabong <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Snapdeal <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Total Earnings <strong><span class="webrupee">Rs.</span>2348</strong>
+              </div>
+              <div class="col-md-4 earn-each">Owe Earnings <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Last Payed on <strong> 21 Aug 2015</strong></div>
+              <div class="col-md-12"><p>Note: The Payment will be processed to the bank account linked, once you reach a minimun amount of Rs 1,000 (One Thousand)</p></div>
 		    </div>
-		    <form class="form-horizontal" action="" method="post">
+		   	 <form class="form-horizontal wallet-form" action="" method="post">
             <fieldset>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Name</label>
+              <label class="col-md-3 control-label" for="name">Bank Account Number</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="form-control" disabled="disabled" value="Aneel Kaushik">
+                <input id="name" name="name" type="text" placeholder="Your Account Number" class="form-control">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label" for="Website">Experience</label>
+              <label class="col-md-3 control-label" for="Website">Full Name</label>
               <div class="col-md-9">
-                <input id="experience" name="experience" type="text" placeholder="Experience" class="form-control"
-                 value="2 years" disabled="disabled">
+                <input id="fullname" name="fullname" type="text" placeholder="Enter Fullname" class="form-control">
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <label class="col-md-3 control-label" for="Website">Branch Details</label>
+              <div class="col-md-9">
+                <input id="branch" name="branch" type="text" placeholder="Enter Branch Details" class="form-control">
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="select bank">Select Bank</label>
+              <div class="col-md-4">
+                <select class="minimal">
+                  <option value="ICICI">ICICI Bank</option>
+                  <option value="HDFC">HDFC Bank</option>
+                  <option value="Canara">Canara Bank</option>
+                  <option value="SBI">SBI Bank</option>
+                </select>
+              </div>
+              <label class="col-md-2 control-label" for="Website">IFSC Code</label>
+              <div class="col-md-3">
+                <input id="ifsc" name="ifsc" type="text" placeholder="Enter IFSC Code" class="form-control">
+              </div>
+              </div>
           </fieldset>
+          <div class="form-group">
+            <div class="col-md-12 text-right">
+                <input type="button" class="save" value="Save Changes">
+            </div>
+            </div>
           </form>
-		  </div>
-		  </div>
-		  </div>
+	  </div>
+	  </div>
+	  </div>
 
        <div class="col-md-3 designerpro-right">    
          <h3>Profile Statistics</h3>

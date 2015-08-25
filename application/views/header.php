@@ -33,7 +33,7 @@
   						<img src="<?php echo base_url();?>assets/images/close.png"></span>
   					</button>
   				</div>
-  				<div class="col-md-6 login-main">
+  				<div class="col-md-6">
   					<h2>Login In</h2>
   					<form accept-charset="" action="" class=""  method="">
   						<div class='row'>
