@@ -14,7 +14,7 @@
 		</section>
 	</div> 
 	<div class="row">
-		<div class="col-md-6 no-pad prod-desp-left viewer zoomer-element"><div class="zoomer"><div class="zoomer-positioner" style="transform: translate3d(250px, 250px, 0px);"><div class="zoomer-holder" style="height: 1024px; width: 682px; transform: translate3d(-50%, -50%, 0px) scale(0.429618768328446, 0.4296875); opacity: 1;"><img class="zoomer-image" src="<?php echo $product['p_image']; ?>"></div></div><div class="zoomer-controls zoomer-controls-bottom"><span class="zoomer-previous">‹</span><span class="zoomer-zoom-out">-</span><span class="zoomer-zoom-in">+</span><span class="zoomer-next">›</span></div></div></div>
+		<div class="col-md-6 no-pad prod-desp-left viewer zoomer-element"><div class="zoomer"><div class="zoomer-positioner" style="transform: translate3d(250px, 250px, 0px);"><div class="zoomer-holder" style="height: 1024px; width: 682px; transform: translate3d(-50%, -50%, 0px) scale(0.429618768328446, 0.4296875); opacity: 1;"><img class="zoomer-image" src="<?php echo $product['p_oimage']; ?>"></div></div><div class="zoomer-controls zoomer-controls-bottom"><span class="zoomer-previous">‹</span><span class="zoomer-zoom-out">-</span><span class="zoomer-zoom-in">+</span><span class="zoomer-next">›</span></div></div></div>
 		<div class="col-md-6 prod-desp-right">
 			<h3><?php echo $product['p_name']; ?></h3>	
 			<div class="wrap row">

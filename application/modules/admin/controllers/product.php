@@ -217,10 +217,15 @@ class Product extends MX_Controller {
                 $desc = addslashes($data[2]);
                 $imgs = explode(';', $data[3]);
                 $image = '';
+                $oimage = '';
                 foreach ($imgs as $key => $img) {
                     if(stripos($img, 'original')) {
+                        $oimage = $img;
+                        // break;
+                    }
+                    if(stripos($img, '180x240')) {
                         $image = $img;
-                        break;
+                        // break;
                     }
                 }
                 $mrp = $data[4];
@@ -228,7 +233,7 @@ class Product extends MX_Controller {
                 $url = $data[6];
                 
                 $cats = explode('>', $data[7]);
-                $cat = $cats[0];
+                $cat = end($cats);
                 if(array_key_exists($cat, $f_cat)) {
                     $category = $f_cat[$cat];
                 }
@@ -252,7 +257,7 @@ class Product extends MX_Controller {
                 $gender = $_POST['gender'];
 
 
-                $import="INSERT into products(p_storeId, p_name, p_desc, p_image, p_url, p_mrp, p_price, p_category, p_brand, p_provider, p_gender, p_status) values('$storeId', '$name', '$desc', '$image', '$url', '$mrp', '$price', '$category', '$brand', '$provider', '$gender', '1')";
+                $import="INSERT into products(p_storeId, p_name, p_desc, p_image, p_oimage, p_url, p_mrp, p_price, p_category, p_brand, p_provider, p_gender, p_status) values('$storeId', '$name', '$desc', '$image', '$oimage', '$url', '$mrp', '$price', '$category', '$brand', '$provider', '$gender', '1')";
 
                 mysql_query($import) or die(mysql_error());
             }
