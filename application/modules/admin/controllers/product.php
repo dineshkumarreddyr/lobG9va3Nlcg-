@@ -40,6 +40,7 @@ class Product extends MX_Controller {
             $name = $this->input->post('name');
             $desc = $this->input->post('desc');
             $category = $this->input->post('category');
+            $gender = $this->input->post('gender');
             $brand = $this->input->post('brand');
             $provider = $this->input->post('provider');
             $image = $this->input->post('image');
@@ -82,7 +83,7 @@ class Product extends MX_Controller {
             }
 
             if(empty($errr_msg)) {
-                $product_id = $this->product_model->add($storeid, $name, $desc, $category, $brand, $provider, $image, $url, $mrp, $price, $status);
+                $product_id = $this->product_model->add($storeid, $name, $desc, $category, $brand, $provider, $image, $url, $mrp, $price, $status, $gender);
                 if($product_id) {
                     $msg = 'Successfully Added';
                 }
@@ -109,6 +110,7 @@ class Product extends MX_Controller {
             $name = $this->input->post('name');
             $desc = $this->input->post('desc');
             $category = $this->input->post('category');
+            $gender = $this->input->post('gender');
             $brand = $this->input->post('brand');
             $provider = $this->input->post('provider');
             $image = $this->input->post('image');
@@ -151,7 +153,7 @@ class Product extends MX_Controller {
             }
 
             if(empty($errr_msg)) {
-                $product_id = $this->product_model->update($product_id, $storeid, $name, $desc, $category, $brand, $provider, $image, $url, $mrp, $price, $status);
+                $product_id = $this->product_model->update($product_id, $storeid, $name, $desc, $category, $brand, $provider, $image, $url, $mrp, $price, $status, $gender);
                 if($product_id) {
                     $msg = 'Successfully Updated';
                 }

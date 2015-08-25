@@ -56,10 +56,13 @@ class Products extends CI_Controller {
 
 	public function view($product_id = 0)
 	{
-		$data['pcategories'] = $this->pcategory_model->get_pcategories();
-		// $data['providers'] = $this->provider_model->get_providers();
 		$data['product'] = $this->products_model->get_product($product_id);
+		if(!count($data['product'])) {
+			show_404();
+		}
+		// $data['providers'] = $this->provider_model->get_providers();
 		$this->tracking_model->track_product($product_id);
+		$data['pcategories'] = $this->pcategory_model->get_pcategories();
 
 		$seo = array(
 			'title' => $data['product']['p_name'],

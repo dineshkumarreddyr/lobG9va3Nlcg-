@@ -78,7 +78,7 @@ class Looks extends CI_Controller {
 		$this->tracking_model->track_look($lid);
 
 		$ls = $this->looks_model->look_details($lid);
-		if(count($ls) == 0) {
+		if(count($ls) == 0 || $ls[0]->l_id == '') {
 			show_404();
 		}
 		
@@ -92,6 +92,7 @@ class Looks extends CI_Controller {
 				'l_title' => $look->l_name,
 				'l_products' => $lps,
 				'l_user' => $look->user_fname,
+				'l_user_image' => $look->user_image,
 				'l_uid' => $look->user_id,
 				'l_mrp' => $look->l_mrp,
 				'l_price' => $look->l_price,
@@ -135,7 +136,7 @@ class Looks extends CI_Controller {
 
 		$this->load->view('header', $data);
 		$this->load->view('looks/create', $data);
-		$this->load->view('footer');
+		// $this->load->view('footer');
 	}
 
 	public function create_ajax()

@@ -11,8 +11,14 @@
 					<div class="col-md-2">
 						<select class="minimal" name="f_gen" id="f_gen">
 							<option value="">By Gender</option>
-							<option value="">Male</option>
-							<option value="">Female</option>
+							<?php
+							$genders = array('Male'=>'Male', 'Female'=>'Female', 'Other' => 'Other');
+							foreach ($genders as $key => $gender) {
+								?>
+							<option value="<?php echo $key; ?>"><?php echo $gender; ?></option>
+								<?php
+							}
+							?>
 						</select>
 					</div>
 					<div class="col-md-2">
@@ -121,7 +127,7 @@
 					<div class="brand"><span>Brand</span><br>Jabong</div>					
 				   </div>
 				   <div class="col-md-7 prodpick-right">
-				     <div class="mrp"><span class="webrupee"> Rs.</span>  <?php echo $product->p_mrp; ?></div>
+				     <div class="mrp" id="p_mrp_<?php echo $product->p_id; ?>"><span class="webrupee"> Rs.</span>  <?php echo $product->p_mrp; ?></div>
 					 <div class="cost" id="p_price_<?php echo $product->p_id; ?>"><span class="webrupee"> Rs.</span> <?php echo $product->p_price; ?></div>
 				     <div class="addtolook" onclick="add_to_look(<?php echo $product->p_id; ?>);">
 					   <a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>
@@ -148,6 +154,7 @@
 
 <!-- Add to look -->
 localStorage.p_ids = [];
+// localStorage.lp_mrp = 0;
 localStorage.lp_total = 0;
 function add_to_look(p_id) {
 	var count = n_count = 0;
@@ -175,6 +182,7 @@ function add_to_look(p_id) {
 
 	var p_name = $('#p_name_'+p_id).text();
 	var p_price = $('#p_price_'+p_id).text();
+	// var p_mrp = $('#p_mrp_'+p_id).text();
 	var p_image = $('#p_image_'+p_id).attr('src');
 
 	var lp = '<div class="selectedprod-each" id="lp_'+p_id+'">' +
@@ -201,11 +209,14 @@ function add_to_look(p_id) {
 	$('#lp').append(lp);
 
 	<!-- look products total calculating -->
+	// p_mrp = p_mrp.split('s. ');
 	p_price = p_price.split('s. ');
 	if (localStorage.lp_total) {
+		// localStorage.lp_mrp = parseInt(localStorage.lp_mrp) + parseInt(p_mrpmrp[1]);
 		localStorage.lp_total = parseInt(localStorage.lp_total) + parseInt(p_price[1]);
 	}
 	else {
+		// localStorage.lp_mrp = parseInt(p_mrp[1]);	
 		localStorage.lp_total = parseInt(p_price[1]);	
 	}
 	$('#lp_total_div').removeClass('hide');
@@ -287,7 +298,7 @@ function create_look() {
 </script>
 
 <script type="text/javascript">
-	$('#f_gen, #f_cat').change(function(){
+	$('#f_gen, #f_cat, #f_prov, #f_brd').change(function(){
 		ps_filter();
 	});
 	function ps_filter () {

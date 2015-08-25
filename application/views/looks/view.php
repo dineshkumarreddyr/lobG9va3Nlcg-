@@ -27,7 +27,7 @@
 	          </div>
 	          <div class="clearfix lookdetails">
 	            <div class="col-md-2 col-xs-2 no-pad lookdetails-img">
-	               <a href="#"><img src="<?php echo base_url();?>assets/images/d4.jpg" class="img-responsive"></a>
+	               <a href="#"><img src="<?php echo base_url();?>uploads/designers/<?php echo ($look['l_user_image'] == '') ? 'default.jpg' : $look['l_user_image']; ?>" class="img-responsive"></a>
 	            </div>
 	            <div class="col-md-8 col-xs-8 lookdetail-designer">
 	              <div class="clearfix"><a href="<?php echo base_url('designer/'.$look['l_uid']); ?>">by <?php echo $look['l_user']; ?></a></div>
@@ -42,7 +42,9 @@
 	      <div class="col-md-8 lookdesp-right">
 	        <h3><?php echo $look['l_title']; ?> <span><a href="#">{ <?php echo $look['lc_name']; ?> }</a></span></h3>
 	        <div class="wrap row">
+	        	<?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
 	            <div class="col-md-2 col-xs-4 mrpBig"><span class="webrupee">Rs.</span><?php echo $look['l_mrp']; ?></div>
+	        <?php endif; ?>
 	            <div class="col-md-2 col-xs-4 aftrdsntBig"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></div>
 	        </div>
 	        <div class="clearfix selectedprod-wrap">

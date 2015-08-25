@@ -41,7 +41,7 @@ class Productsmodel extends CI_Model {
             $condition[] = " p.p_name != '' "; 
         }
         if($gen != '') {
-            // $condition .= " AND p_name = '%".$pdt."%' "; 
+            $condition[] = " p.p_gender = '".$gen."' "; 
         }
         if($cat != '') {
             $condition[] = " p.p_category = ".$cat." "; 

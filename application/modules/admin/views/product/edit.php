@@ -71,6 +71,18 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
+                      <label>Gender</label>
+                      <?php
+                      $genders = array('Male'=>'Male', 'Female'=>'Female', 'Other' => 'Other');
+                      ?>
+                      <select class="form-control" name="gender" id="gender">
+                        <option value="">--Select Gender--</option>
+                        <?php foreach ($genders as $key => $gender) : ?>
+                        <option value="<?php echo $key; ?>" <?php if($product->p_gender == $key) { echo "selected"; } ?>><?php echo $gender; ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                  </div>
+                  <div class="form-group">
                       <label>Image URL</label>
                       <input class="form-control" placeholder="Image URL" name="image" id="image" value="<?php echo $product->p_image; ?>">
                   </div>

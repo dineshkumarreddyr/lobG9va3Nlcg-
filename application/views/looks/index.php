@@ -23,7 +23,7 @@
 				<select name="gender" id="s_gen" class="dropdown-select">
 					<option value="">Gender</option>
 					<?php
-					$genders = array("male" => "Male", "female" => "Female");
+					$genders = array('Male'=>'Male', 'Female'=>'Female', 'Other' => 'Other');
 					foreach ($genders as $key => $gender) {
 						?>
 					<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) { echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> ><?php echo $gender; ?></option>
@@ -74,7 +74,7 @@
 		?>
 		</ul>
 		
-	   <div class="clearfix">&nbsp;</div>
+	   <!-- <div class="clearfix">&nbsp;</div>
 	   <h4>By Provider</h4>
 	   <ul>
 		 <li><input id='six' type='checkbox' />
@@ -92,14 +92,14 @@
 		<li><input id='eight' type='checkbox' />
 			<label for='eight'><span></span>Fashionara
 			<ins><i>Fashionara</i></ins></label></li>
-		</ul>
+		</ul> -->
 		
-	 <div id="budget-wrapper">
+	 <!-- <div id="budget-wrapper">
 	   <h4>Budget <input type="text" id="slider-display" name="slider-display" value="0" /></h4>
 	   <div id="slider"></div>
-	 </div>
+	 </div> -->
 	 
-	 <div class="clearfix">&nbsp;</div>
+	 <!-- <div class="clearfix">&nbsp;</div>
 	 <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
 	  <option value="#ac725e">#ac725e</option>
 	  <option value="#d06b64">#d06b64</option>
@@ -125,10 +125,10 @@
 	  <option value="#f691b2">#f691b2</option>
 	  <option value="#cd74e6">#cd74e6</option>
 	  <option value="#a47ae2">#a47ae2</option>
-	</select></h4>
+	</select></h4> -->
 	 
 	 
-	  <div class="clearfix">&nbsp;</div>
+	  <!-- <div class="clearfix">&nbsp;</div>
 	  <h4>Size</h4>
 	  <div class="sizes clearfix">
 	  <input type="radio" name="size" id="small" value="small" checked="checked" /> 
@@ -141,12 +141,13 @@
       <label for="xlarge">XL</label>
 	  <input type="radio" name="size" id="xxlarge" value="xxlarge" />     
       <label for="xlarge">XXL</label>
-	  </div>
+	  </div> -->
 	 </div>
 	 <!--filters left end-->
 	 
 	 <div class="col-md-9 looks-list-wrap" id="looks_wrapper">
 
+    <?php if (count($looks)): ?>
     <?php foreach ($looks as $key => $look): ?>
 	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 	  <div class="col-md-3 trend-each">
@@ -158,11 +159,18 @@
 		  </ul>
 		</div>
 		<h4><?php echo $look['l_title']; ?></h4>
-		<div class="col-md-12 text-center"><span class="mrp"><?php echo $look['l_mrp']; ?></span>
-		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span></div>
+		<div class="col-md-12 text-center">
+		<?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
+		<span class="mrp"><?php echo $look['l_mrp']; ?></span>
+		<?php endif; ?>
+		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span>
+		</div>
 	  </div>
 	  </a>
-		<?php endforeach; ?>  
+	<?php endforeach; ?>
+	<?php else: ?>
+		No Looks found..
+	<?php endif; ?>
    </div>	  
    </div>
    </div>
@@ -190,7 +198,7 @@
 							   <div class="designer">
 								<!-- <div class="count girl">02</div> -->
 								<div class="designer-image">
-								   <img src="<?php echo base_url();?>assets/images/d3.jpg" class="img-responsive">
+								   <img src="<?php echo base_url();?>uploads/designers/<?php echo ($tdesigner->user_image == '') ? 'default.jpg' : $tdesigner->user_image; ?>" class="img-responsive">
 								</div>
 								<h3><?php echo $tdesigner->user_fname; ?></h3>
 								<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>

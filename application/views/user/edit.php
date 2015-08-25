@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-1 no-pad">
            <div class="designerpro-img">
-              <img src="<?php echo base_url(); ?>assets/images/d4.jpg" class="img-responsive">
+              <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
               <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
            </div> 
         </div>
@@ -65,8 +65,11 @@
           <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 					<div class="created-by">
 					<h3><?php echo $look['l_title']; ?></h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
+					<div class="col-md-12 clearfix text-center">
+          <?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
+            <span class="mrp"><span class="webrupee">Rs.</span><?php echo $look['l_mrp']; ?></span>
+					<?php endif; ?>
+          <span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span></div>
 				  </div>
           </a>
 				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
@@ -76,7 +79,7 @@
 				?>
 			
 				</div>
-				<ul class="pagination pull-right">
+				<!-- <ul class="pagination pull-right">
 	              <li class="disabled"><a href="#">«</a></li>
 	              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 	              <li><a href="#">2</a></li>
@@ -84,7 +87,7 @@
 	              <li><a href="#">4</a></li>
 	              <li><a href="#">5</a></li>
 	              <li><a href="#">»</a></li>
-                </ul>
+                </ul> -->
 		      </div>
 
 		      <!--profile starts-->
@@ -214,11 +217,11 @@
 	  </div>
 	  </div>
 
-       <div class="col-md-3 designerpro-right">    
-         <h3>Profile Statistics</h3>
-         <div class="designpro-right-main">
-           <div class="profile-right-each">
-             <h3>Profile Percentage</h3>
+   <div class="col-md-3 designerpro-right">    
+     <h3>Profile Statistics</h3>
+     <div class="designpro-right-main">
+      <!-- <div class="profile-right-each">
+        <h3>Profile Percentage</h3>
 			  <div id="bar-1" class="bar-main-container">
 			    <div class="wrap">
 			      <div class="bar-percentage" data-percentage="46"></div>
@@ -227,7 +230,7 @@
 			      </div>
 			    </div>
 			  </div>
-			</div>
+			</div> -->
 			<div class="profile-right-each">
               <ul class="procounts">
       	        <li><i class="flaticon-profile29"></i><br><span><?php echo count($d_looks); ?></span></li>

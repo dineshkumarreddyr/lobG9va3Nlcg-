@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-1 no-pad">
            <div class="designerpro-img">
-              <img src="<?php echo base_url(); ?>assets/images/d4.jpg" class="img-responsive">
+              <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
               <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
            </div> 
         </div>
@@ -52,7 +52,7 @@
 		 <ul class="nav nav-tabs">
 		   <li class="active"><a href="#looks" data-toggle="tab"><i class="flaticon-user7"></i>Looks Created</a></li>
 		   <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Profile</a></li>
-		   <li><a href="#wallet" data-toggle="tab"><i class="flaticon-money407"></i> Wallet</a></li>
+		   <!-- <li><a href="#wallet" data-toggle="tab"><i class="flaticon-money407"></i> Wallet</a></li> -->
 		 </ul>
 		    <div id="myTabContent" class="tab-content">
 		      <div class="tab-pane active in" id="looks">
@@ -74,8 +74,11 @@
           <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 					<div class="created-by">
 					<h3><?php echo $look['l_title']; ?></h3>
-					<div class="col-md-12 clearfix text-center"><span class="mrp"><span class="webrupee">Rs.</span>2300</span>
-					<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
+					<div class="col-md-12 clearfix text-center">
+          <?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
+            <span class="mrp"><span class="webrupee">Rs.</span><?php echo $look['l_mrp']; ?></span>
+          <?php endif; ?>
+          <span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span></div>
 				  </div>
           </a>
 				  <div class="rating"><img src="<?php echo base_url(); ?>assets/images/rating.png"></div>
@@ -85,7 +88,7 @@
 				?>
 			
 				</div>
-				<ul class="pagination pull-right">
+				<!-- <ul class="pagination pull-right">
 			              <li class="disabled"><a href="#">«</a></li>
 			              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 			              <li><a href="#">2</a></li>
@@ -93,7 +96,7 @@
 			              <li><a href="#">4</a></li>
 			              <li><a href="#">5</a></li>
 			              <li><a href="#">»</a></li>
-		                </ul>
+		                </ul> -->
 		      </div>
 
 		      <!--profile starts-->
@@ -112,7 +115,12 @@
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label" for="email">Email Address</label>
-              <div class="col-md-9 prolheight"><?php echo $designer_details->user_email; ?> </div>
+              <div class="col-md-9 prolheight">
+                <?php
+                  $email = explode('@', $designer_details->user_email);
+                  echo 'XXXXX@'.$email[1];
+                ?>
+              </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label" for="location">Location</label>
@@ -120,7 +128,10 @@
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label" for="mobile">Mobile</label>
-              <div class="col-md-9"><?php echo $designer_details->user_mobile; ?> </div>
+              <div class="col-md-9">
+                XXXX-XXXX-XX
+                <?php // echo $designer_details->user_mobile; ?>
+              </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label" for="Institution">Institution</label>
@@ -139,7 +150,7 @@
 	</div>
 
 			  <!--wallet starts-->
-		   <div class="tab-pane fade" id="wallet">
+		   <!-- <div class="tab-pane fade" id="wallet">
 		   	<div class="row earnings">
 		      <h3>Your Earnings</h3>
               <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>2348</strong></div>
@@ -225,16 +236,16 @@
                 </div>
               </div>
             </div>
-	  </div>
+	  </div> -->
 	  </div>
 	  </div>
 		  
 
-       <div class="col-md-3 designerpro-right">    
-         <h3>Profile Statistics</h3>
-         <div class="designpro-right-main">
-           <div class="profile-right-each">
-             <h3>Profile Percentage</h3>
+   <div class="col-md-3 designerpro-right">    
+     <h3>Profile Statistics</h3>
+     <div class="designpro-right-main">
+      <!-- <div class="profile-right-each">
+        <h3>Profile Percentage</h3>
 			  <div id="bar-1" class="bar-main-container">
 			    <div class="wrap">
 			      <div class="bar-percentage" data-percentage="46"></div>
@@ -243,7 +254,7 @@
 			      </div>
 			    </div>
 			  </div>
-			</div>
+			</div> -->
 			<div class="profile-right-each">
               <ul class="procounts">
       	        <li><i class="flaticon-profile29"></i><br><span><?php echo count($d_looks); ?></span></li>
@@ -278,10 +289,10 @@
         <ul>
           <p>Or share it on</p>
           <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
+          <!-- <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li> -->
         </ul>
       </div>
     </div>
@@ -311,13 +322,15 @@
 	});
 
    $('.share a').click(function(){
-    var url = '<?php echo base_url("look/"); ?>'+$(this).attr('data-value');
+    var url = '<?php echo base_url("looks/view"); ?>'+'/'+$(this).attr('data-value');
     $('#share_url').val(url);
 
    });
+
    $('#share_fb').click(function(){
-    var url = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURI('https://www.facebook.com/sharer/sharer.php?u='+$('#share_url').val());
-    window.open(url, '_blank');
+      window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent($('#share_url').val())+'&t='+encodeURIComponent('look'),'sharer','toolbar=0,status=0,width=626,height=436');
+      return false;
+
    });
 
     </script>

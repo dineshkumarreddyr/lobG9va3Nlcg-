@@ -23,7 +23,7 @@ class Productmodel extends CI_Model {
         return $data;
     }
 
-    function add($storeid = '', $name = '', $desc = '', $category = '0', $brand = '0', $provider = '0', $image = '', $url = '', $mrp = '0', $price = '0', $status = '0')
+    function add($storeid = '', $name = '', $desc = '', $category = '0', $brand = '0', $provider = '0', $image = '', $url = '', $mrp = '0', $price = '0', $status = '0', $gender = '')
     {
         $data = array(
             'p_storeId' => $storeid,
@@ -36,14 +36,15 @@ class Productmodel extends CI_Model {
             'p_category' => $category,
             'p_brand' => $brand,
             'p_provider' => $provider,
-            'p_status' => $status
+            'p_status' => $status,
+            'p_gender' => $gender
             );
         $this->db->insert('products', $data);
         $product_id = $this->db->insert_id();
         return $product_id;
     }
 
-    function update($product_id = 0, $storeid = '', $name = '', $desc = '', $category = '0', $brand = '0', $provider = '0', $image = '', $url = '', $mrp = '0', $price = '0', $status = '0')
+    function update($product_id = 0, $storeid = '', $name = '', $desc = '', $category = '0', $brand = '0', $provider = '0', $image = '', $url = '', $mrp = '0', $price = '0', $status = '0', $gender = '')
     {
         $data = array(
             'p_storeId' => $storeid,
@@ -56,7 +57,8 @@ class Productmodel extends CI_Model {
             'p_category' => $category,
             'p_brand' => $brand,
             'p_provider' => $provider,
-            'p_status' => $status
+            'p_status' => $status,
+            'p_gender' => $gender
             );
 
         $this->db->where('p_id', $product_id);

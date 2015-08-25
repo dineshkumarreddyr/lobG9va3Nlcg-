@@ -30,7 +30,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="desp-content"><strong>Provider:</strong> <?php echo $product['provider_name']; ?></div>
-						<div class="clearfix desp-content"><strong>Available Sizes:</strong> 
+						<!-- <div class="clearfix desp-content"><strong>Available Sizes:</strong> 
 							<ul class="sizes">
 								<li>xxl</li>
 								<li class="nosize">xl</li>
@@ -38,20 +38,32 @@
 								<li class="nosize">s</li>
 								<li>xs</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-md-6">
 						<div class="desp-content"><strong>Brand:</strong> <?php echo $product['brand_name']; ?></div>
 						<div class="desp-content"><strong>Category:</strong> <?php echo $product['pc_name']; ?></div>
-						<div class="desp-content"><strong>Fabric:</strong> Cotton</div>
+						<!-- <div class="desp-content"><strong>Fabric:</strong> Cotton</div> -->
 					</div>
 				</div>
 				<div class="row btn-wrap">
 					<div class="col-md-6"><button class="favbtn">Add to Favourites</button></div>
-					<div class="col-md-6"><a href="<?php echo $product['p_url']; ?>" target="_blank" class="buybtn">Buy from <?php echo $product['provider_name']; ?></a></div>
+					<div class="col-md-6">
+					<button id="goto_providers" onclick="OpenInNewTab(this.vaue);" value="<?php echo $product['p_url']; ?>" class="buybtn">Buy from <?php echo $product['provider_name']; ?></button>
+					<!-- <a href="<?php echo $product['p_url']; ?>" target="_blank" class="buybtn">Buy from <?php echo $product['provider_name']; ?></a> -->
+					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-	
+<script type="text/javascript">
+$('#goto_providers').click(function(){
+	var url = $(this).val().split(',');
+  	for(var i=0;i < url.length; i++) {
+  	var win = window.open(url[i], '_blank');
+  	// win.focus();
+  }
+
+});
+</script>

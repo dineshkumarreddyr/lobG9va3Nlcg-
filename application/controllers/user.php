@@ -46,6 +46,8 @@ class User extends CI_Controller {
 			
 			$looks[] = array(
 				'l_title' => $look->l_name,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price,
 				'l_products' => $lps,
 				'l_id' => $look->l_id
 			);
@@ -96,6 +98,8 @@ class User extends CI_Controller {
 			
 			$looks[] = array(
 				'l_title' => $look->l_name,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price,
 				'l_products' => $lps,
 				'l_id' => $look->l_id
 			);

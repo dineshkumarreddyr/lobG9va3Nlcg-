@@ -28,7 +28,7 @@ class Looksmodel extends CI_Model {
     // get look details by look id
     function look_details($lid = 0)
     {
-        $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id ,u.user_fname, count(DISTINCT(lv.lv_ip)) as lv_count FROM looks l, l_categories lc, users u, l_views lv WHERE lv.lv_lookId = l.l_id AND u.user_id = l.l_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid) ." ");
+        $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id, u.user_fname, ud.user_image, count(DISTINCT(lv.lv_ip)) as lv_count FROM looks l, l_categories lc, users u, user_details ud, l_views lv WHERE lv.lv_lookId = l.l_id AND u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid) ." ");
         $data = $query->result();
         return $data;
     }
@@ -36,7 +36,7 @@ class Looksmodel extends CI_Model {
     // get looks by popular designer
     function by_popular_designers()
     {
-        $query = $this->db->query("SELECT l.*, u.user_fname FROM looks l, users u WHERE u.user_id = l.l_uid AND l.l_status = '1' LIMIT 8");
+        $query = $this->db->query("SELECT l.*, u.user_fname, ud.user_image FROM looks l, users u, user_details ud WHERE u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_status = '1' LIMIT 8");
         $data = $query->result();
         return $data;
     }
@@ -85,7 +85,7 @@ class Looksmodel extends CI_Model {
         $this->db->insert_batch('l_products', $data);
     }
 
-    function s_looks($look = '', $gender = 0, $category = 0)
+    function s_looks($look = '', $gender = '', $category = 0)
     {
         $condition = array();
         if($look != '') {
@@ -93,6 +93,9 @@ class Looksmodel extends CI_Model {
         }
         else {
             $condition[] = " l.l_name != ''";
+        }
+        if($gender != '') {
+            $condition[] = " l.l_gender = '".$gender."' "; 
         }
         if($category != '') {
             $condition[] = " l.l_category = ".$category." "; 
@@ -111,16 +114,16 @@ class Looksmodel extends CI_Model {
         $condition = array();
         $condition[] = " p.p_name != ''";
         if($gen != '') {
-            // $condition[] = " p.p_name LIKE '%".$pdt."%' "; 
+            $condition[] = " p.p_gender LIKE '".$gen."' "; 
         }
         if($cat != '') {
             $condition[] = " p.p_category = ".$cat." "; 
         }
         if($prov != '') {
-            $condition .= " AND p.p_provider = ".$prov." "; 
+            $condition[] = " p.p_provider = ".$prov." "; 
         }
         if($brd != '') {
-            $condition .= " AND p.p_brand = ".$brd." "; 
+            $condition[] = " p.p_brand = ".$brd." "; 
         }
         $condition = implode(' AND ', $condition);
 
