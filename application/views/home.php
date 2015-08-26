@@ -65,7 +65,7 @@
 		<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
 	  <div class="col-md-3 trend-each">
         <div class="listimg">
-		  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive lazy">
+		  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="lazy">
 		</div>
 		<h4><?php echo $tproduct->p_name; ?></h4>
 		<div class="col-md-12 text-center">
