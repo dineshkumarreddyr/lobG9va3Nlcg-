@@ -23,69 +23,163 @@
   </head>
   <body>
 
+    <?php if(!$this->session->userdata('uid')): ?>
   	<!--signin modal starts-->
-  	<?php if(!$this->session->userdata('uid')): ?>
-  	<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-lg">
-  			<div class="modal-content modal-wrap">
-  				<div class="modal-header">
-  					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
-  						<img src="<?php echo base_url();?>assets/images/close.png"></span>
-  					</button>
-  				</div>
-  				<div class="col-md-6">
-  					<h2>Login In</h2>
-  					<form accept-charset="" action="" class=""  method="">
-  						<div class='row'>
-  							<div class='col-xs-12 form-group required'>
-  								<label class='control-label'>E-mail ID</label>
-  								<input class='form-control' type='text' name="login_email" id="login_email">
-  							</div>
-  						</div>
-  						<div class='row'>
-  							<div class='col-xs-12 form-group required'>
-  								<label class='control-label'>Password</label>
-  								<input class='form-control' type="password" name="login_pass" id="login_pass">
-  							</div>
-  						</div>
-  						<div class='col-xs-12 form-group'>
-  							<button type="submit" id="login_submit" name="login_submit" class="submit">Submit</button>
-  						</div>
-  					</form>
-  				</div>
+  <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-login">
+    <div class="modal-content modal-wrap">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
+  </button>
+      </div>
+      <div class="col-md-5 no-pad">
+        <img src="<?php echo base_url();?>assets/images/login-img.jpg" alt="login image" class="img-responsive">
+   </div>
+   
+   <div class="col-md-6 signup-main">
+    <div class="row">
+     <h2>Login to Lookser</h2>
+     <div class="row with">
+       <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+        alt="login with facebook" class="img-responsive"></a></div>
+        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+         alt="login with google plus" class="img-responsive"></a></div>
+     </div> 
 
-  				<div class="col-md-6 signup-main">
-  					<h2>No Account yet? Register.</h2>
-  					<form accept-charset="" action="" class=""  method="">
-  						<div class='row'>
-  							<div class='col-xs-12 form-group required'>
-  								<label class='control-label'>Full Name</label>
-  								<input class='form-control' type='text'>
-  							</div>
-  						</div>
-  						<div class='row'>
-  							<div class='col-xs-12 form-group required'>
-  								<label class='control-label'>E-mail ID</label>
-  								<input class='form-control' type='text'>
-  							</div>
-  						</div>
-  						<div class='row'>
-  							<div class='col-xs-12 form-group required'>
-  								<label class='control-label'>Password</label>
-  								<input class='form-control' type="password">
-  							</div>
-  						</div>
-  						<div class='col-xs-12 form-group'>
-  							<button class="submit">Submit</button>
-  						</div>
-  					</form>
-  				</div>
-  				<div class="clearfix"></div>
-  			</div>
-  		</div>
-  	</div>
-  	<?php endif; ?>
+          <form accept-charset="" action="" class=""  method="">
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>E-mail ID</label>
+                <input class='form-control' type='text' name="login_email" id="login_email">
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Password</label>
+                <input class='form-control' type="password" name="login_pass" id="login_pass">
+              </div>
+            </div>
+              <div class='form-group'>
+              <button type="submit" id="login_submit" name="login_submit" class="submit">Submit</button>
+              </div>
+          </form>
+   </div>
+   </div>
+   <div class="clearfix"></div>
+    </div>
+  </div>
+  </div>
   	<!-- signin modal ends-->
+
+  <!--signup user starts-->
+  <div class="modal fade" id="signupUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-login">
+    <div class="modal-content modal-wrap">
+   <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
+    </button>
+      </div>
+      <div class="col-md-5 no-pad">
+        <img src="<?php echo base_url();?>assets/images/signupuser.jpg" alt="login image" class="img-responsive">
+    </div>
+    
+    <div class="col-md-6 signup-main">
+      <div class="row">
+      <h2>Signup as User</h2>
+      <div class="row with">
+        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+         alt="login with facebook" class="img-responsive"></a></div>
+         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+          alt="login with google plus" class="img-responsive"></a></div>
+      </div> 
+
+    <form accept-charset="" action="" class=""  method="">
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Full Name</label>
+                <input class='form-control' type='text'>
+              </div>
+            </div>
+       <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>E-mail ID</label>
+                <input class='form-control' type='text'>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Password</label>
+                <input class='form-control' type="password">
+              </div>
+            </div>
+              <div class='form-group'>
+                 <button class="submit">Signup</button>
+              </div>
+          </form>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+  </div>
+  </div>
+  <!-- signup user ends-->
+
+  <!--signup designer starts-->
+  <div class="modal fade" id="signupDsgnModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-login">
+    <div class="modal-content modal-wrap">
+   <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
+    </button>
+      </div>
+      <div class="col-md-5 no-pad">
+        <img src="<?php echo base_url();?>assets/images/login-img.jpg" alt="login image" class="img-responsive">
+    </div>
+    
+    <div class="col-md-6 signup-main">
+      <div class="row">
+      <h2>Login to Lookser</h2>
+      <div class="row with">
+        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+         alt="login with facebook" class="img-responsive"></a></div>
+         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+          alt="login with google plus" class="img-responsive"></a></div>
+      </div> 
+
+    <form accept-charset="" action="" class=""  method="">
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Full Name</label>
+                <input class='form-control' type='text'>
+              </div>
+            </div>
+       <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>E-mail ID</label>
+                <input class='form-control' type='text'>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Password</label>
+                <input class='form-control' type="password">
+              </div>
+            </div>
+              <div class='form-group'>
+                 <button class="submit">Login</button>
+              </div>
+          </form>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+  </div>
+  </div>
+  <!-- signup designer ends-->
+    <?php endif; ?>
 
   	<!-- head top starts--> 
   	<div class="container-fluid head-top">
@@ -115,10 +209,10 @@
   							<li>
   								<div class="ui-group-buttons">
   									<button type="button" class="btn userbtn btn-xs" data-toggle="modal" 
-  								data-target="#LoginModal">Signup As User</button>
+  								data-target="#signupUserModal">Signup As User</button>
   									<div class="or or-xs"></div>
   									<button type="button" class="btn desbtn btn-xs" data-toggle="modal" 
-  								data-target="#LoginModal">Signup As Designer</button>
+  								data-target="#signupDsgnModal">Signup As Designer</button>
   								</div>
   							</li>
   						</ul>
