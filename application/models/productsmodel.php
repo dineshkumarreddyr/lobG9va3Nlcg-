@@ -18,7 +18,7 @@ class Productsmodel extends CI_Model {
 
     function get_trending_products()
     {
-        $query = $this->db->query("SELECT * FROM products LIMIT 0,8");        
+        $query = $this->db->query("SELECT * FROM products ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
     }
@@ -48,7 +48,7 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition;
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND()";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
@@ -67,7 +67,7 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition;
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition." ORDER BY RAND()";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;

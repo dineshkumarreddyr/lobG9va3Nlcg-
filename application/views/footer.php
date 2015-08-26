@@ -93,6 +93,16 @@
 
 <script src="<?php echo base_url();?>assets/js/color.js"></script>
 <script>$('.carousel').carousel();</script>
+<!-- Lazy laod -->
+<script src="<?php echo base_url();?>assets/js/jquery.lazyload.js"></script>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $(function() {
+      $("img.lazy").lazyload();
+    });
+  });
+</script>
+<!-- Lazy laod -->
 <script>
 function contentSwitcher(settings){
   var settings = {

@@ -4,7 +4,7 @@
 	data-interval="3000">
 	<div class="carousel-inner">
 		<div class="item active">
-			<img class="img-responsive" src="<?php echo base_url();?>assets/images/listing.jpg" alt="First Slide">
+			<img class="img-responsive lazy" data-original="<?php echo base_url();?>assets/images/listing.jpg" alt="First Slide">
 		</div><!-- /. Item Active -->
 	</div><!-- /. Carousel-Inner -->
 </div><!-- /# Slideshow .Carousel -->
@@ -148,7 +148,7 @@
 					<a href="<?php echo base_url('product/'.$product->p_id);?>">
 						<div class="col-md-3 trend-each">
 							<div class="listimg">
-								<img src="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>" alt="<?php echo $product->p_name; ?>" class="img-responsive">
+								<img data-original="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>" alt="<?php echo $product->p_name; ?>" class="img-responsive lazy">
 							</div>
 							<h4><?php echo $product->p_name; ?></h4>
 							<div class="col-md-12 text-center">
@@ -172,7 +172,7 @@
 </div>
 <!-- trending products -->
 
-
+	<?php if($tdesigners[0]->user_id != ''): ?>
 	<!--top designers carousel-->
 	<div class="carousel-designers">
 		<div class="container text-center">
@@ -223,6 +223,7 @@
 		</div>
 	</div>
 	<!--top designers carousel-->
+	<?php endif; ?>
 
 <script type="text/javascript">
 	function pf_search() {
@@ -293,7 +294,7 @@
 			content += '<a href="'+ base_url + '/' + product.p_id + '">'+
 						'<div class="col-md-3 trend-each">'+
 							'<div class="listimg">'+
-								'<img src="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="img-responsive">'+
+								'<img data-original="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="img-responsive lazy">'+
 							'</div>'+
 							'<h4>'+product.p_name+'</h4>'+
 							'<div class="col-md-12 text-center">'+
@@ -305,5 +306,6 @@
 		});
 
 		$('#pdts_wrapper').html(content);
+		$("img.lazy").lazyload();
 	}
 </script>

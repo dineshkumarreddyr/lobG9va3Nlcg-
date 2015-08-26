@@ -32,21 +32,21 @@
 	<!--categories-->
 	<div class="container categories-main">
       <div class="col-md-4 caterogy-each">
-	    <img src="<?php echo base_url();?>assets/images/men.jpg" class="img-responsive">
+	    <img data-original="<?php echo base_url();?>assets/images/men.jpg" class="img-responsive lazy">
 		<div class="category-text">
 		<h3>men</h3>
 		<div class="bluebtn"><a href="<?php echo base_url('looks?gender=male'); ?>">shop now</a></div>
 		</div>
 	  </div>
 	  <div class="col-md-4 caterogy-each">
-	    <img src="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive">
+	    <img data-original="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive lazy">
 		<div class="category-text">
 		<h3>Our Looks</h3>
 		<div class="pinkbtn"><a href="<?php echo base_url('looks'); ?>">Explore</a></div>
 		</div>
 	  </div>
 	  <div class="col-md-4 caterogy-each">
-	    <img src="<?php echo base_url();?>assets/images/women.jpg" class="img-responsive">
+	    <img data-original="<?php echo base_url();?>assets/images/women.jpg" class="img-responsive lazy">
 		<div class="category-text">
 		<h3>women</h3>
 		<div class="bluebtn"><a href="<?php echo base_url('looks?gender=female'); ?>">shop now</a></div>
@@ -65,7 +65,7 @@
 		<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
 	  <div class="col-md-3 trend-each">
         <div class="listimg">
-		  <img src="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive">
+		  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive lazy">
 		</div>
 		<h4><?php echo $tproduct->p_name; ?></h4>
 		<div class="col-md-12 text-center">
@@ -100,14 +100,14 @@
 	    <div class="pattern<?php echo count($pbd_look['l_products']); ?>">
 		  <ul>
 		    <?php foreach ($pbd_look['l_products'] as $key => $lp): ?>
-			<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
 			<?php endforeach; ?>
 		  </ul>
 		</div>
 	  </a>
 		<div class="created-by">
       	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
-		<div class="created-image"><img src="<?php echo base_url();?>uploads/designers/<?php echo ($pbd_look['l_user_image'] == '') ? 'default.jpg' : $pbd_look['l_user_image']; ?>" class="img-responsive"></div>
+		<div class="created-image"><img data-original="<?php echo base_url();?>uploads/designers/<?php echo ($pbd_look['l_user_image'] == '') ? 'default.jpg' : $pbd_look['l_user_image']; ?>" class="img-responsive lazy"></div>
       	</a>
       	<a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
 		<h3><?php echo $pbd_look['l_title']; ?></h3>
@@ -134,7 +134,7 @@
 	</div>
 	<!--creators-->
 	
-		
+	<?php if($tdesigners[0]->user_id != ''): ?>	
 	<!--top designers carousel-->
 	<div class="carousel-designers">
 		<div class="container text-center">
@@ -187,6 +187,7 @@
 		</div>
 	</div>
 	<!--top designers carousel-->
+	<?php endif; ?>
 	
 	<!--get look-->
 	<div class="getlook-wrap">
