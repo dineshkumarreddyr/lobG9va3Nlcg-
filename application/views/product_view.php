@@ -30,15 +30,15 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="desp-content"><strong>Provider:</strong> <?php echo $product['provider_name']; ?></div>
-						<!-- <div class="clearfix desp-content"><strong>Available Sizes:</strong> 
+						<div class="clearfix desp-content"><strong>Available Sizes:</strong> 
 							<ul class="sizes">
-								<li>xxl</li>
-								<li class="nosize">xl</li>
+								<li><?php echo $product['p_size']; ?></li>
+								<!-- <li class="nosize">xl</li>
 								<li>l</li>
 								<li class="nosize">s</li>
-								<li>xs</li>
+								<li>xs</li> -->
 							</ul>
-						</div> -->
+						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="desp-content"><strong>Brand:</strong> <?php echo $product['brand_name']; ?></div>

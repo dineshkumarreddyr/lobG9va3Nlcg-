@@ -51,6 +51,15 @@
                       </select>
                   </div>
                   <div class="form-group">
+                      <label>Category</label>
+                      <select class="form-control" name="category" id="category">
+                        <option value="">--Select Category--</option>
+                        <?php foreach ($p_cat as $key => $p_cate) : ?>
+                        <option value="<?php echo $p_cate; ?>"><?php echo $key; ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                  </div>
+                  <div class="form-group">
                       <label>File</label>
                       <input type="file" class="form-control" name="filename" id="filename">
                   </div>

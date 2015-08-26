@@ -60,6 +60,10 @@
 	<div class="container products-wrap">
 		<div class="row">
 			<div class="col-md-3 filters-left"> 
+				<?php
+				if(count($s_pcategories)):
+					$pcategories = $s_pcategories;
+				?>
 				<h4>by Categories</h4>
 				<ul class="f_cat">
 					<?php
@@ -73,7 +77,7 @@
 					}
 					?>
 				</ul>
-				
+				<?php endif; ?>
 				<div class="clearfix">&nbsp;</div>
 				<h4>By Provider</h4>
 				<ul class="f_prov">

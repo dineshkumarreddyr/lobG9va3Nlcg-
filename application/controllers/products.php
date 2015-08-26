@@ -22,7 +22,7 @@ class Products extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('productsmodel', 'products_model');
-        $this->load->model('admin/pcategorymodel', 'pcategory_model');
+        $this->load->model('pcategorymodel', 'pcategory_model');
         $this->load->model('admin/providermodel', 'provider_model');
         $this->load->model('trackingmodel', 'tracking_model');
         $this->load->model('usermodel', 'user_model');
@@ -30,16 +30,26 @@ class Products extends CI_Controller {
 
 	public function index()
 	{
-		$data['pcategories'] = $this->pcategory_model->get_pcategories();
+		$data['pcategories'] = $this->pcategory_model->get_pcategories(0);
 		$data['providers'] = $this->provider_model->get_providers();
 		$data['tdesigners'] = $this->user_model->get_top_designers();
 		// $data['products'] = $this->products_model->get_products();
 
 		$s = $this->input->get('s');
 		$gender = $this->input->get('gender');
-		$category = $this->input->get('category');
+		$category = intval($this->input->get('category'));
+		
+		$s_cat = array();
+		$data['s_pcategories'] = array();
+		if($category){
+			$s_pcategories = $this->pcategory_model->get_pcategories($category);
+			$data['s_pcategories'] = $s_pcategories;
+			foreach ($s_pcategories as $key => $s_pcategory) {
+				$s_cat[] = $s_pcategory->pc_id;
+			}
+		}
 
-		$data['products'] = $this->products_model->s_products($s, $gender, $category);
+		$data['products'] = $this->products_model->s_products($s, $gender, $s_cat);
 		// print_r($data['products']);exit;
 
 		$seo = array(

@@ -177,7 +177,15 @@ class Looks extends CI_Controller {
 		$f_prov = $this->input->post('f_prov');
 		$f_brd = $this->input->post('f_brd');
 
-		$data = $this->looks_model->f_products($f_gen, $f_cat, $f_prov, $f_brd);
+		$s_cat = array();
+		if($f_cat){
+			$s_pcategories = $this->pcategory_model->get_pcategories($f_cat);
+			foreach ($s_pcategories as $key => $s_pcategory) {
+				$s_cat[] = $s_pcategory->pc_id;
+			}
+		}
+
+		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd);
 		echo json_encode($data);
 	}
 

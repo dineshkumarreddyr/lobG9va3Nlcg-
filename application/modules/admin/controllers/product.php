@@ -194,8 +194,13 @@ class Product extends MX_Controller {
         // print_r($f_brands);
 
         $f_cat = array();
+        $p_cat = array();
         foreach ($pcategories as $key => $pcategory) {
             $f_cat[$pcategory->pc_name] = $pcategory->pc_id;
+
+            if($pcategory->pc_pid == 0) {
+                $p_cat[$pcategory->pc_name] = $pcategory->pc_id;
+            }
         }
         // print_r($f_cat);
 
@@ -211,7 +216,11 @@ class Product extends MX_Controller {
             //Import uploaded file to Database
             $handle = fopen($_FILES['filename']['tmp_name'], "r");
 
-            while (($data = fgetcsv($handle, 10000, ",")) !== FALSE) {
+            $provider = $_POST['provider'];
+            $gender = $_POST['gender'];
+            $category = $_POST['category'];
+
+            while (($data = fgetcsv($handle, 99000, ",")) !== FALSE) {
                 $storeId = $data[0];
                 $name = addslashes($data[1]);
                 $desc = addslashes($data[2]);
@@ -235,12 +244,12 @@ class Product extends MX_Controller {
                 $cats = explode('>', $data[7]);
                 $cat = end($cats);
                 if(array_key_exists($cat, $f_cat)) {
-                    $category = $f_cat[$cat];
+                    $s_category = $f_cat[$cat];
                 }
                 else {
-                    $cat_id = $this->pcategory_model->add_pcategory('0', $cat, '', '1');
+                    $cat_id = $this->pcategory_model->add_pcategory($category, $cat, '', '1');
                     $f_cat[$cat] = $cat_id;
-                    $category = $cat_id;
+                    $s_category = $cat_id;
                 }
 
                 $brand = $data[8];
@@ -253,13 +262,20 @@ class Product extends MX_Controller {
                     $brand = $brand_id;
                 }
 
-                $provider = $_POST['provider'];
-                $gender = $_POST['gender'];
+                $size = $data[16];
 
 
-                $import="INSERT into products(p_storeId, p_name, p_desc, p_image, p_oimage, p_url, p_mrp, p_price, p_category, p_brand, p_provider, p_gender, p_status) values('$storeId', '$name', '$desc', '$image', '$oimage', '$url', '$mrp', '$price', '$category', '$brand', '$provider', '$gender', '1')";
 
-                mysql_query($import) or die(mysql_error());
+                try {
+                    
+                $import="INSERT into products(p_storeId, p_name, p_desc, p_image, p_oimage, p_url, p_mrp, p_price, p_category, p_brand, p_provider, p_gender, p_status, p_size) values('$storeId', '$name', '$desc', '$image', '$oimage', '$url', '$mrp', '$price', '$s_category', '$brand', '$provider', '$gender', '1', '$size')";
+
+                mysql_query($import);
+
+                } catch (Exception $e) {
+                    
+                }
+                 // or die(mysql_error());
             }
 
             fclose($handle);
@@ -269,6 +285,7 @@ class Product extends MX_Controller {
             //view upload form
         }
         $data['providers'] = $this->provider_model->get_active_providers();
+        $data['p_cat'] = $p_cat;
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
 

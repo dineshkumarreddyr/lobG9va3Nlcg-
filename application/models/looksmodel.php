@@ -109,15 +109,15 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
-    function f_products($gen = '', $cat = 0, $prov = 0, $brd = 0)
+    function f_products($gen = '', $cat = array(), $prov = 0, $brd = 0)
     {
         $condition = array();
         $condition[] = " p.p_name != ''";
         if($gen != '') {
             $condition[] = " p.p_gender LIKE '".$gen."' "; 
         }
-        if($cat != '') {
-            $condition[] = " p.p_category = ".$cat." "; 
+        if(count($cat)) {
+            $condition[] = " p.p_category in (".implode(',', $cat).") "; 
         }
         if($prov != '') {
             $condition[] = " p.p_provider = ".$prov." "; 
@@ -127,7 +127,7 @@ class Looksmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition;
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND() ";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;

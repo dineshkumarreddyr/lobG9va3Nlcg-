@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $seo['title']; ?> || lookser.com</title>
   <meta name="description" content="<?php echo $seo['description']; ?>" />
-  <meta name="keywords" content="<?php echo $seo['keywords']; ?>" />
+  <meta name="keywords" content="<?php echo $seo['keywords']; ?>, fashion looks, classy looks, awesome looks, lookser shop, fashion one stop, perfection looks." />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Bootstrap -->
