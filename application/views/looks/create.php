@@ -136,11 +136,11 @@
 			   </div>
 			   <div class="col-md-9 prodpick-details">
 			     <div class="row">
-				   <h3 id="p_name_<?php echo $product->p_id; ?>"><?php echo $product->p_name; ?></h3>
+				   <a href="<?php echo base_url('product/'.$product->p_id); ?>" target="_blank"><h3 id="p_name_<?php echo $product->p_id; ?>"><?php echo $product->p_name; ?></h3></a>
 				   <div class="col-md-5 prodpick-left">
 				    <div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-					<div class="provider"><img src="<?php echo base_url();?>assets/images/jabong.png"></div>
-					<div class="brand"><span>Brand</span><br>Jabong</div>					
+					<div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>
+					<div class="brand"><span>Brand</span><br>Flipkart</div>					
 				   </div>
 				   <div class="col-md-7 prodpick-right">
 				     <div class="mrp" id="p_mrp_<?php echo $product->p_id; ?>"><span class="webrupee"> Rs.</span>  <?php echo $product->p_mrp; ?></div>
@@ -200,7 +200,7 @@ function add_to_look(p_id) {
 	var p_price = $('#p_price_'+p_id).text();
 	// var p_mrp = $('#p_mrp_'+p_id).text();
 	var p_image = $('#p_image_'+p_id).attr('src');
-
+	var base_url = '<?php echo base_url("product/");?>';
 	var lp = '<div class="selectedprod-each" id="lp_'+p_id+'">' +
 			   '<div class="row">' +
 			   '<div class="col-md-2">' +
@@ -208,7 +208,7 @@ function add_to_look(p_id) {
 			   '</div>' +
 			   '<div class="col-md-10 prodpick-details">' +
 			     '<div class="row">' +
-				   '<h3 id="lp_name_'+p_id+'">'+p_name+'</h3>' +
+				   '<a href="'+base_url+'/'+p_id+'" target="_blank"><h3 id="lp_name_'+p_id+'">'+p_name+'</h3></a>' +
 				   '<div class="col-md-7 prodpick-left">' +
 					'<div class="provider"><img src="<?php echo base_url(); ?>assets/images/jabong.png"></div>' +
 				   '</div>' +
@@ -362,7 +362,7 @@ function create_look() {
 	function generate_products (products) {
 		var content = '';
 		if(products.length == 0) {
-			content = 'No Products found...';
+			content = '<p>No results found...</p>';
 		}
 		$.each(products, function(index, product){
 			var base_url = '<?php echo base_url("product/");?>';
@@ -374,11 +374,11 @@ function create_look() {
 						   '</div>'+
 						   '<div class="col-md-9 prodpick-details">'+
 						     '<div class="row">'+
-							   '<h3 id="p_name_'+product.p_id+'">'+product.p_name+'</h3>'+
+							   '<a href="'+base_url+'/'+product.p_id+'" target="_blank"><h3 id="p_name_'+product.p_id+'">'+product.p_name+'</h3></a>'+
 							   '<div class="col-md-5 prodpick-left">'+
 							    '<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>'+
-								'<div class="provider"><img src="<?php echo base_url();?>assets/images/jabong.png"></div>'+
-								'<div class="brand"><span>Brand</span><br>Jabong</div>'+
+								'<div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>'+
+								'<div class="brand"><span>Brand</span><br>Filpkart</div>'+
 							   '</div>'+
 							   '<div class="col-md-7 prodpick-right">'+
 							     '<div class="mrp"><span>MRP: Rs</span> '+product.p_mrp+'</div>'+
