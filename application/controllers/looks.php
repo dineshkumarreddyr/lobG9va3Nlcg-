@@ -143,6 +143,7 @@ class Looks extends CI_Controller {
 	{
 		$response = array();
 		$l_category = $this->input->post('l_cat');
+		$l_gender = $this->input->post('l_gender');
 		$l_name = $this->input->post('l_name');
 		$l_pids = $this->input->post('l_pids');
 		$l_price = $this->input->post('l_price');
@@ -152,7 +153,7 @@ class Looks extends CI_Controller {
 		// Check look name already exists or not.
 		$l_name_check = $this->looks_model->check_look_name($l_category, $l_name);
 		if($l_name_check == 0) {
-			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid, $l_price);
+			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid, $l_price, $l_gender);
 			if($l_id) {
 				$this->looks_model->insert_lproducts($l_id, $l_pids);
 
@@ -172,8 +173,9 @@ class Looks extends CI_Controller {
 	*/
 	public function f_ajax()
 	{
-		$f_gen = $this->input->post('f_gen');
-		$f_cat = $this->input->post('f_cat');
+		$f_name = addslashes($this->input->post('f_name'));
+		$f_gen = addslashes($this->input->post('f_gen'));
+		$f_cat = addslashes($this->input->post('f_cat'));
 		$f_prov = $this->input->post('f_prov');
 		$f_brd = $this->input->post('f_brd');
 
@@ -185,7 +187,7 @@ class Looks extends CI_Controller {
 			}
 		}
 
-		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd);
+		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd, $f_name);
 		echo json_encode($data);
 	}
 

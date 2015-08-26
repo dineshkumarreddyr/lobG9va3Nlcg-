@@ -12,7 +12,7 @@
 						<select class="minimal" name="f_gen" id="f_gen">
 							<option value="">By Gender</option>
 							<?php
-							$genders = array('Male'=>'Male', 'Female'=>'Female', 'Other' => 'Other');
+							$genders = array('Male'=>'Male', 'Female'=>'Female');
 							foreach ($genders as $key => $gender) {
 								?>
 							<option value="<?php echo $key; ?>"><?php echo $gender; ?></option>
@@ -84,7 +84,7 @@
                   <div class="col-md-6">
                   	<input placeholder="Look name" value="" id="l_name" name="l_name" class="form-control" type="text">
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-6">
 	                  <select class="minimal" id="l_cat" name="l_cat">
 		     			<option value="">--Look Category--</option>
 		     			<?php
@@ -96,8 +96,21 @@
 							?>
 		     		</select>
                   </div>
-                  <div class="col-md-3">
-                  	<input type="button" class="form-control" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
+                  <div class="col-md-6">
+	                  <select class="minimal" name="l_gen" id="l_gen">
+							<option value="">--Gender--</option>
+							<?php
+							$genders = array('Male'=>'Male', 'Female'=>'Female');
+							foreach ($genders as $key => $gender) {
+								?>
+							<option value="<?php echo $key; ?>"><?php echo $gender; ?></option>
+								<?php
+							}
+							?>
+						</select>
+                  </div>
+                  <div class="col-md-6">
+                  	<input type="button" class="form-control savelook" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
                   </div>
 			 	</div>
 			 </div>
@@ -107,6 +120,9 @@
 		 
 		 <div class="col-md-5"> 
 	       <p>Showing <strong><?php echo count($products); ?></strong> Results </p>
+		   <div class="create-search">
+		     <input type="text" name="f_name" id="f_name" class="form-control" placeholder="Search by Product name">
+		   </div>
 		   <div class="createlook-right" id="f_products_wrapper">
 		     <!--list one-->
 		     <?php
@@ -264,6 +280,7 @@ function remove_lp(p_id) {
 function create_look() {
 	var l_cat = $('#l_cat').val();
 	var l_name = $('#l_name').val();
+	var l_gender = $('#l_gen').val();
 	if(l_cat == '') {
 		alert('Please select look category');
 		return false;
@@ -272,12 +289,16 @@ function create_look() {
 		alert('Please enter look name');
 		return false;
 	}
+	if(l_gender == '') {
+		alert('Please select gender');
+		return false;
+	}
 	var l_price = $('#lp_total').text().split('s. ')[1];
 
 	$.ajax({
 		type:"POST",
 		url:'<?php echo base_url("looks/create_ajax");?>',
-		data:{'l_cat':l_cat,'l_name':l_name,'l_price':l_price,'l_pids':localStorage.p_ids},
+		data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_price':l_price,'l_pids':localStorage.p_ids},
 		dataType:"json",
 		success: function(data){
 			if(data.status == 'success') {
@@ -301,14 +322,20 @@ function create_look() {
 	$('#f_gen, #f_cat, #f_prov, #f_brd').change(function(){
 		ps_filter();
 	});
+	$('#f_name').keyup(function(){
+		ps_filter();
+	});
+
 	function ps_filter () {
 		// var s_pdt = $('#s_pdt').val();
+		var f_name = $('#f_name').val();	// get search name value
 		var f_gen = $('#f_gen').val();	// get gender value
 		var f_cat = $('#f_cat').val(); // get category value
 		var f_prov = $('#f_prov').val(); // get provider value
 		var f_brd = $('#f_brd').val(); // get brand value
 		
 		var f_input = {};
+		f_input['f_name'] = f_name;
 		f_input['f_gen'] = f_gen;
 		f_input['f_cat'] = f_cat;
 		f_input['f_prov'] = f_prov;

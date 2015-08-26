@@ -57,6 +57,8 @@
 			</div>
 		</div>
 	</div>
+
+
 <script type="text/javascript">
 $('#goto_providers').click(function(){
 	var url = $(this).val().split(',');
@@ -67,3 +69,4 @@ $('#goto_providers').click(function(){
 
 });
 </script>
+

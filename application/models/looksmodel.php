@@ -58,11 +58,12 @@ class Looksmodel extends CI_Model {
     }
     
     // create look with basic details look name, category, grid based on products
-    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_price = 0)
+    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_price = 0, $l_gender = '')
     {
         $data = array(
            'l_name' => $l_name ,
            'l_category' => $l_category,
+           'l_gender' => $l_gender,
            'l_grid' => $l_grid,
            'l_uid' => $l_uid,
            'l_price' => $l_price
@@ -109,10 +110,14 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
-    function f_products($gen = '', $cat = array(), $prov = 0, $brd = 0)
+    function f_products($gen = '', $cat = array(), $prov = 0, $brd = 0, $name = '')
     {
         $condition = array();
-        $condition[] = " p.p_name != ''";
+        if($name != '') {            
+            $condition[] = " p.p_name LIKE '%".$name."%'";
+        } else {
+            $condition[] = " p.p_name != ''";
+        }
         if($gen != '') {
             $condition[] = " p.p_gender LIKE '".$gen."' "; 
         }

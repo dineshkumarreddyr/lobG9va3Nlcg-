@@ -23,7 +23,7 @@
 				<select name="gender" id="s_gen" class="dropdown-select">
 					<option value="">Gender</option>
 					<?php
-					$genders = array('Male'=>'Male', 'Female'=>'Female', 'Other' => 'Other');
+					$genders = array('Male'=>'Male', 'Female'=>'Female');
 					foreach ($genders as $key => $gender) {
 						?>
 					<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) { echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> ><?php echo $gender; ?></option>
