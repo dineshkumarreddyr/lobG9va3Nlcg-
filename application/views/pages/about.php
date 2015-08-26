@@ -1,3 +1,13 @@
+		<div class="slideshow">
+	    <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
+	    data-interval="3000">
+	    <div class="carousel-inner">
+	    <div class="item active">
+	    <img class="img-responsive" src="<?php echo base_url();?>assets/images/about.jpg" alt="about Slide">
+	    </div><!-- /. Item Active -->
+	    </div><!-- /. Carousel-Inner -->
+	    </div><!-- /# Slideshow .Carousel -->
+	    </div><!-- /. Slideshow -->
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->

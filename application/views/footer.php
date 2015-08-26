@@ -19,11 +19,11 @@
            <div class="footer-list">
            <h3>WEBSITE</h3>
               <ul>
-                <li><a href="javascript:void(0);">ABOUT US</a></li>
+                <li><a href="<?php echo base_url('about'); ?>">ABOUT US</a></li>
                 <li><a href="javascript:void(0);">HOW IT WORKS</a></li>
                 <li><a href="javascript:void(0);">MY ACCOUNT</a></li>
-                <li><a href="javascript:void(0);">PARTNER WITH US</a></li>
-                <li><a href="javascript:void(0);">CAREERS</a></li>
+                <!-- <li><a href="javascript:void(0);">PARTNER WITH US</a></li> -->
+                <!-- <li><a href="javascript:void(0);">CAREERS</a></li> -->
               </ul>
            </div>
         </div>
@@ -40,8 +40,8 @@
            <div class="footer-list">
            <h3>HELP</h3>
               <ul>
-                <li><a href="javascript:void(0);">SUPPORT</a></li>
-                <li><a href="javascript:void(0);">855.255.2011</a></li>
+                <!-- <li><a href="javascript:void(0);">SUPPORT</a></li> -->
+                <!-- <li><a href="javascript:void(0);">855.255.2011</a></li> -->
                 <li><a href="mailto:info@lookser.com?Subject=Hello%20again" target="_top">info@lookser.com</a></li>
                 <li><a href="javascript:void(0);">CONTACT US</a></li>
               </ul>
