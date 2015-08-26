@@ -3,6 +3,7 @@ body{margin:0;padding:0;font-family: 'Roboto', sans-serif !important;}
 *{outline:none}
 a:hover{text-decoration:none}
 .form-control{box-shadow: none;border-radius: 0px;height: 40px;}
+.form-control:focus{box-shadow:none;}
 .no-pad{padding:0}
 .no-marg{margin:0}
 
@@ -138,11 +139,11 @@ transition-property: opacity;}
 .carousel-fade .carousel-control {z-index: 2;}
 .carousel,.carousel-inner,.carousel-inner .item { height: 100%;}
 
-.categories-main{padding-top:25px;padding-bottom:25px;}
+.categories-main{padding-top:25px;}
 .caterogy-each{margin-bottom:15px;height: 230px;overflow: hidden;}
 .category-text{position: absolute;text-align: center;top:25%;width: 100%;}
 .category-text h3{text-transform:uppercase;color:#fff;font-weight:900;font-family: 'futura_md_btbold';
-font-size:35px;}
+font-size:35px;text-shadow:2px 2px #999}
 .bluebtn{background:#68baff;color:#fff;padding:5px;width:80px;margin:0 auto;
 display: inline-block;position: relative;}
 .bluebtn:after {content: '';display: block;position: absolute;left: 100%;
@@ -164,7 +165,7 @@ border-right:5px solid #ff7ca3;border-bottom:5px solid transparent;border-left:5
 
 .trending-wrap{padding-top:15px;padding-bottom:20px;}
 .trend-each{margin-bottom:20px;}
-.listimg{max-height:300px;overflow:hidden;}
+.listimg{max-height:240px;overflow:hidden;min-height:240px;text-align:center}
 .trend-each h4{text-transform:uppercase;color:#656565;text-align:center;font-size:14px;
 text-overflow: ellipsis;white-space: nowrap;overflow: hidden;margin-bottom: 5px;}
 .mrp{color:#ff7878;font-size:15px;font-weight:600;padding-right:10px;text-decoration:line-through}
@@ -286,8 +287,8 @@ border:1px solid #ff6363;}
 .looks-list-wrap{padding-right:0px;}
 .looks-list-wrap .trend-each{padding-left:0px}
 .products-wrap {padding-top:15px;padding-bottom:20px;}
-.trend-each{margin-bottom:20px;}
-.products-wrap .listimg{max-height: 255px;overflow: hidden;min-height: 255px;}
+.trend-each{margin-bottom:25px;}
+.products-wrap .listimg{max-height: 240px;overflow: hidden;min-height: 240px;text-align:center;}
 
 .filters-left{background:#f5f5f5;padding-top:15px;padding-bottom:15px;}
 .filters-left h4{text-transform:uppercase;font-size:13px;margin-top:0;}
