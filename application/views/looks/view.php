@@ -18,13 +18,33 @@
 	    </div>
 	    <div class="row">
 	      <div class="col-md-4 lookdesp-left trend-each">
-	          <div class="pattern<?php echo count($look['l_products']); ?>">
-	            <ul>
-	            <?php foreach ($look['l_products'] as $key => $lp): ?>
-				<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
-				<?php endforeach; ?>
-	            </ul>
-	          </div>
+	        <?php if(count($look['l_products']) == 5): ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+	    	<div class="pattern5-left">
+		  <ul>
+		    <?php $i=1; foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php if($i==3):  ?>
+				</ul>
+	    	</div>
+
+	    	<div class="pattern5-right">
+				<ul>
+			<?php endif; $i++ ?>
+			<?php endforeach; ?>
+		  </ul>
+	    	</div>
+		</div>
+      <?php else: ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+		  <ul>
+		    <?php foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php endforeach; ?>
+		  </ul>
+		</div>
+      <?php endif; ?>
+
 	          <div class="clearfix lookdetails">
 	            <div class="col-md-2 col-xs-2 no-pad lookdetails-img">
 	               <a href="#"><img src="<?php echo base_url();?>uploads/designers/<?php echo ($look['l_user_image'] == '') ? 'default.jpg' : $look['l_user_image']; ?>" class="img-responsive"></a>
@@ -104,10 +124,10 @@
         <ul>
           <p>Or share it on</p>
           <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
+          <!-- <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li>
+          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li> -->
         </ul>
       </div>
     </div>
@@ -125,4 +145,10 @@ $('#goto_providers').click(function(){
   }
 
 });
+
+
+   $('#share_fb').click(function(){
+      window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent($('#share_url').val())+'&t='+encodeURIComponent('look'),'sharer','toolbar=0,status=0,width=626,height=436');
+      return false;
+   });	
 </script>

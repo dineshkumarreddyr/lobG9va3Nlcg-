@@ -162,12 +162,12 @@
 		   <div class="tab-pane fade" id="wallet">
 		    <div class="row earnings">
 		      <h3>Your Earnings</h3>
-              <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>2348</strong></div>
-              <div class="col-md-4 earn-each">Jabong <strong><span class="webrupee">Rs.</span>348</strong></div>
-              <div class="col-md-4 earn-each">Snapdeal <strong><span class="webrupee">Rs.</span>348</strong></div>
-              <div class="col-md-4 earn-each">Total Earnings <strong><span class="webrupee">Rs.</span>2348</strong>
+              <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>0</strong></div>
+              <div class="col-md-4 earn-each">Jabong <strong><span class="webrupee">Rs.</span>0</strong></div>
+              <div class="col-md-4 earn-each">Snapdeal <strong><span class="webrupee">Rs.</span>0</strong></div>
+              <div class="col-md-4 earn-each">Total Earnings <strong><span class="webrupee">Rs.</span>0</strong>
               </div>
-              <div class="col-md-4 earn-each">Owe Earnings <strong><span class="webrupee">Rs.</span>348</strong></div>
+              <div class="col-md-4 earn-each">Owe Earnings <strong><span class="webrupee">Rs.</span>0</strong></div>
               <div class="col-md-4 earn-each">Last Payed on <strong> 21 Aug 2015</strong></div>
               <div class="col-md-12"><p>Note: The Payment will be processed to the bank account linked, once you reach a minimun amount of Rs 1,000 (One Thousand)</p></div>
 		    </div>

@@ -73,6 +73,7 @@ class Products extends CI_Controller {
 		// $data['providers'] = $this->provider_model->get_providers();
 		$this->tracking_model->track_product($product_id);
 		$data['pcategories'] = $this->pcategory_model->get_pcategories();
+		$data['rproducts'] = $this->products_model->get_rproducts($data['product']['p_category']);
 
 		$seo = array(
 			'title' => $data['product']['p_name'],

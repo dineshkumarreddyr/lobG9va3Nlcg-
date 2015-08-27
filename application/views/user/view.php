@@ -330,7 +330,6 @@
    $('#share_fb').click(function(){
       window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent($('#share_url').val())+'&t='+encodeURIComponent('look'),'sharer','toolbar=0,status=0,width=626,height=436');
       return false;
-
    });
 
     </script>

@@ -151,13 +151,38 @@
     <?php foreach ($looks as $key => $look): ?>
 	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 	  <div class="col-md-3 col-xs-6 trend-each">
-    	<div class="pattern<?php echo count($look['l_products']); ?>">
+
+
+		      <?php if(count($look['l_products']) == 5): ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+	    	<div class="pattern5-left">
 		  <ul>
-		  <?php foreach ($look['l_products'] as $key => $lp): ?>
-			<li><img src="<?php echo $lp->p_image;?>" class="img-responsive"></li>
+		    <?php $i=1; foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php if($i==3):  ?>
+				</ul>
+	    	</div>
+
+	    	<div class="pattern5-right">
+				<ul>
+			<?php endif; $i++ ?>
+			<?php endforeach; ?>
+		  </ul>
+	    	</div>
+		</div>
+      <?php else: ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+		  <ul>
+		    <?php foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
 			<?php endforeach; ?>
 		  </ul>
 		</div>
+      <?php endif; ?>
+
+
+
+
 		<h4><?php echo $look['l_title']; ?></h4>
 		<div class="col-md-12 text-center">
 		<?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>

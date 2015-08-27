@@ -57,8 +57,39 @@
 			</div>
 		</div>
 	</div>
+<!--top designers carousel-->
+<div class="carousel-designers">
+	<div class="container text-center">
+	<div class="carousel-head"><a href="#">Similar Products</a></div>
+		<div class="row">
+			<div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+			  <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 3510px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-468px, 0px, 0px);">
+			  <?php
+				foreach ($rproducts as $key => $tproduct) {
+				?>
+				<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
+			  <div class="owl-item" style="width: 117px;"><div class="col-md-12 item trend-each">
+			        <div class="listimg">
+					  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="img-responsive lazy">
+					</div>
+					<h4><?php echo $tproduct->p_name; ?></h4>
+					<div class="col-md-12 text-center">
+					<?php if($tproduct->p_mrp > $tproduct->p_price): ?>
+					<span class="mrp"><span class="webrupee">Rs.</span><?php echo $tproduct->p_mrp; ?></span>
+					<?php endif; ?>
+					<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $tproduct->p_price; ?></span>
+					</div>
+			  </div></div>
+			  </a>
+			<?php } ?>
 
-
+			  </div></div>
+			  
+			<div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
+		</div>
+	</div>
+</div>
+<!--top designers carousel-->
 <script type="text/javascript">
 $('#goto_providers').click(function(){
 	var url = $(this).val().split(',');
@@ -69,4 +100,18 @@ $('#goto_providers').click(function(){
 
 });
 </script>
-
+<!--
+<script src="<?php echo base_url();?>assets/js/owl.carousel.js"></script>
+	<script>
+      $(document).ready(function() {	 
+	  var owl = $("#owl-demo"); 
+	  owl.owlCarousel({
+	      items : 10, //10 items above 1000px browser width
+	      itemsDesktop : [1000,5], //5 items between 1000px and 901px
+	      itemsDesktopSmall : [900,3], // betweem 900px and 601px
+	      itemsTablet: [600,2], //2 items between 600 and 0
+	      itemsMobile : false // itemsMobile disabled - inherit from itemsTablet option
+	  });
+	});
+	</script>
+-->

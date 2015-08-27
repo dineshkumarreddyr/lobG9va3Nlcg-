@@ -3,7 +3,7 @@
 		data-interval="3000">
 		<div class="carousel-inner">
 		<div class="item active">
-		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide1.jpg" alt="First Slide">
+		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide2.jpg" alt="First Slide">
 		<div class="container">
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
@@ -13,7 +13,27 @@
 		</div>
 		</div><!-- /. Item Active -->
 		<div class="item">
-		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide2.jpg" alt="Second Slide">
+		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide1.jpg" alt="Second Slide">
+		<div class="container">
+		<div class="carousel-caption">
+		<h1>Fashion Inspired By Me</h1>
+		<h3>Find Designers and Consultants</h3>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
+		</div>
+		</div>
+		</div><!-- /. Item -->
+		<div class="item">
+		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide3.jpg" alt="Second Slide">
+		<div class="container">
+		<div class="carousel-caption">
+		<h1>Fashion Inspired By Me</h1>
+		<h3>Find Designers and Consultants</h3>
+		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
+		</div>
+		</div>
+		</div><!-- /. Item -->
+		<div class="item">
+		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide4.jpg" alt="Second Slide">
 		<div class="container">
 		<div class="carousel-caption">
 		<h1>Fashion Inspired By Me</h1>
@@ -57,7 +77,7 @@
 	
 	
 	<!-- trending products -->
-	<h2>trending Products</h2>
+	<h2 class="heads">trending Products</h2>
 	<div class="container trending-wrap">
 		<?php
 		foreach ($tproducts as $key => $tproduct) {
@@ -82,7 +102,7 @@
 	<!-- trending products -->
 	
 	<!--creators-->
-	<h2>the look creators</h2>
+	<h2 class="heads">the look creators</h2>
 	<div class="container creators-wrap">
 	  <div class="col-md-12" id="created-categ">
 		  <ul>
@@ -97,6 +117,24 @@
       ?>
 	  <div class="col-md-3 created-each">
       <a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
+      <?php if(count($pbd_look['l_products']) == 5): ?>
+	    <div class="pattern<?php echo count($pbd_look['l_products']); ?>">
+	    	<div class="pattern5-left">
+		  <ul>
+		    <?php $i=1; foreach ($pbd_look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php if($i==3):  ?>
+				</ul>
+	    	</div>
+
+	    	<div class="pattern5-right">
+				<ul>
+			<?php endif; $i++ ?>
+			<?php endforeach; ?>
+		  </ul>
+	    	</div>
+		</div>
+      <?php else: ?>
 	    <div class="pattern<?php echo count($pbd_look['l_products']); ?>">
 		  <ul>
 		    <?php foreach ($pbd_look['l_products'] as $key => $lp): ?>
@@ -104,6 +142,7 @@
 			<?php endforeach; ?>
 		  </ul>
 		</div>
+      <?php endif; ?>
 	  </a>
 		<div class="created-by">
       	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
