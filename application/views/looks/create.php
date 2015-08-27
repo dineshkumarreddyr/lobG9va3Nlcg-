@@ -34,6 +34,11 @@
 						</select>
 					</div>
 					<div class="col-md-2">
+						<select class="minimal" name="f_scat" id="f_scat">
+							<option value="">Sub Category</option>
+						</select>
+					</div>
+					<div class="col-md-2">
 						<select class="minimal" name="f_prov" id="f_prov">
 							<option value="">By Provider</option>
 							<?php
@@ -319,7 +324,30 @@ function create_look() {
 </script>
 
 <script type="text/javascript">
-	$('#f_gen, #f_cat, #f_prov, #f_brd').change(function(){
+	$('#f_cat').change(function(){
+		var f_cat = $('#f_cat').val(); // get category value
+		$.ajax({
+			type:"GET",
+			url:'<?php echo base_url("looks/f_pcategories");?>/'+f_cat,
+			// data:f_cat,
+			dataType:"json",
+			success: function(data){
+				// console.log(data.length);
+				var select = '<option value="">Sub Category</option>';
+				$.each(data, function(index) {
+		            select += '<option value="'+index+'">'+data[index]+'</option>';
+		        });
+		        $('#f_scat').html(select);
+			},
+		  error: function(e) {
+			//called when there is an error
+			console.log(e.message);
+		  }
+		});
+
+	});
+	
+	$('#f_gen, #f_cat, #f_scat, #f_prov, #f_brd').change(function(){
 		ps_filter();
 	});
 	$('#f_name').keyup(function(){
@@ -331,6 +359,7 @@ function create_look() {
 		var f_name = $('#f_name').val();	// get search name value
 		var f_gen = $('#f_gen').val();	// get gender value
 		var f_cat = $('#f_cat').val(); // get category value
+		var f_scat = $('#f_scat').val(); // get sub category value
 		var f_prov = $('#f_prov').val(); // get provider value
 		var f_brd = $('#f_brd').val(); // get brand value
 		
@@ -338,6 +367,9 @@ function create_look() {
 		f_input['f_name'] = f_name;
 		f_input['f_gen'] = f_gen;
 		f_input['f_cat'] = f_cat;
+		if(f_scat != '') {
+			f_input['f_cat'] = f_scat;
+		}
 		f_input['f_prov'] = f_prov;
 		f_input['f_brd'] = f_brd;
 

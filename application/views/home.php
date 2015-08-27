@@ -32,21 +32,21 @@
 	<!--categories-->
 	<div class="container categories-main">
       <div class="col-md-4 caterogy-each">
-	    <img data-original="<?php echo base_url();?>assets/images/men.jpg" class="img-responsive lazy">
+	    <img src="<?php echo base_url();?>assets/images/men.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>men</h3>
 		<div class="bluebtn"><a href="<?php echo base_url('looks?gender=male'); ?>">shop now</a></div>
 		</div>
 	  </div>
 	  <div class="col-md-4 caterogy-each">
-	    <img data-original="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive lazy">
+	    <img src="<?php echo base_url();?>assets/images/getlook.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>Our Looks</h3>
 		<div class="pinkbtn"><a href="<?php echo base_url('looks'); ?>">Explore</a></div>
 		</div>
 	  </div>
 	  <div class="col-md-4 caterogy-each">
-	    <img data-original="<?php echo base_url();?>assets/images/women.jpg" class="img-responsive lazy">
+	    <img src="<?php echo base_url();?>assets/images/women.jpg" class="img-responsive">
 		<div class="category-text">
 		<h3>women</h3>
 		<div class="bluebtn"><a href="<?php echo base_url('looks?gender=female'); ?>">shop now</a></div>

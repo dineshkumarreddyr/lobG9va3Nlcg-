@@ -185,6 +185,7 @@ class Looks extends CI_Controller {
 			foreach ($s_pcategories as $key => $s_pcategory) {
 				$s_cat[] = $s_pcategory->pc_id;
 			}
+			$s_cat[] = $f_cat;
 		}
 
 		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd, $f_name);
@@ -216,6 +217,20 @@ class Looks extends CI_Controller {
 
 		echo json_encode($looks);
 	}
+
+	/*
+	 * Get list of categories by parent category
+	 */
+	public function f_pcategories($pc_id = 0) {
+		$pcategories= $this->pcategory_model->get_pcategories($pc_id);
+		$f_pcategories = array();
+		foreach ($pcategories as $key => $pcategory) {
+			$f_pcategories[$pcategory->pc_id] = $pcategory->pc_name; 
+		}
+
+		echo json_encode($f_pcategories);
+	}
+
 }
 
 /* End of file welcome.php */
