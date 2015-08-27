@@ -54,12 +54,12 @@
 			</div>
 		</div> 
 	</div>
-	
 	<!-- filtered products -->
+	
 	<h2>Products</h2>
 	<div class="container products-wrap">
 		<div class="row">
-			<div class="col-md-3 filters-left"> 
+			<div class="col-md-3 clearfix filters-left"> 
 				<?php
 				if(count($s_pcategories)):
 					$pcategories = $s_pcategories;
@@ -78,7 +78,6 @@
 					?>
 				</ul>
 				<?php endif; ?>
-				<div class="clearfix">&nbsp;</div>
 				<h4>By Provider</h4>
 				<ul class="f_prov">
 					<?php
@@ -98,8 +97,7 @@
 					<div id="slider"></div>
 				</div> -->
 				
-				<!-- <div class="clearfix">&nbsp;</div>
-				<h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
+				<!-- <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
 					<option value="#ac725e">#ac725e</option>
 					<option value="#d06b64">#d06b64</option>
 					<option value="#f83a22">#f83a22</option>
@@ -127,7 +125,7 @@
 				</select></h4>
 				 -->
 				
-				<!-- <div class="clearfix">&nbsp;</div>
+				<!-- 
 				<h4>Size</h4>
 				<div class="sizes clearfix">
 					<input type="radio" name="size" id="small" value="small" checked="checked" /> 
@@ -141,8 +139,9 @@
 					<input type="radio" name="size" id="xxlarge" value="xxlarge" />     
 					<label for="xlarge">XXL</label>
 				</div> -->
+				<div class="clearfix"></div>
 			</div>
-			<!--filters left end-->
+			<!-- filters-left end-->
 			
 			<div class="col-md-9" id="pdts_wrapper">
 				<?php
@@ -150,7 +149,7 @@
 				foreach ($products as $key => $product) {
 					?>
 					<a href="<?php echo base_url('product/'.$product->p_id);?>">
-						<div class="col-md-3 trend-each">
+						<div class="col-md-3 col-xs-6 trend-each">
 							<div class="listimg">
 								<img data-original="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>" alt="<?php echo $product->p_name; ?>" class="lazy">
 							</div>

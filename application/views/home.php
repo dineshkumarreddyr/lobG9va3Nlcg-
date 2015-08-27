@@ -63,7 +63,7 @@
 		foreach ($tproducts as $key => $tproduct) {
 		?>
 		<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
-	  <div class="col-md-3 trend-each">
+	  <div class="col-md-3 col-xs-6 trend-each">
         <div class="listimg">
 		  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="lazy">
 		</div>

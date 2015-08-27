@@ -1,4 +1,3 @@
-
 @media (max-width : 767px) {
 
 h2{margin-bottom: 20px;}
@@ -58,6 +57,22 @@ background-size: cover;}
 .material-card.mc-active .mc-content { position: relative;}
 .material-card.mc-active .mc-description { position: relative; top: auto;
 right: auto;left: auto;padding: 50px 30px 70px 30px; bottom: 0;}
-
+.designerslide{height: 230px;}
+.designerpro-img{margin:0 auto;}
+.changepic{left:36%;width: 100px;height: 100px;}
+.designertop-main h2{text-align: center;color:#333;}
+.lookdesp-right .mrp{font-size: 14px;}
+.lookdesp-right .prodpick-right{padding-left: 0px;}
+.designertop-main{margin-top: -55%;}
+.caterogy-each{height:200px;}
 
 }
+
+
+
+
+
+
+
+
+

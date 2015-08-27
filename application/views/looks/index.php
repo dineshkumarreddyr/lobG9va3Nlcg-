@@ -58,7 +58,7 @@
 	<h2>Explore our looks</h2>
 	<div class="container products-wrap">
 	 <div class="row">
-	 <div class="col-md-3 filters-left"> 
+	 <div class="col-md-3 clearfix filters-left"> 
 	 	<?php // echo $this->load->view('looks/filter', $lcategories); ?>
 	   <h4>by Categories</h4>
 	   <ul class="f_cat">
@@ -150,7 +150,7 @@
     <?php if (count($looks)): ?>
     <?php foreach ($looks as $key => $look): ?>
 	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
-	  <div class="col-md-3 trend-each">
+	  <div class="col-md-3 col-xs-6 trend-each">
     	<div class="pattern<?php echo count($look['l_products']); ?>">
 		  <ul>
 		  <?php foreach ($look['l_products'] as $key => $lp): ?>

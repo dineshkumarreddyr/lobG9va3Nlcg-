@@ -12,9 +12,9 @@
 	<!-- Bootstrap -->
 	<link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/css/layout.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/responsive.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/zoomer.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/owl.carousel.css" rel="stylesheet">
+ 	<link href="<?php echo base_url(); ?>assets/css/responsive.css" rel="stylesheet">
+ 	<link href="<?php echo base_url(); ?>assets/css/zoomer.css" rel="stylesheet">
+  	<link href="<?php echo base_url(); ?>assets/css/owl.carousel.css" rel="stylesheet">
 
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -144,7 +144,7 @@
     
     <div class="col-md-6 signup-main">
       <div class="row">
-      <h2>Login to Lookser</h2>
+      <h2>Signup as Designer</h2>
       <div class="row with">
         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
@@ -185,7 +185,7 @@
     <?php endif; ?>
 
   	<!-- head top starts--> 
-  	<div class="container-fluid head-top">
+  	<div class="container-fluid hidden-xs head-top">
   		<div class="container">
   			<div class="col-md-6 head-left no-pad">
   				<ul>
