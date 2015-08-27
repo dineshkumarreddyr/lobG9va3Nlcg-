@@ -325,6 +325,8 @@ function create_look() {
 
 <script type="text/javascript">
 	$('#f_cat').change(function(){
+		var select = '<option value="">Sub Category</option>';
+        $('#f_scat').html(select);
 		var f_cat = $('#f_cat').val(); // get category value
 		$.ajax({
 			type:"GET",

@@ -66,7 +66,8 @@ class Looksmodel extends CI_Model {
            'l_gender' => $l_gender,
            'l_grid' => $l_grid,
            'l_uid' => $l_uid,
-           'l_price' => $l_price
+           'l_price' => $l_price,
+           'l_status' => '1'
         );
         $this->db->insert('looks', $data);
         $insert_id = $this->db->insert_id();
