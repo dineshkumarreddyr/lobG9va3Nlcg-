@@ -77,7 +77,8 @@ class Products extends CI_Controller {
 		$seo = array(
 			'title' => $data['product']['p_name'],
 			'description' => $data['product']['p_desc'],
-			'keywords' => $data['product']['p_name']
+			'keywords' => $data['product']['p_name'],
+			'image' =>$data['product']['p_oimage']
 		);
 		$data['seo'] = $seo;
 

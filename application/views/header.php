@@ -8,6 +8,14 @@
   <meta name="description" content="<?php echo $seo['description']; ?>" />
   <meta name="keywords" content="<?php echo $seo['keywords']; ?>, fashion, trends, discover, tops, dresses, jewellery, accessories, shoes, bags, lingerie, tops, dresses, pants, kurtis, salwaar-kameez, lastest fashion, lastest styles,  fashion looks, classy looks, awesome looks, lookser shop, fashion one stop, perfection looks, lookser, lookser.com." />
 
+  <meta property="og:title" content="<?php echo $seo['title']; ?> || Latest trends in fashion lookser.com" />
+  <meta property="og:site_name" content="Lookser"/>
+  <meta property="og:url" content="<?php echo base_url(uri_string()); ?>" />
+  <meta property="og:description" content="<?php echo $seo['description']; ?>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?php echo @$seo['image']; ?>" />
+  <meta property="og:app_id" content="105609389794209" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
