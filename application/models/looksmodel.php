@@ -111,7 +111,7 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
-    function f_products($gen = '', $cat = array(), $prov = 0, $brd = 0, $name = '')
+    function f_products($gen = '', $cat = array(), $prov = 0, $brd = 0, $name = '', $dis = '')
     {
         $condition = array();
         if($name != '') {            
@@ -130,6 +130,10 @@ class Looksmodel extends CI_Model {
         }
         if($brd != '') {
             $condition[] = " p.p_brand = ".$brd." "; 
+        }
+        if($dis != '') {
+            $dis = explode('-', $dis);
+            $condition[] = " ((p.p_price/p.p_mrp)*100 > ".$dis[0]." AND (p.p_price/p.p_mrp)*100 < ".$dis[1].") "; 
         }
         $condition = implode(' AND ', $condition);
 

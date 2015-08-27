@@ -178,6 +178,7 @@ class Looks extends CI_Controller {
 		$f_cat = addslashes($this->input->post('f_cat'));
 		$f_prov = $this->input->post('f_prov');
 		$f_brd = $this->input->post('f_brd');
+		$f_dis = $this->input->post('f_dis');
 
 		$s_cat = array();
 		if($f_cat){
@@ -188,7 +189,7 @@ class Looks extends CI_Controller {
 			$s_cat[] = $f_cat;
 		}
 
-		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd, $f_name);
+		$data = $this->looks_model->f_products($f_gen, $s_cat, $f_prov, $f_brd, $f_name, $f_dis);
 		echo json_encode($data);
 	}
 

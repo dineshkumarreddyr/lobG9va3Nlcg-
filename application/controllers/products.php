@@ -108,8 +108,9 @@ class Products extends CI_Controller {
 	{
 		$f_cat = $this->input->post('f_cat');
 		$f_prov = $this->input->post('f_prov');
+		$f_dis = $this->input->post('f_dis');
 	
-		$data = $this->products_model->pf_products($f_cat, $f_prov);
+		$data = $this->products_model->pf_products($f_cat, $f_prov, $f_dis);
 		echo json_encode($data);
 	}
 }

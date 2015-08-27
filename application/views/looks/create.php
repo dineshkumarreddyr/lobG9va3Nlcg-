@@ -62,6 +62,15 @@
 							?>
 						</select>
 					</div>
+					<div class="col-md-2">
+						<select class="minimal" name="f_dis" id="f_dis">
+							<option value="">By Discount</option>
+							<option value="0-10"> Upto 10% </option>
+							<option value="10-20"> 10% - 20% </option>
+							<option value="20-30"> 20% - 30% </option>
+							<option value="30-100"> More than 30% </option>
+						</select>
+					</div>
 				</div>
 			</div>
 		
@@ -215,7 +224,7 @@ function add_to_look(p_id) {
 			     '<div class="row">' +
 				   '<a href="'+base_url+'/'+p_id+'" target="_blank"><h3 id="lp_name_'+p_id+'">'+p_name+'</h3></a>' +
 				   '<div class="col-md-7 prodpick-left">' +
-					'<div class="provider"><img src="<?php echo base_url(); ?>assets/images/jabong.png"></div>' +
+					'<div class="provider"><img src="<?php echo base_url(); ?>assets/images/flipkart.png"></div>' +
 				   '</div>' +
 				   '<div class="col-md-3 prodpick-right">' +
 					 '<div class="cost" id="lp_price_'+p_id+'">'+p_price+'</div>' +
@@ -349,7 +358,7 @@ function create_look() {
 
 	});
 	
-	$('#f_gen, #f_cat, #f_scat, #f_prov, #f_brd').change(function(){
+	$('#f_gen, #f_cat, #f_scat, #f_prov, #f_brd, #f_dis').change(function(){
 		ps_filter();
 	});
 	$('#f_name').keyup(function(){
@@ -364,6 +373,7 @@ function create_look() {
 		var f_scat = $('#f_scat').val(); // get sub category value
 		var f_prov = $('#f_prov').val(); // get provider value
 		var f_brd = $('#f_brd').val(); // get brand value
+		var f_dis = $('#f_dis').val(); // get discount value
 		
 		var f_input = {};
 		f_input['f_name'] = f_name;
@@ -374,6 +384,7 @@ function create_look() {
 		}
 		f_input['f_prov'] = f_prov;
 		f_input['f_brd'] = f_brd;
+		f_input['f_dis'] = f_dis;
 
 		// console.log(JSON.stringify(f_input));
 

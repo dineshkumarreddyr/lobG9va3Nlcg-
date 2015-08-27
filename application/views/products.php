@@ -139,6 +139,27 @@
 					<input type="radio" name="size" id="xxlarge" value="xxlarge" />     
 					<label for="xlarge">XXL</label>
 				</div> -->
+				<h4>By Discount</h4>
+				<ul class="f_dis">
+					<li><input id='f_prov_0_10' type='checkbox' name="f_dis" value="0-10" onclick="pf_search();" />
+						<label for='f_prov_0_10'><span></span>Upto 10%
+						</label>
+					</li>
+					<li><input id='f_prov_10_20' type='checkbox' name="f_dis" value="10-20" onclick="pf_search();" />
+						<label for='f_prov_10_20'><span></span>10% - 20%
+						</label>
+					</li>
+					<li><input id='f_prov_20_30' type='checkbox' name="f_dis" value="20-30" onclick="pf_search();" />
+						<label for='f_prov_20_30'><span></span>20% - 30%
+						</label>
+					</li>
+					<li><input id='f_prov_30_100' type='checkbox' name="f_dis" value="30-100" onclick="pf_search();" />
+						<label for='f_prov_30_100'><span></span>More than 30%
+						</label>
+					</li>
+				</ul>
+				
+
 				<div class="clearfix"></div>
 			</div>
 			<!-- filters-left end-->
@@ -240,9 +261,15 @@
 		    f_prov.push($(this).val());
 		});
 
+		var f_dis = [];
+		$('.f_dis input:checked').each(function() {
+		    f_dis.push($(this).val());
+		});
+
 		var s_input = {};
 		s_input['f_cat'] = f_cat;
 		s_input['f_prov'] = f_prov;
+		s_input['f_dis'] = f_dis;
 
 		$.ajax({
 			type:"POST",

@@ -60,9 +60,10 @@ class Productsmodel extends CI_Model {
         return $data;
     }
 
-    function pf_products($f_cat = array(), $f_prov = array())
+    function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array())
     {
         $condition = array();
+        $condition1 = array();
         $condition[] = " p.p_name != '' "; 
 
         if(count($f_cat) && is_array($f_cat)) {
@@ -70,6 +71,14 @@ class Productsmodel extends CI_Model {
         }
         if(count($f_prov) && is_array($f_prov)) {
             $condition[] = " p.p_provider in (".implode(',', $f_prov).") "; 
+        }
+        if(count($f_dis) && is_array($f_dis)) {
+            foreach ($f_dis as $key => $dis) {
+                $dis = explode('-', $dis);
+                $condition1[] = " ((p.p_price/p.p_mrp)*100 > ".$dis[0]." AND (p.p_price/p.p_mrp)*100 < ".$dis[1].") "; 
+            }
+
+            $condition[] = " (".implode(' OR ', $condition1).") "; 
         }
         $condition = implode(' AND ', $condition);
 
