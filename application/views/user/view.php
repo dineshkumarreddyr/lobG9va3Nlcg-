@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-4 designerpro-top-right">
           <ul>
-            <li class="col-md-4"><span><a href="#"><i class="glyphicon glyphicon-heart"></i>
+            <li class="col-md-4" id="follow"><span><a href="javascript:void(0);"><i class="glyphicon glyphicon-heart"></i>
             </span><br> Follow</a></li>
             <li class="col-md-4"><span><?php echo count($d_looks); ?></span><br> Looks</li>
             <li class="col-md-4"><span><?php echo $d_followers; ?></span><br> Followers</li>

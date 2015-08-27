@@ -54,13 +54,13 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND()";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition. " ORDER BY RAND()";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
     }
 
-    function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array())
+    function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array(), $f_size = array())
     {
         $condition = array();
         $condition1 = array();
@@ -72,6 +72,9 @@ class Productsmodel extends CI_Model {
         if(count($f_prov) && is_array($f_prov)) {
             $condition[] = " p.p_provider in (".implode(',', $f_prov).") "; 
         }
+        if(count($f_size) && is_array($f_size)) {
+            $condition[] = " p.p_size in ('".implode("','", $f_size)."') "; 
+        }
         if(count($f_dis) && is_array($f_dis)) {
             foreach ($f_dis as $key => $dis) {
                 $dis = explode('-', $dis);
@@ -82,7 +85,7 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition." ORDER BY RAND()";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition." ORDER BY RAND()";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;

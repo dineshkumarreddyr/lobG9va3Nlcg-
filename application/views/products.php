@@ -125,9 +125,9 @@
 				</select></h4>
 				 -->
 				
-				<!-- 
+				
 				<h4>Size</h4>
-				<div class="sizes clearfix">
+				<div class="sizes clearfix f_size">
 					<input type="radio" name="size" id="small" value="small" checked="checked" /> 
 					<label for="small">S</label>
 					<input type="radio" name="size" id="medium" value="medium" />     
@@ -138,7 +138,7 @@
 					<label for="xlarge">XL</label>
 					<input type="radio" name="size" id="xxlarge" value="xxlarge" />     
 					<label for="xlarge">XXL</label>
-				</div> -->
+				</div> 
 				<h4>By Discount</h4>
 				<ul class="f_dis">
 					<li><input id='f_prov_0_10' type='checkbox' name="f_dis" value="0-10" onclick="pf_search();" />
@@ -166,8 +166,10 @@
 			
 			<div class="col-md-9" id="pdts_wrapper">
 				<?php
+				$sizes = array();
 				if(count($products)) {
 				foreach ($products as $key => $product) {
+					$sizes[$product->p_size] = $product->p_size;
 					?>
 					<a href="<?php echo base_url('product/'.$product->p_id);?>">
 						<div class="col-md-3 col-xs-6 trend-each">
@@ -189,6 +191,7 @@
 				else {
 					echo "No Products found...";
 				}
+				// $sizes;
 				?>
 			</div>	  
 		</div>
@@ -250,6 +253,18 @@
 	<?php endif; ?>
 
 <script type="text/javascript">
+	// sizes
+	var sizes = '<?php echo implode(',', $sizes); ?>';
+	sizes = sizes.split(',');
+	var s_content = '';
+	$.each(sizes, function(index){
+		s_content += '<input type="radio" name="size" id="size_'+sizes[index]+'" value="'+sizes[index]+'" onclick="pf_search();"  /><label for="size_'+sizes[index]+'">'+sizes[index]+'</label>';
+		// console.log(sizes[index]);
+	});
+	$('.f_size').html(s_content);
+	// sizes
+
+
 	function pf_search() {
 		var f_cat = [];
 		$('.f_cat input:checked').each(function() {
@@ -261,6 +276,11 @@
 		    f_prov.push($(this).val());
 		});
 
+		var f_size = [];
+		$('.f_size input:checked').each(function() {
+		    f_size.push($(this).val());
+		});
+
 		var f_dis = [];
 		$('.f_dis input:checked').each(function() {
 		    f_dis.push($(this).val());
@@ -269,6 +289,7 @@
 		var s_input = {};
 		s_input['f_cat'] = f_cat;
 		s_input['f_prov'] = f_prov;
+		s_input['f_size'] = f_size;
 		s_input['f_dis'] = f_dis;
 
 		$.ajax({

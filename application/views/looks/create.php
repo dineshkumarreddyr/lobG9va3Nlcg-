@@ -205,6 +205,7 @@ function add_to_look(p_id) {
 		alert('Already added');
 		return false;
 	}
+	$('.prodsadded').css('background-image', 'none');
 	$('#lp_count').text(n_count);
 
 	localStorage.p_ids = JSON.stringify(p_ids);
