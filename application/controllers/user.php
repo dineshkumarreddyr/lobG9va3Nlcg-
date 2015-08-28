@@ -189,6 +189,59 @@ class User extends CI_Controller {
 	{
 		$this->login_check();
 
+		$errr_msg = '';
+		$msg = '';
+
+		if($this->input->post('register')) {
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$pass = $this->input->post('pass');
+
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$errr_msg = 'Invalid Email-Id';
+			}
+			elseif ($pass == '') {
+				$errr_msg = 'Invalid Password';
+			}
+			else {
+				$pass = sha1($pass);
+
+				$status = $this->user_model->register($name, $email, $pass);
+				if($status) {
+					
+					$msg = 'Successfully Registered';
+
+					// Loads the email library
+			        $this->load->library('email');
+			        // FCPATH refers to the CodeIgniter install directory
+			        // Specifying a file to be attached with the email
+			        // if u wish attach a file uncomment the script bellow:
+			        //$file = FCPATH . 'yourfilename.txt';
+			        // Defines the email details
+			        $this->email->from('udayakumarswamy@gmail.com', 'Uday');
+			        $this->email->to('udayakumarswamy@gmail.com');
+			        $this->email->subject('Lookser Email');
+			        $this->email->message('Good content.');
+			        //also this script
+			        //$this->email->attach($file);
+			        // The email->send() statement will return a true or false
+			        // If true, the email will be sent
+			        if ($this->email->send()) {
+			            // echo "you are luck!";
+			        }
+			        else {
+			            // echo $this->email->print_debugger();
+			        }
+				}
+				else {
+					$errr_msg = 'This email already registered';
+				}
+			}
+		}
+
+		$data['errr_msg'] = $errr_msg;
+    	$data['msg'] = $msg;
+
 		$seo = array(
 			'title' => 'Register',
 			'description' => 'Register',
@@ -231,6 +284,122 @@ class User extends CI_Controller {
 			else {
 				$response['status'] = 'error';
 				$response['message'] = 'Invalid Email-Id / Password';
+			}
+		}
+		echo json_encode($response);
+	}
+
+	public function ajax_ur_register()
+	{
+		$response = array();
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$pass = $this->input->post('pass');
+
+		if(empty($name) || !isset($name)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Name';
+		}
+		elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Email-Id';
+		}
+		elseif ($pass == '') {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Password';
+		}
+		else {
+			$pass = sha1($pass);
+
+			$status = $this->user_model->register($name, $email, $pass);
+			if($status) {
+				$response['status'] = 'success';
+				$response['message'] = 'Successfully Registered';
+				
+				// Loads the email library
+		        $this->load->library('email');
+		        // FCPATH refers to the CodeIgniter install directory
+		        // Specifying a file to be attached with the email
+		        // if u wish attach a file uncomment the script bellow:
+		        //$file = FCPATH . 'yourfilename.txt';
+		        // Defines the email details
+		        $this->email->from('udayakumarswamy@gmail.com', 'Uday');
+		        $this->email->to('udayakumarswamy@gmail.com');
+		        $this->email->subject('Lookser Email');
+		        $this->email->message('Good content.');
+		        //also this script
+		        //$this->email->attach($file);
+		        // The email->send() statement will return a true or false
+		        // If true, the email will be sent
+		        if ($this->email->send()) {
+		            // echo "you are luck!";
+		        }
+		        else {
+		            // echo $this->email->print_debugger();
+		        }
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'This email already registered';
+			}
+		}
+		echo json_encode($response);
+	}
+
+	// Designer Registration
+
+	public function ajax_dr_register()
+	{
+		$response = array();
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$pass = $this->input->post('pass');
+
+		if(empty($name) || !isset($name)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Name';
+		}
+		elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Email-Id';
+		}
+		elseif ($pass == '') {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Password';
+		}
+		else {
+			$pass = sha1($pass);
+
+			$status = $this->user_model->register($name, $email, $pass, '2');
+			if($status) {
+				$response['status'] = 'success';
+				$response['message'] = 'Successfully Registered';
+				
+				// Loads the email library
+		        $this->load->library('email');
+		        // FCPATH refers to the CodeIgniter install directory
+		        // Specifying a file to be attached with the email
+		        // if u wish attach a file uncomment the script bellow:
+		        //$file = FCPATH . 'yourfilename.txt';
+		        // Defines the email details
+		        $this->email->from('udayakumarswamy@gmail.com', 'Uday');
+		        $this->email->to('udayakumarswamy@gmail.com');
+		        $this->email->subject('Lookser Email');
+		        $this->email->message('Good content.');
+		        //also this script
+		        //$this->email->attach($file);
+		        // The email->send() statement will return a true or false
+		        // If true, the email will be sent
+		        if ($this->email->send()) {
+		            // echo "you are luck!";
+		        }
+		        else {
+		            // echo $this->email->print_debugger();
+		        }
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'This email already registered';
 			}
 		}
 		echo json_encode($response);

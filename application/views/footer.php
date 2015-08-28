@@ -177,6 +177,85 @@ $(function(){
     return false;
   });
 
+  // user registration
+
+  $('#ur_submit').click(function(){
+    var ur_name = $('#ur_name').val();
+    var ur_email = $('#ur_email').val();
+    var ur_pass = $('#ur_pass').val();
+    if(ur_name == '') {
+      alert('Invalid Name');
+      return false;
+    }
+    else if(ur_email == '') {
+      alert('Invalid Email');
+      return false;
+    }
+    else if(ur_pass == '') {
+      alert('Invalid password');
+      return false;
+    }
+    else {
+      $.ajax({
+        type:"POST",
+        url:'<?php echo base_url();?>user/ajax_ur_register',
+        data:{'name':ur_name,'email':ur_email,'pass':ur_pass},
+        dataType:"json",
+        success: function(data) {
+          // console.log(data);
+          if(data.status == 'error') {
+            // alert(data.message);
+            $('#ur_msg').text(data.message);
+          }
+          else if(data.status == 'success') {
+            // window.location='<?php echo base_url(uri_string()); ?>';
+            $('#ur_msg').text(data.message);
+          }
+        }
+      });
+    }
+    return false;
+  });
+
+  // designer registration
+
+  $('#dr_submit').click(function(){
+    var dr_name = $('#dr_name').val();
+    var dr_email = $('#dr_email').val();
+    var dr_pass = $('#dr_pass').val();
+    if(dr_name == '') {
+      alert('Invalid Name');
+      return false;
+    }
+    else if(dr_email == '') {
+      alert('Invalid Email');
+      return false;
+    }
+    else if(dr_pass == '') {
+      alert('Invalid password');
+      return false;
+    }
+    else {
+      $.ajax({
+        type:"POST",
+        url:'<?php echo base_url();?>user/ajax_dr_register',
+        data:{'name':dr_name,'email':dr_email,'pass':dr_pass},
+        dataType:"json",
+        success: function(data) {
+          // console.log(data);
+          if(data.status == 'error') {
+            // alert(data.message);
+            $('#dr_msg').text(data.message);
+          }
+          else if(data.status == 'success') {
+            // window.location='<?php echo base_url(uri_string()); ?>';
+            $('#dr_msg').text(data.message);
+          }
+        }
+      });
+    }
+    return false;
+  });
 });
   /*$.ajax({
     type:"POST",

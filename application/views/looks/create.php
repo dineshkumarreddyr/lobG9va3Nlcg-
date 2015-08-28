@@ -5,7 +5,7 @@
 	
 	<!-- create look -->
 	<div class="container createlook-main">
-		<h2>create a look</h2>
+		<h2 class="heads">create a look</h2>
 		  <div class="filter-bar">
 				<div class="row">
 					<div class="col-md-2">
@@ -70,6 +70,20 @@
 							<option value="20-30"> 20% - 30% </option>
 							<option value="30-100"> More than 30% </option>
 						</select>
+					</div>
+						<div class="col-md-12">
+				                      <div class="clearfix subcategory">
+				                        <div><input type="checkbox" id="elem01" /><label for="elem01">Clothing</label></div>
+										<div><input type="checkbox" id="elem02" /><label for="elem02">Shoes</label></div>
+										<div><input type="checkbox" id="elem03" /><label for="elem03">Bags</label></div>
+										<div><input type="checkbox" id="elem04" /><label for="elem04">Accessories</label></div>
+										<div><input type="checkbox" id="elem05" /><label for="elem05">Jackets</label></div>
+										<div><input type="checkbox" id="elem06" /><label for="elem06">Jewellery</label></div>
+										<div><input type="checkbox" id="elem07" /><label for="elem07">Clutches</label></div>
+										<div><input type="checkbox" id="elem08" /><label for="elem08">Wallets</label></div>
+										<div><input type="checkbox" id="elem09" /><label for="elem09">Watches</label></div>
+										<div><input type="checkbox" id="elem10" /><label for="elem10">Beauty</label></div>
+				                      </div>
 					</div>
 				</div>
 			</div>
@@ -444,3 +458,15 @@ function create_look() {
 		$('#f_products_wrapper').html(content);
 	}
 </script>
+
+<script>
+    $(function(){
+	  $('input').on('change',function(){
+	  if($(this).attr('type')=='checkbox'){
+	    console.log($(this).is(':checked'));
+	  }else{
+	    console.log($(this).val());
+	  }
+	})
+	})
+    </script>

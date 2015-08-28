@@ -19,6 +19,33 @@ class Usermodel extends CI_Model {
         return $data;
     }
 
+    function register($name = '', $email = '',$pass = '', $role = 1)
+    {
+        if($this->check_email($email)) {
+            return FALSE;
+        }
+        else {
+            $data = array();
+            $data['user_fname'] = $name;
+            $data['user_email'] = $email;
+            $data['user_password'] = $pass;
+            $data['user_role'] = $role;
+            $query = $this->db->insert('users', $data);
+            $uid = $this->db->insert_id();
+
+            // inserting user details (creating blank record)
+            $data = array('ud_uid' => $uid);
+            $this->db->insert('user_details', $data);
+            return $uid;
+        }
+    }
+
+    function check_email($email = '') {
+        $data = array();
+        $query = $this->db->query("SELECT * FROM users WHERE user_email = '".$email."'");
+        return $query->num_rows();
+    }
+
     function get_designer($did = 0)
     {
         $data = array();

@@ -110,23 +110,24 @@
             <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>Full Name</label>
-                <input class='form-control' type='text'>
+                <input class='form-control' type='text' name="ur_name" id="ur_name">
               </div>
             </div>
        <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>E-mail ID</label>
-                <input class='form-control' type='text'>
+                <input class='form-control' type='text' name="ur_email" id="ur_email">
               </div>
             </div>
             <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>Password</label>
-                <input class='form-control' type="password">
+                <input class='form-control' type="password" name="ur_pass" id="ur_pass">
               </div>
             </div>
+            <div id="ur_msg"></div>
               <div class='form-group'>
-                 <button class="submit">Signup</button>
+                 <button type="submit" id="ur_submit" name="ur_submit" class="submit">Submit</button>
               </div>
           </form>
     </div>
@@ -164,23 +165,24 @@
             <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>Full Name</label>
-                <input class='form-control' type='text'>
+                <input class='form-control' type='text' name="dr_name" id="dr_name">
               </div>
             </div>
        <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>E-mail ID</label>
-                <input class='form-control' type='text'>
+                <input class='form-control' type='email' name="ur_email" id="dr_email">
               </div>
             </div>
             <div class='row'>
               <div class='col-xs-12 form-group required'>
                 <label class='control-label'>Password</label>
-                <input class='form-control' type="password">
+                <input class='form-control' type="password" name="dr_pass" id="dr_pass">
               </div>
             </div>
+            <div id="dr_msg"></div>
               <div class='form-group'>
-                 <button class="submit">Login</button>
+                 <button type="submit" id="dr_submit" name="dr_submit" class="submit">Submit</button>
               </div>
           </form>
     </div>
