@@ -236,12 +236,16 @@
               <ul class="navbar-nav navbar-right loggedmenu">
                 <!--<li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>-->
                 <div class="btn-group">
-                <button class="btn logged" type="button"><?php echo $this->session->userdata('name'); ?></button>
+                <a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>" class="btn logged"><?php echo $this->session->userdata('name'); ?></a>
                 <button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><i class="glyphicon glyphicon-chevron-down"></i>
                 </button>
                 <ul class="dropdown-menu">
+                  <?php if($this->session->userdata('role') == 3): ?>
+                  <li><a href="<?php echo base_url('myaccount'); ?>">My Profile</a></li>
+                  <?php elseif($this->session->userdata('role') == 2): ?>
                   <li><a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>">My Profile</a></li>
                   <li><a href="<?php echo base_url('designer/edit/'.$this->session->userdata('uid')); ?>">Edit Profile</a></li>
+                <?php endif; ?>
                   <li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>
                 </ul>
                   </div>

@@ -35,8 +35,10 @@
         </div>
         <div class="col-md-4 designerpro-top-right">
           <ul>
-            <li class="col-md-4" id="follow"><span><a href="javascript:void(0);"><i class="glyphicon glyphicon-heart"></i>
+            <?php if($this->session->userdata('uid') && $this->session->userdata('uid') != $designer_details->user_id): ?>
+            <li class="col-md-4 following" id="follow"><span><a href="javascript:void(0);"><i class="glyphicon glyphicon-heart"></i>
             </span><br> Follow</a></li>
+            <?php endif; ?>
             <li class="col-md-4"><span><?php echo count($d_looks); ?></span><br> Looks</li>
             <li class="col-md-4"><span><?php echo $d_followers; ?></span><br> Followers</li>
           </ul>

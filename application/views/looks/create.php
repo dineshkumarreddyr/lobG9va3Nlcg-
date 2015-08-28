@@ -33,11 +33,11 @@
 							?>
 						</select>
 					</div>
-					<div class="col-md-2">
+					<!-- <div class="col-md-2">
 						<select class="minimal" name="f_scat" id="f_scat">
 							<option value="">Sub Category</option>
 						</select>
-					</div>
+					</div> -->
 					<div class="col-md-2">
 						<select class="minimal" name="f_prov" id="f_prov">
 							<option value="">By Provider</option>
@@ -71,19 +71,10 @@
 							<option value="30-100"> More than 30% </option>
 						</select>
 					</div>
-						<div class="col-md-12">
-				                      <div class="clearfix subcategory">
-				                        <div><input type="checkbox" id="elem01" /><label for="elem01">Clothing</label></div>
-										<div><input type="checkbox" id="elem02" /><label for="elem02">Shoes</label></div>
-										<div><input type="checkbox" id="elem03" /><label for="elem03">Bags</label></div>
-										<div><input type="checkbox" id="elem04" /><label for="elem04">Accessories</label></div>
-										<div><input type="checkbox" id="elem05" /><label for="elem05">Jackets</label></div>
-										<div><input type="checkbox" id="elem06" /><label for="elem06">Jewellery</label></div>
-										<div><input type="checkbox" id="elem07" /><label for="elem07">Clutches</label></div>
-										<div><input type="checkbox" id="elem08" /><label for="elem08">Wallets</label></div>
-										<div><input type="checkbox" id="elem09" /><label for="elem09">Watches</label></div>
-										<div><input type="checkbox" id="elem10" /><label for="elem10">Beauty</label></div>
-				                      </div>
+					<div class="col-md-12">
+                      <div class="clearfix subcategory">
+                        <input type="radio" id="f_scat" name="f_scat" value="" checked/>
+                      </div>
 					</div>
 				</div>
 			</div>
@@ -349,8 +340,8 @@ function create_look() {
 
 <script type="text/javascript">
 	$('#f_cat').change(function(){
-		var select = '<option value="">Sub Category</option>';
-        $('#f_scat').html(select);
+		var select = '<input type="radio" id="f_scat" name="f_scat" value="" checked/>';
+        $('.subcategory').html(select);
 		var f_cat = $('#f_cat').val(); // get category value
 		$.ajax({
 			type:"GET",
@@ -359,11 +350,12 @@ function create_look() {
 			dataType:"json",
 			success: function(data){
 				// console.log(data.length);
-				var select = '<option value="">Sub Category</option>';
+				var select = '<input type="radio" id="f_scat" name="f_scat" value=""  checked/>';
 				$.each(data, function(index) {
-		            select += '<option value="'+index+'">'+data[index]+'</option>';
+		            select += '<div><input type="radio" id="f_scat'+index+'" name="f_scat" value="'+index+'" onchange="ps_filter();"/><label for="f_scat'+index+'">'+data[index]+'</label></div>';
 		        });
-		        $('#f_scat').html(select);
+		        // $('#f_scat').html(select);
+		        $('.subcategory').html(select);
 			},
 		  error: function(e) {
 			//called when there is an error
@@ -373,7 +365,7 @@ function create_look() {
 
 	});
 	
-	$('#f_gen, #f_cat, #f_scat, #f_prov, #f_brd, #f_dis').change(function(){
+	$('#f_gen, #f_cat, #f_prov, #f_brd, #f_dis').change(function(){
 		ps_filter();
 	});
 	$('#f_name').keyup(function(){
@@ -385,7 +377,8 @@ function create_look() {
 		var f_name = $('#f_name').val();	// get search name value
 		var f_gen = $('#f_gen').val();	// get gender value
 		var f_cat = $('#f_cat').val(); // get category value
-		var f_scat = $('#f_scat').val(); // get sub category value
+		// var f_scat = $('#f_scat').val(); // get sub category value
+		var f_scat = document.querySelector('input[name="f_scat"]:checked').value; // get sub category value
 		var f_prov = $('#f_prov').val(); // get provider value
 		var f_brd = $('#f_brd').val(); // get brand value
 		var f_dis = $('#f_dis').val(); // get discount value
@@ -460,13 +453,13 @@ function create_look() {
 </script>
 
 <script>
-    $(function(){
-	  $('input').on('change',function(){
-	  if($(this).attr('type')=='checkbox'){
-	    console.log($(this).is(':checked'));
-	  }else{
-	    console.log($(this).val());
-	  }
-	})
-	})
+ //    $(function(){
+	//   $('.subcategory input').on('change',function(){
+	// 	if($(this).attr('type')=='checkbox'){
+	// 	    console.log($(this).is(':checked'));
+	// 	  }else{
+	// 	    console.log($(this).val());
+	// 	}
+	//   });
+	// });
     </script>

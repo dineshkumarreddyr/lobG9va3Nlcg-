@@ -11,13 +11,13 @@
             <img src="<?php echo base_url(); ?>assets/images/login.jpg" class="img-responsive">
         </div>
         <div class="col-md-5 login-card">
-              <h1>Log-in</h1>
+              <h1>Reset password</h1>
               <form method="post" action="">
               <div><?php if(isset($errr_msg) && !empty($errr_msg)) { echo $errr_msg; }?></div>
-                <input type="text" name="email" id="email" placeholder="Username">
-                <input type="password" name="pass" id="pass" placeholder="Password">
-                <input type="submit" name="login" id="login" value="Login">
-                <p><a href="<?php echo base_url('forgot-password'); ?>">Forgot Password?</a></p>
+                <input type="password" name="pass" id="pass" placeholder="New password">
+                <input type="password" name="cpass" id="cpass" placeholder="Confirm password">
+                <input type="submit" name="rs_pass" id="rs_pass" value="Submit">
+                <p>Already a member? <a href="<?php echo base_url('login'); ?>">Login</a></p>
                 <p>Not a Member? <a href="<?php echo base_url('register'); ?>">Register Now</a></p>
               </form>
               <div class="or-box">

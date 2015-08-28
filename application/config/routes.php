@@ -50,6 +50,9 @@ $route['designer/edit/(:num)'] = "user/edit/$1";
 $route['login'] = "user/login";
 $route['logout'] = "user/logout";
 $route['register'] = "user/register";
+$route['myaccount'] = "user/myaccount";
+$route['forgot-password'] = "user/forgotpassword";
+$route['reset-password'] = "user/resetpassword";
 
 
 /* End of file routes.php */

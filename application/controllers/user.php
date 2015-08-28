@@ -26,6 +26,18 @@ class User extends CI_Controller {
 		$this->load->model('followersmodel', 'followers_model');
 	}
 
+	public function myaccount() {
+		$seo = array(
+			'title' => '',
+			'description' => '',
+			'keywords' => ''
+		);
+		$data['seo'] = $seo;
+		$this->load->view('header', $data);
+		// $this->load->view('user/view');
+		$this->load->view('footer');
+	}
+
 	public function index($did = 0)
 	{
 		if($did == 0) {
@@ -185,6 +197,106 @@ class User extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function forgotpassword()
+	{
+		$this->login_check();
+		$errr_msg = '';
+		$msg = '';
+
+		if($this->input->post('fg_pass')) {
+			$email = $this->input->post('email');
+			
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$errr_msg = 'Invalid Email-Id';
+			}
+			else {
+			
+				$status = $this->user_model->check_email($email);
+				if($status) {
+
+					$msg = 'Please check your email to reset your password';
+
+					$html = read_file(APPPATH.'views/email/forgotpassword.php');
+
+					$hash = base64_encode($status.'*'.$email);
+
+					$replacements = array(
+						'USER_NAME' => '',
+					    'CONFIRM_LINK' => base_url('reset-password?hash='.$hash),
+					);
+
+					foreach($replacements as $find => $replace)
+					{
+					    $html = preg_replace('/\{\{' . preg_quote($find, '/') . '\}\}/', $replace, $html);
+					}
+
+					// Loads the email library
+			        $this->load->library('email');
+			        // FCPATH refers to the CodeIgniter install directory
+			        // Specifying a file to be attached with the email
+			        // if u wish attach a file uncomment the script bellow:
+			        //$file = FCPATH . 'yourfilename.txt';
+			        // Defines the email details
+			        $this->email->from('mail@lookser.com', 'Lookser');
+			        $this->email->to($email);
+			        $this->email->subject('Lookser | Forgot Password');
+			        $this->email->message($html);
+			        //also this script
+			        //$this->email->attach($file);
+			        // The email->send() statement will return a true or false
+			        // If true, the email will be sent
+			        if ($this->email->send()) {
+			            $msg = 'Please check your email to reset your password';
+			        }
+			        else {
+			            // echo $this->email->print_debugger();
+			            $errr_msg = 'Due to technical problem we are unable to send email. Please try again later.';
+			        }
+				}
+				else {
+					$errr_msg = 'This email not registered with us';
+				}
+			}
+		}
+
+		$data['errr_msg'] = $errr_msg;
+    	$data['msg'] = $msg;
+
+    	$seo = array(
+			'title' => 'Forgot password',
+			'description' => 'Forgot password',
+			'keywords' => 'Forgot password'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('user/forgotpassword', $data);
+		$this->load->view('footer');
+	}
+
+	// reset password
+
+	public function resetpassword()
+	{
+		$this->login_check();
+		$errr_msg = '';
+		$msg = '';
+
+		$data['errr_msg'] = $errr_msg;
+    	$data['msg'] = $msg;
+
+    	$seo = array(
+			'title' => 'Reset password',
+			'description' => 'Reset password',
+			'keywords' => 'Reset password'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('user/resetpassword', $data);
+		$this->load->view('footer');
+	}
+
 	public function register()
 	{
 		$this->login_check();
@@ -211,6 +323,21 @@ class User extends CI_Controller {
 					
 					$msg = 'Successfully Registered';
 
+					$html = read_file(APPPATH.'views/email/ur_register.php');
+
+					$hash = base64_encode($status.'*'.$email);
+
+					$replacements = array(
+					    'USER_NAME' => $name,
+					    'USER_EMAIL' => $email,
+					    'CONFIRM_LINK' => base_url('confirm-registration?hash='.$hash),
+					);
+
+					foreach($replacements as $find => $replace)
+					{
+					    $html = preg_replace('/\{\{' . preg_quote($find, '/') . '\}\}/', $replace, $html);
+					}
+
 					// Loads the email library
 			        $this->load->library('email');
 			        // FCPATH refers to the CodeIgniter install directory
@@ -218,10 +345,10 @@ class User extends CI_Controller {
 			        // if u wish attach a file uncomment the script bellow:
 			        //$file = FCPATH . 'yourfilename.txt';
 			        // Defines the email details
-			        $this->email->from('udayakumarswamy@gmail.com', 'Uday');
-			        $this->email->to('udayakumarswamy@gmail.com');
+			        $this->email->from('mail@lookser.com', 'Lookser');
+			        $this->email->to($email);
 			        $this->email->subject('Lookser Email');
-			        $this->email->message('Good content.');
+			        $this->email->message($html);
 			        //also this script
 			        //$this->email->attach($file);
 			        // The email->send() statement will return a true or false
