@@ -208,6 +208,9 @@
 						  		break;
 						  	}
 						  }
+						  	if($i<=$j) {
+						  		break;
+						  	}
 						  ?>
 						  </ul>
 						</div>   

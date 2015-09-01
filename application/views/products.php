@@ -126,7 +126,7 @@
 				</select></h4>
 				 -->
 				
-				
+				<?php if(isset($_GET['category']) && ! empty($_GET['category'])): ?>
 				<h4>Size</h4>
 				<div class="sizes clearfix f_size">
 					<input type="radio" name="size" id="small" value="small" checked="checked" /> 
@@ -140,6 +140,7 @@
 					<input type="radio" name="size" id="xxlarge" value="xxlarge" />     
 					<label for="xlarge">XXL</label>
 				</div> 
+			<?php endif; ?>
 				<h4>By Discount</h4>
 				<ul class="f_dis">
 					<li><input id='f_prov_0_10' type='checkbox' name="f_dis" value="0-10" onclick="pf_search();" />
@@ -234,6 +235,9 @@
 						  		break;
 						  	}
 						  }
+						  if($i<$j) {
+						  		break;
+						  	}
 						  ?>
 						  </ul>
 						</div>   
@@ -260,8 +264,10 @@
 	sizes = sizes.split(',');
 	var s_content = '';
 	$.each(sizes, function(index){
+		if(sizes[index] != '') {
 		s_content += '<input type="radio" name="size" id="size_'+sizes[index]+'" value="'+sizes[index]+'" onclick="pf_search();"  /><label for="size_'+sizes[index]+'">'+sizes[index]+'</label>';
 		// console.log(sizes[index]);
+		}
 	});
 	$('.f_size').html(s_content);
 	// sizes
