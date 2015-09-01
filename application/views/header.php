@@ -71,8 +71,11 @@
                 <input class='form-control' type="password" name="login_pass" id="login_pass">
               </div>
             </div>
-              <div class='form-group'>
+            <div class='row'>
+              <div class="col-md-8"><a href="#">Forgot Password ?</a></div>
+              <div class='col-md-4 form-group text-right'>
               <button type="submit" id="login_submit" name="login_submit" class="submit">Submit</button>
+              </div>
               </div>
           </form>
    </div>
@@ -236,7 +239,8 @@
               <ul class="navbar-nav navbar-right loggedmenu">
                 <!--<li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>-->
                 <div class="btn-group">
-                <a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>" class="btn logged"><?php echo $this->session->userdata('name'); ?></a>
+                <a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>" class="btn logged">
+                <?php echo $this->session->userdata('name'); ?></a>
                 <button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><i class="glyphicon glyphicon-chevron-down"></i>
                 </button>
                 <ul class="dropdown-menu">

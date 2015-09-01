@@ -1,5 +1,5 @@
 	
-<div class="slideshow">
+<div class="slideshow listing-slider">
 	<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
 	data-interval="3000">
 	<div class="carousel-inner">
@@ -27,7 +27,8 @@
 							$genders = array('Male'=>'Male', 'Female'=>'Female');
 							foreach ($genders as $key => $gender) {
 								?>
-							<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) {echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> ><?php echo $gender; ?></option>
+							<option value="<?php echo $key; ?>" <?php if(isset($_GET['gender'])) {echo ($_GET['gender'] == $key) ? 'selected="selected"' : ''; } ?> >
+							<?php echo $gender; ?></option>
 								<?php
 							}
 							?>
@@ -56,7 +57,7 @@
 	</div>
 	<!-- filtered products -->
 	
-	<h2>Products</h2>
+	<h2 class="heads">Products</h2>
 	<div class="container products-wrap">
 		<div class="row">
 			<div class="col-md-3 clearfix filters-left"> 
@@ -174,7 +175,8 @@
 					<a href="<?php echo base_url('product/'.$product->p_id);?>">
 						<div class="col-md-3 col-xs-6 trend-each">
 							<div class="listimg">
-								<img data-original="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>" alt="<?php echo $product->p_name; ?>" class="lazy">
+							  <img data-original="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>"
+							   alt="<?php echo $product->p_name; ?>" class="lazy">
 							</div>
 							<h4><?php echo $product->p_name; ?></h4>
 							<div class="col-md-12 text-center">
@@ -270,6 +272,13 @@
 		$('.f_cat input:checked').each(function() {
 		    f_cat.push($(this).val());
 		});
+		console.log(JSON.stringify(f_cat));
+		if(JSON.stringify(f_cat) == '[]') {
+			$('.f_cat input').each(function() {
+		    f_cat.push($(this).val());
+		});
+		console.log(f_cat);
+		}
 
 		var f_prov = [];
 		$('.f_prov input:checked').each(function() {
@@ -287,6 +296,7 @@
 		});
 
 		var s_input = {};
+		s_input['f_gen'] = $('#s_gen').val();
 		s_input['f_cat'] = f_cat;
 		s_input['f_prov'] = f_prov;
 		s_input['f_size'] = f_size;
@@ -345,7 +355,7 @@
 			content += '<a href="'+ base_url + '/' + product.p_id + '">'+
 						'<div class="col-md-3 trend-each">'+
 							'<div class="listimg">'+
-								'<img data-original="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="img-responsive lazy">'+
+								'<img data-original="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="lazy">'+
 							'</div>'+
 							'<h4>'+product.p_name+'</h4>'+
 							'<div class="col-md-12 text-center">'+

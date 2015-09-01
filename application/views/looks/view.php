@@ -1,4 +1,3 @@
-
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -140,8 +139,10 @@
 $('#goto_providers').click(function(){
 	var url = $(this).val().split(',');
   	for(var i=0;i < url.length; i++) {
+//setTimeout(function(){
   	var win = window.open(url[i], '_blank');
   	// win.focus();
+//}, 1000);
   }
 
 });

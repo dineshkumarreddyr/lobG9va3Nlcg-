@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/lookser/';
+$config['base_url'] = 'http://www.lookser.com/';
 
 /*
 |--------------------------------------------------------------------------

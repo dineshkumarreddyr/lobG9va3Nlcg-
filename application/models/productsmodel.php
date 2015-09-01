@@ -60,7 +60,7 @@ class Productsmodel extends CI_Model {
         return $data;
     }
 
-    function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array(), $f_size = array())
+    function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array(), $f_size = array(), $f_gen ='')
     {
         $condition = array();
         $condition1 = array();
@@ -82,6 +82,9 @@ class Productsmodel extends CI_Model {
             }
 
             $condition[] = " (".implode(' OR ', $condition1).") "; 
+        }
+        if($f_gen != '') {
+            $condition[] = " p.p_gender = '".$f_gen."' "; 
         }
         $condition = implode(' AND ', $condition);
 

@@ -42,7 +42,7 @@ class Products extends CI_Controller {
 		$s_cat = array();
 		$data['s_pcategories'] = array();
 		if($category){
-			$s_pcategories = $this->pcategory_model->get_pcategories($category);
+			$s_pcategories = $this->pcategory_model->get_pcategories($category, $gender);
 			$data['s_pcategories'] = $s_pcategories;
 			foreach ($s_pcategories as $key => $s_pcategory) {
 				$s_cat[] = $s_pcategory->pc_id;
@@ -106,12 +106,13 @@ class Products extends CI_Controller {
 	*/
 	public function pf_ajax()
 	{
+		$f_gen = $this->input->post('f_gen');
 		$f_cat = $this->input->post('f_cat');
 		$f_prov = $this->input->post('f_prov');
 		$f_size = $this->input->post('f_size');
 		$f_dis = $this->input->post('f_dis');
 	
-		$data = $this->products_model->pf_products($f_cat, $f_prov, $f_dis, $f_size);
+		$data = $this->products_model->pf_products($f_cat, $f_prov, $f_dis, $f_size, $f_gen);
 		echo json_encode($data);
 	}
 }

@@ -1,4 +1,4 @@
-		<div class="slideshow">
+		<div class="slideshow listing-slider">
 		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
 		data-interval="3000">
 		<div class="carousel-inner">
@@ -54,8 +54,8 @@
 		 </div> 
 	</div>
 	
-	<!-- filtered products -->
-	<h2>Explore our looks</h2>
+	<!-- filtred products -->
+	<h2 class="heads">Explore our looks</h2>
 	<div class="container products-wrap">
 	 <div class="row">
 	 <div class="col-md-3 clearfix filters-left"> 
