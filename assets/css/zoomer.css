@@ -30,7 +30,7 @@
 		   	 	transition: none;
 	}
 	.zoomer .zoomer-positioner { margin: 0; height: 1px; position: absolute; width: 1px; }
-	.zoomer .zoomer-holder { box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); opacity: 0; position: relative;
+	.zoomer .zoomer-holder { opacity: 0; position: relative;
 		-webkit-transition: none;
 		   -moz-transition: none;
 		   	-ms-transition: none;
