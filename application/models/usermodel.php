@@ -18,6 +18,16 @@ class Usermodel extends CI_Model {
         }
         return $data;
     }
+    
+    function fb_login($email = '')
+    {
+        $data = array();
+        $query = $this->db->query("SELECT * FROM users WHERE user_email = '".$email."'");
+        if ($query->num_rows() > 0) {
+            $data = $query->first_row();
+        }
+        return $data;
+    }
 
     function register($name = '', $email = '',$pass = '', $role = 1)
     {

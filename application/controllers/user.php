@@ -149,6 +149,68 @@ class User extends CI_Controller {
 
 	public function login()
 	{
+
+		/**
+		* Login with facebook
+		**/
+		$this->load->library('facebook'); // Automatically picks appId and secret from config
+        // OR
+        // You can pass different one like this
+        //$this->load->library('facebook', array(
+        //    'appId' => 'APP_ID',
+        //    'secret' => 'SECRET',
+        //    ));
+
+		$user = $this->facebook->getUser();
+        
+        if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me?fields=id,first_name,last_name,name,email');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+        }else {
+            // Solves first time login issue. (Issue: #10)
+            //$this->facebook->destroySession();
+        }
+
+        if ($user) {
+        	$name = $data['user_profile']['name'];
+        	$email = $data['user_profile']['email'];
+        	$pass = sha1('LO' . date('Ymdhis'));
+        	$role = 1;
+        	$status = 1;
+        	$uid = $this->user_model->register($name, $email, $pass, $role, $status);
+        	if($uid) {
+				$this->session->set_userdata('uid', $uid);
+				$this->session->set_userdata('name', $name);
+	  			$this->session->set_userdata('email', $email);
+	  			$this->session->set_userdata('role', $role);        		
+        	}
+        	else {
+        		$user_data = $this->user_model->fb_login($email);
+				if(count($user_data) && $user_data->user_status == 1) {
+
+					$this->session->set_userdata('uid', $user_data->user_id);
+					$this->session->set_userdata('name', $user_data->user_fname);
+          			$this->session->set_userdata('email', $user_data->user_email);
+          			$this->session->set_userdata('role', $user_data->user_role);
+          		}
+        	}
+
+            $data['logout_url'] = site_url('logout'); // Logs off application
+            // OR 
+            // Logs off FB!
+            // $data['logout_url'] = $this->facebook->getLogoutUrl();
+
+        } else {
+            $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('login'), 
+                'scope' => array("email") // permissions here
+            ));
+        }
+        // login with facebook end
+
 		$this->login_check();
 		$errr_msg = '';
 		$msg = '';
@@ -299,6 +361,68 @@ class User extends CI_Controller {
 
 	public function register()
 	{
+
+		/**
+		* Login with facebook
+		**/
+		$this->load->library('facebook'); // Automatically picks appId and secret from config
+        // OR
+        // You can pass different one like this
+        //$this->load->library('facebook', array(
+        //    'appId' => 'APP_ID',
+        //    'secret' => 'SECRET',
+        //    ));
+
+		$user = $this->facebook->getUser();
+        
+        if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me?fields=id,first_name,last_name,name,email');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+        }else {
+            // Solves first time login issue. (Issue: #10)
+            //$this->facebook->destroySession();
+        }
+
+        if ($user) {
+        	$name = $data['user_profile']['name'];
+        	$email = $data['user_profile']['email'];
+        	$pass = sha1('LO' . date('Ymdhis'));
+        	$role = 1;
+        	$status = 1;
+        	$uid = $this->user_model->register($name, $email, $pass, $role, $status);
+        	if($uid) {
+				$this->session->set_userdata('uid', $uid);
+				$this->session->set_userdata('name', $name);
+	  			$this->session->set_userdata('email', $email);
+	  			$this->session->set_userdata('role', $role);        		
+        	}
+        	else {
+        		$user_data = $this->user_model->fb_login($email);
+				if(count($user_data) && $user_data->user_status == 1) {
+
+					$this->session->set_userdata('uid', $user_data->user_id);
+					$this->session->set_userdata('name', $user_data->user_fname);
+          			$this->session->set_userdata('email', $user_data->user_email);
+          			$this->session->set_userdata('role', $user_data->user_role);
+          		}
+        	}
+
+            $data['logout_url'] = site_url('logout'); // Logs off application
+            // OR 
+            // Logs off FB!
+            // $data['logout_url'] = $this->facebook->getLogoutUrl();
+
+        } else {
+            $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('login'), 
+                'scope' => array("email") // permissions here
+            ));
+        }
+        // login with facebook end
+
 		$this->login_check();
 
 		$errr_msg = '';
@@ -559,6 +683,14 @@ class User extends CI_Controller {
         $this->session->unset_userdata('name');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
+        
+        
+        $this->load->library('facebook');
+        // Logs off session from website
+        $this->facebook->destroySession();
+        // Make sure you destory website session as well.
+        
+        
         redirect(base_url(), 'refresh');
 	}
 

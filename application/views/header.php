@@ -52,7 +52,7 @@
     <div class="row">
      <h2>Login to Lookser</h2>
      <div class="row with">
-       <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+       <div class="col-md-6"><a href="https://www.facebook.com/dialog/oauth?client_id=105609389794209&redirect_uri=http%3A%2F%2Fwww.lookser.com%2Findex.php%2Flogin&state=c9fb5de8959c4f1955d6b0f9bb113542&sdk=php-sdk-3.2.3&scope=email"><img src="<?php echo base_url();?>assets/images/signinfb.png"
         alt="login with facebook" class="img-responsive"></a></div>
         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
          alt="login with google plus" class="img-responsive"></a></div>
@@ -103,7 +103,7 @@
       <div class="row">
       <h2>Signup as User</h2>
       <div class="row with">
-        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+        <div class="col-md-6"><a href="https://www.facebook.com/dialog/oauth?client_id=105609389794209&redirect_uri=http%3A%2F%2Fwww.lookser.com%2Findex.php%2Flogin&state=c9fb5de8959c4f1955d6b0f9bb113542&sdk=php-sdk-3.2.3&scope=email"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
          <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>
@@ -158,7 +158,7 @@
       <div class="row">
       <h2>Signup as Designer</h2>
       <div class="row with">
-        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+        <div class="col-md-6"><a href="https://www.facebook.com/dialog/oauth?client_id=105609389794209&redirect_uri=http%3A%2F%2Fwww.lookser.com%2Findex.php%2Flogin&state=c9fb5de8959c4f1955d6b0f9bb113542&sdk=php-sdk-3.2.3&scope=email"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
          <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>

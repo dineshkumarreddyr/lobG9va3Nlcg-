@@ -1,5 +1,4 @@
 
-
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -24,7 +23,7 @@
                     <span class="formor">OR</span>
               </div>
               <ul>
-                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/sharefb.png" alt="facebook"></a></li>
+                <li><a href="<?php echo $login_url; ?>"><img src="<?php echo base_url(); ?>assets/images/sharefb.png" alt="facebook"></a></li>
                 <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/sharetw.png" alt="Twitter"></a></a></li>
                 <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/shareinst.png" alt="Instagram"></a></a></li>
               </ul>
