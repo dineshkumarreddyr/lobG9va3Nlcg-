@@ -821,6 +821,86 @@ class User extends CI_Controller {
 	    $this->load->view('user/login_fb', $data);
 
 	}
+
+	public function gp_login()
+	{
+		// Start session
+		session_start();
+
+		// Include two files from google-php-client library in controller
+		include_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+		include_once APPPATH . "libraries/google-api-php-client-master/src/Google/Client.php";
+		include_once APPPATH . "libraries/google-api-php-client-master/src/Google/Service/Oauth2.php";
+
+// Store values in variables from project created in Google Developer Console
+		$client_id = '659936846526-2gqt7pcknbquvjpdfnbal0jt1dd5k9aq.apps.googleusercontent.com';
+		$client_secret = 'TJTwzth8FvNm8561DpevlvF-';
+		$redirect_uri = base_url('user/gp_login');
+		$simple_api_key = 'AIzaSyBvqIS6vI7c4bJmGssWHKBGSBUMwA7wQmE';
+
+// Create Client Request to access Google API
+		$client = new Google_Client();
+		$client->setApplicationName("PHP Google OAuth Login Example");
+		$client->setClientId($client_id);
+		$client->setClientSecret($client_secret);
+		$client->setRedirectUri($redirect_uri);
+		$client->setDeveloperKey($simple_api_key);
+		$client->addScope("https://www.googleapis.com/auth/userinfo.email");
+
+// Send Client Request
+		$objOAuthService = new Google_Service_Oauth2($client);
+
+// Add Access Token to Session
+		if (isset($_GET['code'])) {
+			$client->authenticate($_GET['code']);
+			$_SESSION['access_token'] = $client->getAccessToken();
+			header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+		}
+
+// Set Access Token to make Request
+		if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+			$client->setAccessToken($_SESSION['access_token']);
+		}
+
+// Get User Data from Google and store them in $data
+		if ($client->getAccessToken()) {
+			$userData = $objOAuthService->userinfo->get();
+			$data['userData'] = $userData;
+			$_SESSION['access_token'] = $client->getAccessToken();
+
+	    	$name = $userData->given_name;
+	    	$email = $userData->email;
+	    	$pass = sha1('LO' . date('Ymdhis'));
+	    	$role = 1;
+	    	$status = 1;
+	    	$uid = $this->user_model->register($name, $email, $pass, $role, $status);
+	    	if($uid) {
+				$this->session->set_userdata('uid', $uid);
+				$this->session->set_userdata('name', $name);
+	  			$this->session->set_userdata('email', $email);
+	  			$this->session->set_userdata('role', $role);        		
+	    	}
+	    	else {
+	    		$user_data = $this->user_model->fb_login($email);
+				if(count($user_data) && $user_data->user_status == 1) {
+
+					$this->session->set_userdata('uid', $user_data->user_id);
+					$this->session->set_userdata('name', $user_data->user_fname);
+	      			$this->session->set_userdata('email', $user_data->user_email);
+	      			$this->session->set_userdata('role', $user_data->user_role);
+	      		}
+	    	}
+
+		} else {
+			$authUrl = $client->createAuthUrl();
+			$data['authUrl'] = $authUrl;
+		}
+
+		$this->login_check();
+
+// Load view and send values stored in $data
+		$this->load->view('user/login_gp', $data);
+	}
 }
 
 

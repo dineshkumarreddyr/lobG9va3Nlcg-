@@ -54,7 +54,7 @@
      <div class="row with">
        <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
         alt="login with facebook" class="img-responsive"></a></div>
-        <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+        <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
          alt="login with google plus" class="img-responsive"></a></div>
      </div> 
 
@@ -105,7 +105,7 @@
       <div class="row with">
         <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
-         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+         <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>
       </div> 
 
@@ -160,7 +160,7 @@
       <div class="row with">
         <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
-         <div class="col-md-6"><a href="#"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+         <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>
       </div> 
 
