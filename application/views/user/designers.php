@@ -9,13 +9,13 @@
         <?php foreach ($designers as $key => $designer): ?>
         <div class="col-md-3 col-sm-6 col-xs-12">
             <article class="material-card Pink">
-                <h2><a href="#">
+                <h2><a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>">
                     <span><?php echo $designer->user_fname; ?></span>
                     <i class="fa fa-fw fa-star"></i> <?php echo $designer->l_count; ?> Looks</a>
                 </h2>
                 <div class="mc-content">
                     <div class="img-container">
-                        <a href="#"><img class="img-responsive" src="http://alisfashions.com/wp-content/uploads/2015/05/girl-picture-for-facebook-profile-mdp4hbdw.jpg"></a>
+                        <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"><img class="img-responsive" src="http://alisfashions.com/wp-content/uploads/2015/05/girl-picture-for-facebook-profile-mdp4hbdw.jpg"></a>
                     </div>
                     <div class="mc-description">
                         He has won two Academy Awards, for his roles in the mystery drama Mystic River (2003) and the biopic Milk (2008). Penn began his acting career in television with a brief appearance in a 1974 episode of Little House on the Prairie ...

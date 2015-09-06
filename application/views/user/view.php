@@ -9,7 +9,6 @@
         <div class="col-md-2 no-pad">
            <div class="designerpro-img">
               <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
-              <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
            </div> 
         </div>
         <div class="col-md-6">
@@ -58,6 +57,7 @@
 				    <div class="share"><a href="#" data-toggle="modal" data-target="#shareModal" data-value="<?php echo $look['l_id']; ?>">
 				      <img src="<?php echo base_url(); ?>assets/images/share.png" alt="share icon" class="img-circle"></a>
 				    </div>
+            <a href="<?php echo base_url('look/'.$look['l_id'].'/'.url_title($look['l_title'])); ?>">
 				    <div class="pattern<?php echo count($look['l_products']); ?>">
 					  <ul>
 					    <?php foreach ($look['l_products'] as $key => $lp): ?>
@@ -65,6 +65,7 @@
 						<?php endforeach; ?>
 					  </ul>
 					</div>
+          </a>
           <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
 					<div class="created-by">
 					<h3><?php echo $look['l_title']; ?></h3>

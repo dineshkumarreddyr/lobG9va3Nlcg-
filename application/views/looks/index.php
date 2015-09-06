@@ -60,9 +60,11 @@
 	 <div class="row">
 	 <div class="col-md-3 clearfix filters-left"> 
 	 <?php // echo $this->load->view('looks/filter', $lcategories); ?>
+	 <form>
 	 <input type="text" name="s" id="search" tabindex="1" class="filter-search"
 	  class="form-control" placeholder="Search by Look name,Designer" 
 	  value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
+	  </form>
 	 <!--<h4>by Gender</h4>
 	   <ul class="">
 		<li><input id='' name="f_cat" value="" type='checkbox' onclick="" />
