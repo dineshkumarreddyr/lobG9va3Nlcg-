@@ -146,6 +146,7 @@ class Looks extends CI_Controller {
 		$l_gender = $this->input->post('l_gender');
 		$l_name = $this->input->post('l_name');
 		$l_pids = $this->input->post('l_pids');
+		$l_mrp = $this->input->post('l_mrp');
 		$l_price = $this->input->post('l_price');
 		$lp_count = count(json_decode($l_pids));
 		$l_uid = $this->session->userdata('uid');
@@ -153,7 +154,7 @@ class Looks extends CI_Controller {
 		// Check look name already exists or not.
 		$l_name_check = $this->looks_model->check_look_name($l_category, $l_name);
 		if($l_name_check == 0) {
-			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid, $l_price, $l_gender);
+			$l_id = $this->looks_model->create_look($l_category, $l_name, $lp_count, $l_uid, $l_mrp, $l_price, $l_gender);
 			if($l_id) {
 				$this->looks_model->insert_lproducts($l_id, $l_pids);
 

@@ -58,7 +58,7 @@ class Looksmodel extends CI_Model {
     }
     
     // create look with basic details look name, category, grid based on products
-    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_price = 0, $l_gender = '')
+    function create_look($l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_mrp = 0, $l_price = 0, $l_gender = '')
     {
         $data = array(
            'l_name' => $l_name ,
@@ -66,6 +66,7 @@ class Looksmodel extends CI_Model {
            'l_gender' => $l_gender,
            'l_grid' => $l_grid,
            'l_uid' => $l_uid,
+           'l_mrp' => $l_mrp,
            'l_price' => $l_price,
            'l_status' => '1'
         );

@@ -131,6 +131,8 @@
                   </div>
                   <div class="col-md-6">
                   	<input type="button" class="form-control savelook" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
+                  	<button type="button" class="hide" id="preview_look" data-toggle="modal" data-target="#previewModal">
+                  	Save &amp; Preview</button>
                   </div>
 			 	</div>
 			 </div>
@@ -186,11 +188,54 @@
 	 </div>
 	<!--create look end-->
 
+<!--preview starts-->
+	<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Preview</h4>
+	      </div>
+	      <div class="clearfix modal-body">
+	      <div class="row">
+	         <div class="col-md-6 col-xs-6 trend-each">
+		        <div class="pattern3">
+				  <ul>
+					<li><img src="images/trending/t4.jpg" class="img-responsive"></li>
+					<li><img src="images/trending/t2.jpg" class="img-responsive"></li>
+					<li><img src="images/trending/t6.jpg" class="img-responsive"></li>
+				  </ul>
+				</div>
+				<div class="col-md-12 text-center"><span class="mrp">
+				<span class="webrupee">Rs.</span>2300</span>
+				<span class="aftrdsnt"><span class="webrupee">Rs.</span>2000</span></div>
+			 </div>
+
+			 <div class="col-md-6 preview-right">
+			   <ul>
+			     <li><strong>Look Name:</strong> The Girl next Door</li>
+			     <li><strong>Total Products:</strong> 03</li>
+			     <li><strong>Look Name:</strong> The Girl next Door</li>
+			     <li><strong>Look Created By:</strong> Aneel Kaushik</li>
+			 	 <li><strong>Date Created:</strong> 12 Aug 2015</li>
+			 	 <li><button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+	            <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Save Look</button></li>
+	            </ul>
+			 </div>
+			 </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  <!-- preview ends-->
+     
+
+
 <script type="text/javascript">
 
 <!-- Add to look -->
 localStorage.p_ids = [];
-// localStorage.lp_mrp = 0;
+localStorage.lp_mrp = 0;
 localStorage.lp_total = 0;
 function add_to_look(p_id) {
 	var count = n_count = 0;
@@ -219,7 +264,7 @@ function add_to_look(p_id) {
 
 	var p_name = $('#p_name_'+p_id).text();
 	var p_price = $('#p_price_'+p_id).text();
-	// var p_mrp = $('#p_mrp_'+p_id).text();
+	var p_mrp = $('#p_mrp_'+p_id).text();
 	var p_image = $('#p_image_'+p_id).attr('src');
 	var base_url = '<?php echo base_url("product/");?>';
 	var lp = '<div class="selectedprod-each" id="lp_'+p_id+'">' +
@@ -234,7 +279,7 @@ function add_to_look(p_id) {
 					'<div class="provider"><img src="<?php echo base_url(); ?>assets/images/flipkart.png"></div>' +
 				   '</div>' +
 				   '<div class="col-md-3 prodpick-right">' +
-				     '<div class="mrp" id="lp_mrp_'+p_id+'">'+'</div>' +
+				     '<div class="mrp" id="lp_mrp_'+p_id+'">'+p_mrp+'</div>' +
 				   '</div>' +
 				   '<div class="col-md-3 prodpick-right">' +
 					 '<div class="cost" id="lp_price_'+p_id+'">'+p_price+'</div>' +
@@ -249,18 +294,19 @@ function add_to_look(p_id) {
 	$('#lp').append(lp);
 
 	<!-- look products total calculating -->
-	// p_mrp = p_mrp.split('s. ');
+	p_mrp = p_mrp.split('s. ');
 	p_price = p_price.split('s. ');
 	if (localStorage.lp_total) {
-		// localStorage.lp_mrp = parseInt(localStorage.lp_mrp) + parseInt(p_mrpmrp[1]);
+		localStorage.lp_mrp = parseInt(localStorage.lp_mrp) + parseInt(p_mrp[1]);
 		localStorage.lp_total = parseInt(localStorage.lp_total) + parseInt(p_price[1]);
 	}
 	else {
-		// localStorage.lp_mrp = parseInt(p_mrp[1]);	
+		localStorage.lp_mrp = parseInt(p_mrp[1]);	
 		localStorage.lp_total = parseInt(p_price[1]);	
 	}
 	$('#lp_total_div').removeClass('hide');
 	$('#lc_create').removeClass('hide');
+	$('#lp_total_mrp').text('Rs. ' + localStorage.lp_mrp);
 	$('#lp_total').text('Rs. ' + localStorage.lp_total);
 	<!-- look products total calculating -->
 
@@ -277,10 +323,15 @@ function add_to_look(p_id) {
 function remove_lp(p_id) {
 
 	<!-- look products total calculating -->
+	lp_mrp = $('#lp_mrp_'+p_id).text().split('s. ');
 	lp_price = $('#lp_price_'+p_id).text().split('s. ');
+	if (localStorage.lp_mrp) {
+		localStorage.lp_mrp = parseInt(localStorage.lp_mrp) - parseInt(lp_mrp[1]);
+	}
 	if (localStorage.lp_total) {
 		localStorage.lp_total = parseInt(localStorage.lp_total) - parseInt(lp_price[1]);
 	}
+	$('#lp_total_mrp').text('Rs. '+localStorage.lp_mrp);
 	$('#lp_total').text('Rs. '+localStorage.lp_total);
 	if(localStorage.lp_total == 0) {
 		$('#lp_total_div').addClass('hide');
@@ -317,27 +368,29 @@ function create_look() {
 		alert('Please select gender');
 		return false;
 	}
+	var l_mrp = $('#lp_total_mrp').text().split('s. ')[1];
 	var l_price = $('#lp_total').text().split('s. ')[1];
+	$('#preview_look').trigger('click');
 
-	$.ajax({
-		type:"POST",
-		url:'<?php echo base_url("looks/create_ajax");?>',
-		data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_price':l_price,'l_pids':localStorage.p_ids},
-		dataType:"json",
-		success: function(data){
-			if(data.status == 'success') {
-				alert("Look created successfully");
-				window.location.href = '<?php echo base_url("looks"); ?>';
-			}
-			else if(data.status == 'error') {
-				alert(data.message);
-			}
-		},
-	  error: function(e) {
-		//called when there is an error
-		console.log(e.message);
-	  }
-	});
+	// $.ajax({
+	// 	type:"POST",
+	// 	url:'<?php echo base_url("looks/create_ajax");?>',
+	// 	data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_mrp':l_mrp,'l_price':l_price,'l_pids':localStorage.p_ids},
+	// 	dataType:"json",
+	// 	success: function(data){
+	// 		if(data.status == 'success') {
+	// 			alert("Look created successfully");
+	// 			window.location.href = '<?php echo base_url("looks"); ?>';
+	// 		}
+	// 		else if(data.status == 'error') {
+	// 			alert(data.message);
+	// 		}
+	// 	},
+	//   error: function(e) {
+	// 	//called when there is an error
+	// 	console.log(e.message);
+	//   }
+	// });
 }
 <!-- Create look -->
 </script>
