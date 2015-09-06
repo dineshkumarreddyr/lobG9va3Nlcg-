@@ -197,7 +197,7 @@
 	        <h4 class="modal-title" id="myModalLabel">Preview</h4>
 	      </div>
 	      <div class="clearfix modal-body">
-	      <div class="row">
+	      <div class="row" id="prev_data">
 	         <div class="col-md-6 col-xs-6 trend-each">
 		        <div class="pattern3">
 				  <ul>
@@ -222,7 +222,7 @@
 	            <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Save Look</button></li>
 	            </ul>
 			 </div>
-			 </div>
+		  </div>
 	      </div>
 	    </div>
 	  </div>
@@ -370,27 +370,83 @@ function create_look() {
 	}
 	var l_mrp = $('#lp_total_mrp').text().split('s. ')[1];
 	var l_price = $('#lp_total').text().split('s. ')[1];
+
+	var p_ids = JSON.parse(localStorage.p_ids);
+	var prev_data = '';
+
+	var fullDate = new Date();
+	var twoDigitMonth = fullDate.getMonth()+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
+	var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
+	var currentDate = twoDigitDate + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+
+	prev_data += '<div class="col-md-6 col-xs-6 trend-each">'+
+	    '<div class="pattern'+p_ids.length+'">'+
+		  '<ul>';
+	for(var j = 0; j < p_ids.length; j++) {
+		var p_img = $('#ld_'+p_ids[j]+' a img').attr('src');
+		prev_data += '<li><img src="'+p_img+'" class="img-responsive"></li>';
+	}
+		  prev_data += '</ul>'+
+		'</div>'+
+		'<div class="col-md-12 text-center"><span class="mrp">'+
+		'<span class="webrupee">Rs.</span>'+l_mrp+'</span>'+
+		'<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+l_price+'</span></div>'+
+	 '</div>'+
+
+	 '<div class="col-md-6 preview-right">'+
+	   '<ul>'+
+	     '<li><strong>Look Name:</strong> '+l_name+'</li>'+
+	     '<li><strong>Total Products:</strong> '+p_ids.length+'</li>'+
+	     '<li><strong>Look Name:</strong> '+$("#l_cat :selected").text()+'</li>'+
+	     '<li><strong>Look Created By:</strong> '+$('.logged').text()+'</li>'+
+	 	 '<li><strong>Date Created:</strong> '+currentDate+'</li>'+
+	 	 '<li><button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>'+
+	    '<button type="button" onclick="save_look();" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Save -Look</button></li>'+
+	    '</ul>'+
+	 '</div>';
+	 $('#prev_data').html(prev_data);
+
 	$('#preview_look').trigger('click');
 
-	// $.ajax({
-	// 	type:"POST",
-	// 	url:'<?php echo base_url("looks/create_ajax");?>',
-	// 	data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_mrp':l_mrp,'l_price':l_price,'l_pids':localStorage.p_ids},
-	// 	dataType:"json",
-	// 	success: function(data){
-	// 		if(data.status == 'success') {
-	// 			alert("Look created successfully");
-	// 			window.location.href = '<?php echo base_url("looks"); ?>';
-	// 		}
-	// 		else if(data.status == 'error') {
-	// 			alert(data.message);
-	// 		}
-	// 	},
-	//   error: function(e) {
-	// 	//called when there is an error
-	// 	console.log(e.message);
-	//   }
-	// });
+}
+function save_look() {
+
+	var l_cat = $('#l_cat').val();
+	var l_name = $('#l_name').val();
+	var l_gender = $('#l_gen').val();
+	if(l_cat == '') {
+		alert('Please select look category');
+		return false;
+	}
+	if(l_name == '') {
+		alert('Please enter look name');
+		return false;
+	}
+	if(l_gender == '') {
+		alert('Please select gender');
+		return false;
+	}
+	var l_mrp = $('#lp_total_mrp').text().split('s. ')[1];
+	var l_price = $('#lp_total').text().split('s. ')[1];
+	$.ajax({
+		type:"POST",
+		url:'<?php echo base_url("looks/create_ajax");?>',
+		data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_mrp':l_mrp,'l_price':l_price,'l_pids':localStorage.p_ids},
+		dataType:"json",
+		success: function(data){
+			if(data.status == 'success') {
+				alert("Look created successfully");
+				window.location.href = '<?php echo base_url("looks"); ?>';
+			}
+			else if(data.status == 'error') {
+				alert(data.message);
+			}
+		},
+	  error: function(e) {
+		//called when there is an error
+		console.log(e.message);
+	  }
+	});
 }
 <!-- Create look -->
 </script>
