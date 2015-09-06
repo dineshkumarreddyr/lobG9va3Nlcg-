@@ -94,7 +94,8 @@
 			 <div class="totaladded hide" id="lp_total_div" >
 			  <div class="row">
 			    <div class="col-md-8 text-right"><strong>Total</strong></div>
-			    <div class="col-md-4 no-pad" id="lp_total">Rs. 0</div>
+			    <div class="col-md-2 no-pad" id="lp_total_mrp">Rs. 599</div>
+			    <div class="col-md-2 no-pad" id="lp_total">Rs. 0</div>
 			  </div>
 			 </div>
 			 <!-- -->
@@ -229,8 +230,11 @@ function add_to_look(p_id) {
 			   '<div class="col-md-10 prodpick-details">' +
 			     '<div class="row">' +
 				   '<a href="'+base_url+'/'+p_id+'" target="_blank"><h3 id="lp_name_'+p_id+'">'+p_name+'</h3></a>' +
-				   '<div class="col-md-7 prodpick-left">' +
+				   '<div class="col-md-4 prodpick-left">' +
 					'<div class="provider"><img src="<?php echo base_url(); ?>assets/images/flipkart.png"></div>' +
+				   '</div>' +
+				   '<div class="col-md-3 prodpick-right">' +
+				     '<div class="mrp" id="lp_mrp_'+p_id+'">'+'</div>' +
 				   '</div>' +
 				   '<div class="col-md-3 prodpick-right">' +
 					 '<div class="cost" id="lp_price_'+p_id+'">'+p_price+'</div>' +

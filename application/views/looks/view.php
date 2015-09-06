@@ -49,7 +49,7 @@
 	               <a href="#"><img src="<?php echo base_url();?>uploads/designers/<?php echo ($look['l_user_image'] == '') ? 'default.jpg' : $look['l_user_image']; ?>" class="img-responsive"></a>
 	            </div>
 	            <div class="col-md-8 col-xs-8 lookdetail-designer">
-	              <div class="clearfix"><a href="<?php echo base_url('designer/'.$look['l_uid']); ?>">by <?php echo $look['l_user']; ?></a></div>
+	              <div class="clearfix"><a href="<?php echo base_url('designer/'.$look['l_uid'].'/'.url_title($look['l_user'])); ?>">by <?php echo $look['l_user']; ?></a></div>
 	              <div class="detail-each pull-left"><i class="flaticon-eye106"></i> <?php echo $look['l_views']; ?></div>
 	              <div class="detail-each pull-left"><i class="flaticon-like78"></i> 21</div>
 	            </div>
@@ -79,7 +79,7 @@
 	         </div>
 	         <div class="col-md-10 col-xs-8 prodpick-details">
 	           <div class="row">
-	           <h3><a href="<?php echo base_url('product/'.$lp->p_id); ?>" target="_blank"><?php echo $lp->p_name;?></a></h3>
+	           <h3><a href="<?php echo base_url('product/'.$lp->p_id.'/'.url_title($lp->p_name)); ?>" target="_blank"><?php echo $lp->p_name;?></a></h3>
 	           <div class="col-md-6 col-xs-3 prodpick-left">
 	           <div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>
 	           </div>

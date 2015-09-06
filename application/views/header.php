@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php echo $seo['title']; ?> || Latest trends in fashion lookser.com</title>
-    <meta name="description" content="<?php echo $seo['description']; ?>" />
+  <title><?php echo $seo['title']; ?> || Latest trends in fashion lookser - lookser.com</title>
+    <meta name="description" content="<?php echo $seo['description']; ?> - lookser" />
     <meta name="keywords" content="<?php echo $seo['keywords']; ?>, fashion, trends, discover, tops, dresses, jewellery, accessories, shoes, bags, lingerie, tops, dresses, pants, kurtis, salwaar-kameez, lastest fashion, lastest styles,  fashion looks, classy looks, awesome looks, lookser shop, fashion one stop, perfection looks, lookser, lookser.com." />
 
   <meta property="og:title" content="<?php echo $seo['title']; ?> || Latest trends in fashion lookser.com" />
@@ -44,7 +44,7 @@
         <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
   </button>
       </div>
-      <div class="col-md-5 no-pad">
+      <div class="col-md-5 no-pad hidden-xs">
         <img src="<?php echo base_url();?>assets/images/login-img.jpg" alt="login image" class="img-responsive">
    </div>
    
@@ -52,9 +52,9 @@
     <div class="row">
      <h2>Login to Lookser</h2>
      <div class="row with">
-       <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+       <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
         alt="login with facebook" class="img-responsive"></a></div>
-        <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+        <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
          alt="login with google plus" class="img-responsive"></a></div>
      </div> 
 
@@ -95,7 +95,7 @@
         <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
     </button>
       </div>
-      <div class="col-md-5 no-pad">
+      <div class="col-md-5 no-pad hidden-xs">
         <img src="<?php echo base_url();?>assets/images/signupuser.jpg" alt="login image" class="img-responsive">
     </div>
     
@@ -103,9 +103,9 @@
       <div class="row">
       <h2>Signup as User</h2>
       <div class="row with">
-        <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+        <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
-         <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+         <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>
       </div> 
 
@@ -150,7 +150,7 @@
         <span aria-hidden="true"> <img src="<?php echo base_url();?>assets/images/close.png"></span>
     </button>
       </div>
-      <div class="col-md-5 no-pad">
+      <div class="col-md-5 no-pad hidden-xs">
         <img src="<?php echo base_url();?>assets/images/login-img.jpg" alt="login image" class="img-responsive">
     </div>
     
@@ -158,9 +158,9 @@
       <div class="row">
       <h2>Signup as Designer</h2>
       <div class="row with">
-        <div class="col-md-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
+        <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/fb_login'); ?>"><img src="<?php echo base_url();?>assets/images/signinfb.png"
          alt="login with facebook" class="img-responsive"></a></div>
-         <div class="col-md-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
+         <div class="col-md-6 col-xs-6"><a href="<?php echo base_url('user/gp_login'); ?>"><img src="<?php echo base_url();?>assets/images/signingplus.png"
           alt="login with google plus" class="img-responsive"></a></div>
       </div> 
 
@@ -196,15 +196,105 @@
   </div>
   <!-- signup designer ends-->
     <?php endif; ?>
+    
+    <!--mobile menu starts-->
+	<div class="container visible-xs">
+	<div class="row mob-menu">
+	 <div class="col-xs-2">
+	  <ul>
+	    <li><a href="#" id="c-button--slide-left" class="c-button"><img src="http://www.lookser.com/assets/images/mob-menu.png" class="img-responsive"></a></li>
+	  </ul>
+	 </div>
+	 <div class="col-xs-8"><img src="http://www.lookser.com/assets/images/logo.png" class="img-responsive"></div>
+	</div>
+	</div>
+
+	<div class="mob-items-wrap visible-xs">
+	  <nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
+	  <div class="mob-blue">
+	    <img src="<?php echo base_url();?>assets/images/hi.png" alt="">
+		<div class="options"><a href="#" data-toggle="modal" data-target="#LoginModal">Login</a> </div>
+		<div class="options"><a href="#" data-toggle="modal" data-target="#signupUserModal">Signup as User</a> 0r 
+		<a href="#" data-toggle="modal" data-target="#signupDsgnModal">Signup as Designer</a></div>
+	  </div>
+	  <ul class="c-menu__items">
+		<li class="c-menu__item">
+		  <a href="<?php echo base_url(); ?>" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-home7"></i></div>
+		  <div class="col-xs-10 text-left">Home</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="<?php echo base_url('products'); ?>" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-purse10"></i></div>
+		  <div class="col-xs-10 text-left">Shop With Us</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="<?php echo base_url('looks'); ?>" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-users78"></i></div>
+		  <div class="col-xs-10 text-left">Get the Look</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-all6"></i></div>
+		  <div class="col-xs-10 text-left">Create Look</div>
+		  </a>
+		</li>
+	  </ul>
+	  
+	  <ul class="c-menu__items">
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-home7"></i></div>
+		  <div class="col-xs-10 text-left">About Us</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-identification57"></i></div>
+		  <div class="col-xs-10 text-left">Blog</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-career1"></i></div>
+		  <div class="col-xs-10 text-left">Careers</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-agreement2"></i></div>
+		  <div class="col-xs-10 text-left">Partner With Us</div>
+		  </a>
+		</li>
+	  </ul>
+	  
+	  <ul class="c-menu__items">
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-identification57"></i></div>
+		  <div class="col-xs-10 text-left">My Account</div>
+		  </a>
+		</li>
+		<li class="c-menu__item">
+		  <a href="#" class="row c-menu__link">
+		  <div class="col-xs-2 text-left"><i class="flaticon-loving18"></i></div>
+		  <div class="col-xs-10 text-left">My Favourites</div>
+		  </a>
+		</li>
+	  </ul>
+	  <button class="c-menu__close">&larr; Close Menu</button>
+	</nav>
+	<div id="c-mask" class="c-mask"></div>
+	</div>
+  <!--mobile menu ends-->
 
     <!-- head top starts--> 
     <div class="container-fluid hidden-xs head-top">
       <div class="container">
-        <div class="col-md-6 head-left no-pad">
-          <ul>
-            <!-- <li>(855) 255 - 5011</li>-->
-          </ul>
-        </div>
+        <div class="col-md-6 head-left no-pad"></div>
 
         <div class="col-md-6">
           <nav class="navbar">
@@ -221,7 +311,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right top-menu">
-                <li><a href="#" data-toggle="modal" data-target="#LoginModal">Login</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="flaticon-user7"></i> Login</a></li>
                 <li>
                   <div class="ui-group-buttons">
                     <button type="button" class="btn userbtn btn-xs" data-toggle="modal" 
@@ -265,7 +355,7 @@
     <!-- slider starts -->
     <div id="masterhead">
       <div class="container-fluid no-pad">
-        <div class="menu-main">
+        <div class="menu-main hidden-xs">
           <nav class="navbar">
             <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
@@ -291,14 +381,36 @@
                   <?php endif; ?>
                   <!-- <li><a href="#">top offers</a></li> -->
                   <!-- <li><a href="#">how it works</a></li> -->
-                  <!-- <li><a href="#">blog</a></li> -->
-                  <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
+                  <!-- <li><a href="#">blog</a></li>
+                  <li class="favs"><a href="#"><i class="flaticon-like78"></i> 03</a></li>
+		  <li class="foll"><a href="#"><i class="flaticon-user7"></i> 21</a></li> -->
+                 <!-- <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
                     <div class="form-group">
                       <input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
                     </div>
-                  </form>
+                  </form>-->
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
         </div>
+        
+        
+    <!--mobile menu script-->
+	<script src="<?php echo base_url();?>assets/js/menu.js"></script>
+	<script>
+	  var slideLeft = new Menu({
+		wrapper: '.mob-menu',
+		type: 'slide-left',
+		menuOpenerClass: '.c-button',
+		maskId: '#c-mask'
+	  });
+	  var slideLeftBtn = document.querySelector('#c-button--slide-left');
+	  slideLeftBtn.addEventListener('click', function(e) {
+		e.preventDefault;
+		slideLeft.open();
+	  });
+	</script>
+	<!--mobile menu script-->
+        
+        

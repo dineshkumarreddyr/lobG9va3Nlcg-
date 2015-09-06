@@ -12,7 +12,7 @@
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
 		
-	<div class="filters-top-wrap">
+	<!--<div class="filters-top-wrap">
 	  <div class="container">
 	      <div class="row">
 	      <form method="get" action="">
@@ -52,14 +52,27 @@
 			</form>
 		  </div>
 		 </div> 
-	</div>
+	</div>-->
 	
 	<!-- filtred products -->
 	<h2 class="heads">Explore our looks</h2>
 	<div class="container products-wrap">
 	 <div class="row">
 	 <div class="col-md-3 clearfix filters-left"> 
-	 	<?php // echo $this->load->view('looks/filter', $lcategories); ?>
+	 <?php // echo $this->load->view('looks/filter', $lcategories); ?>
+	 <input type="text" name="s" id="search" tabindex="1" class="filter-search"
+	  class="form-control" placeholder="Search by Look name,Designer" 
+	  value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
+	 <!--<h4>by Gender</h4>
+	   <ul class="">
+		<li><input id='' name="f_cat" value="" type='checkbox' onclick="" />
+		<label for=''><span></span>Male</label>
+                </li>
+                <li><input id='' name="f_cat" value="" type='checkbox' onclick="" />
+		<label for=''><span></span>Female</label>
+                </li>
+	  </ul>-->
+		
 	   <h4>by Categories</h4>
 	   <ul class="f_cat">
 		 <?php
@@ -74,7 +87,7 @@
 		?>
 		</ul>
 		
-	   <!-- <div class="clearfix">&nbsp;</div>
+	   <!-- 
 	   <h4>By Provider</h4>
 	   <ul>
 		 <li><input id='six' type='checkbox' />
@@ -99,7 +112,7 @@
 	   <div id="slider"></div>
 	 </div> -->
 	 
-	 <!-- <div class="clearfix">&nbsp;</div>
+	 <!-- 
 	 <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
 	  <option value="#ac725e">#ac725e</option>
 	  <option value="#d06b64">#d06b64</option>
@@ -128,7 +141,7 @@
 	</select></h4> -->
 	 
 	 
-	  <!-- <div class="clearfix">&nbsp;</div>
+	  <!-- 
 	  <h4>Size</h4>
 	  <div class="sizes clearfix">
 	  <input type="radio" name="size" id="small" value="small" checked="checked" /> 
@@ -145,11 +158,10 @@
 	 </div>
 	 <!--filters left end-->
 	 
-	 <div class="col-md-9 looks-list-wrap" id="looks_wrapper">
-
+    <div class="col-md-9 looks-list-wrap" id="looks_wrapper">
     <?php if (count($looks)): ?>
     <?php foreach ($looks as $key => $look): ?>
-	  <a href="<?php echo base_url('looks/view/'.$look['l_id']); ?>">
+	  <a href="<?php echo base_url('look/'.$look['l_id'].'/'.url_title($look['l_title'])); ?>">
 	  <div class="col-md-3 col-xs-6 trend-each">
 
 
@@ -256,6 +268,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!--top designers carousel-->
 

@@ -1,4 +1,3 @@
-
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -26,7 +25,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <div class="mc-footer">
-                    <a href="<?php echo base_url('designer/'.$designer->user_id); ?>"> Follow</a>
+                    <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"> Follow</a>
                 </div>
             </article>
         </div>

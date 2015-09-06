@@ -42,9 +42,14 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 
 $route['product/(:num)'] = "products/view/$1";
+$route['product/(:num)/(:any)'] = "products/view/$1";
+
+$route['look/(:num)'] = "looks/view/$1";
+$route['look/(:num)/(:any)'] = "looks/view/$1";
 
 $route['designers'] = "user/get_designers";
 $route['designer/(:num)'] = "user/index/$1";
+$route['designer/(:num)/(:any)'] = "user/index/$1";
 $route['designer/edit/(:num)'] = "user/edit/$1";
 
 $route['login'] = "user/login";

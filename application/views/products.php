@@ -173,7 +173,7 @@
 				foreach ($products as $key => $product) {
 					$sizes[$product->p_size] = $product->p_size;
 					?>
-					<a href="<?php echo base_url('product/'.$product->p_id);?>">
+					<a href="<?php echo base_url('product/'.$product->p_id.'/'.url_title($product->p_name));?>">
 						<div class="col-md-3 col-xs-6 trend-each">
 							<div class="listimg">
 							  <img data-original="<?php echo $product->p_image; ?>" title="<?php echo $product->p_name; ?>"
@@ -255,7 +255,9 @@
 			</div>
 		</div>
 	</div>
+	</div>
 	<!--top designers carousel-->
+	
 	<?php endif; ?>
 
 <script type="text/javascript">

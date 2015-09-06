@@ -66,7 +66,7 @@
 			  <?php
 				foreach ($rproducts as $key => $tproduct) {
 				?>
-				<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
+				<a href="<?php echo base_url('product/'.$tproduct->p_id.'/'.url_title($tproduct->p_name));?>">
 			  <div class="owl-item" style="width: 117px;"><div class="col-md-12 item trend-each">
 			        <div class="listimg">
 					  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="lazy">

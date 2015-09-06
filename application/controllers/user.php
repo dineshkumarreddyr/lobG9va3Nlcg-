@@ -87,7 +87,7 @@ class User extends CI_Controller {
 	{
 		$uid = $this->session->userdata('uid');
 	    $role = $this->session->userdata('role');
-	    if(!isset($uid) || empty($uid) || $role != 2) {
+	    if(!isset($uid) || empty($uid) || $role != 2 || $did != $uid) {
 	        // redirect(base_url());
         	show_404(); // This seems to display within the template when what I want is for it to redirect
 	    }

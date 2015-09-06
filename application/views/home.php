@@ -82,7 +82,7 @@
 		<?php
 		foreach ($tproducts as $key => $tproduct) {
 		?>
-		<a href="<?php echo base_url('product/'.$tproduct->p_id);?>">
+		<a href="<?php echo base_url('product/'.$tproduct->p_id.'/'.url_title($tproduct->p_name));?>">
 	  <div class="col-md-3 col-xs-6 trend-each">
         <div class="listimg">
 		  <img data-original="<?php echo $tproduct->p_image; ?>" title="<?php echo $tproduct->p_name; ?>" alt="<?php echo $tproduct->p_name; ?>" class="lazy">
@@ -116,7 +116,7 @@
       foreach ($pbd_looks as $key => $pbd_look) {
       ?>
 	  <div class="col-md-3 created-each">
-      <a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
+      <a href="<?php echo base_url('looks/view/'.$pbd_look['l_id'].'/'.url_title($pbd_look['l_title'])); ?>">
       <?php if(count($pbd_look['l_products']) == 5): ?>
 	    <div class="pattern<?php echo count($pbd_look['l_products']); ?>">
 	    	<div class="pattern5-left">
@@ -145,10 +145,10 @@
       <?php endif; ?>
 	  </a>
 		<div class="created-by">
-      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
+      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid'].'/'.url_title($pbd_look['l_user'])); ?>">
 		<div class="created-image"><img data-original="<?php echo base_url();?>uploads/designers/<?php echo ($pbd_look['l_user_image'] == '') ? 'default.jpg' : $pbd_look['l_user_image']; ?>" class="img-responsive lazy"></div>
       	</a>
-      	<a href="<?php echo base_url('looks/view/'.$pbd_look['l_id']); ?>">
+      	<a href="<?php echo base_url('looks/view/'.$pbd_look['l_id'].'/'.url_title($pbd_look['l_title'])); ?>">
 		<h3><?php echo $pbd_look['l_title']; ?></h3>
 		</a>
 		<div class="col-md-12 clearfix text-center">
@@ -156,7 +156,7 @@
 		<span class="mrp"><span class="webrupee">Rs.</span><?php echo $pbd_look['l_mrp']; ?></span>
 		<?php endif; ?>
 		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $pbd_look['l_price']; ?></span></div>
-      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid']); ?>">
+      	<a href="<?php echo base_url('designer/'.$pbd_look['l_uid'].'/'.url_title($pbd_look['l_user'])); ?>">
 		<h4>By <?php echo $pbd_look['l_user']; ?></h4>
 		</a>
 	  </div>
@@ -189,7 +189,7 @@
 						  <?php
 						  foreach ($tdesigners as $key => $tdesigner) {
 						  	?>
-						  	<a href="<?php echo base_url('designer/'.$tdesigner->user_id); ?>">
+						  	<a href="<?php echo base_url('designer/'.$tdesigner->user_id.'/'.url_title($tdesigner->user_fname)); ?>">
 							<li class="col-md-3 col-sm-6">
 							   <div class="designer">
 								<!-- <div class="count girl">02</div> -->

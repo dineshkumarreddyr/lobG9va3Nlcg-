@@ -1,12 +1,4 @@
-		<div class="designerslide">
-		<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
-		  <div class="carousel-inner">
-		    <div class="item active">
-		       <img class="img-responsive" src="<?php echo base_url(); ?>assets/images/designer.jpg" alt="First Slide">
-		    </div>
-		  </div>
-		</div><!-- /. Slideshow -->
-		</div>
+		<div class="designerslide"></div>
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -14,19 +6,19 @@
 	<!--designer top-->    
     <div class="container designertop-main">
       <div class="row">
-        <div class="col-md-1 no-pad">
+        <div class="col-md-2 no-pad">
            <div class="designerpro-img">
               <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
               <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
            </div> 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
           <h2><?php echo $designer_details->user_fname; ?></h2>
           <h3><i class="flaticon-placeholder9"></i> <?php echo $designer_details->user_location . ', ' . $designer_details->user_state ?>.</h3>
           <?php
           $uid = $this->session->userdata('uid');
           $role = $this->session->userdata('role');
-          if(isset($uid) && !empty($uid) && $role == 2) {
+          if(isset($uid) && !empty($uid) && $role == 2 && $uid == $designer_details->user_id) {
           ?>
           <h3><i class="flaticon-pen29"></i><a href="<?php echo base_url('designer/edit/'.$designer_details->user_id); ?>"> Edit Profile</a></h3>
           <?php
@@ -50,7 +42,7 @@
 	<!--designer main-->  
     <div class="container designerpro-main">
      <div class="row">
-     <div class="col-md-9 designerpro-left">
+     <div class="col-md-9 no-pad designerpro-left">
 		 <ul class="nav nav-tabs">
 		   <li class="active"><a href="#looks" data-toggle="tab"><i class="flaticon-user7"></i>Looks Created</a></li>
 		   <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Profile</a></li>

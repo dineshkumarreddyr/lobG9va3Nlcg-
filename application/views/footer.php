@@ -1,4 +1,3 @@
-
 <div class="clearfix"></div>
 <div class="footer">
   <div class="container">
@@ -52,12 +51,12 @@
      <div class="col-md-5 col-sm-5 social">
         <h3>CONNECT ONLINE</h3>
           <ul>
-             <li><a href="https://www.facebook.com/lookserIndia" target="_blank"><img src="<?php echo base_url();?>assets/images/fb1.png" width="10" alt="social icons"></a></li>
-             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/ftw.png" alt="social icons"></a></li>
-             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/gplus.png" alt="social icons"></a></li>
-             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/yt.png" alt="social icons"></a></li>
-             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/sc.png" alt="social icons"></a></li>
-             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/fl.png" alt="social icons"></a></li>
+             <li><a href="https://www.facebook.com/lookserIndia" target="_blank"><img src="<?php echo base_url();?>assets/images/facebook.png" alt="social icons"></a></li>
+             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/googleplus.png" alt="social icons"></a></li>
+             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/linkedin.png" alt="social icons"></a></li>
+             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/pinterest.png" alt="social icons"></a></li>
+             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/twitter.png" alt="social icons"></a></li>
+             <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/flickr.png" alt="social icons"></a></li>
           </ul>
         <h3>JOIN OUR MAILING LIST TO RECIEVE UPDATES</h3>
         <form action="#">
@@ -75,13 +74,7 @@
 
 <div class="copy">
   <div class="container">
-  <div class="col-md-7">© 2015 Lookser | ALL RIGHTS RESERVED</div>
-  <div class="col-md-5 icons">
-    <ul>
-    <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/tw.png"></a></li>
-    <li><a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/tw.png"></a></li>
-  </ul>
-  </div>
+  <div class="col-md-12 text-center">© 2015 Lookser | ALL RIGHTS RESERVED</div>
 </div>
 </div>
 
