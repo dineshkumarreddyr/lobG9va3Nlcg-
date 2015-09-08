@@ -88,6 +88,24 @@
 		}
 		?>
 		</ul>
+		<h4>By Provider</h4>
+		<ul class="f_prov">
+			<li>
+				<input id='f_prov0' type='checkbox' name="f_prov" value="0" onclick="lf_search();" />
+				<label for='f_prov0'><span></span>All
+				</label>
+			</li>
+			<?php
+			foreach ($providers as $key => $provider) {
+				?>
+				<li><input id='f_prov<?php echo $provider->provider_id; ?>' type='checkbox' name="f_prov" value="<?php echo $provider->provider_id; ?>" onclick="lf_search();" />
+					<label for='f_prov<?php echo $provider->provider_id; ?>'><span></span><?php echo $provider->provider_name; ?>
+					</label>
+				</li>
+				<?php
+			}
+			?>
+		</ul>
 		
 	   <!-- 
 	   <h4>By Provider</h4>
@@ -281,14 +299,14 @@
 		    f_cat.push($(this).val());
 		});
 
-		// var f_prov = [];
-		// $('.f_prov input:checked').each(function() {
-		//     f_prov.push($(this).val());
-		// });
+		var f_prov = [];
+		$('.f_prov input:checked').each(function() {
+		    f_prov.push($(this).val());
+		});
 
 		var s_input = {};
 		s_input['f_cat'] = f_cat;
-		// s_input['f_prov'] = f_prov;
+		s_input['f_prov'] = f_prov;
 
 		$.ajax({
 			type:"POST",

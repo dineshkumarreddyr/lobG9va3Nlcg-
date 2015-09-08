@@ -144,13 +144,16 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
-    function lf_looks($l_cat = array())
+    function lf_looks($l_cat = array(), $l_prov = array())
     {
         $condition = array();
         $condition[] = " l.l_name != ''";
         if(count($l_cat) && is_array($l_cat)) {
             $condition[] = " l.l_category in (".implode(',', $l_cat).") "; 
         }
+        // if(count($l_prov) && is_array($l_prov)) {
+        //     $condition[] = " l.l_category in (".implode(',', $l_cat).") "; 
+        // }
         $condition[] = " l.l_status = '1' ";
         $condition = implode(' AND ', $condition);
 

@@ -382,8 +382,8 @@
                   <?php endif; ?>
                   <!-- <li><a href="#">top offers</a></li> -->
                   <!-- <li><a href="#">how it works</a></li> -->
-                  <!-- <li><a href="#">blog</a></li>
-                  <li class="favs"><a href="#"><i class="flaticon-like78"></i> 03</a></li>
+                  <li><a href="<?php echo base_url('blog'); ?>">blog</a></li>
+                  <!--<li class="favs"><a href="#"><i class="flaticon-like78"></i> 03</a></li>
 		  <li class="foll"><a href="#"><i class="flaticon-user7"></i> 21</a></li> -->
                  <!-- <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
                     <div class="form-group">

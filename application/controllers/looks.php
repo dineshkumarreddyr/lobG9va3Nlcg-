@@ -34,6 +34,7 @@ class Looks extends CI_Controller {
 	public function index()
 	{
 		$data['lcategories'] = $this->lcategory_model->get_lcategories();
+		$data['providers'] = $this->provider_model->get_providers();
 		$data['tdesigners'] = $this->user_model->get_top_designers();
 
 		$s = $this->input->get('s');
@@ -200,8 +201,9 @@ class Looks extends CI_Controller {
 	public function lf_ajax()
 	{
 		$f_cat = $this->input->post('f_cat');
+		$f_prov = $this->input->post('f_prov');
 
-		$ls = $this->looks_model->lf_looks($f_cat);
+		$ls = $this->looks_model->lf_looks($f_cat, $f_prov);
 
 		$looks = array();
 		foreach ($ls as $key => $look) {

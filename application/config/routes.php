@@ -59,6 +59,9 @@ $route['myaccount'] = "user/myaccount";
 $route['forgot-password'] = "user/forgotpassword";
 $route['reset-password'] = "user/resetpassword";
 
+$route['blog'] = "blog/index";
+$route['blog/(:num)/(:any)'] = "blog/index/view/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
