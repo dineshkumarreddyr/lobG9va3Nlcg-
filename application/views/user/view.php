@@ -44,8 +44,9 @@
      <div class="col-md-9 no-pad designerpro-left">
 		 <ul class="nav nav-tabs">
 		   <li class="active"><a href="#looks" data-toggle="tab"><i class="flaticon-user7"></i>Looks Created</a></li>
-		   <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Profile</a></li>
-		   <!-- <li><a href="#wallet" data-toggle="tab"><i class="flaticon-money407"></i> Wallet</a></li> -->
+       <li><a href="#profile" data-toggle="tab"><i class="flaticon-profile29"></i> Profile</a></li>
+       <!-- <li><a href="#wallet" data-toggle="tab"><i class="flaticon-money407"></i> Wallet</a></li> -->
+		   <li><a href="#blog" data-toggle="tab"><i class="flaticon-profile29"></i> Blog</a></li>
 		 </ul>
 		    <div id="myTabContent" class="tab-content">
 		      <div class="tab-pane active in" id="looks">
@@ -232,6 +233,35 @@
               </div>
             </div>
 	  </div> -->
+        <!--wallet starts-->
+       <div class="tab-pane fade" id="blog">
+            <div class="row profile-sales">
+             <?php foreach ($posts as $key => $post): ?>
+               <div class="col-md-6 blog-tile">
+                 <div class="blog-main-wrap">
+                   <div class="blog-writer-wrap">
+                    <div class="blog-writer-img"><img src="<?php echo base_url();?>assets/images/d4.jpg" class="img-responsive"></div> 
+                    <div class="writer-details"><h3><a href="#">by <?php echo $post->postedBy; ?></a></h3>
+                    <span><?php echo date('d M Y', strtotime($post->postedOn)); ?></span></div>         
+                   </div>
+                   <div class="blog-img"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><img src="<?php echo base_url();?>assets/images/designer.jpg" class="img-responsive"></a></div>
+                   <h2><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><?php echo $post->title; ?></a></h2>
+                   <div class="blog-main-content">
+                    <?php echo substr($post->content, 0, 220); ?>...
+                   </div>
+                   <div class="blog-bottom">
+                    <div class="blog-more text-left"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>">Readmore</a></div>
+                    <div class="blog-counts">
+                      <div class="col-md-4"><i class="flaticon-eye106"></i> 78</div>
+                      <div class="col-md-4"><i class="flaticon-speech-bubble25"></i> 15</div>
+                      <div class="col-md-4"><i class="flaticon-social24"></i> 23</div>
+                    </div>
+                    </div>
+                 </div>
+               </div>
+             <?php endforeach; ?>
+            </div>
+    </div>
 	  </div>
 	  </div>
 		  

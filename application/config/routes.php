@@ -60,6 +60,8 @@ $route['forgot-password'] = "user/forgotpassword";
 $route['reset-password'] = "user/resetpassword";
 
 $route['blog'] = "blog/index";
+$route['blog/add'] = "blog/index/add";
+$route['blog/edit/(:num)'] = "blog/index/edit/$1";
 $route['blog/(:num)/(:any)'] = "blog/index/view/$1";
 
 

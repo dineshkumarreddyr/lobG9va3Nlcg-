@@ -1,9 +1,14 @@
 <!--blog starts-->
 <div class="fullblog-image"><img src="<?php echo base_url();?>assets/images/designer.jpg" class="img-responsive"></div>
 <div class="container fullblog-main">
-  <h3><?php echo $post->title; ?></h3>
+<?php if($this->session->userdata('uid') == $post->post_by): ?> 
+<span class="row pull-right">
+  <a href="<?php echo base_url('blog/edit/'.$post->id); ?>">Edit</a>
+</span>
+<?php endif; ?>
+  <h3><?php echo ucfirst(stripslashes($post->title)); ?></h3>
   <h4>Posted on : <?php echo date('d M Y', strtotime($post->postedOn)); ?> by <?php echo $post->postedBy; ?></h4>
-  <?php echo $post->content; ?>
+  <?php echo stripslashes($post->content); ?>
 
   <div id="disqus_thread"></div>
 <script type="text/javascript">

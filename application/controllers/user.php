@@ -24,6 +24,7 @@ class User extends CI_Controller {
 		$this->load->model('usermodel', 'user_model');
 		$this->load->model('looksmodel', 'looks_model');
 		$this->load->model('followersmodel', 'followers_model');
+		$this->load->model('blog/postsmodel', 'posts_model');
 	}
 
 	public function myaccount() {
@@ -67,7 +68,8 @@ class User extends CI_Controller {
 		$data['d_looks'] = $looks;
 		$data['did'] = $did;
 		// print_r($looks);
-		
+		$data['posts'] = $this->posts_model->get_own_posts($did);
+		// print_r($data['posts']);
 		$seo = array(
 			'title' => $data['designer_details']->user_fname,
 			'description' => $data['designer_details']->user_fname,
