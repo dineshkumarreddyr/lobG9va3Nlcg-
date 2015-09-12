@@ -29,6 +29,7 @@ class Looks extends CI_Controller {
         $this->load->model('brandmodel', 'brand_model');
         $this->load->model('usermodel', 'user_model');
         $this->load->model('trackingmodel', 'tracking_model');
+        $this->load->model('favouritesmodel', 'favourites_model');
     }
     
 	public function index()
@@ -88,6 +89,7 @@ class Looks extends CI_Controller {
 			$lps = $this->looks_model->get_look_products($look->l_id);
 			
 			$looks[] = array(
+				'l_id' => $look->l_id,
 				'l_category' => $look->l_category,
 				'lc_name' => $look->lc_name,
 				'l_title' => $look->l_name,
@@ -101,6 +103,7 @@ class Looks extends CI_Controller {
 			);
 		}
 		$data['look'] = $looks[0];
+		$data['favourite'] = $this->favourites_model->check_favourites($lid, 'look', $this->session->userdata('uid'));
 		
 		$seo = array(
 			'title' => $look->l_name,

@@ -98,7 +98,15 @@
 	         </div>
 	     	<?php endforeach; ?>
 	        <div class="row btn-wrap">
-	             <div class="col-md-6 col-xs-6"><button class="favbtn">Add to Favourites</button></div>
+	             <?php if($this->session->userdata('uid')): ?>
+					<?php if($favourite): ?>
+					<div class="col-md-6"><button class="favbtn" >Added to your favourites</button></div>
+					<?php else: ?>
+					<div class="col-md-6"><button class="favbtn" onclick="add_to_favourites(<?php echo $look['l_id']; ?>)">Add to Favourites</button></div>
+					<?php endif; ?>
+				<?php else: ?>
+				<div class="col-md-6"><button class="favbtn" data-toggle="modal" data-target="#LoginModal">Add to Favourites</button></div>
+				<?php endif; ?>
 	             <div class="col-md-6 col-xs-6"><button id="goto_providers" onclick="OpenInNewTab(this.vaue);" value="<?php echo implode(',', $url); ?>" class="buybtn">Buy from Providers</button></div>
 	        </div>
 	      </div>
@@ -152,4 +160,26 @@ $('#goto_providers').click(function(){
       window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent($('#share_url').val())+'&t='+encodeURIComponent('look'),'sharer','toolbar=0,status=0,width=626,height=436');
       return false;
    });	
+
+
+function add_to_favourites(id) {
+	$.ajax({
+	  type:"POST",
+	  url:'<?php echo base_url();?>user/add_to_favourites',
+	  data:{'type':'look','id':id},
+	  dataType:"json",
+	  success: function(data) {
+	    // console.log(data);
+	    if(data.status == 'error') {
+	      // $('#s_msg').html('Sorry, Your email already subscribed.');
+	    }
+	    else if(data.status == 'success') {
+	      $('.favbtn').html('Added to your favourites');
+	      // $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
+	      // $('#followers').text(parseInt($('#followers').text())+1);
+	      // $('#s_msg').html('Thanks, Your email successfully subscribed.');
+	    }
+	  }
+	});
+}
 </script>

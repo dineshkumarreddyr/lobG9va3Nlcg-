@@ -46,7 +46,15 @@
 					</div>
 				</div>
 				<div class="row btn-wrap">
-					<div class="col-md-6"><button class="favbtn">Add to Favourites</button></div>
+					<?php if($this->session->userdata('uid')): ?>
+						<?php if($favourite): ?>
+						<div class="col-md-6"><button class="favbtn" >Added to your favourites</button></div>
+						<?php else: ?>
+						<div class="col-md-6"><button class="favbtn" onclick="add_to_favourites(<?php echo $product['p_id']; ?>)">Add to Favourites</button></div>
+						<?php endif; ?>
+					<?php else: ?>
+					<div class="col-md-6"><button class="favbtn" data-toggle="modal" data-target="#LoginModal">Add to Favourites</button></div>
+					<?php endif; ?>
 					<div class="col-md-6">
 					<button id="goto_providers" onclick="OpenInNewTab(this.vaue);" value="<?php echo $product['p_url']; ?>" class="buybtn">Buy from <?php echo $product['provider_name']; ?></button>
 					<!-- <a href="<?php echo $product['p_url']; ?>" target="_blank" class="buybtn">Buy from <?php echo $product['provider_name']; ?></a> -->
@@ -98,6 +106,27 @@ $('#goto_providers').click(function(){
   }
 
 });
+
+function add_to_favourites(id) {
+	$.ajax({
+	  type:"POST",
+	  url:'<?php echo base_url();?>user/add_to_favourites',
+	  data:{'type':'product','id':id},
+	  dataType:"json",
+	  success: function(data) {
+	    // console.log(data);
+	    if(data.status == 'error') {
+	      // $('#s_msg').html('Sorry, Your email already subscribed.');
+	    }
+	    else if(data.status == 'success') {
+	      $('.favbtn').html('Added to your favourites');
+	      // $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
+	      // $('#followers').text(parseInt($('#followers').text())+1);
+	      // $('#s_msg').html('Thanks, Your email successfully subscribed.');
+	    }
+	  }
+	});
+}
 </script>
 <!--
 <script src="<?php echo base_url();?>assets/js/owl.carousel.js"></script>

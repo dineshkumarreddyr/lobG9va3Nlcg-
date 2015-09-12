@@ -24,6 +24,7 @@ class User extends CI_Controller {
 		$this->load->model('usermodel', 'user_model');
 		$this->load->model('looksmodel', 'looks_model');
 		$this->load->model('followersmodel', 'followers_model');
+		$this->load->model('favouritesmodel', 'favourites_model');
 		$this->load->model('blog/postsmodel', 'posts_model');
 	}
 
@@ -698,6 +699,31 @@ class User extends CI_Controller {
 			$count = $this->followers_model->check_follow($did, $uid);
 			if(!$count) {
 				$data = $this->followers_model->follow($did, $uid, $createdOn);
+				$response['status'] = 'success';
+			}
+			else {
+				$response['status'] = 'error';
+			}
+		}
+		echo json_encode($response);
+	}
+
+	public function add_to_favourites()
+	{
+		$response = array();
+		$id = $this->input->post('id');
+		$type = $this->input->post('type');
+		$uid = $this->session->userdata('uid');
+		$createdOn = date('Y-m-d H:i:s');
+
+		if(!is_numeric($id)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Designer';
+		}
+		else {
+			$count = $this->favourites_model->check_favourites($id, $type, $uid);
+			if(!$count) {
+				$data = $this->favourites_model->add_to_favourites($id, $type, $uid, $createdOn);
 				$response['status'] = 'success';
 			}
 			else {

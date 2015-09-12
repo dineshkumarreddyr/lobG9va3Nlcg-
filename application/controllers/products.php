@@ -26,6 +26,7 @@ class Products extends CI_Controller {
         $this->load->model('admin/providermodel', 'provider_model');
         $this->load->model('trackingmodel', 'tracking_model');
         $this->load->model('usermodel', 'user_model');
+        $this->load->model('favouritesmodel', 'favourites_model');
     }
 
 	public function index()
@@ -74,6 +75,7 @@ class Products extends CI_Controller {
 		$this->tracking_model->track_product($product_id);
 		$data['pcategories'] = $this->pcategory_model->get_pcategories();
 		$data['rproducts'] = $this->products_model->get_rproducts($data['product']['p_category']);
+		$data['favourite'] = $this->favourites_model->check_favourites($product_id, 'product', $this->session->userdata('uid'));
 
 		$seo = array(
 			'title' => $data['product']['p_name'],
