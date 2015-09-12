@@ -7,6 +7,7 @@ class Index extends MX_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->model('blog/postsmodel', 'posts_model');
+        $this->load->model('blog/trackingmodel', 'tracking_model');
     }
  
     public function index()
@@ -37,6 +38,7 @@ class Index extends MX_Controller {
         );
         $data['seo'] = $seo;
 
+        $this->tracking_model->track_post($post_id);
 
         $this->load->view('header', $data);
         $this->load->view('blog/view', $data);        

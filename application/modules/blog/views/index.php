@@ -17,7 +17,7 @@
            <div class="blog-bottom">
             <div class="blog-more text-left"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>">Readmore</a></div>
             <div class="blog-counts">
-              <div class="col-md-4"><i class="flaticon-eye106"></i> 78</div>
+              <div class="col-md-4"><i class="flaticon-eye106"></i> <?php echo ($post->total_views) ? $post->total_views : 0; ?></div>
               <div class="col-md-4"><i class="flaticon-speech-bubble25"></i> 15</div>
               <div class="col-md-4"><i class="flaticon-social24"></i> 23</div>
             </div>
