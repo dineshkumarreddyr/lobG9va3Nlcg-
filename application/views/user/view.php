@@ -27,11 +27,23 @@
         <div class="col-md-4 designerpro-top-right">
           <ul>
             <?php if($this->session->userdata('uid') && $this->session->userdata('uid') != $designer_details->user_id): ?>
-            <li class="col-md-4 following" id="follow"><span><a href="javascript:void(0);"><i class="glyphicon glyphicon-heart"></i>
-            </span><br> Follow</a></li>
+              <?php if($d_follow): ?>
+              <li class="col-md-4 following" id="follow">
+                <span><i class="glyphicon glyphicon-heart"></i></span>
+                <br> Following
+              </li>
+              <?php else: ?>
+                <li class="col-md-4" id="follow" onclick="follow_d(<?php echo $designer_details->user_id; ?>);">
+                  <span><i class="glyphicon glyphicon-heart"></i></span>
+                  <br> Follow
+                </li>
+              <?php endif; ?>
+            <?php elseif($this->session->userdata('uid') != $designer_details->user_id): ?>
+            <li class="col-md-4" id="follow" data-toggle="modal" data-target="#LoginModal"><span><i class="glyphicon glyphicon-heart"></i>
+            </span><br> Follow</li>
             <?php endif; ?>
             <li class="col-md-4"><span><?php echo count($d_looks); ?></span><br> Looks</li>
-            <li class="col-md-4"><span><?php echo $d_followers; ?></span><br> Followers</li>
+            <li class="col-md-4"><span id="followers"><?php echo $d_followers; ?></span><br> Followers</li>
           </ul>
         </div>
       </div>     
@@ -356,5 +368,26 @@
       window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent($('#share_url').val())+'&t='+encodeURIComponent('look'),'sharer','toolbar=0,status=0,width=626,height=436');
       return false;
    });
+
+   function follow_d(did) {
+    $.ajax({
+      type:"POST",
+      url:'<?php echo base_url();?>user/follow',
+      data:{'did':did},
+      dataType:"json",
+      success: function(data) {
+        // console.log(data);
+        if(data.status == 'error') {
+          // $('#s_msg').html('Sorry, Your email already subscribed.');
+        }
+        else if(data.status == 'success') {
+          $('#follow').addClass('following');
+          $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
+          $('#followers').text(parseInt($('#followers').text())+1);
+          // $('#s_msg').html('Thanks, Your email successfully subscribed.');
+        }
+      }
+    });
+   }
 
     </script>

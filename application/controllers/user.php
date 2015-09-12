@@ -48,6 +48,9 @@ class User extends CI_Controller {
 		if(count($data['designer_details']) == 0 || $data['designer_details']->user_role != 2) {
         show_404(); // If designer not there return 404 page
 		}
+		if($this->session->userdata('uid') && $this->session->userdata('uid') != $did) {
+			$data['d_follow'] = $this->followers_model->check_follow($did, $this->session->userdata('uid'));
+		}
 		$data['d_followers'] = $this->followers_model->get_followers_count($did);
 		$data['d_views'] = $this->user_model->get_designer_views($did);
 
@@ -671,6 +674,30 @@ class User extends CI_Controller {
 			$count = $this->user_model->check_subscription($email);
 			if(!$count) {
 				$data = $this->user_model->subscription($email);
+				$response['status'] = 'success';
+			}
+			else {
+				$response['status'] = 'error';
+			}
+		}
+		echo json_encode($response);
+	}
+
+	public function follow()
+	{
+		$response = array();
+		$did = $this->input->post('did');
+		$uid = $this->session->userdata('uid');
+		$createdOn = date('Y-m-d H:i:s');
+
+		if(!is_numeric($did)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid Designer';
+		}
+		else {
+			$count = $this->followers_model->check_follow($did, $uid);
+			if(!$count) {
+				$data = $this->followers_model->follow($did, $uid, $createdOn);
 				$response['status'] = 'success';
 			}
 			else {
