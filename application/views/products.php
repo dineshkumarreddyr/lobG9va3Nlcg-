@@ -143,20 +143,24 @@
 			<?php endif; ?>
 				<h4>By Discount</h4>
 				<ul class="f_dis">
-					<li><input id='f_prov_0_10' type='checkbox' name="f_dis" value="0-10" onclick="pf_search();" />
-						<label for='f_prov_0_10'><span></span>Upto 10%
+					<li><input id='f_prov_0_20' type='checkbox' name="f_dis" value="0-20" onclick="pf_search();" />
+						<label for='f_prov_0_20'><span></span>Upto 20%
 						</label>
 					</li>
-					<li><input id='f_prov_10_20' type='checkbox' name="f_dis" value="10-20" onclick="pf_search();" />
-						<label for='f_prov_10_20'><span></span>10% - 20%
+					<li><input id='f_prov_20_40' type='checkbox' name="f_dis" value="20-40" onclick="pf_search();" />
+						<label for='f_prov_20_40'><span></span>20% - 40%
 						</label>
 					</li>
-					<li><input id='f_prov_20_30' type='checkbox' name="f_dis" value="20-30" onclick="pf_search();" />
-						<label for='f_prov_20_30'><span></span>20% - 30%
+					<li><input id='f_prov_40_60' type='checkbox' name="f_dis" value="40-60" onclick="pf_search();" />
+						<label for='f_prov_40_60'><span></span>40% - 60%
 						</label>
 					</li>
-					<li><input id='f_prov_30_100' type='checkbox' name="f_dis" value="30-100" onclick="pf_search();" />
-						<label for='f_prov_30_100'><span></span>More than 30%
+					<li><input id='f_prov_60_80' type='checkbox' name="f_dis" value="60-80" onclick="pf_search();" />
+						<label for='f_prov_60_80'><span></span>60% - 80%
+						</label>
+					</li>
+					<li><input id='f_prov_80_100' type='checkbox' name="f_dis" value="80-100" onclick="pf_search();" />
+						<label for='f_prov_80_100'><span></span>More than 80%
 						</label>
 					</li>
 				</ul>
