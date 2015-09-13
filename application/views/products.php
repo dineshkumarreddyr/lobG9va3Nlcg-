@@ -127,7 +127,7 @@
 				 -->
 				
 				<?php if(isset($_GET['category']) && ! empty($_GET['category'])): ?>
-				<h4>Size</h4>
+				<h4>By Size</h4>
 				<div class="sizes clearfix f_size">
 					<input type="radio" name="size" id="small" value="small" checked="checked" /> 
 					<label for="small">S</label>
@@ -279,8 +279,13 @@
 		// console.log(sizes[index]);
 		}
 	});
-	$('.f_size').html(s_content);
-	// sizes
+	if(s_content == '') {
+		$('.f_size').remove();
+	}
+	else {
+		$('.f_size').html(s_content);
+		// sizes
+	}
 
 
 	function pf_search() {

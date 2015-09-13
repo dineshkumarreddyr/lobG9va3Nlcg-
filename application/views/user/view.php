@@ -247,6 +247,9 @@
 	  </div> -->
         <!--wallet starts-->
        <div class="tab-pane fade" id="blog">
+        <?php if($this->session->userdata('uid') == $designer_details->user_id  && $this->session->userdata('role') == 2): ?>
+        <div class="col-md-12 text-right addarticle "><a href="<?php echo base_url('blog/add'); ?>"><i class="flaticon-plus79"></i> Add New Article</a></div>
+        <?php endif; ?>
             <div class="row profile-sales">
              <?php foreach ($posts as $key => $post): ?>
                <div class="col-md-6 blog-tile">

@@ -1,5 +1,8 @@
 <div class="container blog-main">
     <h2 class="heads">Blog</h2>
+    <?php if($this->session->userdata('uid') && $this->session->userdata('role') == 2): ?>
+    <div class="clearfix text-center addarticle"><a href="<?php echo base_url('blog/add'); ?>"><i class="flaticon-plus79"></i> Add New Article</a></div>
+  <?php endif; ?>
     <div class="row">
       <?php foreach ($posts as $key => $post): ?>
        <div class="col-md-4 blog-tile">

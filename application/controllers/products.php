@@ -48,6 +48,7 @@ class Products extends CI_Controller {
 			foreach ($s_pcategories as $key => $s_pcategory) {
 				$s_cat[] = $s_pcategory->pc_id;
 			}
+			$s_cat[] = $category;
 		}
 
 		$data['products'] = $this->products_model->s_products($s, $gender, $s_cat);
