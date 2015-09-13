@@ -16,9 +16,9 @@
 <div class="filters-top-wrap">
 	<div class="container">
 		<div class="row">
-		<form action="" method="get">
+		<form id="p_search" action="" method="get">
 			<div class="col-md-5"><input type="text" name="s" id="s_pdt" tabindex="1"
-				class="form-control" placeholder="Search by Product, Look and Designer" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>"></div>
+				class="form-control" placeholder="Search by Product name" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>"></div>
 				<div class="col-md-2">
 					<div class="dropdown dropdown-dark">
 						<select name="gender" id="s_gen" class="dropdown-select">
@@ -265,7 +265,9 @@
 	<?php endif; ?>
 <script src="http://crestdzines.com/fashionoo/js/budget.js" type="text/javascript"></script>
 <script type="text/javascript">
-
+	$('#s_gen, #s_cat').change(function(){
+		$('#p_search').submit();
+	});
 
 	// sizes
 	var sizes = '<?php echo implode(',', $sizes); ?>';
