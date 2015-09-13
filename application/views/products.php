@@ -391,3 +391,13 @@
 		$("img.lazy").lazyload();
 	}
 </script>
+<!-- Mouse over shadow effect -->
+<script type="text/javascript">
+	$("#pdts_wrapper .trend-each").hover(function() { // Mouse over
+	  $(this).siblings().stop().fadeTo(300, 0.5);
+	  $(this).parent().siblings().stop().fadeTo(300, 0.5); 
+	}, function() { // Mouse out
+	  $(this).siblings().stop().fadeTo(300, 1);
+	  $(this).parent().siblings().stop().fadeTo(300, 1);
+	});
+</script>
