@@ -153,16 +153,26 @@
 <!--wallet starts-->
 		   <div class="tab-pane fade" id="wallet">
 		    <div class="row earnings">
-		      <h3>Your Earnings</h3>
-              <div class="col-md-4 earn-each">Flipkart <strong><span class="webrupee">Rs.</span>0</strong></div>
-              <div class="col-md-4 earn-each">Jabong <strong><span class="webrupee">Rs.</span>0</strong></div>
-              <div class="col-md-4 earn-each">Snapdeal <strong><span class="webrupee">Rs.</span>0</strong></div>
-              <div class="col-md-4 earn-each">Total Earnings <strong><span class="webrupee">Rs.</span>0</strong>
+          <div class="clearfix col-md-12 redeem-wrap">
+          <div class="col-md-5 redeem no-pad">
+            <div class="row">
+              <div class="col-md-7">
+              <h3><span class="webrupee">Rs.</span> 1500</h3></div>
+              <div class="col-md-5"><input type="button" value="Redem Now" class="redeembtn"></div>
+             </div>
+           </div>
+           <div class="col-md-7"><p>In My Wallet, you can check your balance or redeem your cashback by clicking on the "Redeem Now" button.</p>
+           <p class="note">Note: Rewards can only be redeemed by Bank Transfer, once you reach a minimun amount of Rs 1,000 (One Thousand).
+            There might be some delay in showing updated balance.</p></div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-md-12 earns-wrap">
+              <div class="col-md-4 earn-each">Total Rewards <strong><span class="webrupee">Rs.</span>2348</strong>
               </div>
-              <div class="col-md-4 earn-each">Owe Earnings <strong><span class="webrupee">Rs.</span>0</strong></div>
+              <div class="col-md-4 earn-each">Pending Rewards <strong><span class="webrupee">Rs.</span>348</strong></div>
               <div class="col-md-4 earn-each">Last Payed on <strong> 21 Aug 2015</strong></div>
-              <div class="col-md-12"><p>Note: The Payment will be processed to the bank account linked, once you reach a minimun amount of Rs 1,000 (One Thousand)</p></div>
-		    </div>
+              </div>
+        </div>
 		   	 <form class="form-horizontal wallet-form" action="" method="post">
             <fieldset>
             <div class="form-group">

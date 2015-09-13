@@ -106,6 +106,17 @@
 			}
 			?>
 		</ul>
+
+		<h4>By Number of products</h4>
+		<ul class="f_prod">
+			<?php for ($i = 2; $i <= 6; $i++) { ?>
+			<li>
+				<input id='f_prod<?php echo $i; ?>' type='checkbox' name="f_prod" value="<?php echo $i; ?>" onclick="lf_search();" />
+				<label for='f_prod<?php echo $i; ?>'><span></span><?php echo $i; ?> Products
+				</label>
+			</li>
+			<?php } ?>
+		</ul>
 		
 	   <!-- 
 	   <h4>By Provider</h4>
@@ -304,9 +315,15 @@
 		    f_prov.push($(this).val());
 		});
 
+		var f_prod = [];
+		$('.f_prod input:checked').each(function() {
+		    f_prod.push($(this).val());
+		});
+
 		var s_input = {};
 		s_input['f_cat'] = f_cat;
 		s_input['f_prov'] = f_prov;
+		s_input['f_prod'] = f_prod;
 
 		$.ajax({
 			type:"POST",

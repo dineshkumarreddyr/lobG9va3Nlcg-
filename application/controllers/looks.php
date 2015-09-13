@@ -205,8 +205,9 @@ class Looks extends CI_Controller {
 	{
 		$f_cat = $this->input->post('f_cat');
 		$f_prov = $this->input->post('f_prov');
+		$f_prod = $this->input->post('f_prod');
 
-		$ls = $this->looks_model->lf_looks($f_cat, $f_prov);
+		$ls = $this->looks_model->lf_looks($f_cat, $f_prov, $f_prod);
 
 		$looks = array();
 		foreach ($ls as $key => $look) {

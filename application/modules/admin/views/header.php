@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Lookser - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url("assets/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css"); ?>" rel="stylesheet">
@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">Lookser</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -374,6 +374,18 @@
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url("admin/look/add"); ?>">Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Blog Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/blog"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/blog/add"); ?>">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

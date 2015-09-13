@@ -93,10 +93,10 @@
 					?>
 				</ul>
 				
-				<!-- <div id="budget-wrapper">
+				<div id="budget-wrapper">
 					<h4>Budget <input type="text" id="slider-display" name="slider-display" value="0" /></h4>
 					<div id="slider"></div>
-				</div> -->
+				</div>
 				
 				<!-- <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
 					<option value="#ac725e">#ac725e</option>
@@ -259,8 +259,10 @@
 	<!--top designers carousel-->
 	
 	<?php endif; ?>
-
+<script src="http://crestdzines.com/fashionoo/js/budget.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+
 	// sizes
 	var sizes = '<?php echo implode(',', $sizes); ?>';
 	sizes = sizes.split(',');

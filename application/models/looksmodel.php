@@ -144,12 +144,15 @@ class Looksmodel extends CI_Model {
         return $data;
     }
 
-    function lf_looks($l_cat = array(), $l_prov = array())
+    function lf_looks($l_cat = array(), $l_prov = array(), $l_prod = array())
     {
         $condition = array();
         $condition[] = " l.l_name != ''";
         if(count($l_cat) && is_array($l_cat)) {
             $condition[] = " l.l_category in (".implode(',', $l_cat).") "; 
+        }
+        if(count($l_prod) && is_array($l_prod)) {
+            $condition[] = " l.l_grid in (".implode(',', $l_prod).") "; 
         }
         // if(count($l_prov) && is_array($l_prov)) {
         //     $condition[] = " l.l_category in (".implode(',', $l_cat).") "; 
