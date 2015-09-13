@@ -177,7 +177,7 @@
 	<!--top designers carousel-->
 	<div class="carousel-designers">
 		<div class="container text-center">
-		<div class="carousel-head"><a href="#">top designers</a></div>
+		<div class="carousel-head"><a href="<?php echo base_url('designers'); ?>">top designers</a></div>
 			<div class="row">
 				<div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
