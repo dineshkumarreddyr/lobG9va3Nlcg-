@@ -308,7 +308,7 @@
 
            <div class="profile-right-each">
              <h3>link to your Profile</h3>
-      	     <input type="text" class="form-control" value="<?php echo base_url('designer/'.$did); ?>">
+      	     <input type="text" class="form-control" value="<?php echo base_url('designer/'.$did.'/'.url_title($designer_details->user_fname)); ?>">
            </div>
            
          </div>
