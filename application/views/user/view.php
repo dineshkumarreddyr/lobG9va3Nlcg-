@@ -119,7 +119,7 @@
              <!-- about me -->
             <div class="form-group">
               <label class="col-md-3 control-label" for="about">About Me</label>
-              <div class="col-md-9 abtme"> <?php echo $designer_details->user_about; ?> </div>
+              <div class="col-md-9 abtme"> <?php echo ($designer_details->user_about != '') ? $designer_details->user_about : 'No data available.'; ?> </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label" for="gender">Gender</label>
@@ -256,7 +256,7 @@
         <?php endif; ?>
             <div class="row profile-sales">
              <?php foreach ($posts as $key => $post): ?>
-               <div class="col-md-6 blog-tile">
+               <div class="col-md-4 blog-tile">
                  <div class="blog-main-wrap">
                    <div class="blog-writer-wrap">
                     <div class="blog-writer-img"><img src="<?php echo base_url();?>assets/images/d4.jpg" class="img-responsive"></div> 

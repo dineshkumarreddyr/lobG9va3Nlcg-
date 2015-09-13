@@ -18,7 +18,7 @@
                         <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"><img class="img-responsive" src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer->user_image == '') ? 'default.jpg' : $designer->user_image; ?>"></a>
                     </div>
                     <div class="mc-description">
-                        <?php echo ($designer->user_about != '') ? substr($designer->user_about, 0, 130).' ...' : ''; ?>
+                        <?php echo ($designer->user_about != '') ? substr($designer->user_about, 0, 130).' ...' : 'No data available.'; ?>
                     </div>
                 </div>
                 <a class="mc-btn-action">

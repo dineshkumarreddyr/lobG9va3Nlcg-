@@ -81,7 +81,7 @@
 		foreach ($lcategories as $key => $lcategory) {
 			?>
 			<li><input id='f_cat<?php echo $lcategory->lc_id; ?>' name="f_cat" value="<?php echo $lcategory->lc_id; ?>" type='checkbox' onclick="lf_search();" />
-				<label for='f_cat<?php echo $lcategory->lc_id; ?>'><span></span><?php echo $lcategory->lc_name; ?>
+				<label for='f_cat<?php echo $lcategory->lc_id; ?>'><span></span><?php echo ucfirst(strtolower($lcategory->lc_name)); ?>
 				</label>
 			</li>
 			<?php
