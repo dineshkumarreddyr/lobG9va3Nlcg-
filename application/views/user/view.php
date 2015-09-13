@@ -122,6 +122,10 @@
               <div class="col-md-9 abtme"> <?php echo $designer_details->user_about; ?> </div>
             </div>
             <div class="form-group">
+              <label class="col-md-3 control-label" for="gender">Gender</label>
+              <div class="col-md-9 abtme"> <?php echo $designer_details->user_gender; ?> </div>
+            </div>
+            <div class="form-group">
               <label class="col-md-3 control-label" for="email">Email Address</label>
               <div class="col-md-9 prolheight">
                 <?php

@@ -101,6 +101,16 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="col-md-3 control-label" for="gender">Gender</label>
+              <div class="col-md-9">
+                <select id="gender" name="gender" class="form-control">
+                  <option value="">--Select Gender--</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
               <label class="col-md-3 control-label" for="email">Email Address</label>
               <div class="col-md-9">
                 <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" value="<?php echo $designer_details->user_email; ?>">
@@ -290,6 +300,7 @@ $(function(){
   $('#edit_profile').submit(function(){
     var name = $('#name').val();
     var about = $('#about').val();
+    var gender = $('#gender').val();
     var email = $('#email').val();
     var location = $('#location').val();
     var state = $('#state').val();
@@ -303,6 +314,10 @@ $(function(){
     }
     else if(about == '') {
       alert('Please enter about');
+      return false;
+    }
+    else if(gender == '') {
+      alert('Please select gender');
       return false;
     }
     else if(email == '') {
@@ -325,7 +340,7 @@ $(function(){
       $.ajax({
         type:"POST",
         url:'<?php echo base_url();?>user/ajax_update_profile',
-        data:{'name':name,'about':about,'email':email,'location':location,'state':state,'mobile':mobile,'institution':institution,'experience':experience,'website':website},
+        data:{'name':name,'about':about,'gender':gender,'email':email,'location':location,'state':state,'mobile':mobile,'institution':institution,'experience':experience,'website':website},
         dataType:"json",
         success: function(data) {
           console.log(data);

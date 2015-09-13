@@ -74,7 +74,7 @@ class Usermodel extends CI_Model {
     function get_designers()
     {
         $data = array();
-        $query = $this->db->query("SELECT u.user_id, u.user_fname, u.user_lname, ud.user_image, count(l.l_id) as l_count FROM users u, user_details ud, looks l WHERE u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_status = '1' AND u.user_status = '1' AND u.user_role = 2 GROUP BY u.user_id");
+        $query = $this->db->query("SELECT u.user_id, u.user_fname, u.user_lname, ud.user_image, ud.user_gender, ud.user_about, count(l.l_id) as l_count FROM users u, user_details ud, looks l WHERE u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_status = '1' AND u.user_status = '1' AND u.user_role = 2 GROUP BY u.user_id");
         $data = $query->result();
         return $data;        
     }
@@ -104,7 +104,7 @@ class Usermodel extends CI_Model {
         return $query->num_rows();  
     }
 
-    function profile_update($uid, $name, $about, $location, $state, $mobile, $institution, $experience, $website) {
+    function profile_update($uid, $name, $about, $gender, $location, $state, $mobile, $institution, $experience, $website) {
         
         $data = array(
            'user_fname' => $name
@@ -115,6 +115,7 @@ class Usermodel extends CI_Model {
 
         $data = array(
            'user_about' => $about,
+           'user_gender' => $gender,
            'user_location' => $location,
            'user_state' => $state,
            'user_mobile' => $mobile,

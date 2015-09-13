@@ -8,7 +8,7 @@
     <div class="row active-with-click">
         <?php foreach ($designers as $key => $designer): ?>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <article class="material-card Pink">
+            <article class="material-card <?php echo ($designer->user_gender == 'Male') ? 'Indigo' : 'Pink'; ?>">
                 <h2><a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>">
                     <span><?php echo $designer->user_fname; ?></span>
                     <i class="fa fa-fw fa-star"></i> <?php echo $designer->l_count; ?> Looks</a>
@@ -18,14 +18,14 @@
                         <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"><img class="img-responsive" src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer->user_image == '') ? 'default.jpg' : $designer->user_image; ?>"></a>
                     </div>
                     <div class="mc-description">
-                        He has won two Academy Awards, for his roles in the mystery drama Mystic River (2003) and the biopic Milk (2008). Penn began his acting career in television with a brief appearance in a 1974 episode of Little House on the Prairie ...
+                        <?php echo ($designer->user_about != '') ? substr($designer->user_about, 0, 130).' ...' : ''; ?>
                     </div>
                 </div>
                 <a class="mc-btn-action">
                     <i class="fa fa-bars"></i>
                 </a>
                 <div class="mc-footer">
-                    <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"> Follow</a>
+                    <a href="<?php echo base_url('designer/'.$designer->user_id.'/'.url_title($designer->user_fname)); ?>"> View Profile</a>
                 </div>
             </article>
         </div>

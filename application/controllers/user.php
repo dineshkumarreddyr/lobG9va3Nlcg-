@@ -766,6 +766,7 @@ class User extends CI_Controller {
 		$response = array();
 		$name = $this->input->post('name');
 		$about = $this->input->post('about');
+		$gender = $this->input->post('gender');
 		$email = $this->input->post('email');
 		$location = $this->input->post('location');
 		$state = $this->input->post('state');
@@ -796,7 +797,7 @@ class User extends CI_Controller {
 		}
 		else {
 
-			$data = $this->user_model->profile_update($uid, $name, $about, $location, $state, $mobile, $institution, $experience, $website);
+			$data = $this->user_model->profile_update($uid, $name, $about, $gender, $location, $state, $mobile, $institution, $experience, $website);
 
 			if($data) {
 				$response['status'] = 'success';
