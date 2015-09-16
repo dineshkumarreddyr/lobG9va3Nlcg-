@@ -221,6 +221,8 @@ class Product extends MX_Controller {
             $category = $_POST['category'];
 
             while (($data = fgetcsv($handle, 99000, ",")) !== FALSE) {
+                /*
+                // flipkart
                 $storeId = $data[0];
                 $name = addslashes($data[1]);
                 $desc = addslashes($data[2]);
@@ -262,7 +264,79 @@ class Product extends MX_Controller {
                     $brand = $brand_id;
                 }
 
-                $size = $data[16];
+                $size = $data[16];*/
+                
+                /*// payoon
+                $storeId = $data[0];
+                $name = addslashes($data[1]);
+                $desc = addslashes($data[2]);
+                // $imgs = explode(';', $data[3]);
+                $image = '';
+                $oimage = '';
+                $image = $data[3];
+                $oimage = $data[3];
+                $mrp = $data[4];
+                $price = $data[5];
+                $url = $data[6];
+                
+                $cats = explode('>', $data[7]);
+                $cat = end($cats);
+                if(array_key_exists($cat, $f_cat)) {
+                    $s_category = $f_cat[$cat];
+                }
+                else {
+                    $cat_id = $this->pcategory_model->add_pcategory($category, $cat, '', '1');
+                    $f_cat[$cat] = $cat_id;
+                    $s_category = $cat_id;
+                }
+
+                $brand = $data[8];
+                if(array_key_exists($brand, $f_brands)) {
+                    $brand = $f_brands[$brand];
+                }
+                else {
+                    $brand_id = $this->brand_model->add_brand($brand, '', '1');
+                    $f_brands[$brand] = $brand_id;
+                    $brand = $brand_id;
+                }
+
+                $size = $data[16];*/
+
+
+                // omg
+                $storeId = $data[1];
+                $name = addslashes(str_replace(array("<![CDATA[","]]>"),"",$data[2]));
+                $desc = addslashes(str_replace(array("<![CDATA[","]]>"),"",$data[3]));
+                $image = $data[11];
+                $oimage = $data[13];
+                if($image == '') {
+                    $image = $oimage;
+                }
+                $mrp = $data[4];
+                $price = $data[7];
+                $url = $data[8];
+                
+                $cat = $data[24];
+                if(array_key_exists($cat, $f_cat)) {
+                    $s_category = $f_cat[$cat];
+                }
+                else {
+                    $cat_id = $this->pcategory_model->add_pcategory($category, $cat, '', '1');
+                    $f_cat[$cat] = $cat_id;
+                    $s_category = $cat_id;
+                }
+
+                $brand = $data[16];
+                if(array_key_exists($brand, $f_brands)) {
+                    $brand = $f_brands[$brand];
+                }
+                else {
+                    $brand_id = $this->brand_model->add_brand($brand, '', '1');
+                    $f_brands[$brand] = $brand_id;
+                    $brand = $brand_id;
+                }
+
+                $size = $data[19];
 
 
 

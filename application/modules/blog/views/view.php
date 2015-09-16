@@ -7,7 +7,7 @@
 </span>
 <?php endif; ?>
   <h3><?php echo ucfirst(stripslashes($post->title)); ?></h3>
-  <h4>Posted on : <?php echo date('d M Y', strtotime($post->postedOn)); ?> by <?php echo $post->postedBy; ?></h4>
+  <h4>Posted on : <?php echo date('d M Y', strtotime($post->postedOn)); ?> by <a href="<?php echo base_url('designer/'.$post->uid.'/'.url_title($post->postedBy)); ?>"><?php echo $post->postedBy; ?></a></h4>
   <?php echo stripslashes($post->content); ?>
 
   <div id="disqus_thread"></div>

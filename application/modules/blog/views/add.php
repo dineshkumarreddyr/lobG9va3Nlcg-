@@ -58,11 +58,17 @@
 <script type="text/javascript">
 tinymce.init({
     selector: "textarea",
+    relative_urls : false,
+    remove_script_host : false,
     plugins: [
         "advlist autolink lists link image charmap print preview anchor",
         "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste"
+        "insertdatetime media table contextmenu paste responsivefilemanager"
     ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    
+    external_filemanager_path:"<?php echo base_url();?>/assets/filemanager/",
+    filemanager_title:"Responsive Filemanager" ,
+    external_plugins: { "filemanager" : "<?php echo base_url();?>/assets/filemanager/plugin.min.js"}
 });
 </script>

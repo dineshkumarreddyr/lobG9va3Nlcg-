@@ -379,9 +379,11 @@
 								'<img data-original="'+product.p_image+'" title="'+product.p_name+'" alt="'+product.p_name+'" class="lazy">'+
 							'</div>'+
 							'<h4>'+product.p_name+'</h4>'+
-							'<div class="col-md-12 text-center">'+
-								'<span class="mrp">'+product.p_mrp+'</span>'+
-								'<span class="aftrdsnt">'+product.p_price+'</span>'+
+							'<div class="col-md-12 text-center">';
+							if(product.p_mrp != '' && product.p_mrp > 0) {
+								content += '<span class="mrp"><span class="webrupee">Rs.</span>'+product.p_mrp+'</span>';
+							}
+								content += '<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+product.p_price+'</span>'+
 							'</div>'+
 						'</div>'+
 					'</a>';
@@ -389,10 +391,12 @@
 
 		$('#pdts_wrapper').html(content);
 		$("img.lazy").lazyload();
+		shadow_over();
 	}
 </script>
 <!-- Mouse over shadow effect -->
 <script type="text/javascript">
+function shadow_over() {
 	$("#pdts_wrapper .trend-each").hover(function() { // Mouse over
 	  $(this).siblings().stop().fadeTo(300, 0.5);
 	  $(this).parent().siblings().stop().fadeTo(300, 0.5); 
@@ -400,4 +404,6 @@
 	  $(this).siblings().stop().fadeTo(300, 1);
 	  $(this).parent().siblings().stop().fadeTo(300, 1);
 	});
+}
+shadow_over();
 </script>

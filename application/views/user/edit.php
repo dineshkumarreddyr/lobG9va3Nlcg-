@@ -1,4 +1,57 @@
-		<div class="designerslide"></div>
+<!--change pic pop-->
+  <div class="modal fade" id="changepic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Change Profile Picture</h4>
+      </div>
+      <div class="modal-body">
+        <div class="clearfix avatar-wrap">
+          <div class="row">
+          <div class="col-md-8">
+          <h3>Choose Avatar</h3>
+          <ul class="clearfix">
+            <li>
+               <div class="clearfix"><img src="images/male1.png" class="img-responsive"></div>
+               <input id="one" type="checkbox">
+            </li>
+            <li>
+               <div class="clearfix"><img src="images/male2.png" class="img-responsive"></div>
+               <input id="two" type="checkbox">
+            </li>
+            <li>
+               <div class="clearfix"><img src="images/female1.png" class="img-responsive"></div>
+               <input id="three" type="checkbox">
+            </li>
+            <li>
+               <div class="clearfix"><img src="images/male2.png" class="img-responsive"></div>
+               <input id="four" type="checkbox">
+            </li>
+          </ul>
+          <h3>Upload your Image</h3>
+          <div class="file-area">
+          <input type="file" name="images" id="images" required="required" multiple="multiple">
+          <div class="file-dummy">
+            <div class="success">Great, your files are selected. Keep on.</div>
+            <div class="default">Please select a file</div>
+          </div>
+          </div>
+          </div>
+          <div class="col-md-4"><img src="images/d4.jpg" class="img-responsive"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save Picture</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--change pic pop-->		
+
+<div class="designerslide"></div>
 		</div><!-- /. Container -->
 		</div><!-- /# Mastehead -->  
 	<!--slider ends-->
@@ -7,10 +60,14 @@
     <div class="container designertop-main">
       <div class="row">
         <div class="col-md-2 no-pad">
-           <div class="designerpro-img">
+           <!--<div class="designerpro-img">
               <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
               <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
-           </div> 
+           </div> -->
+<div class="designerpro-img">
+              <img src="images/d4.jpg" class="img-responsive">
+              <div class="changepic" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#changepic"><img src="images/picbtn.png">  Change Picture</div>
+            </div>
         </div>
         <div class="col-md-6">
           <h2><?php echo $designer_details->user_fname; ?></h2>

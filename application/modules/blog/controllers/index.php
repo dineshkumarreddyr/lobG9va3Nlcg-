@@ -61,7 +61,7 @@ class Index extends MX_Controller {
             $content = $this->input->post('content');
             $courtesy = $this->input->post('courtesy');
             // $status = $this->input->post('status');
-            $status = '0';
+            $status = '1';
             if(empty($title)) {
                 $errr_msg = 'Title is required';
             }

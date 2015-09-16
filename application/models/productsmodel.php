@@ -11,27 +11,27 @@ class Productsmodel extends CI_Model {
     
     function get_products()
     {
-        $query = $this->db->query("SELECT * FROM products ORDER BY RAND() LIMIT 0,20");        
+        $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' ORDER BY RAND() LIMIT 0,20");        
         $data = $query->result();
         return $data;
     }
 
     function get_trending_products()
     {
-        $query = $this->db->query("SELECT * FROM products ORDER BY RAND() LIMIT 0,8");        
+        $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
     }
 
     function get_rproducts($cat = 0) {
-        $query = $this->db->query("SELECT * FROM products WHERE p_category = ".$cat." ORDER BY RAND() LIMIT 0,8");        
+        $query = $this->db->query("SELECT * FROM products WHERE p_category = ".$cat." AND p_status = '1' ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
     }
 
     function get_product($product_id = 0)
     {
-        $query = "SELECT p.p_id, p.p_storeId, p.p_name, p.p_desc, p.p_image, p.p_size, p.p_oimage, p.p_url, p.p_mrp, p.p_price, p.p_category, pc.pc_name, b.brand_name, pro.provider_name FROM products p, p_categories pc, brands b, providers pro WHERE p.p_category = pc.pc_id AND p.p_brand = b.brand_id AND p.p_provider = pro.provider_id AND p.p_id = ".$product_id;
+        $query = "SELECT p.p_id, p.p_storeId, p.p_name, p.p_desc, p.p_image, p.p_size, p.p_oimage, p.p_url, p.p_mrp, p.p_price, p.p_category, pc.pc_name, b.brand_name, pro.provider_name FROM products p, p_categories pc, brands b, providers pro WHERE p.p_category = pc.pc_id AND p.p_brand = b.brand_id AND p.p_provider = pro.provider_id AND p.p_status = '1' AND p.p_id = ".$product_id;
         $query = $this->db->query($query);
         $data = $query->row_array();
         return $data;
@@ -54,7 +54,7 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition. " ORDER BY RAND() LIMIT 0,100";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition. " AND p.p_status = '1' ORDER BY RAND() LIMIT 0,100";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
@@ -88,7 +88,7 @@ class Productsmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition." ORDER BY RAND() LIMIT 0,100";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, p.p_size FROM products p WHERE " .$condition." AND p.p_status = '1' ORDER BY RAND() LIMIT 0,100";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
