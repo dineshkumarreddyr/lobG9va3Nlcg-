@@ -260,13 +260,13 @@
                  <div class="blog-main-wrap">
                    <div class="blog-writer-wrap">
                     <div class="blog-writer-img"><img src="<?php echo base_url();?>assets/images/d4.jpg" class="img-responsive"></div> 
-                    <div class="writer-details"><h3><a href="#">by <?php echo $post->postedBy; ?></a></h3>
+                    <div class="writer-details"><h3><a href="<?php echo base_url('designer/'.$post->uid.'/'.url_title($post->postedBy)); ?>">by <?php echo $post->postedBy; ?></a></h3>
                     <span><?php echo date('d M Y', strtotime($post->postedOn)); ?></span></div>         
                    </div>
                    <div class="blog-img"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><img src="<?php echo base_url();?>assets/images/designer.jpg" class="img-responsive"></a></div>
                    <h2><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><?php echo $post->title; ?></a></h2>
                    <div class="blog-main-content">
-                    <?php echo substr($post->content, 0, 220); ?>...
+                    <?php echo substr(stripslashes($post->content), 0, 150); ?>...
                    </div>
                    <div class="blog-bottom">
                     <div class="blog-more text-left"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>">Readmore</a></div>

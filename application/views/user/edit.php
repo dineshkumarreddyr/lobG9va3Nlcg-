@@ -2,6 +2,7 @@
   <div class="modal fade" id="changepic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form action="" method="post" enctype="multipart/form-data">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Change Profile Picture</h4>
@@ -13,42 +14,50 @@
           <h3>Choose Avatar</h3>
           <ul class="clearfix">
             <li>
-               <div class="clearfix"><img src="images/male1.png" class="img-responsive"></div>
-               <input id="one" type="checkbox">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>uploads/designers/male1.png" class="img-responsive"></div>
+               <input value="male1.png" id="one" type="radio" name="avatar">
             </li>
             <li>
-               <div class="clearfix"><img src="images/male2.png" class="img-responsive"></div>
-               <input id="two" type="checkbox">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>uploads/designers/male2.png" class="img-responsive"></div>
+               <input value="male2.png" id="two" type="radio" name="avatar">
             </li>
             <li>
-               <div class="clearfix"><img src="images/female1.png" class="img-responsive"></div>
-               <input id="three" type="checkbox">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>uploads/designers/female1.png" class="img-responsive"></div>
+               <input value="female1.png" id="three" type="radio" name="avatar">
             </li>
             <li>
-               <div class="clearfix"><img src="images/male2.png" class="img-responsive"></div>
-               <input id="four" type="checkbox">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>uploads/designers/male2.png" class="img-responsive"></div>
+               <input value="female2.png" id="four" type="radio" name="avatar">
             </li>
           </ul>
           <h3>Upload your Image</h3>
           <div class="file-area">
-          <input type="file" name="images" id="images" required="required" multiple="multiple">
+          <input type="file" name="fileToUpload" id="fileToUpload" accept=".png, .jpg, .jpeg">
           <div class="file-dummy">
             <div class="success">Great, your files are selected. Keep on.</div>
             <div class="default">Please select a file</div>
           </div>
           </div>
           </div>
-          <div class="col-md-4"><img src="images/d4.jpg" class="img-responsive"></div>
+          <div class="col-md-4"><img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" id="preview_pic" class="img-responsive"></div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save Picture</button>
+        <input type="submit" class="btn btn-primary" name="change_pic" id="change_pic" value="Save Picture" >
       </div>
+      </form>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('#fileToUpload').change( function(event) {
+    var tmppath = URL.createObjectURL(event.target.files[0]);
+    $("#preview_pic").attr('src',tmppath);       
+});
+
+</script>
   <!--change pic pop-->		
 
 <div class="designerslide"></div>
@@ -65,8 +74,8 @@
               <div class="changepic"><a href="#"><img src="<?php echo base_url(); ?>assets/images/changepic.png" class="img-responsive" type="file"></a></div>
            </div> -->
 <div class="designerpro-img">
-              <img src="images/d4.jpg" class="img-responsive">
-              <div class="changepic" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#changepic"><img src="images/picbtn.png">  Change Picture</div>
+              <img src="<?php echo base_url(); ?>uploads/designers/<?php echo ($designer_details->user_image == '') ? 'default.jpg' : $designer_details->user_image; ?>" class="img-responsive">
+              <div class="changepic" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#changepic"><img src="<?php echo base_url(); ?>assets/images/picbtn.png">  Change Picture</div>
             </div>
         </div>
         <div class="col-md-6">

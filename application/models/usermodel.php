@@ -129,4 +129,15 @@ class Usermodel extends CI_Model {
 
         return TRUE; 
     }
+
+    function update_user_pic($uid = 0, $pic_name = '') {
+        $data = array(
+           'user_image' => $pic_name
+        );
+
+        $this->db->where('ud_uid', $uid);
+        $this->db->update('user_details', $data);
+
+        return TRUE;
+    }
 }

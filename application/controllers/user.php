@@ -101,6 +101,66 @@ class User extends CI_Controller {
 		if($did == 0) {
         show_404(); // This seems to display within the template when what I want is for it to redirect
 		}
+
+		// change profile pic
+		if($this->input->post('change_pic')) {
+			if(isset($_FILES["fileToUpload"]["name"]) && !empty($_FILES["fileToUpload"]["name"])) {
+			$target_dir = "uploads/designers/";
+			$name = explode('.', basename($_FILES["fileToUpload"]["name"]));
+			$pic_name = $did .'.'. $name[1];
+			$target_file = $target_dir . $pic_name;
+			$uploadOk = 1;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			// Check if image file is a actual image or fake image
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        // echo "File is an image - " . $check["mime"] . ".";
+		        $uploadOk = 1;
+		    } else {
+		        echo "<script>alert('File is not an image.');</script>";
+		        $uploadOk = 0;
+		    }
+
+		    // Check file size
+			if ($_FILES["fileToUpload"]["size"] > 500000) {
+			    echo "<script>alert('Sorry, your file is too large.');</script>";
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+			    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');</script>";
+			    $uploadOk = 0;
+			}
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			    // echo "<script>alert('Sorry, your file was not uploaded.');</script>";
+
+			    if($this->input->post('avatar')) {
+			    	$this->user_model->update_user_pic($did, $this->input->post('avatar'));
+			    }
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+					$this->user_model->update_user_pic($did, $pic_name);
+			    } else {
+			    	if($this->input->post('avatar')) {
+				    	$this->user_model->update_user_pic($did, $this->input->post('avatar'));
+				    }
+			        echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
+			    }
+			}
+			} else {
+				if($this->input->post('avatar')) {
+			    	$this->user_model->update_user_pic($did, $this->input->post('avatar'));
+			    }
+			}
+		}
+
+		// change profile pic
+
+
 		$data['designer_details'] = $this->user_model->get_designer($did);
 		if(count($data['designer_details']) == 0 || $data['designer_details']->user_role != 2) {
         	show_404(); // If designer not there return 404 page
