@@ -21,6 +21,8 @@
                 <li><a href="<?php echo base_url('about'); ?>">ABOUT US</a></li>
                 <li><a href="javascript:void(0);">HOW IT WORKS</a></li>
                 <li><a href="javascript:void(0);">MY ACCOUNT</a></li>
+                <li><a href="<?php echo base_url('coupons'); ?>">COUPONS</a></li>
+                <li><a href="<?php echo base_url('personalize'); ?>">PERSONALIZE ME</a></li>
                 <!-- <li><a href="javascript:void(0);">PARTNER WITH US</a></li> -->
                 <!-- <li><a href="javascript:void(0);">CAREERS</a></li> -->
               </ul>

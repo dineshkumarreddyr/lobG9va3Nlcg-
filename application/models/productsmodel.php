@@ -11,7 +11,7 @@ class Productsmodel extends CI_Model {
     
     function get_products()
     {
-        $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' ORDER BY RAND() LIMIT 0,20");        
+        $query = $this->db->query("SELECT p.*, b.brand_name, pr.provider_name, pr.provider_image FROM products p, brands b, providers pr WHERE p.p_provider = pr.provider_id AND p.p_brand = b.brand_id AND p_status = '1' ORDER BY RAND() LIMIT 0,20");        
         $data = $query->result();
         return $data;
     }

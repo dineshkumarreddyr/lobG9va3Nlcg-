@@ -61,7 +61,7 @@
 	      <div class="col-md-8 lookdesp-right">
 	        <h3><?php echo $look['l_title']; ?> <span><a href="#">{ <?php echo $look['lc_name']; ?> }</a></span></h3>
 	        <div class="wrap row">
-	        	<?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
+	        	<?php if(!empty($look['l_mrp']) && $look['l_mrp'] > 0): ?>
 	            <div class="col-md-2 col-xs-4 mrpBig"><span class="webrupee">Rs.</span><?php echo $look['l_mrp']; ?></div>
 	        <?php endif; ?>
 	            <div class="col-md-2 col-xs-4 aftrdsntBig"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></div>
@@ -81,10 +81,12 @@
 	           <div class="row">
 	           <h3><a href="<?php echo base_url('product/'.$lp->p_id.'/'.url_title($lp->p_name)); ?>" target="_blank"><?php echo $lp->p_name;?></a></h3>
 	           <div class="col-md-6 col-xs-3 prodpick-left">
-	           <div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>
+	           <div class="provider"><img src="<?php echo $lp->provider_image; ?>" title="<?php echo $lp->provider_name; ?>" alt="<?php echo $lp->provider_name; ?>"></div>
 	           </div>
 	           <div class="col-md-2 col-xs-4 prodpick-right">
+	           	<?php if(!empty($lp->p_mrp) && $lp->p_mrp > 0): ?>
 	           <div class="mrp"><span class="webrupee">Rs.</span> <?php echo $lp->p_mrp;?></div>
+	       		<?php endif; ?>
 	           </div>
 	            <div class="col-md-2 col-xs-4 prodpick-right">
 	           <div class="cost"><span class="webrupee">Rs.</span> <?php echo $lp->p_price;?></div>

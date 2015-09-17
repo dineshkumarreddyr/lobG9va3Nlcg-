@@ -161,8 +161,8 @@
 				   <a href="<?php echo base_url('product/'.$product->p_id); ?>" target="_blank"><h3 id="p_name_<?php echo $product->p_id; ?>"><?php echo $product->p_name; ?></h3></a>
 				   <div class="col-md-5 prodpick-left">
 				    <div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>
-					<div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>
-					<div class="brand"><span>Brand</span><br>Flipkart</div>					
+					<div class="provider"><img src="<?php echo $product->provider_image; ?>"></div>
+					<div class="brand"><span>Brand</span><br><?php echo $product->brand_name; ?></div>		
 				   </div>
 				   <div class="col-md-7 prodpick-right">
 				     <div class="mrp" id="p_mrp_<?php echo $product->p_id; ?>"><span class="webrupee"> Rs.</span>  <?php echo $product->p_mrp; ?></div>
@@ -543,11 +543,11 @@ function save_look() {
 							   '<a href="'+base_url+'/'+product.p_id+'" target="_blank"><h3 id="p_name_'+product.p_id+'">'+product.p_name+'</h3></a>'+
 							   '<div class="col-md-5 prodpick-left">'+
 							    '<div class="rating"><img src="<?php echo base_url();?>assets/images/rating.png"></div>'+
-								'<div class="provider"><img src="<?php echo base_url();?>assets/images/flipkart.png"></div>'+
-								'<div class="brand"><span>Brand</span><br>Filpkart</div>'+
+								'<div class="provider"><img src="'+product.provider_image+'"></div>'+
+								'<div class="brand"><span>Brand</span><br>'+product.brand_name+'</div>'+
 							   '</div>'+
 							   '<div class="col-md-7 prodpick-right">'+
-							     '<div class="mrp"><span>MRP: Rs</span> '+product.p_mrp+'</div>'+
+							     '<div class="mrp" id="p_mrp_'+product.p_id+'"><span>MRP: Rs.</span> '+product.p_mrp+'</div>'+
 								 '<div class="cost" id="p_price_'+product.p_id+'">Rs. '+product.p_price+'</div>'+
 							     '<div class="addtolook" onclick="add_to_look('+product.p_id+');">'+
 								   '<a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>'+

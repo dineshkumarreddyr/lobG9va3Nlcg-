@@ -44,7 +44,7 @@ class Looksmodel extends CI_Model {
     // get look products by look id
     function get_look_products($l_id = 0)
     {
-        $query = $this->db->query("SELECT p.p_id, p.p_image, p.p_name, p.p_mrp, p.p_price, p.p_url FROM l_products lp, products p WHERE lp.lp_pid = p.p_id AND lp_lid = ".intval($l_id));
+        $query = $this->db->query("SELECT p.p_id, p.p_image, p.p_name, p.p_mrp, p.p_price, p.p_url, pr.provider_name, pr.provider_image FROM l_products lp, products p, providers pr WHERE lp.lp_pid = p.p_id AND p.p_provider = pr.provider_id AND lp_lid = ".intval($l_id));
         $data = $query->result();
         return $data;
     }
@@ -138,7 +138,7 @@ class Looksmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND() LIMIT 0,20";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category, b.brand_name, pr.provider_name, pr.provider_image FROM products p, brands b, providers pr WHERE p.p_provider = pr.provider_id AND p.p_brand = b.brand_id AND " .$condition. " ORDER BY RAND() LIMIT 0,20";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
