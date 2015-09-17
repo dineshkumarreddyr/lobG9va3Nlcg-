@@ -138,7 +138,7 @@ class Looksmodel extends CI_Model {
         }
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND() ";
+        $query = "SELECT p.p_id, p.p_name, p.p_image, p.p_mrp, p.p_price, p.p_category FROM products p WHERE " .$condition. " ORDER BY RAND() LIMIT 0,20";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;

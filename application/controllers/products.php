@@ -23,7 +23,7 @@ class Products extends CI_Controller {
         parent::__construct();
         $this->load->model('productsmodel', 'products_model');
         $this->load->model('pcategorymodel', 'pcategory_model');
-        $this->load->model('admin/providermodel', 'provider_model');
+        $this->load->model('providermodel', 'provider_model');
         $this->load->model('trackingmodel', 'tracking_model');
         $this->load->model('usermodel', 'user_model');
         $this->load->model('favouritesmodel', 'favourites_model');
