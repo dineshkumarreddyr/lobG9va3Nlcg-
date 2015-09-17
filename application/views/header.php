@@ -375,6 +375,11 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                  <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
+                    <div class="form-group">
+                      <input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
+                    </div>
+                  </form>
                   <li class="active"><a href="<?php echo base_url(); ?>looks">get the look <span class="sr-only">(current)</span></a></li>
                   <li><a href="<?php echo base_url(); ?>products">shop</a></li>
                   <?php if($this->session->userdata('role') == 2): ?>
@@ -383,13 +388,12 @@
                   <!-- <li><a href="#">top offers</a></li> -->
                   <!-- <li><a href="#">how it works</a></li> -->
                   <li><a href="<?php echo base_url('blog'); ?>">blog</a></li>
-                  <!--<li class="favs"><a href="#"><i class="flaticon-like78"></i> 03</a></li>
-		  <li class="foll"><a href="#"><i class="flaticon-user7"></i> 21</a></li> -->
-                 <!-- <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
-                    <div class="form-group">
-                      <input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
-                    </div>
-                  </form>-->
+                  <?php if($this->session->userdata('uid')): ?>
+                  <li class="favs"><a href="#"><i class="flaticon-like78"></i> <?php echo $this->session->userdata('fav_count'); ?></a></li>
+                  <?php endif; ?>
+                  <?php if($this->session->userdata('uid')): ?>
+                  <li class="foll"><a href="#"><i class="flaticon-user7"></i> <?php echo $this->session->userdata('follow_count'); ?></a></li>
+                  <?php endif; ?>
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -31,6 +31,12 @@ class Favouritesmodel extends CI_Model {
     return $query->num_rows();  
   }
 
-
+  function get_user_favourites_count($uid) {
+     $data = array(
+     'f_uid' => $uid
+     );
+    $query = $this->db->get_where('favourites', $data);
+    return $query->num_rows();
+  }
 
 }

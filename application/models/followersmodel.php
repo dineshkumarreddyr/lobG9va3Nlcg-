@@ -15,6 +15,14 @@ class Followersmodel extends CI_Model {
         return $query->num_rows();
     }
 
+    function get_user_followers_count($uid = 0) {
+      $data = array(
+       'f_uid' => $uid
+      );
+      $query = $this->db->get_where('followers', $data);
+      return $query->num_rows();
+    }
+
     function follow($did = 0, $uid = 0, $createdOn) {
         $data = array(
            'f_did' => $did,

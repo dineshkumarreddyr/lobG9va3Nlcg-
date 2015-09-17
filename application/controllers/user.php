@@ -596,6 +596,12 @@ class User extends CI_Controller {
                 $this->session->set_userdata('email', $data->user_email);
                 $this->session->set_userdata('role', $data->user_role);
 
+                $favourites_count = $this->favourites_model->get_user_favourites_count($data->user_id);
+                $this->session->set_userdata('fav_count', $favourites_count);
+
+                $followers_count = $this->followers_model->get_user_followers_count($data->user_id);
+                $this->session->set_userdata('follow_count', $followers_count);
+
 				$response['status'] = 'success';
 			}
 			else {
@@ -759,6 +765,10 @@ class User extends CI_Controller {
 			$count = $this->followers_model->check_follow($did, $uid);
 			if(!$count) {
 				$data = $this->followers_model->follow($did, $uid, $createdOn);
+
+                $followers_count = $this->session->userdata('follow_count') + 1;
+                $this->session->set_userdata('follow_count', $followers_count);
+
 				$response['status'] = 'success';
 			}
 			else {
@@ -784,6 +794,9 @@ class User extends CI_Controller {
 			$count = $this->favourites_model->check_favourites($id, $type, $uid);
 			if(!$count) {
 				$data = $this->favourites_model->add_to_favourites($id, $type, $uid, $createdOn);
+
+				$favourites_count = $this->session->userdata('fav_count') + 1;
+                $this->session->set_userdata('fav_count', $favourites_count);
 				$response['status'] = 'success';
 			}
 			else {
@@ -798,6 +811,8 @@ class User extends CI_Controller {
         $this->session->unset_userdata('name');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
+        $this->session->unset_userdata('fav_count');
+        $this->session->unset_userdata('follow_count');
         
         
         $this->load->library('facebook');
@@ -907,7 +922,13 @@ class User extends CI_Controller {
 				$this->session->set_userdata('uid', $uid);
 				$this->session->set_userdata('name', $name);
 	  			$this->session->set_userdata('email', $email);
-	  			$this->session->set_userdata('role', $role);        		
+	  			$this->session->set_userdata('role', $role);
+
+	  			$favourites_count = $this->favourites_model->get_user_favourites_count($uid);
+                $this->session->set_userdata('fav_count', $favourites_count);
+
+                $followers_count = $this->followers_model->get_user_followers_count($uid);
+                $this->session->set_userdata('follow_count', $followers_count);
 	    	}
 	    	else {
 	    		$user_data = $this->user_model->fb_login($email);
@@ -917,6 +938,12 @@ class User extends CI_Controller {
 					$this->session->set_userdata('name', $user_data->user_fname);
 	      			$this->session->set_userdata('email', $user_data->user_email);
 	      			$this->session->set_userdata('role', $user_data->user_role);
+
+	      			$favourites_count = $this->favourites_model->get_user_favourites_count($user_data->user_id);
+	                $this->session->set_userdata('fav_count', $favourites_count);
+
+	                $followers_count = $this->followers_model->get_user_followers_count($user_data->user_id);
+	                $this->session->set_userdata('follow_count', $followers_count);
 	      		}
 	    	}
 
@@ -994,7 +1021,13 @@ class User extends CI_Controller {
 				$this->session->set_userdata('uid', $uid);
 				$this->session->set_userdata('name', $name);
 	  			$this->session->set_userdata('email', $email);
-	  			$this->session->set_userdata('role', $role);        		
+	  			$this->session->set_userdata('role', $role);
+
+	  			$favourites_count = $this->favourites_model->get_user_favourites_count($uid);
+                $this->session->set_userdata('fav_count', $favourites_count);
+
+                $followers_count = $this->followers_model->get_user_followers_count($uid);
+                $this->session->set_userdata('follow_count', $followers_count);
 	    	}
 	    	else {
 	    		$user_data = $this->user_model->fb_login($email);
@@ -1004,6 +1037,12 @@ class User extends CI_Controller {
 					$this->session->set_userdata('name', $user_data->user_fname);
 	      			$this->session->set_userdata('email', $user_data->user_email);
 	      			$this->session->set_userdata('role', $user_data->user_role);
+
+	      			$favourites_count = $this->favourites_model->get_user_favourites_count($user_data->user_id);
+	                $this->session->set_userdata('fav_count', $favourites_count);
+
+	                $followers_count = $this->followers_model->get_user_followers_count($user_data->user_id);
+	                $this->session->set_userdata('follow_count', $followers_count);
 	      		}
 	    	}
 
