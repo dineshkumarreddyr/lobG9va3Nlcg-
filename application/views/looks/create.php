@@ -296,13 +296,23 @@ function add_to_look(p_id) {
 	<!-- look products total calculating -->
 	p_mrp = p_mrp.split('s. ');
 	p_price = p_price.split('s. ');
+	if(p_mrp[1] == '') {
+		p_mrp = 0;
+	} else {
+		p_mrp = p_mrp[1];
+	}
+	if(p_price[1] == '') {
+		p_price = 0;
+	} else {
+		p_price = p_price[1];
+	}
 	if (localStorage.lp_total) {
-		localStorage.lp_mrp = parseInt(localStorage.lp_mrp) + parseInt(p_mrp[1]);
-		localStorage.lp_total = parseInt(localStorage.lp_total) + parseInt(p_price[1]);
+		localStorage.lp_mrp = parseInt(localStorage.lp_mrp) + parseInt(p_mrp);
+		localStorage.lp_total = parseInt(localStorage.lp_total) + parseInt(p_price);
 	}
 	else {
-		localStorage.lp_mrp = parseInt(p_mrp[1]);	
-		localStorage.lp_total = parseInt(p_price[1]);	
+		localStorage.lp_mrp = parseInt(p_mrp);	
+		localStorage.lp_total = parseInt(p_price);	
 	}
 	$('#lp_total_div').removeClass('hide');
 	$('#lc_create').removeClass('hide');
@@ -547,7 +557,7 @@ function save_look() {
 								'<div class="brand"><span>Brand</span><br>'+product.brand_name+'</div>'+
 							   '</div>'+
 							   '<div class="col-md-7 prodpick-right">'+
-							     '<div class="mrp" id="p_mrp_'+product.p_id+'"><span>MRP: Rs.</span> '+product.p_mrp+'</div>'+
+							     '<div class="mrp" id="p_mrp_'+product.p_id+'"><span>Rs.</span> '+product.p_mrp+'</div>'+
 								 '<div class="cost" id="p_price_'+product.p_id+'">Rs. '+product.p_price+'</div>'+
 							     '<div class="addtolook" onclick="add_to_look('+product.p_id+');">'+
 								   '<a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>'+
