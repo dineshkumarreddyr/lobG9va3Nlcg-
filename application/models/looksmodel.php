@@ -184,7 +184,7 @@ class Looksmodel extends CI_Model {
         $condition[] = " l.l_status = '1' ";
         $condition = implode(' AND ', $condition);
 
-        $query = "SELECT l.* FROM looks l WHERE " .$condition;
+        $query = "SELECT l.* FROM looks l WHERE " .$condition. " ORDER BY RAND() LIMIT 0,4";
         $query = $this->db->query($query);
         $data = $query->result();
         return $data;
