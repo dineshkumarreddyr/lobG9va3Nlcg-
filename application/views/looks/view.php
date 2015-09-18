@@ -194,8 +194,8 @@
         <ul>
           <p>Or share it on</p>
           <li><a href="javascript:void(0);" id="share_fb"><img src="<?php echo base_url();?>assets/images/sharefb.png" alt="share on facebook"></a></li>
-          <!-- <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
-          <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
+          <li><a href="http://twitter.com/intent/tweet?status=<?php echo $look['l_title']; ?>+<?php echo current_url(); ?>"><img src="<?php echo base_url();?>assets/images/sharetw.png" alt="share on twitter"></a></li>
+          <!-- <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharepin.png" alt="share on pinterest"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/shareinst.png" alt="share on instagram"></a></li>
           <li><a href="#"><img src="<?php echo base_url();?>assets/images/sharebe.png" alt="share on behance"></a></li> -->
         </ul>

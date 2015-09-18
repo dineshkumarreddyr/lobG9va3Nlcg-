@@ -15,7 +15,7 @@
            <div class="blog-img"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><img src="<?php echo base_url();?>assets/images/designer.jpg" class="img-responsive"></a></div>
            <h2><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>"><?php echo $post->title; ?></a></h2>
            <div class="blog-main-content">
-            <?php echo substr(stripslashes($post->content), 0, 200); ?>...
+            <?php echo substr( strip_tags( stripslashes($post->content)), 0, 200); ?>...
            </div>
            <div class="blog-bottom">
             <div class="blog-more text-left"><a href="<?php echo base_url('blog/'.$post->id.'/'.url_title($post->title)); ?>">Readmore</a></div>

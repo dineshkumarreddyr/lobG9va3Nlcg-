@@ -47,15 +47,24 @@
           <div class="col-md-6">
           <label for="title">Body Type <span>Your body type</span></label>
           <select class="minimal" name="bodytype" id="bodytype" required="required">
-            <option value="athletic">Athletic</option>
-            <option value="medium">Medium</option>
-            <option value="fat">Fat</option>
+            <option value="Straight">Straight</option>
+            <option value="Pear">Pear</option>
+            <option value="Spoon">Spoon</option>
+            <option value="Hourglass">Hourglass</option>
+            <option value="Top Hourglass">Top Hourglass</option>
+            <option value="Inverted Triangle">Inverted Triangle</option>
+            <option value="Oval">Oval</option>
+            <option value="Diamond">Diamond</option>
           </select>
           </div>
           <div class="col-md-6">
             <label for="title">Body Tone <span>Color of your skin</span></label>
             <select class="minimal" name="bodytone" id="bodytone" required="required">
-            <option value="Fair">Fair</option>
+            <option value="Pale">Pale</option>
+            <option value="White">White</option>
+            <option value="Tanned">Tanned</option>
+            <option value="Brown">Brown</option>
+            <option value="Dark Brown">Dark Brown</option>
             <option value="Black">Black</option>
           </select>
           </div>
