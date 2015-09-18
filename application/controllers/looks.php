@@ -84,10 +84,14 @@ class Looks extends CI_Controller {
 			show_404();
 		}
 		
+		$l_category = 0;
+		$l_gender = '';
 		$looks = array();
 		foreach ($ls as $key => $look) {
 			$lps = $this->looks_model->get_look_products($look->l_id);
-			
+			$l_category = $look->l_category;
+			$l_gender = $look->l_gender;
+
 			$looks[] = array(
 				'l_id' => $look->l_id,
 				'l_category' => $look->l_category,
@@ -104,7 +108,24 @@ class Looks extends CI_Controller {
 		}
 		$data['look'] = $looks[0];
 		$data['favourite'] = $this->favourites_model->check_favourites($lid, 'look', $this->session->userdata('uid'));
+
+		$sl = $this->looks_model->similar_looks('', $l_gender, $l_category);
 		
+		$slooks = array();
+		// $ls = $this->looks_model->get_looks();
+		foreach ($sl as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$slooks[] = array(
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_id' => $look->l_id,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price
+			);
+		}
+		$data['slooks'] = $slooks;
+
 		$seo = array(
 			'title' => $look->l_name,
 			'description' => $look->l_name,

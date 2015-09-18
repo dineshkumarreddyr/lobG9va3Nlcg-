@@ -117,6 +117,67 @@
 </div>
 
 	<!--look description ends-->
+	<!--similar looks-->
+	<div class="whitebg">
+	  <div class="container text-center">
+	  <div class="carousel-head"><a href="#">Similar Looks</a></div>
+	    <div class="row">   
+	   <?php if (count($slooks)): ?>
+    <?php foreach ($slooks as $key => $look): ?>
+	  <a href="<?php echo base_url('look/'.$look['l_id'].'/'.url_title($look['l_title'])); ?>">
+	  <div class="col-md-3 col-xs-6 trend-each">
+
+
+		      <?php if(count($look['l_products']) == 5): ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+	    	<div class="pattern5-left">
+		  <ul>
+		    <?php $i=1; foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php if($i==3):  ?>
+				</ul>
+	    	</div>
+
+	    	<div class="pattern5-right">
+				<ul>
+			<?php endif; $i++ ?>
+			<?php endforeach; ?>
+		  </ul>
+	    	</div>
+		</div>
+      <?php else: ?>
+	    <div class="pattern<?php echo count($look['l_products']); ?>">
+		  <ul>
+		    <?php foreach ($look['l_products'] as $key => $lp): ?>
+			<li><img data-original="<?php echo $lp->p_image;?>" class="img-responsive lazy"></li>
+			<?php endforeach; ?>
+		  </ul>
+		</div>
+      <?php endif; ?>
+
+
+
+
+		<h4><?php echo $look['l_title']; ?></h4>
+		<div class="col-md-12 text-center">
+		<?php if($look['l_mrp'] != '' && $look['l_mrp'] > 0): ?>
+		<span class="mrp"><?php echo $look['l_mrp']; ?></span>
+		<?php endif; ?>
+		<span class="aftrdsnt"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></span>
+		</div>
+	  </div>
+	  </a>
+	<?php endforeach; ?>
+	<?php else: ?>
+		No Looks found..
+	<?php endif; ?>
+	  
+	  
+	  
+	    </div>
+	  </div>
+	</div>
+	<!--similar looks-->
 
 <!--share pop-->
   <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
