@@ -18,7 +18,7 @@ class Productsmodel extends CI_Model {
 
     function get_trending_products()
     {
-        $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' ORDER BY RAND() LIMIT 0,8");        
+        $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' AND p_provider = '5' ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
     }

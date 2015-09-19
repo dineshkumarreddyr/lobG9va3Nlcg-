@@ -19,6 +19,7 @@
            <h3>WEBSITE</h3>
               <ul>
                 <li><a href="<?php echo base_url('about'); ?>">ABOUT US</a></li>
+                <li><a href="<?php echo base_url('blog'); ?>">BLOG</a></li>
                 <li><a href="javascript:void(0);">HOW IT WORKS</a></li>
                 <li><a href="javascript:void(0);">MY ACCOUNT</a></li>
                 <li><a href="<?php echo base_url('coupons'); ?>">COUPONS</a></li>

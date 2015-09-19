@@ -342,6 +342,7 @@
                   <li><a href="<?php echo base_url('designer/edit/'.$this->session->userdata('uid')); ?>">Edit Profile</a></li>
                 <?php endif; ?>
                   <li><a href="<?php echo base_url('followings'); ?>">My Followings</a></li>
+                  <li><a href="<?php echo base_url('favourites'); ?>">My Favourites</a></li>
                   <li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>
                 </ul>
                   </div>
@@ -388,7 +389,7 @@
                   <?php endif; ?>
                   <!-- <li><a href="#">top offers</a></li> -->
                   <!-- <li><a href="#">how it works</a></li> -->
-                  <li><a href="<?php echo base_url('blog'); ?>">blog</a></li>
+                  <!-- <li><a href="<?php echo base_url('blog'); ?>">blog</a></li> -->
                   <li><a href="<?php echo base_url('coupons'); ?>">Coupons/Offers</a></li>
                   <?php if($this->session->userdata('uid')): ?>
                   <li class="favs"><a href="<?php echo base_url('favourites'); ?>"><i class="flaticon-like78"></i> <?php echo $this->session->userdata('fav_count'); ?></a></li>

@@ -238,6 +238,7 @@ function add_to_favourites(id) {
 	    }
 	    else if(data.status == 'success') {
 	      $('.favbtn').html('Added to your favourites');
+	      $('.favs a').html('<i class="flaticon-like78"></i> '+(parseInt($('.favs a').text())+1));
 	      // $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
 	      // $('#followers').text(parseInt($('#followers').text())+1);
 	      // $('#s_msg').html('Thanks, Your email successfully subscribed.');

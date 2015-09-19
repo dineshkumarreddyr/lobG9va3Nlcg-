@@ -59,6 +59,7 @@ $route['myaccount'] = "user/myaccount";
 $route['forgot-password'] = "user/forgotpassword";
 $route['reset-password'] = "user/resetpassword";
 $route['followings'] = "user/myfollowings";
+$route['favourites'] = "user/myfavourites";
 
 $route['blog'] = "blog/index";
 $route['blog/add'] = "blog/index/add";
