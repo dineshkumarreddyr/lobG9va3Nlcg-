@@ -341,6 +341,7 @@
                   <li><a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>">My Profile</a></li>
                   <li><a href="<?php echo base_url('designer/edit/'.$this->session->userdata('uid')); ?>">Edit Profile</a></li>
                 <?php endif; ?>
+                  <li><a href="<?php echo base_url('followings'); ?>">My Followings</a></li>
                   <li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>
                 </ul>
                   </div>

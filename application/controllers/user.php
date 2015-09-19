@@ -40,6 +40,20 @@ class User extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function myfollowings() {
+		$uid = $this->session->userdata('uid');
+		$data['designers'] = $this->followers_model->get_followings($uid);
+		$seo = array(
+			'title' => '',
+			'description' => '',
+			'keywords' => ''
+		);
+		$data['seo'] = $seo;
+		$this->load->view('header', $data);
+		$this->load->view('user/followings', $data);
+		$this->load->view('footer');
+	}
+
 	public function index($did = 0)
 	{
 		if($did == 0) {
