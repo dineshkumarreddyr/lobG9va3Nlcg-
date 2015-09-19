@@ -15,4 +15,11 @@ class Couponsmodel extends CI_Model {
       $data = $query->result();
       return $data;
   }
+
+  function view_coupon($c_id = 0)
+  {
+      $query = $this->db->query("SELECT * FROM coupons WHERE c_id = ".intval($c_id));
+      $data = $query->result();
+      return $data;
+  }
 }

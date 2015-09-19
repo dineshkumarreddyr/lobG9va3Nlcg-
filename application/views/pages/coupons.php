@@ -39,15 +39,41 @@
                 <div class="col-md-7 expire">Expire - <?php echo date('d-m-Y', strtotime($coupon->c_expiryDate)); ?></div>
               </div>
               </div>
-              <?php if($coupon->c_code != 'No Coupon Required'): ?>
-              <div class="getcode">Coupon Code : <span><?php echo $coupon->c_code; ?></span></div>
-              <?php else: ?>
-              <div class="getcode"><a href="<?php echo $coupon->c_url; ?>" target="_blank">CLICK HERE<a></div>
-              <?php endif; ?>
+              <div class="getcode" data-value="<?php echo $coupon->c_id; ?>"><a href="<?php echo $coupon->c_url; ?>" target="_blank">CLICK HERE</a></div>
             </div>
           </div>
         </div>
         <?php endforeach; ?>
+        <div class="hide" id="view_coupon" data-toggle="modal" data-target="#couponModal"></div>
       </div>
     </div>
+    <!-- coupon pop-->
+    <div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    
+    </div>
+    <!--coupon pop-->
     <!--coupon ends-->
+<script type="text/javascript">
+$(function(){
+  $('.getcode').click(function(){
+    var c_id = $(this).attr('data-value');
+
+    var s_input = {};
+    s_input['c_id'] = c_id;
+    
+    $.ajax({
+      type:"POST",
+      url:'<?php echo base_url("coupons/ajax_view");?>',
+      data:s_input,
+      // dataType:"json",
+      success: function(data){
+        $('#couponModal').html(data);
+        $('#view_coupon').trigger('click');
+      },
+      error: function(e) {
+      //called when there is an error
+      }
+    });
+  });
+});
+</script>

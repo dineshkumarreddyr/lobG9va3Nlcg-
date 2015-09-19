@@ -40,6 +40,15 @@ class Coupons extends CI_Controller {
 		$this->load->view('footer');
 
 	}
+
+	public function ajax_view()
+	{
+		$c_id = $this->input->post('c_id');
+		$data['coupon'] = $this->coupons_model->view_coupon($c_id)[0];
+
+		$this->load->view('pages/coupon_view', $data);
+
+	}
 }
 
 /* End of file welcome.php */
