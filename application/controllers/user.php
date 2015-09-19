@@ -823,6 +823,44 @@ class User extends CI_Controller {
 		echo json_encode($response);
 	}
 
+	public function myfavourites()
+	{
+		if(!$this->session->userdata('uid')) {
+        	show_404(); // This seems to display within the template when what I want is for it to redirect
+		}
+		$uid = $this->session->userdata('uid');
+		
+		$data['fproducts'] = $this->favourites_model->get_fav_products($uid);
+		$ls = $this->favourites_model->get_fav_looks($uid);
+
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			
+			$looks[] = array(
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_user' => $look->user_fname,
+				'l_user_image' => $look->user_image,
+				'l_uid' => $look->l_uid,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price,
+				'l_id' => $look->l_id
+			);
+		}
+		$data['flooks'] = $looks;
+
+		$seo = array(
+			'title' => 'My favourites',
+			'description' => 'My favourites',
+			'keywords' => 'My favourites'
+		);
+		$data['seo'] = $seo;
+		$this->load->view('header', $data);
+		$this->load->view('user/favourites', $data);
+		$this->load->view('footer');
+	}
+
 	public function logout() {
 		$this->session->unset_userdata('uid');
         $this->session->unset_userdata('name');

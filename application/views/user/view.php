@@ -391,6 +391,7 @@
           $('#follow').addClass('following');
           $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
           $('#followers').text(parseInt($('#followers').text())+1);
+          $('.foll a').html('<i class="flaticon-user7"></i> '+(parseInt($('.foll a').text())+1));
           // $('#s_msg').html('Thanks, Your email successfully subscribed.');
         }
       }

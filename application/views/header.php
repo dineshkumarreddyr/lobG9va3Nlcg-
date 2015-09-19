@@ -391,10 +391,10 @@
                   <li><a href="<?php echo base_url('blog'); ?>">blog</a></li>
                   <li><a href="<?php echo base_url('coupons'); ?>">Coupons/Offers</a></li>
                   <?php if($this->session->userdata('uid')): ?>
-                  <li class="favs"><a href="#"><i class="flaticon-like78"></i> <?php echo $this->session->userdata('fav_count'); ?></a></li>
+                  <li class="favs"><a href="<?php echo base_url('favourites'); ?>"><i class="flaticon-like78"></i> <?php echo $this->session->userdata('fav_count'); ?></a></li>
                   <?php endif; ?>
                   <?php if($this->session->userdata('uid')): ?>
-                  <li class="foll"><a href="#"><i class="flaticon-user7"></i> <?php echo $this->session->userdata('follow_count'); ?></a></li>
+                  <li class="foll"><a href="<?php echo base_url('followings'); ?>"><i class="flaticon-user7"></i> <?php echo $this->session->userdata('follow_count'); ?></a></li>
                   <?php endif; ?>
                 </ul>
               </div><!-- /.navbar-collapse -->
