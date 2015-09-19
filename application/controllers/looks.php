@@ -250,8 +250,8 @@ class Looks extends CI_Controller {
 	/*
 	 * Get list of categories by parent category
 	 */
-	public function f_pcategories($pc_id = 0) {
-		$pcategories= $this->pcategory_model->get_pcategories($pc_id);
+	public function f_pcategories($pc_id = 0, $gender = '') {
+		$pcategories= $this->pcategory_model->get_pcategories($pc_id, $gender);
 		$f_pcategories = array();
 		foreach ($pcategories as $key => $pcategory) {
 			$f_pcategories[$pcategory->pc_id] = $pcategory->pc_name; 

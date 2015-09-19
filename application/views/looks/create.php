@@ -466,9 +466,10 @@ function save_look() {
 		var select = '<input type="radio" id="f_scat" name="f_scat" value="" checked/>';
         $('.subcategory').html(select);
 		var f_cat = $('#f_cat').val(); // get category value
+		var f_gen = $('#f_gen').val(); // get gender value
 		$.ajax({
 			type:"GET",
-			url:'<?php echo base_url("looks/f_pcategories");?>/'+f_cat,
+			url:'<?php echo base_url("looks/f_pcategories");?>/'+f_cat+'/'+f_gen,
 			// data:f_cat,
 			dataType:"json",
 			success: function(data){
@@ -488,6 +489,9 @@ function save_look() {
 
 	});
 	
+	$('#f_gen').change(function(){
+		$('#f_cat').trigger('change');
+	});
 	$('#f_gen, #f_cat, #f_prov, #f_brd, #f_dis').change(function(){
 		ps_filter();
 	});
