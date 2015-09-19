@@ -41,6 +41,9 @@ class User extends CI_Controller {
 	}
 
 	public function myfollowings() {
+		if(!$this->session->userdata('uid')) {
+        	show_404(); // This seems to display within the template when what I want is for it to redirect
+		}
 		$uid = $this->session->userdata('uid');
 		$data['designers'] = $this->followers_model->get_followings($uid);
 		$seo = array(
