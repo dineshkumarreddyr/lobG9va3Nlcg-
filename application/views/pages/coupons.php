@@ -39,7 +39,7 @@
                 <div class="col-md-7 expire">Expire - <?php echo date('d-m-Y', strtotime($coupon->c_expiryDate)); ?></div>
               </div>
               </div>
-              <div class="getcode" data-value="<?php echo $coupon->c_id; ?>"><a href="<?php echo $coupon->c_url; ?>" target="_blank">CLICK HERE</a></div>
+              <div class="getcode" data-value="<?php echo $coupon->c_id; ?>">CLICK HERE</div>
             </div>
           </div>
         </div>

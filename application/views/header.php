@@ -389,7 +389,7 @@
                   <!-- <li><a href="#">top offers</a></li> -->
                   <!-- <li><a href="#">how it works</a></li> -->
                   <li><a href="<?php echo base_url('blog'); ?>">blog</a></li>
-                  <li><a href="<?php echo base_url('coupons'); ?>">Coupons and Offers</a></li>
+                  <li><a href="<?php echo base_url('coupons'); ?>">Coupons/Offers</a></li>
                   <?php if($this->session->userdata('uid')): ?>
                   <li class="favs"><a href="#"><i class="flaticon-like78"></i> <?php echo $this->session->userdata('fav_count'); ?></a></li>
                   <?php endif; ?>

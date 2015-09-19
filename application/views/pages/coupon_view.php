@@ -6,12 +6,12 @@
     <div class="col-md-10 col-md-offset-1 couponModal-wrap">
       <img src="<?php echo base_url();?>assets/images/cup.png" alt="coupon" width="100">
       <div class="clearfix">&nbsp;</div>
-      <h3>Please visit <span><?php echo $coupon->c_merchant; ?></span> and use the code below to avail offer</h3>
+      <h3>Please visit <span><a href="<?php echo $coupon->c_url; ?>" target="_blank"><?php echo $coupon->c_merchant; ?></a></span> and use the code below to avail offer</h3>
       <div class="code"><?php echo $coupon->c_code; ?></div>
-      <h2><a href="<?php echo $coupon->c_url; ?>" target="_blank"> >>CLICK HERE<< </a></h2>
+      <h2><a href="<?php echo $coupon->c_url; ?>" target="_blank"> >>CLICK HERE TO SHOP<< </a></h2>
       <div class="coupon-details">
         <h3><?php echo $coupon->c_title; ?></h3>
-    <p><?php echo $coupon->c_description; ?></p>
+    <!-- <p><?php echo $coupon->c_description; ?></p> -->
       </div>
     </div>
   </div>
