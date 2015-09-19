@@ -21,6 +21,7 @@
     <!--coupon starts-->
     <div class="container coupon-wrap">
       <div class="row">
+        <?php foreach ($coupons as $key => $coupon): ?>
         <div class="col-md-3">
           <div class="coupon-each">
             <div class="coupon-image">
@@ -28,207 +29,25 @@
             </div>
             <div class="arrow"></div>
             <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
+              <h3><a href="<?php echo $coupon->c_url; ?>" target="_blank"><?php echo $coupon->c_title; ?></a></h3>
               <div class="cou-prov">
                 <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
+                <div class="col-md-5">
+                  <!-- <img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"> -->
+                  <?php echo $coupon->c_merchant; ?>
+                </div>
+                <div class="col-md-7 expire">Expire - <?php echo date('d-m-Y', strtotime($coupon->c_expiryDate)); ?></div>
               </div>
               </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
+              <?php if($coupon->c_code != 'No Coupon Required'): ?>
+              <div class="getcode">Coupon Code : <span><?php echo $coupon->c_code; ?></span></div>
+              <?php else: ?>
+              <div class="getcode"><a href="<?php echo $coupon->c_url; ?>" target="_blank">CLICK HERE<a></div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer1.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>Flat 50% Off on all LIFESTYLE Products</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/snapdeal.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer2.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>Super Deal – Purchase Men T-Shirts Below Rs.499</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer3.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>Save Up To 70% On UCB Clothing (Women)</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer3.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer1.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer1.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/flipkart.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer2.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/jabong.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="coupon-each">
-            <div class="coupon-image">
-              <img src="<?php echo base_url();?>assets/images/offer1.jpg" class="img-responsive">
-            </div>
-            <div class="arrow"></div>
-            <div class="coupon-content">
-              <h3>New Arrivals – Save Flat 20% Extra On Purchase Rs.1299 & Above</h3>
-              <div class="cou-prov">
-                <div class="row">
-                <div class="col-md-5"><img src="<?php echo base_url();?>assets/images/yepme.png" class="img-responsive"></div>
-                <div class="col-md-7 expire">Expire - 2015-09-15</div>
-              </div>
-              </div>
-              <div class="getcode">Coupon Code : <span>Yepme1234</span></div>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
     <!--coupon ends-->

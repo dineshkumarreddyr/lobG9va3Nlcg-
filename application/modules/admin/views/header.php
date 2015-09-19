@@ -390,6 +390,21 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Coupon Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url("admin/coupon"); ?>">List</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/coupon/add"); ?>">Add</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url("admin/coupon/import"); ?>">Import</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

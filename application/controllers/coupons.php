@@ -17,12 +17,21 @@ class Coupons extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('couponsmodel', 'coupons_model');
+    }
+
 	public function index()
 	{
+		$data['coupons'] = $this->coupons_model->get_coupons();
+
 		$seo = array(
-			'title' => 'About us',
-			'description' => 'About us',
-			'keywords' => 'About us'
+			'title' => 'Coupons and offers',
+			'description' => 'Coupons and offers',
+			'keywords' => 'Coupons and offers'
 		);
 		$data['seo'] = $seo;
 
