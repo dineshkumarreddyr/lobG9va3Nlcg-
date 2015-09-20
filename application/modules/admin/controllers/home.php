@@ -6,7 +6,15 @@ class Home extends MX_Controller {
     {
         parent::__construct();
         $this->load->helper('form');
-        // $this->load->model('admin/homemodel', 'home_model');
+        $this->load->model('admin/productmodel', 'product_model');
+        $this->load->model('admin/brandmodel', 'brand_model');
+        $this->load->model('admin/pcategorymodel', 'pcategory_model');
+        $this->load->model('admin/providermodel', 'provider_model');
+        $this->load->model('admin/usermodel', 'user_model');
+        $this->load->model('admin/lcategorymodel', 'lcategory_model');
+        $this->load->model('admin/lookmodel', 'look_model');
+        $this->load->model('admin/blogmodel', 'blog_model');
+        $this->load->model('admin/couponmodel', 'coupon_model');
         $this->login_check();
     }
 
@@ -20,8 +28,18 @@ class Home extends MX_Controller {
  
     public function index()
     {
+        $data['total_users'] = $this->user_model->get_users_count();
+        $data['total_products'] = $this->product_model->get_products_count();
+        $data['total_categories'] = $this->pcategory_model->get_categories_count();
+        $data['total_providers'] = $this->provider_model->get_providers_count();
+        $data['total_brands'] = $this->brand_model->get_brands_count();
+        $data['total_lcategories'] = $this->lcategory_model->get_lcategories_count();
+        $data['total_looks'] = $this->look_model->get_looks_count();
+        $data['total_blogs'] = $this->blog_model->get_blogs_count();
+        $data['total_coupons'] = $this->coupon_model->get_coupons_count();
+
         $this->load->view('admin/header');
-        $this->load->view('admin/home');
+        $this->load->view('admin/home', $data);
         $this->load->view('admin/footer');
     }
 

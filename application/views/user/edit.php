@@ -228,7 +228,7 @@
 		  </div>
 <!--wallet starts-->
 		   <div class="tab-pane fade" id="wallet">
-		    <div class="row earnings">
+        <div class="row earnings">
           <div class="clearfix col-md-12 redeem-wrap">
           <div class="col-md-5 redeem no-pad">
             <div class="row">
@@ -249,7 +249,7 @@
               <div class="col-md-4 earn-each">Last Payed on <strong> 21 Aug 2015</strong></div>
               </div>
         </div>
-		   	 <form class="form-horizontal wallet-form" action="" method="post">
+         <form class="form-horizontal wallet-form" action="" method="post">
             <fieldset>
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Bank Account Number</label>
@@ -291,7 +291,7 @@
             </div>
             </div>
           </form>
-	  </div>
+    </div>
 	  </div>
 	  </div>
 

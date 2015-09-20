@@ -16,6 +16,13 @@ class Lcategorymodel extends CI_Model {
         return $data;
     }
 
+    function get_lcategories_count()
+    {
+        $query = $this->db->query("SELECT * FROM l_categories");
+        $data = $query->num_rows();
+        return $data;
+    }
+
     function parent_lcategories()
     {
         $query = $this->db->query("SELECT * FROM l_categories WHERE lc_pid = 0");

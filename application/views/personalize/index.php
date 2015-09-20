@@ -46,7 +46,8 @@
          <div class="clearfix form-group">
           <div class="col-md-6">
           <label for="title">Body Type <span>Your body type</span></label>
-          <select class="minimal" name="bodytype" id="bodytype" required="required">
+          <input type="text" class="minimal" data-toggle="modal" data-target="#changepic">
+          <!-- <select class="minimal" name="bodytype" id="bodytype" required="required">
             <option value="Straight">Straight</option>
             <option value="Pear">Pear</option>
             <option value="Spoon">Spoon</option>
@@ -55,18 +56,25 @@
             <option value="Inverted Triangle">Inverted Triangle</option>
             <option value="Oval">Oval</option>
             <option value="Diamond">Diamond</option>
-          </select>
+          </select> -->
           </div>
           <div class="col-md-6">
             <label for="title">Body Tone <span>Color of your skin</span></label>
-            <select class="minimal" name="bodytone" id="bodytone" required="required">
+            <input type="text" class="minimal" data-toggle="modal" data-target="#tonepick">
+            <!-- <select class="minimal" name="bodytone" id="bodytone" required="required">
             <option value="Pale">Pale</option>
             <option value="White">White</option>
             <option value="Tanned">Tanned</option>
             <option value="Brown">Brown</option>
             <option value="Dark Brown">Dark Brown</option>
             <option value="Black">Black</option>
-          </select>
+          </select> -->
+          </div>
+        </div>
+        <div class="clearfix form-group">
+          <div class="col-md-12">
+            <label for="title">Select Designer<span>To style you</span></label>
+            <div id="myDropdown"></div>
           </div>
         </div>
         <div class="clearfix form-group">
@@ -115,10 +123,147 @@
       </div>
     </div>
     <!--blog edit ends-->
+
+  <!--body shape pop-->
+  <div class="modal fade" id="changepic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Choose Your Body Type</h4>
+      </div>
+      <div class="modal-body">
+        <div class="clearfix personal-wrap">
+          <div class="row">
+          <div class="col-md-12">
+          <ul class="clearfix">
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male1.png" class="img-responsive"></div>
+               <label class="control-label" for="Hourglass">Hourglass</label><br/>
+               <input id="one" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Triangle">Triangle</label><br/>
+               <input id="two" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/female1.png" class="img-responsive"></div>
+               <label class="control-label" for="Apple">Apple</label><br/>
+               <input id="three" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Square">Square</label><br/>
+               <input id="four" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Pear">Pear</label><br/>
+               <input id="four" type="checkbox">
+            </li>
+          </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--body shape pop-->
+
+  <!--body tone pop-->
+  <div class="modal fade" id="tonepick" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Choose Your Skin Tone</h4>
+      </div>
+      <div class="modal-body">
+        <div class="clearfix personal-wrap">
+          <div class="row">
+          <div class="col-md-12">
+          <ul class="clearfix">
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male1.png" class="img-responsive"></div>
+               <label class="control-label" for="Light">Light</label><br/>
+               <input id="one" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Medium">Medium</label><br/>
+               <input id="two" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/female1.png" class="img-responsive"></div>
+               <label class="control-label" for="Tan">Tan</label><br/>
+               <input id="three" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Dark">Dark</label><br/>
+               <input id="four" type="checkbox">
+            </li>
+            <li class="col-md-2">
+               <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
+               <label class="control-label" for="Deep">Deep</label><br/>
+               <input id="four" type="checkbox">
+            </li>
+          </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--body tone pop-->
 <script type="text/javascript">
   $('#fileToUpload').change( function(event) {
     var tmppath = URL.createObjectURL(event.target.files[0]);
     $("#preview_pic").attr('src',tmppath);       
 });
-
 </script>
+
+    <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/40036711/Scripts/jquery.ddslick.min.js"></script>
+    <script>
+    $(document).ready(function() {     
+      var ddData = [{
+        text: "Komali Kandadai",
+        value: 1,
+        selected: false,
+        description: "Hyderabad, India",
+        imageSrc: "images/d2.jpg"
+      }, {
+        text: "Neha Dhupia",
+        value: 2,
+        selected: false,
+        description: "Hyderabad, India",
+        imageSrc: "http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
+      }, {
+        text: "Samantha",
+        value: 3,
+        selected: true,
+        description: "Hyderabad, India",
+        imageSrc: "http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
+      }, {
+        text: "Kajal",
+        value: 4,
+        selected: false,
+        description: "Hyderabad, India",
+        imageSrc: "http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
+      }];
+
+      $('#myDropdown').ddslick({
+        data: ddData,
+        width: 300,
+        selectText: "Select your preferred Designer",
+        imagePosition: "right",
+        onSelected: function(selectedData) {
+          //callback function: do something with selectedData;
+          console.log(selectedData);
+        }
+      });
+    });
+    </script>

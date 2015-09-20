@@ -15,6 +15,13 @@ class Couponmodel extends CI_Model {
         $data = $query->result();
         return $data;
     }
+    
+    function get_coupons_count()
+    {
+        $query = $this->db->query("SELECT * FROM coupons");
+        $data = $query->num_rows();
+        return $data;
+    }
 
     function get_brand($brand_id = 0)
     {

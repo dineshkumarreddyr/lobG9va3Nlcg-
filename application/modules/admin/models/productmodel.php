@@ -16,6 +16,12 @@ class Productmodel extends CI_Model {
         return $data;
     }
 
+    function get_products_count()
+    {
+        $query = $this->db->query("SELECT p.p_id, p.p_storeId, p.p_name, p.p_status, pc.pc_name FROM products p, p_categories pc WHERE p.p_category = pc.pc_id");
+        return $query->num_rows();
+    }
+
     function get_product($product_id = 0)
     {
         $query = $this->db->query("SELECT p.* FROM products p WHERE p.p_id =".$product_id);

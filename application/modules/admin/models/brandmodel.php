@@ -16,6 +16,11 @@ class Brandmodel extends CI_Model {
         return $data;
     }
 
+    function get_brands_count() {
+        $query = $this->db->query("SELECT * FROM brands");
+        return $query->num_rows();
+    }
+
     function get_brand($brand_id = 0)
     {
         $query = $this->db->get_where('brands', array('brand_id' => $brand_id));

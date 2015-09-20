@@ -15,6 +15,10 @@ class Pcategorymodel extends CI_Model {
         $data = $query->result();
         return $data;
     }
+    function get_categories_count() {
+        $query = $this->db->query("SELECT * FROM p_categories");
+        return $query->num_rows();
+    }
 
     function parent_pcategories()
     {

@@ -16,6 +16,11 @@ class Providermodel extends CI_Model {
         return $data;
     }
 
+    function get_providers_count() {
+        $query = $this->db->query("SELECT * FROM providers");
+        return $query->num_rows();
+    }
+
     function get_provider($provider_id = 0)
     {
         $query = $this->db->query("SELECT * FROM providers WHERE provider_id = ".intval($provider_id));

@@ -16,6 +16,13 @@ class Blogmodel extends CI_Model {
         return $data;
     }
 
+    function get_blogs_count()
+    {
+        $query = $this->db->query("SELECT * FROM blog_posts");
+        $data = $query->num_rows();
+        return $data;
+    }
+
     function get_blog($post_id = 0)
     {
         $query = $this->db->get_where('blog_posts', array('post_id' => $post_id));

@@ -307,13 +307,13 @@ class Product extends MX_Controller {
                 $storeId = $data[1];
                 $name = addslashes(str_replace(array("<![CDATA[","]]>"),"",$data[2]));
                 $desc = addslashes(str_replace(array("<![CDATA[","]]>"),"",$data[3]));
-                $image = $data[11];
-                $oimage = $data[13];
+                $image = $data[12];
+                $oimage = $data[12];
                 if($image == '') {
                     $image = $oimage;
                 }
                 $mrp = $data[4];
-                $price = $data[7];
+                $price = $data[4];
                 $url = $data[8];
                 
                 $cat = $data[24];
@@ -336,6 +336,7 @@ class Product extends MX_Controller {
                     $brand = $brand_id;
                 }
 
+                // $size = '';
                 $size = $data[19];
 
 

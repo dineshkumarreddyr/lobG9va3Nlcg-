@@ -31,7 +31,7 @@
 						<div class="desp-content"><strong>Provider:</strong> <?php echo $product['provider_name']; ?></div>
 						<div class="clearfix desp-content"><strong>Available Sizes:</strong> 
 							<ul class="sizes">
-								<li><?php echo $product['p_size']; ?></li>
+								<li><?php echo ($product['p_size'] == '') ? 'Not Available' : $product['p_size']; ?></li>
 								<!-- <li class="nosize">xl</li>
 								<li>l</li>
 								<li class="nosize">s</li>

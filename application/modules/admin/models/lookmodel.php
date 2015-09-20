@@ -16,6 +16,13 @@ class Lookmodel extends CI_Model {
         return $data;
     }
 
+    function get_looks_count()
+    {
+        $query = $this->db->query("SELECT l.l_id, l.l_name, l.l_status, lc.lc_name FROM looks l, l_categories lc WHERE l.l_category = lc.lc_id");
+        $data = $query->num_rows();
+        return $data;
+    }
+
     function get_look($look_id = 0)
     {
         $query = $this->db->query("SELECT l.* FROM looks l WHERE l.l_id = ".intval($look_id));

@@ -1,3 +1,5 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 <div id="page-wrapper" style="min-height: 291px;">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,12 +17,34 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div class="huge"><?php echo $total_users; ?></div>
+                                    <div>Total users</div>
+                                </div>
+                            </div>
+                        </div>  
+                        <a href="<?php echo base_url('admin/user'); ?>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $total_products; ?></div>
+                                    <div>Total products</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo base_url('admin/product'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -37,12 +61,12 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div class="huge"><?php echo $total_categories; ?></div>
+                                    <div>Total categories</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo base_url('admin/pcategory'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -59,12 +83,12 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div class="huge"><?php echo $total_providers; ?></div>
+                                    <div>Total providers</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo base_url('admin/provider'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -81,12 +105,100 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
+                                    <div class="huge"><?php echo $total_brands; ?></div>
+                                    <div>Total brands</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo base_url('admin/brand'); ?>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $total_lcategories; ?></div>
+                                    <div>Total Look categories</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<?php echo base_url('admin/lcategory'); ?>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $total_looks; ?></div>
+                                    <div>Total looks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<?php echo base_url('admin/look'); ?>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $total_blogs; ?></div>
+                                    <div>Total Blog posts</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<?php echo base_url('admin/blog'); ?>">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $total_coupons; ?></div>
+                                    <div>Total Coupons</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<?php echo base_url('admin/coupon'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,6 +209,40 @@
                 </div>
             </div>
             <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Category', 'Data Count'],
+          ['Users',     <?php echo $total_users; ?>],
+          ['Products',      <?php echo $total_products; ?>],
+          ['Pcategories',  <?php echo $total_categories; ?>],
+          ['providers', <?php echo $total_providers; ?>],
+          ['Brands',    <?php echo $total_brands; ?>],
+          ['Lcategories',    <?php echo $total_lcategories; ?>],
+          ['Looks',    <?php echo $total_looks; ?>],
+          ['Blog posts',    <?php echo $total_blogs; ?>],
+          ['Coupons',    <?php echo $total_coupons; ?>]
+        ]);
+
+        var options = {
+          title: 'DATA'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+                    <div id="piechart" style="height: 500px;"></div>
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="panel panel-default">
