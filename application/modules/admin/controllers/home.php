@@ -15,6 +15,7 @@ class Home extends MX_Controller {
         $this->load->model('admin/lookmodel', 'look_model');
         $this->load->model('admin/blogmodel', 'blog_model');
         $this->load->model('admin/couponmodel', 'coupon_model');
+        $this->load->model('admin/trackingmodel', 'tracking_model');
         $this->login_check();
     }
 
@@ -37,6 +38,8 @@ class Home extends MX_Controller {
         $data['total_looks'] = $this->look_model->get_looks_count();
         $data['total_blogs'] = $this->blog_model->get_blogs_count();
         $data['total_coupons'] = $this->coupon_model->get_coupons_count();
+        $data['total_track_look'] = $this->tracking_model->get_track_look_count();
+        $data['total_track_product'] = $this->tracking_model->get_track_product_count();
 
         $this->load->view('admin/header');
         $this->load->view('admin/home', $data);

@@ -171,7 +171,7 @@
 					   <a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>
 					 </div>
 					 <div class="fav">
-					   <a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/fav.png"></a>
+					   <a href="javascript:void(0);" onclick="add_to_favourites(<?php echo $product->p_id; ?>);"><img src="<?php echo base_url();?>assets/images/fav.png"></a>
 					 </div>
 				   </div>				   
 				 </div>
@@ -567,7 +567,7 @@ function save_look() {
 								   '<a href="javascript:void(0);">Add to look <img src="<?php echo base_url();?>assets/images/addlook.png"></a>'+
 								 '</div>'+
 								 '<div class="fav">'+
-								   '<a href="javascript:void(0);"><img src="<?php echo base_url();?>assets/images/fav.png"></a>'+
+								   '<a href="javascript:void(0);" onclick="add_to_favourites('+product.p_id+');"><img src="<?php echo base_url();?>assets/images/fav.png"></a>'+
 								 '</div>'+
 							   '</div>'+				   
 							 '</div>'+
@@ -577,6 +577,28 @@ function save_look() {
 
 		$('#f_products_wrapper').html(content);
 	}
+
+function add_to_favourites(id) {
+	$.ajax({
+	  type:"POST",
+	  url:'<?php echo base_url();?>user/add_to_favourites',
+	  data:{'type':'product','id':id},
+	  dataType:"json",
+	  success: function(data) {
+	    // console.log(data);
+	    if(data.status == 'error') {
+	      // $('#s_msg').html('Sorry, Your email already subscribed.');
+	    }
+	    else if(data.status == 'success') {
+	      // $('.favbtn').html('Added to your favourites');
+	      $('.favs a').html('<i class="flaticon-like78"></i> '+(parseInt($('.favs a').text())+1));
+	      // $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
+	      // $('#followers').text(parseInt($('#followers').text())+1);
+	      // $('#s_msg').html('Thanks, Your email successfully subscribed.');
+	    }
+	  }
+	});
+}
 </script>
 
 <script>

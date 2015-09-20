@@ -56,7 +56,7 @@
 					<div class="col-md-6"><button class="favbtn" data-toggle="modal" data-target="#LoginModal">Add to Favourites</button></div>
 					<?php endif; ?>
 					<div class="col-md-6">
-					<button id="goto_providers" onclick="OpenInNewTab(this.vaue);" value="<?php echo $product['p_url']; ?>" class="buybtn">Buy from <?php echo $product['provider_name']; ?></button>
+					<button id="goto_providers" onclick="product_buy_click(<?php echo $product['p_id']; ?>);OpenInNewTab(this.vaue);" value="<?php echo $product['p_url']; ?>" class="buybtn">Buy from <?php echo $product['provider_name']; ?></button>
 					<!-- <a href="<?php echo $product['p_url']; ?>" target="_blank" class="buybtn">Buy from <?php echo $product['provider_name']; ?></a> -->
 					</div>
 				</div>
@@ -112,6 +112,28 @@ function add_to_favourites(id) {
 	  type:"POST",
 	  url:'<?php echo base_url();?>user/add_to_favourites',
 	  data:{'type':'product','id':id},
+	  dataType:"json",
+	  success: function(data) {
+	    // console.log(data);
+	    if(data.status == 'error') {
+	      // $('#s_msg').html('Sorry, Your email already subscribed.');
+	    }
+	    else if(data.status == 'success') {
+	      $('.favbtn').html('Added to your favourites');
+	      $('.favs a').html('<i class="flaticon-like78"></i> '+(parseInt($('.favs a').text())+1));
+	      // $('#follow').html($('#follow').html().replace(/Follow/, 'Following'));
+	      // $('#followers').text(parseInt($('#followers').text())+1);
+	      // $('#s_msg').html('Thanks, Your email successfully subscribed.');
+	    }
+	  }
+	});
+}
+
+function product_buy_click(id) {
+	$.ajax({
+	  type:"POST",
+	  url:'<?php echo base_url("tracking/ajax_product_buy_click"); ?>',
+	  data:{'type':'product','id':id,'url':'<?php echo current_url(); ?>','source':'<?php echo $this->agent->referrer(); ?>','ip':'<?php echo $this->input->ip_address(); ?>'},
 	  dataType:"json",
 	  success: function(data) {
 	    // console.log(data);

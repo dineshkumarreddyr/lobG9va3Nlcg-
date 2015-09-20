@@ -226,7 +226,9 @@
           ['Lcategories',    <?php echo $total_lcategories; ?>],
           ['Looks',    <?php echo $total_looks; ?>],
           ['Blog posts',    <?php echo $total_blogs; ?>],
-          ['Coupons',    <?php echo $total_coupons; ?>]
+          ['Coupons',    <?php echo $total_coupons; ?>],
+          ['Look views',    <?php echo $total_track_look; ?>],
+          ['Product views',    <?php echo $total_track_product; ?>]
         ]);
 
         var options = {
