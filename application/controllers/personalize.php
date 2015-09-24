@@ -21,11 +21,23 @@ class Personalize extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('followersmodel', 'followers_model');
 		$this->load->model('personalizemodel', 'personalize_model');
+		$this->load->model('lcategorymodel', 'lcategory_model');
+	}
+
+	public function login_check() {
+	    $uid = $this->session->userdata('uid');
+	    if(!isset($uid) || empty($uid)) {
+	        redirect(base_url('login'));
+	    }
 	}
 
 	public function index()
 	{
+		$this->login_check();
+		$uid = $this->session->userdata('uid');
+
 		// change profile pic
 		if($this->input->post('submit_request')) {
 
@@ -34,6 +46,7 @@ class Personalize extends CI_Controller {
 			$occasion = addslashes(strip_tags($this->input->post('occasion')));
 			$bodytype = addslashes(strip_tags($this->input->post('bodytype')));
 			$bodytone = addslashes(strip_tags($this->input->post('bodytone')));
+			$designer = addslashes(strip_tags($this->input->post('designer')));
 			$budget = addslashes(strip_tags($this->input->post('budget')));
 			$height = addslashes(strip_tags($this->input->post('height')));
 			$specifications = addslashes(strip_tags($this->input->post('specifications')));
@@ -79,13 +92,28 @@ class Personalize extends CI_Controller {
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
-						$this->personalize_model->add_new($name, $gender, $occasion, $bodytype, $bodytone, $budget, $height, $specifications, $pic_name);
+						$this->personalize_model->add_new($name, $gender, $occasion, $bodytype, $bodytone, $budget, $height, $specifications, $pic_name, $designer);
 					} else {
 						echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
 					}
 				}
 			}
 		}
+
+		$followings = $this->followers_model->get_followings($uid);
+		$designers_list = array();
+		foreach ($followings as $key => $following) {
+			$temp = array();
+			$temp['text'] = $following->user_fname;
+			$temp['value'] = $following->user_id;
+			$temp['selected'] = 'false';
+			$temp['description'] = '';
+			$temp['imageSrc'] = base_url().'uploads/designers/'.$following->user_image;
+			$designers_list[] = $temp;
+		}
+
+		$data['followings'] = json_encode($designers_list);
+		$data['lcategories'] = $this->lcategory_model->get_lcategories();
 
 		$seo = array(
 			'title' => 'Personalize me',

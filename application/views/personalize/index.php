@@ -40,13 +40,19 @@
           </div>
           <div class="col-md-6">
             <label for="title">Occasion <span>Occasion for which you want to be styled</span></label>
-          <input type="text" name="occasion" id="occasion" class="form-controll" required="required"/>
+            <select class="minimal" name="occasion" id="occasion" required="required">
+              <option value="">---Occation-</option>
+              <?php foreach ($lcategories as $key => $lcategory) { ?>
+              <option value="<?php echo $lcategory->lc_id; ?>"><?php echo ucfirst(strtolower($lcategory->lc_name)); ?></option>
+              <?php } ?>
+            </select>
+          <!-- <input type="text" name="occasion" id="occasion" class="form-controll" required="required"/> -->
           </div>
         </div>     
          <div class="clearfix form-group">
           <div class="col-md-6">
           <label for="title">Body Type <span>Your body type</span></label>
-          <input type="text" class="minimal" data-toggle="modal" data-target="#changepic">
+          <input type="text" class="minimal" data-toggle="modal" data-target="#changepic" name="bodytype" id="bodytype" required="required">
           <!-- <select class="minimal" name="bodytype" id="bodytype" required="required">
             <option value="Straight">Straight</option>
             <option value="Pear">Pear</option>
@@ -60,7 +66,7 @@
           </div>
           <div class="col-md-6">
             <label for="title">Body Tone <span>Color of your skin</span></label>
-            <input type="text" class="minimal" data-toggle="modal" data-target="#tonepick">
+            <input type="text" class="minimal" data-toggle="modal" data-target="#tonepick" name="bodytone" id="bodytone" required="required">
             <!-- <select class="minimal" name="bodytone" id="bodytone" required="required">
             <option value="Pale">Pale</option>
             <option value="White">White</option>
@@ -75,6 +81,7 @@
           <div class="col-md-12">
             <label for="title">Select Designer<span>To style you</span></label>
             <div id="myDropdown"></div>
+            <input type="hidden" name="designer" id="designer" value="" class="form-controll" required="required">
           </div>
         </div>
         <div class="clearfix form-group">
@@ -140,27 +147,27 @@
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male1.png" class="img-responsive"></div>
                <label class="control-label" for="Hourglass">Hourglass</label><br/>
-               <input id="one" type="checkbox">
+               <input id="one" type="radio" value="Hourglass" name="bodytype_pop" class="bodytype_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Triangle">Triangle</label><br/>
-               <input id="two" type="checkbox">
+               <input id="two" type="radio" value="Triangle" name="bodytype_pop" class="bodytype_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/female1.png" class="img-responsive"></div>
                <label class="control-label" for="Apple">Apple</label><br/>
-               <input id="three" type="checkbox">
+               <input id="three" type="radio" value="Apple" name="bodytype_pop" class="bodytype_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Square">Square</label><br/>
-               <input id="four" type="checkbox">
+               <input id="four" type="radio" value="Square" name="bodytype_pop" class="bodytype_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Pear">Pear</label><br/>
-               <input id="four" type="checkbox">
+               <input id="four" type="radio" value="Pear" name="bodytype_pop" class="bodytype_pop">
             </li>
           </ul>
           </div>
@@ -188,27 +195,27 @@
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male1.png" class="img-responsive"></div>
                <label class="control-label" for="Light">Light</label><br/>
-               <input id="one" type="checkbox">
+               <input id="one" type="radio" value="Light" name="bodytone_pop" class="bodytone_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Medium">Medium</label><br/>
-               <input id="two" type="checkbox">
+               <input id="two" type="radio" value="Medium" name="bodytone_pop" class="bodytone_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/female1.png" class="img-responsive"></div>
                <label class="control-label" for="Tan">Tan</label><br/>
-               <input id="three" type="checkbox">
+               <input id="three" type="radio" value="Tan" name="bodytone_pop" class="bodytone_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Dark">Dark</label><br/>
-               <input id="four" type="checkbox">
+               <input id="four" type="radio" value="Dark" name="bodytone_pop" class="bodytone_pop">
             </li>
             <li class="col-md-2">
                <div class="clearfix"><img src="<?php echo base_url(); ?>assets/images/male2.png" class="img-responsive"></div>
                <label class="control-label" for="Deep">Deep</label><br/>
-               <input id="four" type="checkbox">
+               <input id="four" type="radio" value="Deep" name="bodytone_pop" class="bodytone_pop">
             </li>
           </ul>
           </div>
@@ -223,37 +230,21 @@
   $('#fileToUpload').change( function(event) {
     var tmppath = URL.createObjectURL(event.target.files[0]);
     $("#preview_pic").attr('src',tmppath);       
-});
+  });
+
+  $('.bodytype_pop').click(function(){
+    $('#bodytype').val($('.bodytype_pop').val());
+  });
+
+  $('.bodytone_pop').click(function(){
+    $('#bodytone').val($('.bodytone_pop').val());
+  });
 </script>
 
     <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/40036711/Scripts/jquery.ddslick.min.js"></script>
     <script>
     $(document).ready(function() {     
-      var ddData = [{
-        text: "Komali Kandadai",
-        value: 1,
-        selected: false,
-        description: "Hyderabad, India",
-        imageSrc: "images/d2.jpg"
-      }, {
-        text: "Neha Dhupia",
-        value: 2,
-        selected: false,
-        description: "Hyderabad, India",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
-      }, {
-        text: "Samantha",
-        value: 3,
-        selected: true,
-        description: "Hyderabad, India",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
-      }, {
-        text: "Kajal",
-        value: 4,
-        selected: false,
-        description: "Hyderabad, India",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
-      }];
+      var ddData = <?php echo $followings; ?>;
 
       $('#myDropdown').ddslick({
         data: ddData,
@@ -262,7 +253,8 @@
         imagePosition: "right",
         onSelected: function(selectedData) {
           //callback function: do something with selectedData;
-          console.log(selectedData);
+          // console.log(selectedData.selectedData.value);
+          $('#designer').val(selectedData.selectedData.value);
         }
       });
     });
