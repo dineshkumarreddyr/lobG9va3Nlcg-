@@ -164,6 +164,61 @@ class Looks extends CI_Controller {
 		// $this->load->view('footer');
 	}
 
+	public function edit($lid = 0)
+	{
+		$uid = $this->session->userdata('uid');
+		$role = $this->session->userdata('role');
+		if($role != 2) {
+			show_404(); // Redundant, I know, just added for this example
+		}
+
+		$ls = $this->looks_model->look_details($lid);
+		if(count($ls) == 0 || $ls[0]->l_id == '') {
+			show_404();
+		}
+		
+		$l_category = 0;
+		$l_gender = '';
+		$looks = array();
+		foreach ($ls as $key => $look) {
+			$lps = $this->looks_model->get_look_products($look->l_id);
+			$l_category = $look->l_category;
+			$l_gender = $look->l_gender;
+
+			$looks[] = array(
+				'l_id' => $look->l_id,
+				'l_category' => $look->l_category,
+				'lc_name' => $look->lc_name,
+				'l_title' => $look->l_name,
+				'l_products' => $lps,
+				'l_user' => $look->user_fname,
+				'l_user_image' => $look->user_image,
+				'l_uid' => $look->user_id,
+				'l_mrp' => $look->l_mrp,
+				'l_price' => $look->l_price,
+				'l_views' => $look->lv_count
+			);
+		}
+		$data['look'] = $looks[0];
+
+		$data['pcategories'] = $this->pcategory_model->get_pcategories();
+		$data['lcategories'] = $this->lcategory_model->get_lcategories();
+		$data['providers'] = $this->provider_model->get_providers();
+		$data['brands'] = $this->brand_model->get_brands();
+		$data['products'] = $this->products_model->get_products();
+
+		$seo = array(
+			'title' => 'Edit look',
+			'description' => 'Edit look',
+			'keywords' => 'Edit look'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('looks/edit', $data);
+		// $this->load->view('footer');
+	}
+
 	public function create_ajax()
 	{
 		$response = array();

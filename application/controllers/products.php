@@ -54,6 +54,11 @@ class Products extends CI_Controller {
 		$data['products'] = $this->products_model->s_products($s, $gender, $s_cat);
 		// print_r($data['products']);exit;
 
+		$cat_tree = $this->tree_category($gender);
+		$data['cat_list'] = $cat_tree['total_cat'];
+		$data['cat_tree'] = $cat_tree['cat_tree'];
+		// print_r($cat_tree);exit;
+
 		$seo = array(
 			'title' => 'Products',
 			'description' => 'Products',
@@ -117,6 +122,44 @@ class Products extends CI_Controller {
 	
 		$data = $this->products_model->pf_products($f_cat, $f_prov, $f_dis, $f_size, $f_gen);
 		echo json_encode($data);
+	}
+
+	public function tree_category($gender = '') {
+		$all_cat = $this->pcategory_model->get_cat_list($gender);
+
+		$total_cat = array();
+		$total_pcat = array();
+		$final = array();
+
+		foreach ($all_cat as $key => $cat) {
+			$total_cat[$cat->pc_id] = $cat->pc_name;
+			$total_pcat[$cat->pc_id] = $cat->pc_pid;
+		}
+		// echo '<pre>';
+		// print_r($total_cat);
+		// print_r($total_pcat);
+		// print_r(array_keys($total_pcat, '0'));
+		$total_pcat_uq = array_unique($total_pcat);
+
+		foreach ($total_pcat_uq as $key => $pcat_uq) {
+			// echo $pcat_uq;
+			// print_r(array_keys($total_pcat, $pcat_uq));
+			$final[$pcat_uq] = array_keys($total_pcat, $pcat_uq);
+		}
+		// print_r($final);
+
+		foreach ($all_cat as $key => $cat) {
+			$total_cat[$cat->pc_id] = $cat->pc_name;
+		}
+		// echo '</pre>';
+
+		$output_cat = array(
+			'total_cat' => $total_cat,
+			'cat_tree' => $final
+			);
+
+		return $output_cat;
+
 	}
 }
 

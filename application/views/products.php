@@ -68,17 +68,82 @@
 				<h4>by Categories</h4>
 				<ul class="f_cat">
 					<?php
-					foreach ($pcategories as $key => $pcategory) {
+					// foreach ($pcategories as $key => $pcategory) {
 						?>
-						<li><input id='f_cat<?php echo $pcategory->pc_id; ?>' type='checkbox' name="f_cat" value="<?php echo $pcategory->pc_id; ?>" onclick="pf_search();" />
+<!-- 						<li><input id='f_cat<?php echo $pcategory->pc_id; ?>' type='checkbox' name="f_cat" value="<?php echo $pcategory->pc_id; ?>" onclick="pf_search();" />
 							<label for='f_cat<?php echo $pcategory->pc_id; ?>'><span></span><?php echo $pcategory->pc_name; ?>
 							</label>
 						</li>
-						<?php
-					}
+ -->						<?php
+					// }
 					?>
 				</ul>
 				<?php endif; ?>
+
+				<?php
+				if(isset($_GET['category']) && !empty($_GET['category'])):
+					$category = intval($_GET['category']);
+				?>
+
+				<ul class="tree">
+					<?php foreach ($cat_tree[$category] as $key => $cat_tree1) {
+						?>
+					<li>
+						<label for="selectEventTree_<?php echo $cat_tree1; ?>"><?php echo $cat_list[$cat_tree1]; ?></label><input type="checkbox" id="selectEventTree_<?php echo $cat_tree1; ?>" name="f_cat" value="<?php echo $cat_tree1; ?>" class="hasborder">		
+						
+						<?php if(array_key_exists($cat_tree1, $cat_tree)) { ?>
+						<ul>
+							<?php foreach ($cat_tree[$cat_tree1] as $key => $cat_tree2) { ?>
+							<li>
+								<label for="selectEventTree_<?php echo $cat_tree2; ?>"><?php echo $cat_list[$cat_tree2]; ?></label><input type="checkbox" id="selectEventTree_<?php echo $cat_tree2; ?>" name="f_cat" value="<?php echo $cat_tree2; ?>">
+								
+								<?php if(array_key_exists($cat_tree2, $cat_tree)) { ?>
+								<ul>
+									<?php foreach ($cat_tree[$cat_tree2] as $key => $cat_tree3) { ?>
+									<li class="item">
+										<input type="checkbox" name="f_cat" name="selectEventTree_radio" id="selectEventTree_radio_<?php echo $cat_tree3; ?>" value="<?php echo $cat_tree3; ?>"><label for="selectEventTree_radio_<?php echo $cat_tree3; ?>"><?php echo $cat_list[$cat_tree3]; ?></label>
+									</li>
+									<?php } ?>
+								</ul>
+								<?php } ?>
+							</li>
+							<?php } ?>
+						</ul>
+						<?php } ?>
+					</li>
+						<?php
+					} ?>
+					<li>
+						<label for="selectEventTree_3">Sarees</label><input type="checkbox" id="selectEventTree_3" class="hasborder">		
+						<ul>
+							<li>
+								<label for="selectEventTree_4">Lighting</label><input type="checkbox" id="selectEventTree_4">
+								<ul>
+									<li class="item">
+										<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_150"><label for="selectEventTree_radio_150">Light</label>
+									</li>
+									<li class="item">
+										<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_23"><label for="selectEventTree_radio_23">Set Ambient Lighting</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+					<label for="selectEventTree_5">Jeans</label><input type="checkbox" id="selectEventTree_5" class="hasborder">		
+					<ul>
+					<li class="item">
+					<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_151"><label for="selectEventTree_radio_151">Light</label>
+					</li>
+					<li class="item">
+					<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_24"><label for="selectEventTree_radio_24">Set Ambient Lighting</label>
+					</li>
+					</ul>
+					</li>
+				</ul>
+				<?php endif; ?>
+
 				<h4>By Provider</h4>
 				<ul class="f_prov">
 					<?php
@@ -286,11 +351,17 @@
 		$('.f_size').html(s_content);
 		// sizes
 	}
+	$('.tree input').click(function() {
+		if(!$(this).is(':checked')) {
+			$(this).parent().find('input').prop("checked", false);
+		}
+		pf_search();
+	});
 
 
 	function pf_search() {
 		var f_cat = [];
-		$('.f_cat input:checked').each(function() {
+		$('.tree input:checked').each(function() {
 		    f_cat.push($(this).val());
 		});
 		console.log(JSON.stringify(f_cat));
