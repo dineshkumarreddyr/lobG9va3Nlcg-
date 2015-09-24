@@ -115,7 +115,7 @@
       </div>
       <div class="col-md-4 personal-right">
         <div class="clearfix personal-image">
-         <img src="<?php echo base_url();?>assets/images/d4.jpg" class="img-responsive" id="preview_pic">
+         <img src="<?php echo base_url();?>assets/images/picture.jpg" class="img-responsive" id="preview_pic">
         </div>
         <!-- <div class="removePersonal"><a href="#">Remove Image</a></div> -->
       </div>

@@ -379,11 +379,11 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
+                 <!-- <form class="navbar-form navbar-left" role="search" action="<?php echo base_url('looks'); ?>">
                     <div class="form-group">
                       <input type="text" name="s" id="s" class="form-control menu-search" placeholder="Search" value="<?php if(isset($_GET['s'])) { echo strip_tags($_GET['s']); } ?>">
                     </div>
-                  </form>
+                  </form>-->
                   <li class="active"><a href="<?php echo base_url(); ?>looks">get the look <span class="sr-only">(current)</span></a></li>
                   <li><a href="<?php echo base_url(); ?>products">shop</a></li>
                   <?php if($this->session->userdata('role') == 2): ?>

@@ -6,8 +6,8 @@
 		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide2.jpg" alt="First Slide">
 		<div class="container">
 		<div class="carousel-caption">
-		<h1>Fashion Inspired By Me</h1>
-		<h3>Find Designers and Consultants</h3>
+		<h1>Chic trends, latest inspirations in one place!</h1>
+		<h3>Don’t let a few elite decide your personal style, put together something that’s uniquely yours with expert help!</h3>
 		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
@@ -16,8 +16,8 @@
 		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide1.jpg" alt="Second Slide">
 		<div class="container">
 		<div class="carousel-caption">
-		<h1>Fashion Inspired By Me</h1>
-		<h3>Find Designers and Consultants</h3>
+		<h1>Remove the Shackles – Experience Fashion Freedom</h1>
+		<h3>Don’t be bound by other people’s sense of style, create your own!</h3>
 		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
@@ -26,8 +26,8 @@
 		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide3.jpg" alt="Second Slide">
 		<div class="container">
 		<div class="carousel-caption">
-		<h1>Fashion Inspired By Me</h1>
-		<h3>Find Designers and Consultants</h3>
+		<h1>Have passion for fashion? Follow us!</h1>
+		<h3>Who says you can’t mix and match to create your own personal style? Our designers certainly don’t!</h3>
 		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
@@ -36,8 +36,8 @@
 		<img class="img-responsive" src="<?php echo base_url();?>assets/images/slide4.jpg" alt="Second Slide">
 		<div class="container">
 		<div class="carousel-caption">
-		<h1>Fashion Inspired By Me</h1>
-		<h3>Find Designers and Consultants</h3>
+		<h1>Every day is fashion show, make world your runaway!</h1>
+		<h3>Discard the rules of fashion and walk your own path of style!</h3>
 		<a class="btn explore-btn" href="<?php echo base_url('looks'); ?>">Explore Now</a>
 		</div>
 		</div>
