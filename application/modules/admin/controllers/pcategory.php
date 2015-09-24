@@ -57,7 +57,17 @@ class Pcategory extends MX_Controller {
 
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
-        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        // $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        if(isset($_GET['gender']) && !empty($_GET['gender'])) {
+            $gender = stripslashes(strip_tags($_GET['gender']));
+        }
+        else {
+            $gender = '';
+        }
+        $cat_tree = $this->tree_category($gender);
+        $data['cat_list'] = $cat_tree['total_cat'];
+        $data['cat_tree'] = $cat_tree['cat_tree'];
+
         $this->load->view('admin/header');
         $this->load->view('admin/pcategory/add', $data);
         $this->load->view('admin/footer');
@@ -91,7 +101,16 @@ class Pcategory extends MX_Controller {
         }
 
         $data['pcategory'] = $this->pcategory_model->get_pcategory($pc_id)[0];
-        $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        // $data['pcategories'] = $this->pcategory_model->parent_pcategories();
+        if(isset($_GET['gender']) && !empty($_GET['gender'])) {
+            $gender = stripslashes(strip_tags($_GET['gender']));
+        }
+        else {
+            $gender = '';
+        }
+        $cat_tree = $this->tree_category($gender);
+        $data['cat_list'] = $cat_tree['total_cat'];
+        $data['cat_tree'] = $cat_tree['cat_tree'];
         
         $data['errr_msg'] = $errr_msg;
         $data['msg'] = $msg;
@@ -106,6 +125,44 @@ class Pcategory extends MX_Controller {
             $this->pcategory_model->remove($pc_id);
             redirect(base_url('admin/pcategory'), 'refresh');
         }
+    }
+
+    public function tree_category($gender = '') {
+        $all_cat = $this->pcategory_model->get_cat_list($gender);
+
+        $total_cat = array();
+        $total_pcat = array();
+        $final = array();
+
+        foreach ($all_cat as $key => $cat) {
+            $total_cat[$cat->pc_id] = $cat->pc_name;
+            $total_pcat[$cat->pc_id] = $cat->pc_pid;
+        }
+        // echo '<pre>';
+        // print_r($total_cat);
+        // print_r($total_pcat);
+        // print_r(array_keys($total_pcat, '0'));
+        $total_pcat_uq = array_unique($total_pcat);
+
+        foreach ($total_pcat_uq as $key => $pcat_uq) {
+            // echo $pcat_uq;
+            // print_r(array_keys($total_pcat, $pcat_uq));
+            $final[$pcat_uq] = array_keys($total_pcat, $pcat_uq);
+        }
+        // print_r($final);
+
+        foreach ($all_cat as $key => $cat) {
+            $total_cat[$cat->pc_id] = $cat->pc_name;
+        }
+        // echo '</pre>';
+
+        $output_cat = array(
+            'total_cat' => $total_cat,
+            'cat_tree' => $final
+            );
+
+        return $output_cat;
+
     }
 
 }

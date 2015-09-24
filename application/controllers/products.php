@@ -56,7 +56,9 @@ class Products extends CI_Controller {
 
 		$cat_tree = $this->tree_category($gender);
 		$data['cat_list'] = $cat_tree['total_cat'];
+		$data['cat_gender_list'] = $cat_tree['total_cat_gender'];
 		$data['cat_tree'] = $cat_tree['cat_tree'];
+		$data['cat_gender_tree'] = $cat_tree['cat_gender_tree'];
 		// print_r($cat_tree);exit;
 
 		$seo = array(
@@ -119,6 +121,24 @@ class Products extends CI_Controller {
 		$f_prov = $this->input->post('f_prov');
 		$f_size = $this->input->post('f_size');
 		$f_dis = $this->input->post('f_dis');
+
+		$cat_tree = $this->tree_category($f_gen)['cat_tree'];
+		// print_r($cat_tree);
+		$total_cat = array();
+		if(isset($f_cat) && !empty($f_cat)) {
+			foreach ($f_cat as $key => $f_c) {
+				// $total_cat[] = 
+				if(array_key_exists($f_c, $cat_tree)) {
+					foreach ($cat_tree[$f_c] as $key => $cat) {
+						$total_cat[$cat] = $cat;
+					}
+				}
+				else {
+					$total_cat[$f_c] = $f_c;
+				}
+			}
+			$f_cat = $total_cat;
+		}
 	
 		$data = $this->products_model->pf_products($f_cat, $f_prov, $f_dis, $f_size, $f_gen);
 		echo json_encode($data);
@@ -126,36 +146,61 @@ class Products extends CI_Controller {
 
 	public function tree_category($gender = '') {
 		$all_cat = $this->pcategory_model->get_cat_list($gender);
+		$all_cat_gender = $this->pcategory_model->get_cat_list_by_gender($gender);
 
 		$total_cat = array();
 		$total_pcat = array();
 		$final = array();
 
+		$total_cat_gender = array();
+		$total_pcat_gender = array();
+		$final_gender = array();
+
 		foreach ($all_cat as $key => $cat) {
 			$total_cat[$cat->pc_id] = $cat->pc_name;
 			$total_pcat[$cat->pc_id] = $cat->pc_pid;
 		}
+
+		foreach ($all_cat_gender as $key => $cat_gender) {
+			$total_cat_gender[$cat_gender->pc_id] = $cat_gender->pc_name;
+			$total_pcat_gender[$cat_gender->pc_id] = $cat_gender->pc_pid;
+		}
 		// echo '<pre>';
+		// print_r($all_cat_by_gender);exit;
 		// print_r($total_cat);
 		// print_r($total_pcat);
 		// print_r(array_keys($total_pcat, '0'));
 		$total_pcat_uq = array_unique($total_pcat);
+		$total_pcat_gender_uq = array_unique($total_pcat_gender);
 
 		foreach ($total_pcat_uq as $key => $pcat_uq) {
 			// echo $pcat_uq;
 			// print_r(array_keys($total_pcat, $pcat_uq));
 			$final[$pcat_uq] = array_keys($total_pcat, $pcat_uq);
 		}
-		// print_r($final);
+
+		foreach ($total_pcat_gender_uq as $key => $pcat_gender_uq) {
+			// echo $pcat_uq;
+			// print_r(array_keys($total_pcat, $pcat_uq));
+			$final_gender[$pcat_gender_uq] = array_keys($total_pcat_gender, $pcat_gender_uq);
+		}
+		// print_r($final_gender);
 
 		foreach ($all_cat as $key => $cat) {
 			$total_cat[$cat->pc_id] = $cat->pc_name;
 		}
+
+		foreach ($all_cat_gender as $key => $cat_gender) {
+			$total_cat_gender[$cat_gender->pc_id] = $cat_gender->pc_name;
+		}
+		// print_r($total_cat_gender);
 		// echo '</pre>';
 
 		$output_cat = array(
 			'total_cat' => $total_cat,
-			'cat_tree' => $final
+			'total_cat_gender' => $total_cat_gender,
+			'cat_tree' => $final,
+			'cat_gender_tree' => $final_gender
 			);
 
 		return $output_cat;

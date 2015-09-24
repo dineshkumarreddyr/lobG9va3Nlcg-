@@ -87,6 +87,7 @@
 
 				<ul class="tree">
 					<?php foreach ($cat_tree[$category] as $key => $cat_tree1) {
+						if(array_key_exists($cat_tree1, $cat_gender_tree) || array_key_exists($cat_tree1, $cat_gender_list)) {
 						?>
 					<li>
 						<label for="selectEventTree_<?php echo $cat_tree1; ?>"><?php echo $cat_list[$cat_tree1]; ?></label><input type="checkbox" id="selectEventTree_<?php echo $cat_tree1; ?>" name="f_cat" value="<?php echo $cat_tree1; ?>" class="hasborder">		
@@ -112,35 +113,9 @@
 						<?php } ?>
 					</li>
 						<?php
-					} ?>
-					<li>
-						<label for="selectEventTree_3">Sarees</label><input type="checkbox" id="selectEventTree_3" class="hasborder">		
-						<ul>
-							<li>
-								<label for="selectEventTree_4">Lighting</label><input type="checkbox" id="selectEventTree_4">
-								<ul>
-									<li class="item">
-										<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_150"><label for="selectEventTree_radio_150">Light</label>
-									</li>
-									<li class="item">
-										<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_23"><label for="selectEventTree_radio_23">Set Ambient Lighting</label>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li>
-					<label for="selectEventTree_5">Jeans</label><input type="checkbox" id="selectEventTree_5" class="hasborder">		
-					<ul>
-					<li class="item">
-					<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_151"><label for="selectEventTree_radio_151">Light</label>
-					</li>
-					<li class="item">
-					<input type="checkbox" name="selectEventTree_radio" id="selectEventTree_radio_24"><label for="selectEventTree_radio_24">Set Ambient Lighting</label>
-					</li>
-					</ul>
-					</li>
+						} 
+					}?>
+					
 				</ul>
 				<?php endif; ?>
 
@@ -364,12 +339,13 @@
 		$('.tree input:checked').each(function() {
 		    f_cat.push($(this).val());
 		});
-		console.log(JSON.stringify(f_cat));
+		// console.log(JSON.stringify(f_cat));
 		if(JSON.stringify(f_cat) == '[]') {
 			$('.f_cat input').each(function() {
 		    f_cat.push($(this).val());
 		});
-		console.log(f_cat);
+			f_cat.push($('#s_cat').val());
+		// console.log(f_cat);
 		}
 
 		var f_prov = [];
@@ -420,7 +396,7 @@
 		s_input['s_gen'] = s_gen;
 		s_input['s_cat'] = s_cat;
 
-		console.log(JSON.stringify(s_input));
+		// console.log(JSON.stringify(s_input));
 
 		$.ajax({
 			type:"POST",
@@ -432,7 +408,7 @@
 			},
 		  error: function(e) {
 			//called when there is an error
-			console.log(e.message);
+			// console.log(e.message);
 		  }
 		});
 	}
