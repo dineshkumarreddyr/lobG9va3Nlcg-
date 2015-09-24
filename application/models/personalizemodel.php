@@ -9,7 +9,7 @@ class Personalizemodel extends CI_Model {
         $this->load->database();
     }
     
-    function add_new($name = '', $gender = '', $occasion = 0, $bodytype = '', $bodytone = '', $budget = '', $height = '', $specifications = '', $pic_name = '', $designer = 0)
+    function add_new($name = '', $gender = '', $occasion = 0, $bodytype = '', $bodytone = '', $budget = '', $height = '', $specifications = '', $pic_name = '', $designer = 0, $uid = 0)
     {
         $data = array();
         $data['p_name'] = $name;
@@ -22,6 +22,7 @@ class Personalizemodel extends CI_Model {
         $data['p_specifications'] = $specifications;
         $data['p_image'] = $pic_name;
         $data['p_designer'] = $designer;
+        $data['p_uid'] = $uid;
         $query = $this->db->insert('personalize', $data);
         $pid = $this->db->insert_id();
         return $pid;

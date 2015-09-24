@@ -92,7 +92,7 @@ class Personalize extends CI_Controller {
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
-						$this->personalize_model->add_new($name, $gender, $occasion, $bodytype, $bodytone, $budget, $height, $specifications, $pic_name, $designer);
+						$this->personalize_model->add_new($name, $gender, $occasion, $bodytype, $bodytone, $budget, $height, $specifications, $pic_name, $designer, $uid);
 					} else {
 						echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
 					}
