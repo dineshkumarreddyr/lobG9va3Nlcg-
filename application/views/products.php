@@ -94,21 +94,25 @@
 						
 						<?php if(array_key_exists($cat_tree1, $cat_tree)) { ?>
 						<ul>
-							<?php foreach ($cat_tree[$cat_tree1] as $key => $cat_tree2) { ?>
+							<?php foreach ($cat_tree[$cat_tree1] as $key => $cat_tree2) { 
+								if(array_key_exists($cat_tree2, $cat_gender_tree) || array_key_exists($cat_tree2, $cat_gender_list)) {
+								?>
 							<li>
 								<label for="selectEventTree_<?php echo $cat_tree2; ?>"><?php echo $cat_list[$cat_tree2]; ?></label><input type="checkbox" id="selectEventTree_<?php echo $cat_tree2; ?>" name="f_cat" value="<?php echo $cat_tree2; ?>">
 								
 								<?php if(array_key_exists($cat_tree2, $cat_tree)) { ?>
 								<ul>
-									<?php foreach ($cat_tree[$cat_tree2] as $key => $cat_tree3) { ?>
+									<?php foreach ($cat_tree[$cat_tree2] as $key => $cat_tree3) { 
+										if(array_key_exists($cat_tree2, $cat_gender_tree) || array_key_exists($cat_tree2, $cat_gender_list)) {
+										?>
 									<li class="item">
 										<input type="checkbox" name="f_cat" name="selectEventTree_radio" id="selectEventTree_radio_<?php echo $cat_tree3; ?>" value="<?php echo $cat_tree3; ?>"><label for="selectEventTree_radio_<?php echo $cat_tree3; ?>"><?php echo $cat_list[$cat_tree3]; ?></label>
 									</li>
-									<?php } ?>
+									<?php } }?>
 								</ul>
 								<?php } ?>
 							</li>
-							<?php } ?>
+							<?php } }?>
 						</ul>
 						<?php } ?>
 					</li>

@@ -129,8 +129,10 @@ class Products extends CI_Controller {
 			foreach ($f_cat as $key => $f_c) {
 				// $total_cat[] = 
 				if(array_key_exists($f_c, $cat_tree)) {
-					foreach ($cat_tree[$f_c] as $key => $cat) {
-						$total_cat[$cat] = $cat;
+					if(!count(array_intersect($cat_tree[$f_c], $f_cat))) {
+						foreach ($cat_tree[$f_c] as $key => $cat) {
+							$total_cat[$cat] = $cat;
+						}
 					}
 				}
 				else {
