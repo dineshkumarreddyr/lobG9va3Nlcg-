@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "home";
-$route['404_override'] = '';
+$route['404_override'] = 'home/page_404'; //my404 is class name. 
 
 $route['product/(:num)'] = "products/view/$1";
 $route['product/(:num)/(:any)'] = "products/view/$1";

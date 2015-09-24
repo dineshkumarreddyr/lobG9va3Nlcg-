@@ -63,6 +63,21 @@ class Home extends CI_Controller {
 		$this->load->view('home', $data);
 		$this->load->view('footer');
 	}
+
+	public function page_404() {
+
+		$seo = array(
+			'title' => '404 page',
+			'description' => '404 page',
+			'keywords' => '404 page'
+		);
+		$data['seo'] = $seo;
+
+		$this->load->view('header', $data);
+		$this->load->view('pages/page_404');
+		$this->load->view('footer');
+
+	}
 }
 
 /* End of file welcome.php */
