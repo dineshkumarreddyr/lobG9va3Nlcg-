@@ -67,6 +67,16 @@ class Pcategorymodel extends CI_Model {
         return $updated_id;
     }
 
+    function exchange_products($move_from = 0, $move_to = 0)
+    {
+        $data = array(
+           'p_category' => $move_to
+        );
+        $this->db->where('p_category', $move_from);
+        $this->db->update('products', $data);
+        return TRUE;
+    }
+
     function remove($pc_id = 0)
     {
         $this->db->delete('p_categories', array('pc_id' => $pc_id)); 

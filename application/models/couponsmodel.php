@@ -11,6 +11,7 @@ class Couponsmodel extends CI_Model {
 
   function get_coupons()
   {
+    $this->db->cache_on();
       $query = $this->db->query("SELECT * FROM coupons WHERE c_status = '1'");
       $data = $query->result();
       return $data;
@@ -18,6 +19,7 @@ class Couponsmodel extends CI_Model {
 
   function view_coupon($c_id = 0)
   {
+    $this->db->cache_on();
       $query = $this->db->query("SELECT * FROM coupons WHERE c_id = ".intval($c_id));
       $data = $query->result();
       return $data;

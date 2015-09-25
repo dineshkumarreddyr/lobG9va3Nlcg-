@@ -165,6 +165,48 @@ class Pcategory extends MX_Controller {
 
     }
 
+    public function exchange_products()
+    {
+        $errr_msg = '';
+        $msg = '';
+
+        if($this->input->post('submit')) {
+            $move_from = $this->input->post('move_from');
+            $move_to = $this->input->post('move_to');
+            if(empty($move_from)) {
+                $errr_msg = 'From category should not be empty';
+            }
+            elseif (empty($move_to)) {
+                $errr_msg = 'To category should not be empty';
+            }
+            elseif ($move_from == $move_to) {
+                $errr_msg = 'category from and category to should not be same';
+            }
+
+            if(empty($errr_msg)) {
+                if($this->pcategory_model->exchange_products($move_from, $move_to)) {
+                    $msg = 'Successfully Updated';
+                }
+            }
+        }
+
+        if(isset($_GET['gender']) && !empty($_GET['gender'])) {
+            $gender = stripslashes(strip_tags($_GET['gender']));
+        }
+        else {
+            $gender = '';
+        }
+        $cat_tree = $this->tree_category($gender);
+        $data['cat_list'] = $cat_tree['total_cat'];
+        $data['cat_tree'] = $cat_tree['cat_tree'];
+        
+        $data['errr_msg'] = $errr_msg;
+        $data['msg'] = $msg;
+        $this->load->view('admin/header');
+        $this->load->view('admin/pcategory/exchange_products', $data);
+        $this->load->view('admin/footer');
+    }
+
 }
  
 /* End of file login.php */

@@ -11,6 +11,7 @@ class Productsmodel extends CI_Model {
     
     function get_products()
     {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT p.*, b.brand_name, pr.provider_name, pr.provider_image FROM products p, brands b, providers pr WHERE p.p_provider = pr.provider_id AND p.p_brand = b.brand_id AND p_status = '1' ORDER BY RAND() LIMIT 0,20");        
         $data = $query->result();
         return $data;
@@ -18,12 +19,14 @@ class Productsmodel extends CI_Model {
 
     function get_trending_products()
     {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT * FROM products WHERE p_status = '1' AND p_provider = '5' ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
     }
 
     function get_rproducts($cat = 0) {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT * FROM products WHERE p_category = ".$cat." AND p_status = '1' ORDER BY RAND() LIMIT 0,8");        
         $data = $query->result();
         return $data;
@@ -31,6 +34,7 @@ class Productsmodel extends CI_Model {
 
     function get_product($product_id = 0)
     {
+        $this->db->cache_on();
         $query = "SELECT p.p_id, p.p_storeId, p.p_name, p.p_desc, p.p_image, p.p_size, p.p_oimage, p.p_url, p.p_mrp, p.p_price, p.p_category, pc.pc_name, b.brand_name, pro.provider_name FROM products p, p_categories pc, brands b, providers pro WHERE p.p_category = pc.pc_id AND p.p_brand = b.brand_id AND p.p_provider = pro.provider_id AND p.p_status = '1' AND p.p_id = ".$product_id;
         $query = $this->db->query($query);
         $data = $query->row_array();
@@ -39,6 +43,7 @@ class Productsmodel extends CI_Model {
 
     function s_products($pdt = '', $gen = '', $cat = array())
     {
+        $this->db->cache_on();
         $condition = array();
         if($pdt != '') {
             $condition[] = " p.p_name LIKE '%".$pdt."%' "; 
@@ -62,6 +67,7 @@ class Productsmodel extends CI_Model {
 
     function pf_products($f_cat = array(), $f_prov = array(), $f_dis = array(), $f_size = array(), $f_gen ='')
     {
+        $this->db->cache_on();
         $condition = array();
         $condition1 = array();
         $condition[] = " p.p_name != '' "; 

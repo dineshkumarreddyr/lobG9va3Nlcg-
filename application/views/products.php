@@ -348,7 +348,9 @@
 			$('.f_cat input').each(function() {
 		    f_cat.push($(this).val());
 		});
+		if($('#s_cat').val() != '') {
 			f_cat.push($('#s_cat').val());
+		}
 		// console.log(f_cat);
 		}
 

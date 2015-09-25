@@ -28,6 +28,7 @@ class Looksmodel extends CI_Model {
     // get look details by look id
     function look_details($lid = 0)
     {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT l.*, lc.lc_name, u.user_id, u.user_fname, ud.user_image, count(DISTINCT(lv.lv_ip)) as lv_count FROM looks l, l_categories lc, users u, user_details ud, l_views lv WHERE lv.lv_lookId = l.l_id AND u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_category = lc.lc_id AND l.l_status = '1' AND l.l_id = ". intval($lid) ." ");
         $data = $query->result();
         return $data;
@@ -36,6 +37,7 @@ class Looksmodel extends CI_Model {
     // get looks by popular designer
     function by_popular_designers()
     {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT l.*, u.user_fname, ud.user_image FROM looks l, users u, user_details ud WHERE u.user_id = l.l_uid AND u.user_id = ud.ud_uid AND l.l_status = '1' LIMIT 8");
         $data = $query->result();
         return $data;
@@ -44,6 +46,7 @@ class Looksmodel extends CI_Model {
     // get look products by look id
     function get_look_products($l_id = 0)
     {
+        $this->db->cache_on();
         $query = $this->db->query("SELECT p.p_id, p.p_image, p.p_name, p.p_mrp, p.p_price, p.p_url, pr.provider_name, pr.provider_image FROM l_products lp, products p, providers pr WHERE lp.lp_pid = p.p_id AND p.p_provider = pr.provider_id AND lp_lid = ".intval($l_id));
         $data = $query->result();
         return $data;
@@ -90,6 +93,7 @@ class Looksmodel extends CI_Model {
 
     function s_looks($look = '', $gender = '', $category = 0)
     {
+        $this->db->cache_on();
         $condition = array();
         if($look != '') {
             $condition[] = " l.l_name LIKE '%".$look."%' "; 
@@ -168,6 +172,7 @@ class Looksmodel extends CI_Model {
 
     function similar_looks($look = '', $gender = '', $category = 0)
     {
+        $this->db->cache_on();
         $condition = array();
         if($look != '') {
             $condition[] = " l.l_name LIKE '%".$look."%' "; 
