@@ -199,6 +199,7 @@ class Looks extends CI_Controller {
 				'l_uid' => $look->user_id,
 				'l_mrp' => $look->l_mrp,
 				'l_price' => $look->l_price,
+				'l_gender' => $look->l_gender,
 				'l_views' => $look->lv_count
 			);
 		}
@@ -248,6 +249,43 @@ class Looks extends CI_Controller {
 		else {
 			$response['status'] = 'error';
 			$response['message'] = 'This look name already exists.';
+		}
+		echo json_encode($response);
+	}
+
+	public function update_ajax()
+	{
+		$response = array();
+		if($this->input->post('l_uid') != $this->session->userdata('uid')) {
+			$response['status'] = 'error';
+			$response['message'] = 'Invalid.';
+		}
+		else {
+			$l_id = $this->input->post('l_id');
+			$l_category = $this->input->post('l_cat');
+			$l_gender = $this->input->post('l_gender');
+			$l_name = $this->input->post('l_name');
+			$l_pids = $this->input->post('l_pids');
+			$l_mrp = $this->input->post('l_mrp');
+			$l_price = $this->input->post('l_price');
+			$lp_count = count(json_decode($l_pids));
+			$l_uid = $this->session->userdata('uid');
+
+			// Check look name already exists or not.
+			$l_name_check = $this->looks_model->check_look_name($l_category, $l_name, $l_id);
+			if($l_name_check == 0) {
+				$l_id = $this->looks_model->update_look($l_id, $l_category, $l_name, $lp_count, $l_uid, $l_mrp, $l_price, $l_gender);
+				if($l_id) {
+					$this->looks_model->update_lproducts($l_id, $l_pids);
+
+					$response['status'] = 'success';
+					$response['message'] = $l_id;
+				}
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'This look name already exists.';
+			}
 		}
 		echo json_encode($response);
 	}

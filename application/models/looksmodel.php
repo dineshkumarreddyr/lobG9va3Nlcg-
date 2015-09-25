@@ -53,9 +53,9 @@ class Looksmodel extends CI_Model {
     }
 
     // check look name is already exists or not
-    function check_look_name($l_category = 0, $l_name = '')
+    function check_look_name($l_category = 0, $l_name = '', $l_id = 0)
     {
-        $query = $this->db->query("SELECT * FROM looks WHERE l_category = ".$l_category." AND l_name = '".$l_name."'");
+        $query = $this->db->query("SELECT * FROM looks WHERE l_category = ".$l_category." AND l_name = '".$l_name."' AND l_id != '".intval($l_id)."'");
         $data = $query->num_rows();
         return $data;
     }
@@ -77,6 +77,7 @@ class Looksmodel extends CI_Model {
         $insert_id = $this->db->insert_id();
         return $insert_id;
     }
+
     function insert_lproducts($l_id = 0, $l_pids = '') {
         $l_pids = json_decode($l_pids);
         $data = array();
@@ -89,6 +90,71 @@ class Looksmodel extends CI_Model {
             );
         }
         $this->db->insert_batch('l_products', $data);
+        $this->db->cache_delete('looks','index');
+    }
+
+    // create look with basic details look name, category, grid based on products
+    function update_look($l_id = 0, $l_category = 0, $l_name = '', $l_grid = 0, $l_uid = 0, $l_mrp = 0, $l_price = 0, $l_gender = '')
+    {
+        $data = array(
+           'l_name' => $l_name,
+           'l_category' => $l_category,
+           'l_gender' => $l_gender,
+           'l_grid' => $l_grid,
+           'l_uid' => $l_uid,
+           'l_mrp' => $l_mrp,
+           'l_price' => $l_price,
+           'l_status' => '1'
+        );
+        $this->db->where('l_id', $l_id);
+        $this->db->update('looks', $data);
+        $insert_id = $l_id;
+        return $insert_id;
+    }
+
+    function update_lproducts($l_id = 0, $l_pids = '') {
+
+        $e_pids = array();
+        // get look products by look id
+        $existing_pids = $this->get_look_products($l_id);
+        foreach ($existing_pids as $key => $existing_pid) {
+            $e_pids[] = $existing_pid->p_id;
+        }
+
+        $l_pids = json_decode($l_pids);
+        $data = array();
+        $new = array_diff($l_pids, $e_pids);
+        $old = array_diff($e_pids, $l_pids);
+        
+        if(count($new)) {
+            foreach ($new as $key => $l_pid) {
+                $data[] = array(
+                    'lp_lid' => $l_id,
+                    'lp_pid' => $l_pid,
+                    'lp_status' => '1'
+                );
+            }
+            $this->db->insert_batch('l_products', $data);
+        }
+
+        if(count($old)) {
+            $this->delete_lproducts($l_id, $old);
+        }
+        $this->db->cache_delete('looks','index');
+        $this->db->cache_delete('looks','edit');
+        $this->db->cache_delete('look','42');
+    }
+
+    function delete_lproducts($l_id = 0, $l_pids = array()) {
+
+
+        // $query = "DELETE FROM l_products WHERE lp_lid = '".$l_id."' AND lp_pid IN (".implode(',', $l_pids).")";
+
+        // $this->db->query($query);
+
+        $this->db->where_in('lp_pid', $l_pids);
+        $this->db->where('lp_lid', $l_id);
+        $this->db->delete('l_products');
     }
 
     function s_looks($look = '', $gender = '', $category = 0)

@@ -81,7 +81,7 @@
 		
 	   <div class="row">
 	     <div class="col-md-7 createlook-left"> 
-	     	<p><strong id="lp_count">0</strong> Products added to the look</p>
+	     	<p><strong id="lp_count"><?php echo count($look['l_products']); ?></strong> Products added to the look</p>
 		   <div class="prodsadded">
 		     <ul id="ld">
 		     	<?php foreach ($look['l_products'] as $key => $l_product): ?>
@@ -97,7 +97,9 @@
 		   <div class="clearfix"></div>
 		   <div class="clearfix selectedprod-wrap">
 		     <div id="lp">
-		     	<?php foreach ($look['l_products'] as $key => $l_product): ?>
+		     	<?php $pids = array(); 
+		     	foreach ($look['l_products'] as $key => $l_product):
+		     		$pids[] = $l_product->p_id; ?>
 		     	<div class="selectedprod-each" id="lp_<?php echo $l_product->p_id; ?>">
 		     		<div class="row">
 		     			<div class="col-md-2">
@@ -120,7 +122,7 @@
 		     						<div class="cost" id="lp_price_<?php echo $l_product->p_id; ?>"> Rs. <?php echo $l_product->p_price; ?></div>
 		     					</div>
 		     					<div class="col-md-2 no-pad removeadded">
-		     						<a href="javascript:void(0);" onclick="remove_lp(<?php echo $l_product->p_id; ?>);" id="lp_remove_<?php echo $l_product->p_id; ?>">Remove <img src="http://localhost/lookser/assets/images/removeadded.png"></a>
+		     						<a href="javascript:void(0);" onclick="remove_lp(<?php echo $l_product->p_id; ?>);" id="lp_remove_<?php echo $l_product->p_id; ?>">Remove <img src="<?php echo base_url(); ?>assets/images/removeadded.png"></a>
 		     					</div>
 		     				</div>
 		     			</div>
@@ -139,7 +141,7 @@
 			 <div class="lookname-wrap" id="lc_create">
 			 	<div class="row">
                   <div class="col-md-6">
-                  	<input placeholder="Look name" value="" id="l_name" name="l_name" class="form-control" type="text">
+                  	<input placeholder="Look name" value="<?php echo $look['l_title']; ?>" id="l_name" name="l_name" class="form-control" type="text">
                   </div>
                   <div class="col-md-6">
 	                  <select class="minimal" id="l_cat" name="l_cat">
@@ -147,7 +149,7 @@
 		     			<?php
 							foreach ($lcategories as $key => $lcategory) {
 								?>
-								<option value="<?php echo $lcategory->lc_id; ?>"><?php echo $lcategory->lc_name; ?></option>
+								<option value="<?php echo $lcategory->lc_id; ?>" <?php echo ($look['l_category'] == $lcategory->lc_id) ? 'selected="selected"' : ''; ?>><?php echo $lcategory->lc_name; ?></option>
 								<?php
 							}
 							?>
@@ -160,14 +162,14 @@
 							$genders = array('Male'=>'Male', 'Female'=>'Female');
 							foreach ($genders as $key => $gender) {
 								?>
-							<option value="<?php echo $key; ?>"><?php echo $gender; ?></option>
+							<option value="<?php echo $key; ?>" <?php echo ($look['l_gender'] == $key) ? 'selected="selected"' : ''; ?>><?php echo $gender; ?></option>
 								<?php
 							}
 							?>
 						</select>
                   </div>
                   <div class="col-md-6">
-                  	<input type="button" class="form-control savelook" value="Create Look" id="l_create" name="l_create" onclick="create_look();">
+                  	<input type="button" class="form-control savelook" value="Update Look" id="l_create" name="l_create" onclick="edit_look();">
                   	<button type="button" class="hide" id="preview_look" data-toggle="modal" data-target="#previewModal">
                   	Save &amp; Preview</button>
                   </div>
@@ -271,9 +273,9 @@
 <script type="text/javascript">
 
 <!-- Add to look -->
-localStorage.p_ids = [];
-localStorage.lp_mrp = 0;
-localStorage.lp_total = 0;
+localStorage.p_ids = '[<?php echo implode(",", $pids); ?>]';
+localStorage.lp_mrp = <?php echo $look['l_mrp']; ?>;
+localStorage.lp_total = <?php echo $look['l_price']; ?>;
 function add_to_look(p_id) {
 	var count = n_count = 0;
 	if (localStorage.p_ids) {
@@ -398,8 +400,8 @@ function remove_lp(p_id) {
 }
 <!-- Remove product from look -->
 
-<!-- Create look -->
-function create_look() {
+<!-- Edit look -->
+function edit_look() {
 	var l_cat = $('#l_cat').val();
 	var l_name = $('#l_name').val();
 	var l_gender = $('#l_gen').val();
@@ -448,7 +450,7 @@ function create_look() {
 	     '<li><strong>Look Created By:</strong> '+$('.logged').text()+'</li>'+
 	 	 '<li><strong>Date Created:</strong> '+currentDate+'</li>'+
 	 	 '<li><button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>'+
-	    '<button type="button" onclick="save_look();" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Save -Look</button></li>'+
+	    '<button type="button" onclick="update_look();" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Save -Look</button></li>'+
 	    '</ul>'+
 	 '</div>';
 	 $('#prev_data').html(prev_data);
@@ -456,7 +458,7 @@ function create_look() {
 	$('#preview_look').trigger('click');
 
 }
-function save_look() {
+function update_look() {
 
 	var l_cat = $('#l_cat').val();
 	var l_name = $('#l_name').val();
@@ -477,12 +479,12 @@ function save_look() {
 	var l_price = $('#lp_total').text().split('s. ')[1];
 	$.ajax({
 		type:"POST",
-		url:'<?php echo base_url("looks/create_ajax");?>',
-		data:{'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_mrp':l_mrp,'l_price':l_price,'l_pids':localStorage.p_ids},
+		url:'<?php echo base_url("looks/update_ajax");?>',
+		data:{'l_uid':<?php echo $look['l_uid']; ?>,'l_id':<?php echo $look['l_id']; ?>,'l_cat':l_cat,'l_gender':l_gender,'l_name':l_name,'l_mrp':l_mrp,'l_price':l_price,'l_pids':localStorage.p_ids},
 		dataType:"json",
 		success: function(data){
 			if(data.status == 'success') {
-				alert("Look created successfully");
+				alert("Look updated successfully");
 				window.location.href = '<?php echo base_url("looks"); ?>';
 			}
 			else if(data.status == 'error') {

@@ -51,7 +51,7 @@ class Home extends MX_Controller {
     {
 
         $directory = explode("application", __dir__);
-        $dir = $directory[0].'application\cache\dbcache';
+        $dir = $directory[0].'application/cache/dbcache';
         
 
         $dh = opendir($dir);
