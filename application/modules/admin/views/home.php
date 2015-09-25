@@ -243,6 +243,7 @@
                     <div id="piechart" style="height: 500px;"></div>
                 </div>
                 <div class="col-lg-6">
+                    <a href="<?php echo base_url('admin/home/flush_db_cache'); ?>">Flush DB cache</a>
                 </div>
             </div>
             <div class="row">

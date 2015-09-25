@@ -36,7 +36,8 @@ class Ratings extends CI_Controller {
 		$type = trim($this->input->post('type'));
 		$type_id = trim($this->input->post('type_id'));
 		$rating = trim($this->input->post('rating'));
-		if(!empty($this->session->userdata('uid'))) {
+		$uid = $this->session->userdata('uid');
+		if($uid) {
 			$uid = $this->session->userdata('uid');
 		}
 		else {
@@ -49,7 +50,7 @@ class Ratings extends CI_Controller {
 			$response['status'] = 'error';
 			$response['message'] = 'Invalid';
 		}
-		else if(empty(($type))) {
+		else if($type == '') {
 			$response['status'] = 'error';
 			$response['message'] = 'Invalid';
 		}
@@ -67,7 +68,7 @@ class Ratings extends CI_Controller {
 				$this->ratings_model->update_rating($type, $type_id, $uid, $ip, $rating, $createdOn);
 				// $response['status'] = 'error';
 			}
-			$final_rating = $this->ratings_model->get_rating('look', 15);
+			$final_rating = $this->ratings_model->get_rating($type, $type_id);
 			$response['status'] = 'success';
 			$response['result'] = intval($final_rating->rating_rating);
 		}

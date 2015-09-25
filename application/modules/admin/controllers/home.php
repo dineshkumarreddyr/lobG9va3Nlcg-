@@ -46,6 +46,45 @@ class Home extends MX_Controller {
         $this->load->view('admin/footer');
     }
 
+
+    public function flush_db_cache()
+    {
+
+        $directory = explode("application", __dir__);
+        $dir = $directory[0].'application\cache\dbcache';
+        
+
+        $dh = opendir($dir);
+         if ($dh) {
+          while($file = readdir($dh)) {
+           if (!in_array($file, array('.', '..'))) {
+            if (is_file($dir.'/'.$file)) {
+             unlink($dir.'/'.$file);
+            }
+            else if (is_dir($dir.'/'.$file)) {
+
+            $dir1 = $dir.'/'.$file;
+
+            $dh1 = opendir($dir1);
+             if ($dh1) {
+              while($file1 = readdir($dh1)) {
+               if (!in_array($file1, array('.', '..'))) {
+                if (is_file($dir1.'/'.$file1)) {
+                 unlink($dir1.'/'.$file1);
+                }
+               }
+              }
+              rmdir($dir1);
+             }
+
+            }
+           }
+          }
+         }
+
+         redirect(base_url('admin/home'), 'refresh');
+    }
+
 }
  
 /* End of file login.php */
