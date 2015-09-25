@@ -30,6 +30,7 @@ class Looks extends CI_Controller {
         $this->load->model('usermodel', 'user_model');
         $this->load->model('trackingmodel', 'tracking_model');
         $this->load->model('favouritesmodel', 'favourites_model');
+        $this->load->model('ratingsmodel', 'ratings_model');
     }
     
 	public function index()
@@ -125,6 +126,8 @@ class Looks extends CI_Controller {
 			);
 		}
 		$data['slooks'] = $slooks;
+		$final_rating = $this->ratings_model->get_rating('look', $lid);
+		$data['rating'] = intval($final_rating->rating_rating);
 
 		$seo = array(
 			'title' => $look->l_name,

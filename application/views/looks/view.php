@@ -65,6 +65,57 @@
 	            <div class="col-md-2 col-xs-4 mrpBig"><span class="webrupee">Rs.</span><?php echo $look['l_mrp']; ?></div>
 	        <?php endif; ?>
 	            <div class="col-md-2 col-xs-4 aftrdsntBig"><span class="webrupee">Rs.</span><?php echo $look['l_price']; ?></div>
+	            <div class="col-md-5 col-xs-4">
+	            	<div class="rate-ex1-cnt">
+	            		<?php
+	            		for ($i=1; $i <= 5; $i++) { 
+	            			if($i <= $rating) {
+	            				?>
+					    <div id="<?php echo $i; ?>" class="rate-btn-<?php echo $i; ?> rate-btn rate-btn-hover"></div>
+	            				<?php
+	            			}
+	            			else {
+	            				?>
+					    <div id="<?php echo $i; ?>" class="rate-btn-<?php echo $i; ?> rate-btn"></div>
+	            				<?php
+	            			}
+	            		}
+	            		?>
+					</div>
+					<div>
+						Avg <span id="rating"><?php echo $rating; ?></span>/5
+					</div>
+					<script type="text/javascript">
+					// Rating system start
+					$('.rate-btn').hover(function(){
+					    $('.rate-btn').removeClass('rate-btn-hover');
+					    var therate = $(this).attr('id');
+					    for (var i = therate; i >= 0; i--) {
+					        $('.rate-btn-'+i).addClass('rate-btn-hover');
+					    };
+					});
+
+					$('.rate-btn').click(function(){    
+					    var therate = $(this).attr('id');
+					    var dataRate = {'type':'look','type_id':<?php echo $look['l_id']; ?>,'rating':therate};
+					    $('.rate-btn').removeClass('rate-btn-active');
+					    for (var i = therate; i >= 0; i--) {
+					        $('.rate-btn-'+i).addClass('rate-btn-active');
+					    };
+					    $.ajax({
+					        type : "POST",
+					        url : "<?php echo base_url();?>ratings/ajax_post_rating",  //change it with your own adress to the code
+					        data: dataRate,
+					        dataType:"json",
+					        success:function(data){
+					        	$('#rating').text(data.result);
+					        	// console.log(data.result);
+					        }
+					    });
+					});
+					// Rating system end
+					</script>
+				</div>
 	        </div>
 	        <div class="clearfix selectedprod-wrap">
 	         <?php
@@ -246,4 +297,5 @@ function add_to_favourites(id) {
 	  }
 	});
 }
+
 </script>
