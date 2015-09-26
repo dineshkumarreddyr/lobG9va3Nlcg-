@@ -107,7 +107,7 @@
 		     			</div>
 		     			<div class="col-md-10 prodpick-details">
 		     				<div class="row">
-		     					<a href="http://localhost/lookser/product/20477" target="_blank">
+		     					<a href="<?php echo base_url('product/'.$l_product->p_id); ?>" target="_blank">
 		     						<h3 id="lp_name_<?php echo $l_product->p_id; ?>"><?php echo $l_product->p_name; ?></h3>
 		     					</a>
 		     					<div class="col-md-4 prodpick-left">

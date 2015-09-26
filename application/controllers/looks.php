@@ -171,9 +171,9 @@ class Looks extends CI_Controller {
 	{
 		$uid = $this->session->userdata('uid');
 		$role = $this->session->userdata('role');
-		if($role != 2) {
-			show_404(); // Redundant, I know, just added for this example
-		}
+		// if($role != 2) {
+		// 	show_404(); // Redundant, I know, just added for this example
+		// }
 
 		$ls = $this->looks_model->look_details($lid);
 		if(count($ls) == 0 || $ls[0]->l_id == '') {
