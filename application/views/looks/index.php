@@ -350,18 +350,37 @@
 			var base_url = '<?php echo base_url("looks/view");?>';
 			content += '<a href="'+ base_url +'/'+ look.l_id+'">'+
 					  '<div class="col-md-3 trend-each">'+
-				    	'<div class="pattern'+look.l_products.length+'">'+
-						  '<ul>';
-		  	$.each(look.l_products, function(index, lp){
-				content += '<li><img src="'+lp.p_image+'" class="img-responsive"></li>';
-			});
+				    	'<div class="pattern'+look.l_products.length+'">';
+			if(look.l_products.length != 5) {
+				content +=  '<ul>';
+			  	$.each(look.l_products, function(index, lp){
+					content += '<li><img src="'+lp.p_image+'" class="img-responsive"></li>';
+				});
+				content +=	  '</ul>';
+
+			} else {
+				content += '<div class="pattern5-left">';
+				content +=  '<ul>';
+				var j = 1;
+			  	$.each(look.l_products, function(index, lp){
+					content += '<li><img src="'+lp.p_image+'" class="img-responsive"></li>';
+					if(j == 3) {
+						content += '</ul></div><div class="pattern5-right"><ul>';
+					}
+					j++;
+				});
+				content +=	  '</ul>';
+				content +=	  '</div>';
+		  	}
 
 
-			content +=	  '</ul>'+
-						'</div>'+
-						'<h4>'+look.l_title+'</h4>'+
-						'<div class="col-md-12 text-center"><span class="mrp">'+look.l_mrp+'</span>'+
-						'<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+look.l_price+'</span></div>'+
+			content +=			'</div>'+
+						'<h4>'+look.l_title+'</h4>';
+			content +=	'<div class="col-md-12 text-center">';
+			if(look.l_mrp != 'NaN' && look.l_mrp > look.l_price) {
+				content +=	'<span class="mrp">'+look.l_mrp+'</span>';
+			}
+			content +=	'<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+look.l_price+'</span></div>'+
 					  '</div>'+
 					  '</a>';
 		});
