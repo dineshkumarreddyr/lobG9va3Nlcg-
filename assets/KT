@@ -1,0 +1,69 @@
+
+Lookser functionality working flow as per the process.
+
+This lookser developed with different techlogies, those are :
+
+=> Client side languages
+HTML, CSS (bootstrap framework), JQuery
+
+=> Server side languages
+PHP
+
+=> Database is
+MY-SQL
+
+
+In codeigniter we used HMVC functionality
+All front end functionality available in Main module(core controllers) and Blog module.
+All admin side functionality availabel in admin module
+
+=> Modules
+-Main
+-Admin
+-Blog
+
+=> Main module
+
+- Controllers
+
+Home
+Looks
+Products
+Users
+Coupons
+Personalize
+Ratings
+Tracking
+
+=> Admin module
+
+- controller
+
+Blog management
+Brand management
+Coupons management
+Home management
+Look categories (lcategories) management
+Login management
+Looks management
+Product categories (pcategories) management
+Products management
+Provider management
+User management
+
+=> Blog module
+- Controllers
+
+Index (contains all related to blog post displaying)
+
+-------------------------------------------
+
+Da
+-------------------------------------------
+=> Home page
+Its contains
+Trending products:	
+- Products are from "products" table
+
+Popular looks with desingers:
+- Looks are form "looks" table and relationship users table
