@@ -29,6 +29,68 @@ class User extends CI_Controller {
 	}
 
 	public function myaccount() {
+		if(!$this->session->userdata('uid')) {
+        	show_404(); // This seems to display within the template when what I want is for it to redirect
+		}
+		$uid = $this->session->userdata('uid');
+
+		// change profile pic
+		if($this->input->post('change_pic')) {
+			if(isset($_FILES["fileToUpload"]["name"]) && !empty($_FILES["fileToUpload"]["name"])) {
+			$target_dir = "uploads/users/";
+			$name = explode('.', basename($_FILES["fileToUpload"]["name"]));
+			$pic_name = $uid .'.'. $name[1];
+			$target_file = $target_dir . $pic_name;
+			$uploadOk = 1;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			// Check if image file is a actual image or fake image
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        // echo "File is an image - " . $check["mime"] . ".";
+		        $uploadOk = 1;
+		    } else {
+		        echo "<script>alert('File is not an image.');</script>";
+		        $uploadOk = 0;
+		    }
+
+		    // Check file size
+			if ($_FILES["fileToUpload"]["size"] > 500000) {
+			    echo "<script>alert('Sorry, your file is too large.');</script>";
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+			    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');</script>";
+			    $uploadOk = 0;
+			}
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			    // echo "<script>alert('Sorry, your file was not uploaded.');</script>";
+
+			    if($this->input->post('avatar')) {
+			    	$this->user_model->update_user_pic($uid, $this->input->post('avatar'));
+			    }
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+					$this->user_model->update_user_pic($uid, $pic_name);
+			    } else {
+			    	if($this->input->post('avatar')) {
+				    	$this->user_model->update_user_pic($uid, $this->input->post('avatar'));
+				    }
+			        echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
+			    }
+			}
+			} else {
+				if($this->input->post('avatar')) {
+			    	$this->user_model->update_user_pic($uid, $this->input->post('avatar'));
+			    }
+			}
+		}
+
+		$data['user_details'] = $this->user_model->get_designer($uid);
 		$seo = array(
 			'title' => '',
 			'description' => '',
@@ -36,7 +98,7 @@ class User extends CI_Controller {
 		);
 		$data['seo'] = $seo;
 		$this->load->view('header', $data);
-		// $this->load->view('user/view');
+		$this->load->view('user/myaccount');
 		$this->load->view('footer');
 	}
 
@@ -1110,6 +1172,53 @@ class User extends CI_Controller {
 
 // Load view and send values stored in $data
 		$this->load->view('user/login_gp', $data);
+	}
+
+	public function ajax_update_user_basic_details()
+	{
+		$uid = $this->session->userdata('uid');
+		$response = array();
+		$first_name = $this->input->post('first_name');
+		$last_name = $this->input->post('last_name');
+		$email = $this->input->post('email');
+		$mobile = $this->input->post('mobile');
+		$dob = $this->input->post('dob');
+		$address1 = $this->input->post('address1');
+		$address2 = $this->input->post('address2');
+		$location = $this->input->post('city');
+		$state = $this->input->post('state');
+		$pincode = $this->input->post('pincode');
+		
+		if(empty($first_name)) {
+			$response['status'] = 'error';
+			$response['message'] = 'First name should not empty';
+		}
+		// elseif(empty($location)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'Location should not empty';
+		// }
+		// elseif(empty($state)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'State should not empty';
+		// }
+		// elseif(empty($mobile)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'Mobile should not empty';
+		// }
+		else {
+
+			$data = $this->user_model->update_user_basic_details($uid, $first_name, $last_name, $dob, $address1, $address2, $location, $state, $pincode, $mobile);
+
+			if($data) {
+				$response['status'] = 'success';
+				$response['message'] = 'Successfully Updated.';
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'Unablel to update please try again later.';
+			}
+		}
+		echo json_encode($response);
 	}
 }
 

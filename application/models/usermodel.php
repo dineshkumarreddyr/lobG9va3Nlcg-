@@ -132,6 +132,32 @@ class Usermodel extends CI_Model {
         return TRUE; 
     }
 
+    function update_user_basic_details($uid = 0, $first_name = '', $last_name = '', $dob = '', $address1 = '', $address2 = '', $location = '', $state = '', $pincode = '', $mobile = '') {
+        
+        $data = array(
+           'user_fname' => $first_name,
+           'user_lname' => $last_name
+        );
+
+        $this->db->where('user_id', $uid);
+        $this->db->update('users', $data);
+
+        $data = array(
+           'user_dob' => date('Y-m-d', strtotime($dob)),
+           'user_address1' => $address1,
+           'user_address2' => $address2,
+           'user_location' => $location,
+           'user_state' => $state,
+           'user_pincode' => $pincode,
+           'user_mobile' => $mobile
+        );
+
+        $this->db->where('ud_uid', $uid);
+        $this->db->update('user_details', $data);
+
+        return TRUE; 
+    }
+
     function update_user_pic($uid = 0, $pic_name = '') {
         $data = array(
            'user_image' => $pic_name

@@ -332,7 +332,7 @@
               <ul class="navbar-nav navbar-right loggedmenu">
                 <!--<li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>-->
                 <div class="btn-group">
-                <a href="<?php echo base_url('designer/'.$this->session->userdata('uid')); ?>" class="btn logged">
+                <a href="<?php echo ($this->session->userdata('role') == 3) ? base_url('myaccount') : base_url('designer/'.$this->session->userdata('uid')); ?>" class="btn logged">
                 <?php echo $this->session->userdata('name'); ?></a>
                 <button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><i class="glyphicon glyphicon-chevron-down"></i>
                 </button>
