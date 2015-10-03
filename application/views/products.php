@@ -437,7 +437,7 @@
 							'</div>'+
 							'<h4>'+product.p_name+'</h4>'+
 							'<div class="col-md-12 text-center">';
-							if(product.p_mrp != '' && product.p_mrp > 0) {
+							if(product.p_mrp != '' && product.p_mrp > 0 && product.p_mrp > product.p_price) {
 								content += '<span class="mrp"><span class="webrupee">Rs.</span>'+product.p_mrp+'</span>';
 							}
 								content += '<span class="aftrdsnt"><span class="webrupee">Rs.</span>'+product.p_price+'</span>'+

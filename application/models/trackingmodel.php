@@ -69,12 +69,14 @@ class Trackingmodel extends CI_Model {
 
     function track_look($lid = 0)
     {
-        if($this->check_track_look($lid)) {
-            $this->db->query("UPDATE l_views SET `lv_count`=(`lv_count`+1) WHERE `lv_lookId` = '".$lid."'"); 
+        $uid = $this->session->userdata('uid');
+        if($this->check_track_look($lid, $uid)) {
+            $this->db->query("UPDATE l_views SET `lv_count`=(`lv_count`+1), `updatedOn` = now() WHERE `lv_lookId` = '".$lid."' AND `lv_uid` = '".$uid."' AND lv_ip = '".$this->input->ip_address()."'"); 
         }
         else {
             $data = array(
                 'lv_lookId' => $lid,
+                'lv_uid' => $uid,
                 'lv_source' => $this->agent->referrer(),
                 'lv_ip' => $this->input->ip_address()
             );
@@ -82,13 +84,44 @@ class Trackingmodel extends CI_Model {
         }
     }
 
-    function check_track_look($lid = 0)
+    function check_track_look($lid = 0, $uid = 0)
     {
         $data = array(
             'lv_lookId' => $lid,
+            'lv_uid' => $uid,
             'lv_ip' => $this->input->ip_address()
         );
         $query = $this->db->get_where('l_views', $data);
+        return $query->num_rows(); 
+    }
+
+    function look_buy_click($look_id = 0, $url = '', $source = '', $ip = '')
+    {
+        $uid = $this->session->userdata('uid');
+        if($this->check_look_buy_click($look_id, $uid)) {
+            $this->db->query("UPDATE l_buy_clicks SET `lbc_count`=(`lbc_count`+1), `updatedOn` = now() WHERE `lbc_lookId` = '".$look_id."' AND `lbc_uid` = '".$uid."' AND lbc_ip = '".$this->input->ip_address()."'"); 
+        }
+        else {
+            $data = array(
+                'lbc_lookId' => $look_id,
+                'lbc_uid' => $uid,
+                'lbc_source' => $source,
+                'lbc_url' => $url,
+                'lbc_ip' => $ip,
+                'lbc_status' => '1'
+            );
+            $this->db->insert('l_buy_clicks', $data);
+        }
+    }
+
+    function check_look_buy_click($look_id = 0, $uid = 0)
+    {
+        $data = array(
+            'lbc_lookId' => $look_id,
+            'lbc_uid' => $uid,
+            'lbc_ip' => $this->input->ip_address()
+        );
+        $query = $this->db->get_where('l_buy_clicks', $data);
         return $query->num_rows(); 
     }
     

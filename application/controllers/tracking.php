@@ -26,13 +26,27 @@ class Tracking extends CI_Controller {
 
 	public function ajax_product_buy_click()
 	{
-		print_r($this->input->post());
+		// print_r($this->input->post());
 		$id = $this->input->post('id');
 		$url = $this->input->post('url');
 		$source = $this->input->post('source');
 		$ip = $this->input->post('ip');
 
 		$this->tracking_model->product_buy_click($id, $url, $source, $ip);
+
+		// $this->load->view('pages/coupon_view', $data);
+
+	}
+
+	public function ajax_look_buy_click()
+	{
+		// print_r($this->input->post());
+		$id = $this->input->post('id');
+		$url = $this->input->post('url');
+		$source = $this->input->post('source');
+		$ip = $this->input->post('ip');
+
+		$this->tracking_model->look_buy_click($id, $url, $source, $ip);
 
 		// $this->load->view('pages/coupon_view', $data);
 
