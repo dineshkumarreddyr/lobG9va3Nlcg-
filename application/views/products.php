@@ -1,4 +1,6 @@
 	
+	
+	
 <div class="slideshow listing-slider">
 	<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel" 
 	data-interval="3000">
@@ -137,10 +139,13 @@
 					?>
 				</ul>
 				
-				<div id="budget-wrapper">
-					<h4>Budget <input type="text" id="slider-display" name="slider-display" value="0" /></h4>
-					<div id="slider"></div>
-				</div>
+				<!--<div id="budget-wrapper">
+				   <h4>By Budget</h4>
+			          <div class="slider-box">
+						<input type="text" id="MPGRange" readonly>
+						<div id="mpg-range" class="slider"></div>
+					  </div>
+				 </div>-->
 				
 				<!-- <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
 					<option value="#ac725e">#ac725e</option>
@@ -307,7 +312,6 @@
 	<!--top designers carousel-->
 	
 	<?php endif; ?>
-<script src="http://crestdzines.com/fashionoo/js/budget.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('#s_gen, #s_cat').change(function(){
 		$('#p_search').submit();
@@ -460,3 +464,12 @@ function shadow_over() {
 }
 shadow_over();
 </script>
+
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+	 $(function() { 
+	  $("#mpg-range").slider({range: true, min:0, max: 5000, values: [0, 2000], slide: function(event, ui) {$("#MPGRange").val(ui.values[0] + " - " + ui.values[1]);}
+	  });
+	  $("#MPGRange").val($("#mpg-range").slider("values", 0) + " - " + $("#mpg-range").slider("values", 1));
+	});
+	</script>

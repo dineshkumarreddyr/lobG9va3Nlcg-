@@ -11,12 +11,14 @@ class Trackingmodel extends CI_Model {
     
     function track_product($product_id = 0)
     {
-        if($this->check_track_product($product_id)) {
-            $this->db->query("UPDATE p_views SET `pv_count`=(`pv_count`+1) WHERE `pv_productId` = '".$product_id."' AND pv_ip = '".$this->input->ip_address()."'"); 
+        $uid = $this->session->userdata('uid');
+        if($this->check_track_product($product_id, $uid)) {
+            $this->db->query("UPDATE p_views SET `pv_count`=(`pv_count`+1), `updatedOn` = now() WHERE `pv_productId` = '".$product_id."' AND `pv_uid` = '".$uid."' AND pv_ip = '".$this->input->ip_address()."'"); 
         }
         else {
             $data = array(
                 'pv_productId' => $product_id,
+                'pv_uid' => $uid,
                 'pv_source' => $this->agent->referrer(),
                 'pv_ip' => $this->input->ip_address()
             );
@@ -24,10 +26,11 @@ class Trackingmodel extends CI_Model {
         }
     }
 
-    function check_track_product($product_id = 0)
+    function check_track_product($product_id = 0, $uid = 0)
     {
         $data = array(
             'pv_productId' => $product_id,
+            'pv_uid' => $uid,
             'pv_ip' => $this->input->ip_address()
         );
         $query = $this->db->get_where('p_views', $data);
@@ -36,12 +39,14 @@ class Trackingmodel extends CI_Model {
 
     function product_buy_click($product_id = 0, $url = '', $source = '', $ip = '')
     {
-        if($this->check_product_buy_click($product_id)) {
-            $this->db->query("UPDATE p_buy_clicks SET `pbc_count`=(`pbc_count`+1) WHERE `pbc_productId` = '".$product_id."' AND pbc_ip = '".$this->input->ip_address()."'"); 
+        $uid = $this->session->userdata('uid');
+        if($this->check_product_buy_click($product_id, $uid)) {
+            $this->db->query("UPDATE p_buy_clicks SET `pbc_count`=(`pbc_count`+1), `updatedOn` = now() WHERE `pbc_productId` = '".$product_id."' AND `pbc_uid` = '".$uid."' AND pbc_ip = '".$this->input->ip_address()."'"); 
         }
         else {
             $data = array(
                 'pbc_productId' => $product_id,
+                'pbc_uid' => $uid,
                 'pbc_source' => $source,
                 'pbc_url' => $url,
                 'pbc_ip' => $ip,
@@ -51,10 +56,11 @@ class Trackingmodel extends CI_Model {
         }
     }
 
-    function check_product_buy_click($product_id = 0)
+    function check_product_buy_click($product_id = 0, $uid = 0)
     {
         $data = array(
             'pbc_productId' => $product_id,
+            'pbc_uid' => $uid,
             'pbc_ip' => $this->input->ip_address()
         );
         $query = $this->db->get_where('p_buy_clicks', $data);

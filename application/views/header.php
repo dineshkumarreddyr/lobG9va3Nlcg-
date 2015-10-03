@@ -25,7 +25,9 @@
   <link href="<?php echo base_url();?>assets/css/layout.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/css/responsive.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/css/zoomer.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/css/owl.carousel.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" type="text/css" rel="stylesheet">	
+
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -208,7 +210,7 @@
 	    <li><a href="#" id="c-button--slide-left" class="c-button"><img src="http://www.lookser.com/assets/images/mob-menu.png" class="img-responsive"></a></li>
 	  </ul>
 	 </div>
-	 <div class="col-xs-8"><img src="http://www.lookser.com/assets/images/logo.png" class="img-responsive"></div>
+	 <div class="col-xs-8"><img src="http://www.lookser.com/assets/images/logo.png" class="img-responsive" alt="lookser"></div>
 	</div>
 	</div>
 
@@ -372,7 +374,7 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand logo" href="<?php echo base_url(); ?>">
-                  <img src="<?php echo base_url();?>assets/images/logo.png" alt="Lookser" title="Looser">
+                  <img src="<?php echo base_url();?>assets/images/logo.png" alt="Lookser" title="Lookser">
                 </a>
               </div>
 

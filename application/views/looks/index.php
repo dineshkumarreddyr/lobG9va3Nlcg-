@@ -88,6 +88,7 @@
 		}
 		?>
 		</ul>
+		
 		<h4>By Provider</h4>
 		<ul class="f_prov">
 			<li>
@@ -106,6 +107,14 @@
 			}
 			?>
 		</ul>
+                  
+                   <!--<div id="budget-wrapper" class="looks-budget">
+			<h4>By Budget</h4>
+			<div class="slider-box">
+			<input type="text" id="MPGRange" readonly>
+			<div id="mpg-range" class="slider"></div>
+			</div>
+		   </div>-->
 
 		<h4>By Number of products</h4>
 		<ul class="f_prod">
@@ -138,10 +147,6 @@
 			<ins><i>Fashionara</i></ins></label></li>
 		</ul> -->
 		
-	 <!-- <div id="budget-wrapper">
-	   <h4>Budget <input type="text" id="slider-display" name="slider-display" value="0" /></h4>
-	   <div id="slider"></div>
-	 </div> -->
 	 
 	 <!-- 
 	 <h4>by Color &nbsp;<select name="colorpicker-picker-longlist">
@@ -398,3 +403,12 @@
 	  $(this).parent().siblings().stop().fadeTo(300, 1);
 	});
 </script>
+
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+	 $(function() { 
+	  $("#mpg-range").slider({range: true, min:0, max: 5000, values: [0, 2000], slide: function(event, ui) {$("#MPGRange").val(ui.values[0] + " - " + ui.values[1]);}
+	  });
+	  $("#MPGRange").val($("#mpg-range").slider("values", 0) + " - " + $("#mpg-range").slider("values", 1));
+	});
+	</script>
