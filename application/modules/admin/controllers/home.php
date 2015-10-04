@@ -41,6 +41,9 @@ class Home extends MX_Controller {
         $data['total_track_look'] = $this->tracking_model->get_track_look_count();
         $data['total_track_product'] = $this->tracking_model->get_track_product_count();
         $data['l_category_report'] = $this->tracking_model->get_categories_count();
+        $data['p_category_report'] = $this->tracking_model->get_pcategories_count();
+        $data['p_category_male_report'] = $this->tracking_model->get_pcategories_count_by_gender('Male');
+        $data['p_category_female_report'] = $this->tracking_model->get_pcategories_count_by_gender('Female');
 
         $this->load->view('admin/header');
         $this->load->view('admin/home', $data);
