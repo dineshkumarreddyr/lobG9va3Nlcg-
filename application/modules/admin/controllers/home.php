@@ -40,6 +40,7 @@ class Home extends MX_Controller {
         $data['total_coupons'] = $this->coupon_model->get_coupons_count();
         $data['total_track_look'] = $this->tracking_model->get_track_look_count();
         $data['total_track_product'] = $this->tracking_model->get_track_product_count();
+        $data['l_category_report'] = $this->tracking_model->get_categories_count();
 
         $this->load->view('admin/header');
         $this->load->view('admin/home', $data);

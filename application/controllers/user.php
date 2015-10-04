@@ -1220,6 +1220,50 @@ class User extends CI_Controller {
 		}
 		echo json_encode($response);
 	}
+
+	public function ajax_update_user_full_details()
+	{
+		$uid = $this->session->userdata('uid');
+		$response = array();
+		$marital_status = $this->input->post('marital_status');
+		$gender = $this->input->post('gender');
+		$special_date = $this->input->post('special_date');
+		$shopping = $this->input->post('shopping');
+		$bill = $this->input->post('bill');
+		$interests = $this->input->post('interests');
+		$came_from = $this->input->post('came_from');
+		
+		if(empty($gender)) {
+			$response['status'] = 'error';
+			$response['message'] = 'Gender should not empty';
+		}
+		// elseif(empty($location)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'Location should not empty';
+		// }
+		// elseif(empty($state)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'State should not empty';
+		// }
+		// elseif(empty($mobile)) {
+		// 	$response['status'] = 'error';
+		// 	$response['message'] = 'Mobile should not empty';
+		// }
+		else {
+
+			$data = $this->user_model->update_user_full_details($uid, $marital_status, $gender, $special_date, $shopping, $bill, $interests, $came_from);
+
+			if($data) {
+				$response['status'] = 'success';
+				$response['message'] = 'Successfully Updated.';
+			}
+			else {
+				$response['status'] = 'error';
+				$response['message'] = 'Unablel to update please try again later.';
+			}
+		}
+		echo json_encode($response);
+	}
 }
 
 

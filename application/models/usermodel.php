@@ -158,6 +158,24 @@ class Usermodel extends CI_Model {
         return TRUE; 
     }
 
+    function update_user_full_details($uid = 0, $marital_status = '', $gender = '', $special_date = '', $shopping = '', $bill = '', $interests = '', $came_from = '') {
+        
+        $data = array(
+           'user_marital_status' => $marital_status,
+           'user_gender' => $gender,
+           'user_special_date' => date('Y-m-d', strtotime($special_date)),
+           'user_shop_online' => $shopping,
+           'user_avg_bill' => $bill,
+           'user_interests' => $interests,
+           'user_came_from' => $came_from
+        );
+
+        $this->db->where('ud_uid', $uid);
+        $this->db->update('user_details', $data);
+
+        return TRUE; 
+    }
+
     function update_user_pic($uid = 0, $pic_name = '') {
         $data = array(
            'user_image' => $pic_name

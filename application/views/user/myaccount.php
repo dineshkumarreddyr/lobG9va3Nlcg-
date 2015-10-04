@@ -214,144 +214,117 @@
   
    <!--full-->
   <div id="full" class="container content">
-    <form class="form-horizontal" role="form" id="profile_full">
+    <form class="form-horizontal" role="form" id="profile_full" name="profile_full" method="post" onsubmit="return save_full_details();">
     <div class="form-group">
-    <label for="maritalstatus" class="col-sm-2 control-label">Marital Status</label><div class="col-sm-9">
-    <select class="form-control" id="marstatus" name="marstatus">
-    <option value="" selected="">-- Select Marital Status --</option>
-    <option value="Single">Single</option>
-    <option value="Married">Married</option>
-    </select></div></div>
-    <div class="form-group">
-    <label for="address1" class="col-sm-2 control-label">Occupation</label><div class="col-sm-9">
-    <select class="form-control" id="occupation" name="occupation">
-    <option value="" selected="">-- Please select state --</option>
-    <option value="2">Accounting/Finance</option>
-    <option value="3">Administrative</option>
-    <option value="4">Advertising</option>
-    <option value="5">Architecture</option>
-    <option value="6">Artist/Actor/Creative/Performer</option>
-    <option value="7">Aviation/Airlines</option>
-    <option value="8">Banking/Financial</option>
-    <option value="9">Bio-Pharmaceutical</option>
-    <option value="10">Bookkeeper</option>
-    <option value="11">Builder</option>
-    <option value="12">Business</option>
-    <option value="13">Celebrity</option>
-    <option value="14">Chef</option>
-    <option value="15">Clerical</option>
-    <option value="16">Computer Related (hardware)</option>
-    <option value="18">Computer Related (IT)</option>
-    <option value="17">Computer Related (software)</option>
-    <option value="19">Consulting</option>
-    <option value="20">Craftsman/Construction</option>
-    <option value="21">Customer Support</option>
-    <option value="22">Designer</option>
-    <option value="23">Doctor</option>
-    <option value="24">Educator/Academic</option>
-    <option value="25">Engineering/Architecture</option>
-    <option value="26">Entertainment</option>
-    <option value="27">Environmental</option>
-    <option value="28">Executive/Senior Management</option>
-    <option value="29">Farmer</option>
-    <option value="30">Finance</option>
-    <option value="31">Flight Attendant</option>
-    <option value="32">Food Services</option>
-    <option value="33">Government</option>
-    <option value="34">Homemaker</option>
-    <option value="35">Household</option>
-    <option value="36">Human Resources</option>
-    <option value="37">Industrial</option>
-    <option value="38">Insurance</option>
-    <option value="39">Lawyer</option>
-    <option value="40">Legal Professions</option>
-    <option value="42">Management</option>
-    <option value="43">Manufacturing/Operations</option>
-    <option value="44">Marine</option>
-    <option value="45">Marketing</option>
-    <option value="46">Media</option>
-    <option value="41">Medical/Healthcare</option>
-    <option value="47">Medical/Healthcare</option>
-    <option value="48">Military</option>
-    <option value="49">Musician</option>
-    <option value="50">Nurse</option>
-    <option value="76">Other</option>
-    <option value="51">Political</option>
-    <option value="52">Professor</option>
-    <option value="53">Public Relations</option>
-    <option value="54">Public Sector</option>
-    <option value="55">Publishing</option>
-    <option value="56">Real Estate</option>
-    <option value="57">Recreation</option>
-    <option value="58">Research/Scientist</option>
-    <option value="59">Retail</option>
-    <option value="60">Retired</option>
-    <option value="61">Sales</option>
-    <option value="62">Secretary</option>
-    <option value="63">Self Employed</option>
-    <option value="64">Service Industry</option>
-    <option value="65">Social Science</option>
-    <option value="66">Social Services</option>
-    <option value="67">Sports</option>
-    <option value="68">Student</option>
-    <option value="71">Teaching</option>
-    <option value="69">Technical</option>
-    <option value="70">Technician</option>
-    <option value="72">Telecommunications</option>
-    <option value="73">Transportation/Logistics</option>
-    <option value="74">Travel/Hospitality/Tourism</option>
-    <option value="75">Unemployed</option>
-    </select></div>
+      <label for="maritalstatus" class="col-sm-2 control-label">Marital Status</label>
+      <div class="col-sm-9">
+        <select class="form-control" id="marstatus" name="marstatus">
+          <option value="">-- Select Marital Status --</option>
+          <?php
+          $marital_status = array('Single'=>'Single', 'Married'=>'Married');
+          foreach ($marital_status as $key => $status) {
+            ?>
+          <option value="<?php echo $key; ?>" <?php echo ($user_details->user_marital_status == $key) ? 'selected="selected"' : ''; ?> ><?php echo $status; ?></option>
+            <?php
+          }
+          ?>
+        </select>
+      </div>
     </div>
     <div class="form-group">
-    <label for="username" class="col-sm-2 control-label">Annual Income</label>
-    <div class="col-sm-9">
-    <select class="form-control" id="income" name="income">
-    <option value="" selected="">-- Select one --</option>
-    <option value="0" selected="selected">None</option>
-    <option value="1">Upto 2,00,000</option>
-    <option value="2">2 - 5 Lakh</option>
-    <option value="3">5 - 10 Lakh</option>
-    <option value="4">10 - 20 Lakh</option>
-    <option value="5">More than 20 Lakh</option>
-    </select></div>
+      <label for="gender" class="col-sm-2 control-label">Gender</label>
+      <div class="col-sm-9">
+        <select class="form-control" id="gender" name="gender">
+          <option value="">-- Select gender --</option>
+          <?php
+          $genders = array('Male'=>'Male', 'Female'=>'Female');
+          foreach ($genders as $key => $gender) {
+            ?>
+          <option value="<?php echo $key; ?>" <?php echo ($user_details->user_gender == $key) ? 'selected="selected"' : ''; ?> ><?php echo $gender; ?></option>
+            <?php
+          }
+          ?>
+        </select>
+      </div>
     </div>
     <div class="form-group">
-    <label for="city" class="col-sm-2 control-label">Anniversary</label>
-    <div class="col-sm-9">
-    <input type="text" placeholder="Choose your anniversary date" id="anniversary" class="form-control" name="anniversary"></div>
+      <label for="city" class="col-sm-2 control-label">Anniversary</label>
+      <div class="col-sm-9">
+        <input type="date" placeholder="Choose your anniversary date" id="special_date" class="form-control" name="special_date" value="<?php echo ($user_details->user_special_date != '0000-00-00') ? $user_details->user_special_date : ''; ?>">
+      </div>
     </div>
     <div class="form-group">
-    <label for="select-retailer" class="col-sm-2 control-label">What do you own?</label>
-    <div class="col-sm-9" style="margin-left:14px;">
-    <div class="checkbox">
-    <input type="checkbox" id="car" name="car" value="car">&nbsp;Car</div>
-    <div class="checkbox">
-    <input type="checkbox" id="bike" name="bike" value="bike">&nbsp;Bike</div><div class="checkbox">
-    <input type="checkbox" id="television" name="television" value="television">&nbsp;Television</div>
-    <div class="checkbox"><input type="checkbox" id="refrigerator" name="refrigerator" value="refrigerator">&nbsp;Refrigerator</div>
-    <div class="checkbox"><input type="checkbox" id="ac" name="ac" value="ac">&nbsp;Ac</div>
-    <div class="checkbox"><input type="checkbox" id="mobile" name="mobile" value="mobile">&nbsp;Mobile</div>
-    <div class="checkbox">
-    <input type="checkbox" id="washingmachine" name="washingmachine" value="washingmachine">&nbsp;Washingmachine</div>
-    <div class="checkbox"><input type="checkbox" id="house" name="house" value="house">&nbsp;House</div><div class="checkbox">
-    <input type="checkbox" id="pc" name="pc" value="pc">&nbsp;Pc</div>
-    <div class="checkbox"><input type="checkbox" id="tablet" name="tablet" value="tablet">&nbsp;Tablet</div></div></div>
-    <div class="form-group"><label for="pincode" class="col-sm-2 control-label">I shop online</label>
-
-    <div class="col-sm-9">
-    <div class="radio"><input type="radio" id="week" name="shopping" value="week">&nbsp;Week</div><div class="radio"><input type="radio" id="fornight" name="shopping" value="fornight">&nbsp;Fornight</div><div class="radio"><input type="radio" id="monthly" name="shopping" value="monthly">&nbsp;Monthly</div><div class="radio"><input type="radio" id="quarterly" name="shopping" value="quarterly">&nbsp;Quarterly</div></div></div><div class="form-group"><label for="mobile" class="col-sm-2 control-label">Average Online Bill</label><div class="col-sm-9"><div class="radio"><input type="radio" id="U500" name="bill" value="U500">&nbsp;Upto 500</div><div class="radio"><input type="radio" id="U1000" name="bill" value="U1000">&nbsp;Upto 1000</div><div class="radio"><input type="radio" id="U2000" name="bill" value="U2000">&nbsp;Upto 2000</div><div class="radio"><input type="radio" id="A2000" name="bill" value="A2000">&nbsp;Above 2000</div></div></div>
-
-    <div class="form-group"><label for="mobile" class="col-sm-2 control-label">Your Interests</label>
-    <div class="col-sm-9" style="margin-left:14px;">
-    <div class="checkbox"><input type="checkbox" id="travel" name="travel" value="travel">&nbsp;Travel</div><div class="checkbox"><input type="checkbox" id="megastores" name="megastores" value="megastores">&nbsp;Megastores</div><div class="checkbox"><input type="checkbox" id="mens" name="mens" value="mens">&nbsp;Mens</div><div class="checkbox"><input type="checkbox" id="kids" name="kids" value="kids">&nbsp;Kids</div><div class="checkbox"><input type="checkbox" id="books" name="books" value="books">&nbsp;Books</div><div class="checkbox"><input type="checkbox" id="electronics" name="electronics" value="electronics">&nbsp;Electronics</div><div class="checkbox"><input type="checkbox" id="women" name="women" value="women">&nbsp;Women</div><div class="checkbox"><input type="checkbox" id="homeliving" name="homeliving" value="homeliving">&nbsp;Homeliving</div><div class="checkbox"><input type="checkbox" id="more" name="more" value="more">&nbsp;More</div></div></div>
+      <label for="pincode" class="col-sm-2 control-label">I shop online</label>
+      <div class="col-sm-9">
+        <?php
+        $shopping = array('week' => 'Week', 'fornight' => 'Fornight', 'monthly' => 'Monthly', 'quarterly' => 'Quarterly');
+        foreach ($shopping as $key => $value) :
+          ?>
+        <div class="radio">
+          <input type="radio" id="<?= $key; ?>" name="shopping" value="<?= $key; ?>" <?php echo ($user_details->user_shop_online == $key) ? 'checked="checked"' : ''; ?> >&nbsp;<?= $value; ?>
+        </div>
+        <?php
+        endforeach;
+        ?>
+      </div>
+    </div>
 
     <div class="form-group">
-    <label for="mobile" class="col-sm-2 control-label">
-    How did you hear about-us?</label>
-    <div class="col-sm-9" style="margin-left:14px;"><div class="checkbox"><input type="checkbox" id="google" name="google" value="google">&nbsp;Google</div><div class="checkbox"><input type="checkbox" id="ad" name="ad" value="ad">&nbsp;Advertisment</div><div class="checkbox"><input type="checkbox" id="newspaper" name="newspaper" value="newspaper">&nbsp;News Paper</div><div class="checkbox"><input type="checkbox" id="radio" name="radio" value="radio">&nbsp;Radio</div><div class="checkbox"><input type="checkbox" id="facebook" name="facebook" value="facebook">&nbsp;Facebook</div><div class="checkbox"><input type="checkbox" id="friends" name="friends" value="friends">&nbsp;Friends / Family</div></div></div>
+      <label for="mobile" class="col-sm-2 control-label">Average Online Bill</label>
+      <div class="col-sm-9">
+        <?php
+        $bill = array('U500' => 'Upto 500', 'U1000' => 'Upto 1000', 'U2000' => 'Upto 2000', 'A2000' => 'Above 2000');
+        foreach ($bill as $key => $value) :
+          ?>
+        <div class="radio">
+          <input type="radio" id="<?= $key; ?>" name="bill" value="<?= $key; ?>" <?php echo ($user_details->user_avg_bill == $key) ? 'checked="checked"' : ''; ?>>&nbsp;<?= $value; ?>
+        </div>
+        <?php
+        endforeach;
+        ?>
+      </div>
+    </div>
 
-    <div class="form-group"><div class="col-sm-offset-2 col-sm-3"><button type="submit" class="btn btn-success btn-feat tab-move1">Save Details</button></div></div><input type="hidden" class="form-control" id="calling" name="calling" value="profile_last"></form>
+    <div class="form-group">
+      <label for="mobile" class="col-sm-2 control-label">Your Interests</label>
+      <div class="col-sm-9" style="margin-left:14px;">
+        <?php
+        $interests = array('travel' => 'Travel', 'megastores' => 'Megastores', 'mens' => 'Mens', 'kids' => 'Kids', 'books' => 'Books', 'electronics' => 'Electronics', 'women' => 'Women', 'homeliving' => 'Homeliving', 'more' => 'More');
+        $saved_interests = explode(',', $user_details->user_interests);
+        foreach ($interests as $key => $value) :
+          ?>
+        <div class="checkbox">
+          <input type="checkbox" id="<?= $key; ?>" name="interests" value="<?= $key; ?>" <?php echo ( in_array($key, $saved_interests)) ? 'checked="checked"' : ''; ?> >&nbsp;<?= $value; ?>
+        </div>
+        <?php
+        endforeach;
+        ?>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile" class="col-sm-2 control-label">How did you hear about-us?</label>
+      <div class="col-sm-9" style="margin-left:14px;">
+        <?php
+        $came_from = array('google' => 'Google', 'ad' => 'Advertisment', 'newspaper' => 'News Paper', 'radio' => 'Radio', 'facebook' => 'Facebook', 'friends' => 'Friends / Family');
+        $saved_came_from = explode(',', $user_details->user_came_from);
+        foreach ($came_from as $key => $value) :
+          ?>
+        <div class="checkbox">
+          <input type="checkbox" id="<?= $key; ?>" name="came_from" value="<?= $key; ?>" <?php echo ( in_array($key, $saved_came_from)) ? 'checked="checked"' : ''; ?>>&nbsp;<?= $value; ?>
+        </div>
+        <?php
+        endforeach;
+        ?>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <input type="submit" class="btn btn-success btn-feat tab-move1" value="Save Details" >
+      </div>
+    </div>
+  </form>
   </div>
   </div>
   <!--full-->
@@ -401,6 +374,54 @@ function save_basic_details () {
     type:"POST",
     url:'<?php echo base_url();?>user/ajax_update_user_basic_details',
     data:{'first_name':fisrt_name,'last_name':last_name,'email':email,'mobile':mobile,'dob':dob,'address1':address1,'address2':address2,'city':city,'state':state,'pincode':pincode},
+    dataType:"json",
+    success: function(data) {
+      // console.log(data);
+      if(data.status == 'error') {
+        // alert(data.message);
+        // $('#dr_msg').text(data.message);
+      }
+      else if(data.status == 'success') {
+        alert('Successfully updated.');
+        window.location='<?php echo base_url(uri_string()); ?>';
+        // $('#dr_msg').text(data.message);
+      }
+    }
+  });
+  return false;
+}
+
+function save_full_details () {
+  var marstatus = $('#marstatus').val();
+  var gender = $('#gender').val();
+  var special_date = $('#special_date').val();
+  var shopping = '';
+  $('input[name=shopping]:checked').map(function() {
+    shopping = $(this).val();
+  });
+
+  var bill = '';
+  $('input[name=bill]:checked').map(function() {
+    bill = $(this).val();
+  });
+
+  var interests = [];
+  $('input[name=interests]:checked').map(function() {
+    interests.push($(this).val());
+  });
+  interests = interests.join();
+
+  var came_from = [];
+  $('input[name=came_from]:checked').map(function() {
+    came_from.push($(this).val());
+  });
+  came_from = came_from.join();
+
+
+  $.ajax({
+    type:"POST",
+    url:'<?php echo base_url();?>user/ajax_update_user_full_details',
+    data:{'marital_status':marstatus,'gender':gender,'special_date':special_date,'shopping':shopping,'bill':bill,'interests':interests,'came_from':came_from},
     dataType:"json",
     success: function(data) {
       // console.log(data);

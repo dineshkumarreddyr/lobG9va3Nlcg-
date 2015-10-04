@@ -244,6 +244,30 @@
                 </div>
                 <div class="col-lg-6">
                     <a href="<?php echo base_url('admin/home/flush_db_cache'); ?>">Flush DB cache</a>
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);
+          function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Category', 'Data Count'],
+              
+              <?php foreach ($l_category_report as $key => $category) : ?>
+              ['<?= $category->name; ?>',     <?= $category->count; ?>],
+              <?php endforeach; ?>
+              
+            ]);
+
+        var options = {
+          title: 'DATA'
+        };
+
+            var chart = new google.visualization.PieChart(document.getElementById('look_category_report'));
+
+            chart.draw(data, options);
+          }
+        </script>
+                        <div id="look_category_report" style="height: 500px;"></div>
                 </div>
             </div>
             <div class="row">
